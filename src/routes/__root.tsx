@@ -116,6 +116,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#FAF8F6" },
+      { property: "og:title", content: "Tsai Orthodontics — Specialist Orthodontic Care, Vancouver" },
+      { name: "twitter:title", content: "Tsai Orthodontics — Specialist Orthodontic Care, Vancouver" },
+      { name: "description", content: "Ortho Elegance is a premium website for Tsai Orthodontics, offering personalized specialist orthodontic care." },
+      { property: "og:description", content: "Ortho Elegance is a premium website for Tsai Orthodontics, offering personalized specialist orthodontic care." },
+      { name: "twitter:description", content: "Ortho Elegance is a premium website for Tsai Orthodontics, offering personalized specialist orthodontic care." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/79b54253-a430-47dc-993d-3351393b8232/id-preview-8a096d5d--a3ce2391-661c-4537-9060-a239936ca419.lovable.app-1781132649337.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/79b54253-a430-47dc-993d-3351393b8232/id-preview-8a096d5d--a3ce2391-661c-4537-9060-a239936ca419.lovable.app-1781132649337.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
