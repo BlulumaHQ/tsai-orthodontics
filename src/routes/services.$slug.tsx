@@ -89,7 +89,7 @@ function ServicePage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-[11px] uppercase tracking-[0.25em] text-primary mb-6">Benefits</div>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            {service.benefits.map((b, i) => (
+            {service.benefits.map((b: string, i: number) => (
               <div key={b} className="flex gap-5 py-5 border-t border-foreground/10">
                 <span className="text-primary font-mono text-sm">{String(i + 1).padStart(2, "0")}</span>
                 <span className="text-foreground/85 leading-relaxed">{b}</span>
