@@ -104,7 +104,7 @@ function ServicePage() {
           <div className="max-w-3xl mx-auto">
             <h2 className="font-display text-3xl md:text-4xl mb-12">Common questions</h2>
             <div>
-              {service.faqs.map((f) => (
+              {service.faqs.map((f: { q: string; a: string }) => (
                 <details
                   key={f.q}
                   className="group border-t border-foreground/10 last:border-b py-6"
