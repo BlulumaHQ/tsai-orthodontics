@@ -38,31 +38,31 @@ export const Route = createFileRoute("/")({
 const PILLARS = [
   {
     n: "01",
-    label: "Clarity",
-    title: "A treatment plan you can actually follow.",
-    body: "We explain every option in plain language, with clear costs and clear timelines. You leave your consultation knowing exactly what comes next — and why.",
-    image: atmosClarity,
+    label: "Craft",
+    title: "Specialist precision in every detail.",
+    body: "Dr. Tsai personally designs every treatment plan. We never delegate the thinking — and the results show in how naturally each smile finishes.",
+    image: atmosCraft,
   },
   {
     n: "02",
-    label: "Ease",
-    title: "Care that fits the rhythm of your life.",
-    body: "Digital records replace messy impressions. Family scheduling keeps siblings together. Flexible financing makes the path forward simple.",
-    image: atmosEase,
-  },
-  {
-    n: "03",
     label: "Care",
     title: "Long relationships, not transactions.",
     body: "Most of our patients are with us for years. We remember names, ask about the school play, and treat your family the way we'd treat our own.",
     image: atmosCare,
   },
   {
+    n: "03",
+    label: "Clarity",
+    title: "A treatment plan you can actually follow.",
+    body: "We explain every option in plain language, with clear costs and clear timelines. You leave your consultation knowing exactly what comes next — and why.",
+    image: atmosClarity,
+  },
+  {
     n: "04",
-    label: "Craft",
-    title: "Specialist precision in every detail.",
-    body: "Dr. Tsai personally designs every treatment plan. We never delegate the thinking — and the results show in how naturally each smile finishes.",
-    image: atmosCraft,
+    label: "Convenience",
+    title: "Care that fits the rhythm of your life.",
+    body: "Flexible appointments before school and after work, family scheduling for siblings, and bilingual care in English, Mandarin, and Cantonese — so every visit feels effortless.",
+    image: atmosEase,
   },
 ];
 
@@ -148,14 +148,28 @@ function HomePage() {
       </section>
 
       {/* INTRO STATEMENT */}
-      <section className="py-28 lg:py-40 px-6 lg:px-10 bg-background">
+      <section className="pt-28 lg:pt-40 pb-16 lg:pb-24 px-6 lg:px-10 bg-background">
         <div className="max-w-5xl mx-auto">
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-8">
-            Why Tsai Orthodontics
+            What Sets Us Apart
           </div>
           <p className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-balance">
             We chose to build a different kind of orthodontic practice — one shaped by careful listening, specialist training, and the warmth of a small Vancouver family business.
           </p>
+        </div>
+      </section>
+
+      {/* FOUR PILLARS — large display */}
+      <section className="px-6 lg:px-10 pb-24 lg:pb-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/10 border border-foreground/10 rounded-3xl overflow-hidden">
+            {PILLARS.map((p) => (
+              <div key={p.label} className="bg-background p-8 lg:p-12 text-center">
+                <div className="text-primary text-[11px] uppercase tracking-[0.3em] font-mono mb-6">{p.n}</div>
+                <div className="font-display text-5xl md:text-6xl lg:text-7xl leading-none">{p.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
