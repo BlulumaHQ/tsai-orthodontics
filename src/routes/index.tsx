@@ -38,31 +38,31 @@ export const Route = createFileRoute("/")({
 const PILLARS = [
   {
     n: "01",
-    label: "Clarity",
-    title: "A treatment plan you can actually follow.",
-    body: "We explain every option in plain language, with clear costs and clear timelines. You leave your consultation knowing exactly what comes next — and why.",
-    image: atmosClarity,
+    label: "Craft",
+    title: "Specialist precision in every detail.",
+    body: "Dr. Tsai personally designs every treatment plan. We never delegate the thinking — and the results show in how naturally each smile finishes.",
+    image: atmosCraft,
   },
   {
     n: "02",
-    label: "Ease",
-    title: "Care that fits the rhythm of your life.",
-    body: "Digital records replace messy impressions. Family scheduling keeps siblings together. Flexible financing makes the path forward simple.",
-    image: atmosEase,
-  },
-  {
-    n: "03",
     label: "Care",
     title: "Long relationships, not transactions.",
     body: "Most of our patients are with us for years. We remember names, ask about the school play, and treat your family the way we'd treat our own.",
     image: atmosCare,
   },
   {
+    n: "03",
+    label: "Clarity",
+    title: "A treatment plan you can actually follow.",
+    body: "We explain every option in plain language, with clear costs and clear timelines. You leave your consultation knowing exactly what comes next — and why.",
+    image: atmosClarity,
+  },
+  {
     n: "04",
-    label: "Craft",
-    title: "Specialist precision in every detail.",
-    body: "Dr. Tsai personally designs every treatment plan. We never delegate the thinking — and the results show in how naturally each smile finishes.",
-    image: atmosCraft,
+    label: "Convenience",
+    title: "Care that fits the rhythm of your life.",
+    body: "Flexible appointments before school and after work, family scheduling for siblings, and bilingual care in English, Mandarin, and Cantonese — so every visit feels effortless.",
+    image: atmosEase,
   },
 ];
 
