@@ -159,20 +159,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* FOUR PILLARS — large display */}
-      <section className="px-6 lg:px-10 pb-24 lg:pb-32">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/10 border border-foreground/10 rounded-3xl overflow-hidden">
-            {PILLARS.map((p) => (
-              <div key={p.label} className="bg-background p-8 lg:p-12 text-center">
-                <div className="text-primary text-[11px] uppercase tracking-[0.3em] font-mono mb-6">{p.n}</div>
-                <div className="font-display text-5xl md:text-6xl lg:text-7xl leading-none">{p.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* PILLARS — zigzag */}
       <section className="px-6 lg:px-10 pb-24 lg:pb-32">
         <div className="max-w-7xl mx-auto space-y-24 lg:space-y-40">
