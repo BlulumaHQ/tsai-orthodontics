@@ -282,10 +282,10 @@ function HomePage() {
               ))}
             </div>
             <Link
-              to="/doctors"
+              to="/about-the-doctors/dr-andrew-tsai"
               className="inline-flex items-center gap-2 text-primary text-xs uppercase tracking-[0.2em] font-medium border-b border-primary pb-1 hover:gap-3 transition-all"
             >
-              Read Dr. Tsai's Story <ArrowRight className="size-4" />
+              Meet Dr. Andrew Tsai <ArrowRight className="size-4" />
             </Link>
           </div>
         </div>
