@@ -317,7 +317,7 @@ function HomePage() {
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src={drTsai}
+                src={drTsai.url}
                 alt="Dr. Tsai, specialist orthodontist"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover"
