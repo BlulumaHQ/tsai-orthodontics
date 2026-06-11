@@ -350,7 +350,7 @@ export const SERVICES: Service[] = [
     metaDescription:
       "Clear retainers, fixed retainers, replacement retainers, and long-term orthodontic retention care in Vancouver.",
   },
-];
+].map((s) => ({ ...s, gallery: SERVICE_GALLERIES[s.slug] }));
 
 export const SERVICE_BY_SLUG: Record<string, Service> = Object.fromEntries(
   SERVICES.map((s) => [s.slug, s]),
