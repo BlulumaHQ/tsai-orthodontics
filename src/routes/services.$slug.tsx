@@ -485,6 +485,39 @@ function FAQSection({ service }: { service: Service }) {
   );
 }
 
+function ServiceGallery({ service }: { service: Service }) {
+  if (!service.gallery || service.gallery.length === 0) return null;
+  return (
+    <section className="px-6 lg:px-10 py-20 lg:py-28">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-end justify-between gap-6 mb-10 lg:mb-14">
+          <div>
+            <Eyebrow>Inside the practice</Eyebrow>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] max-w-2xl text-balance">
+              A closer look at {service.name.toLowerCase()} at Tsai Orthodontics.
+            </h2>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+          {service.gallery.map((g, i) => (
+            <div
+              key={g.src + i}
+              className={`overflow-hidden rounded-2xl bg-secondary/40 ${i === 0 ? "col-span-2 lg:col-span-2 lg:row-span-2 aspect-square lg:aspect-auto" : "aspect-[4/5]"}`}
+            >
+              <img
+                src={g.src}
+                alt={g.alt}
+                loading="lazy"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function RelatedServices({ service }: { service: Service }) {
   const related = service.related.map((slug) => SERVICE_BY_SLUG[slug]).filter(Boolean);
   return (
