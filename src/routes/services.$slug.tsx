@@ -217,7 +217,7 @@ function InvisalignPage({ service }: { service: Service }) {
 
 function PhaseIPage({ service }: { service: Service }) {
   return (
-    <main>
+    <>
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20 lg:pb-28">
         <div className="max-w-5xl mx-auto text-center">
           <BackLink centered />
@@ -238,13 +238,13 @@ function PhaseIPage({ service }: { service: Service }) {
       </section>
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
-    </main>
+    </>
   );
 }
 
 function AirwayPage({ service }: { service: Service }) {
   return (
-    <main>
+    <>
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
         <div className="max-w-7xl mx-auto">
           <BackLink />
@@ -270,13 +270,13 @@ function AirwayPage({ service }: { service: Service }) {
       </section>
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
-    </main>
+    </>
   );
 }
 
 function MarpePage({ service }: { service: Service }) {
   return (
-    <main>
+    <>
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
         <div className="max-w-7xl mx-auto">
           <BackLink />
@@ -297,7 +297,7 @@ function MarpePage({ service }: { service: Service }) {
       <IconListBand service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
-    </main>
+    </>
   );
 }
 
