@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
-import drTsai from "@/assets/dr-tsai.jpg";
+import drTsai from "@/assets/dr-andrew-tsai.webp.asset.json";
 
 const EDUCATION = [
   { year: "Penn", title: "Seven-Year Bio-Dental Program", body: "University of Pennsylvania — undergraduate degree and Doctor of Dental Medicine." },
@@ -55,7 +55,7 @@ function DrAndrewPage() {
         <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-3xl">
-              <img src={drTsai} alt="Dr. Andrew Tsai" className="w-full aspect-[4/5] object-cover" loading="lazy" />
+              <img src={drTsai.url} alt="Dr. Andrew Tsai" className="w-full aspect-[4/5] object-cover" loading="lazy" />
             </div>
           </div>
           <div className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-foreground/85">
