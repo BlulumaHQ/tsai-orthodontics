@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
-import drTsai from "@/assets/dr-tsai.jpg";
+import drAndrew from "@/assets/dr-andrew-tsai.webp.asset.json";
+import drMarjorie from "@/assets/dr-marjorie-tsai.webp.asset.json";
 
 export const Route = createFileRoute("/about-the-doctors/")({
   head: () => ({
