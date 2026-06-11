@@ -6,6 +6,13 @@ import bracesFeature from "@/assets/brace-feature.webp.asset.json";
 import airwayFeature from "@/assets/air-way-004.webp.asset.json";
 import kidsFeature from "@/assets/005_1.webp.asset.json";
 import adultsFeature from "@/assets/012.webp.asset.json";
+import bracesCloseUp from "@/assets/tsai-brace.webp.asset.json";
+import consultScan from "@/assets/tsai-consult.webp.asset.json";
+import adultConsult from "@/assets/tsai-adult-consult.webp.asset.json";
+import careImg from "@/assets/care-004.webp.asset.json";
+import clarityImg from "@/assets/clarity-007.webp.asset.json";
+import craftImg from "@/assets/craft-026.webp.asset.json";
+import convenienceImg from "@/assets/convenience022.webp.asset.json";
 
 const svcBraces = bracesFeature.url;
 const svcInvisalign = invisalignFeature.url;
@@ -15,6 +22,23 @@ const svcAirway = airwayFeature.url;
 const journeyKids = kidsFeature.url;
 const journeyAdults = adultsFeature.url;
 const journeyParents = phaseOneFeature.url;
+
+const IMG = {
+  braces: bracesCloseUp.url,
+  consult: consultScan.url,
+  adultConsult: adultConsult.url,
+  care: careImg.url,
+  clarity: clarityImg.url,
+  craft: craftImg.url,
+  convenience: convenienceImg.url,
+  invisalign: invisalignFeature.url,
+  marpe: marpeFeature.url,
+  airway: airwayFeature.url,
+  kids: kidsFeature.url,
+  adults: adultsFeature.url,
+  retainer: retainerFeature.url,
+  phaseOne: phaseOneFeature.url,
+};
 
 export interface ServiceFAQ {
   q: string;
