@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import drTsai from "@/assets/dr-tsai.jpg";
 
-export const Route = createFileRoute("/about-the-doctors")({
+export const Route = createFileRoute("/about-the-doctors/")({
   head: () => ({
     meta: [
       { title: "About the Doctors | Tsai Orthodontics" },
