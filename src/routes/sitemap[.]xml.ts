@@ -2,8 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { SERVICES } from "@/lib/services-data";
 
-// TODO: replace with your project URL once a project name or custom domain is set.
-const BASE_URL = "";
+const BASE_URL = "https://tsai-orthodontics.lovable.app";
 
 interface SitemapEntry {
   path: string;
@@ -17,13 +16,14 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/about", changefreq: "monthly", priority: "0.8" },
-          { path: "/doctors", changefreq: "monthly", priority: "0.8" },
+          { path: "/about-the-doctors", changefreq: "monthly", priority: "0.8" },
+          { path: "/about-the-doctors/dr-andrew-tsai", changefreq: "monthly", priority: "0.8" },
+          { path: "/about-the-doctors/dr-marjorie-tsai", changefreq: "monthly", priority: "0.6" },
           { path: "/what-sets-us-apart", changefreq: "monthly", priority: "0.8" },
           { path: "/services", changefreq: "monthly", priority: "0.8" },
           { path: "/new-patients", changefreq: "monthly", priority: "0.8" },
           { path: "/faq", changefreq: "monthly", priority: "0.7" },
-          { path: "/referral", changefreq: "yearly", priority: "0.6" },
+          { path: "/dentist-referral", changefreq: "yearly", priority: "0.6" },
           { path: "/contact", changefreq: "yearly", priority: "0.9" },
           ...SERVICES.map((s) => ({
             path: `/services/${s.slug}`,
