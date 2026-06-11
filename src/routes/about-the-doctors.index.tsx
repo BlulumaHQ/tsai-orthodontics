@@ -60,8 +60,13 @@ function AboutTheDoctorsPage() {
           {/* Dr. Marjorie */}
           <article className="group">
             <Link to="/about-the-doctors/dr-marjorie-tsai" className="block">
-              <div className="overflow-hidden rounded-3xl mb-6 bg-secondary/50 aspect-[4/5] flex items-center justify-center">
-                <span className="font-display text-5xl text-foreground/30">M.T.</span>
+              <div className="overflow-hidden rounded-3xl mb-6 bg-secondary/50 aspect-[4/5]">
+                <img
+                  src={drMarjorie.url}
+                  alt="Dr. Marjorie Tsai"
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                />
               </div>
               <div className="text-primary text-[11px] uppercase tracking-[0.25em] mb-2">
                 Biography Coming Soon
