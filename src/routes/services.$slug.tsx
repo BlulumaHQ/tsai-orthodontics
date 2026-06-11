@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { SERVICE_BY_SLUG, type Service } from "@/lib/services-data";
 import { SITE } from "@/lib/site-data";
@@ -345,7 +346,7 @@ function BackLink({ centered = false }: { centered?: boolean }) {
   );
 }
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
+function Eyebrow({ children }: { children: ReactNode }) {
   return <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">{children}</div>;
 }
 
