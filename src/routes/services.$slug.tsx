@@ -58,12 +58,12 @@ export const Route = createFileRoute("/services/$slug")({
   },
   component: ServicePage,
   notFoundComponent: () => (
-    <main className="pt-40 pb-32 text-center px-6">
+    <div className="pt-40 pb-32 text-center px-6">
       <h1 className="font-display text-5xl mb-6">Service not found</h1>
       <Link to="/services" className="text-primary uppercase tracking-[0.2em] text-xs border-b border-primary pb-1">
         Back to all services
       </Link>
-    </main>
+    </div>
   ),
 });
 
@@ -94,7 +94,7 @@ function ServicePage() {
 
 function ChildrenAndTeensPage({ service }: { service: Service }) {
   return (
-    <main>
+    <>
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-16">
         <div className="max-w-7xl mx-auto">
           <BackLink />
@@ -117,7 +117,7 @@ function ChildrenAndTeensPage({ service }: { service: Service }) {
       <FAQSection service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
-    </main>
+    </>
   );
 }
 
