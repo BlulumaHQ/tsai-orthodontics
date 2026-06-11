@@ -2,10 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import heroFamily from "@/assets/hero-family.jpg";
 import drTsai from "@/assets/dr-tsai.jpg";
-import atmosClarity from "@/assets/atmos-clarity.jpg";
-import atmosEase from "@/assets/atmos-ease.jpg";
-import atmosCare from "@/assets/atmos-care.jpg";
-import atmosCraft from "@/assets/atmos-craft.jpg";
+import pillarCraft from "@/assets/pillar-craft.jpg";
+import pillarCare from "@/assets/pillar-care.jpg";
+import pillarClarity from "@/assets/pillar-clarity.jpg";
+import pillarConvenience from "@/assets/pillar-convenience.jpg";
 import { SITE } from "@/lib/site-data";
 import { SERVICES } from "@/lib/services-data";
 
@@ -36,30 +36,34 @@ const PILLARS = [
   {
     n: "01",
     label: "Craft",
-    title: "Specialist precision in every detail.",
-    body: "Dr. Tsai personally designs every treatment plan. We never delegate the thinking — and the results show in how naturally each smile finishes.",
-    image: atmosCraft,
+    headline: "Precision matters.",
+    body: "Careful planning and specialist training help us build treatment plans that are tailored to the individual patient — never to a template.",
+    image: pillarCraft,
+    alt: "Close-up of a digital orthodontic treatment plan on a clinical monitor",
   },
   {
     n: "02",
     label: "Care",
-    title: "Long relationships, not transactions.",
-    body: "Most of our patients are with us for years. We remember names, ask about the school play, and treat your family the way we'd treat our own.",
-    image: atmosCare,
+    headline: "Orthodontics is personal.",
+    body: "We take time to listen, to explain, and to help every patient feel comfortable throughout the process — children, teens, and adults alike.",
+    image: pillarCare,
+    alt: "An orthodontist gently talking with a young patient in a consult room",
   },
   {
     n: "03",
     label: "Clarity",
-    title: "A treatment plan you can actually follow.",
-    body: "We explain every option in plain language, with clear costs and clear timelines. You leave your consultation knowing exactly what comes next — and why.",
-    image: atmosClarity,
+    headline: "Patients deserve clear answers.",
+    body: "We explain what we see, what we recommend, and why — using your own images, in plain language, before any treatment decision is made.",
+    image: pillarClarity,
+    alt: "Clinician reviewing a 3D dental scan on screen with a patient",
   },
   {
     n: "04",
     label: "Convenience",
-    title: "Care that fits the rhythm of your life.",
-    body: "Flexible appointments before school and after work, family scheduling for siblings, and bilingual care in English, Mandarin, and Cantonese — so every visit feels effortless.",
-    image: atmosEase,
+    headline: "Care that fits into your life.",
+    body: "Flexible appointments, family scheduling for siblings, and bilingual care in English, Mandarin, and Cantonese — so every visit feels effortless, not interruptive.",
+    image: pillarConvenience,
+    alt: "A warm, sunlit modern orthodontic consultation space",
   },
 ];
 
@@ -125,44 +129,42 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PILLARS — zigzag */}
+      {/* PILLARS — editorial card grid */}
       <section className="px-6 lg:px-10 pb-24 lg:pb-32">
-        <div className="max-w-7xl mx-auto space-y-24 lg:space-y-40">
-          {PILLARS.map((p, i) => {
-            const reverse = i % 2 === 1;
-            return (
-              <article
-                key={p.n}
-                className="grid md:grid-cols-2 gap-10 lg:gap-20 items-center"
-              >
-                <div className={reverse ? "md:order-2" : ""}>
-                  <div className="overflow-hidden rounded-3xl">
-                    <img
-                      src={p.image}
-                      alt=""
-                      loading="lazy"
-                      className="w-full aspect-[4/5] object-cover"
-                    />
-                  </div>
-                </div>
-                <div className={`max-w-lg ${reverse ? "md:order-1 md:ml-auto" : ""}`}>
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className="text-primary text-xs font-mono tracking-[0.2em]">{p.n}</span>
-                    <span className="h-px flex-1 bg-foreground/10" />
-                  </div>
-                  <div className="font-display text-6xl md:text-7xl lg:text-8xl leading-none mb-8 text-primary">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6 lg:gap-8">
+          {PILLARS.map((p) => (
+            <article
+              key={p.n}
+              className="group bg-background border border-foreground/10 rounded-3xl overflow-hidden hover:shadow-xl hover:border-primary/40 transition-all flex flex-col"
+            >
+              <div className="overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={p.alt}
+                  loading="lazy"
+                  width={1280}
+                  height={720}
+                  className="w-full aspect-[16/9] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div className="p-8 lg:p-10 flex flex-col flex-1">
+                <div className="flex items-baseline gap-4 mb-5">
+                  <span className="text-primary text-[10px] font-mono tracking-[0.25em]">
+                    {p.n}
+                  </span>
+                  <span className="text-primary text-[11px] uppercase tracking-[0.3em] font-medium">
                     {p.label}
-                  </div>
-                  <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] mb-6 text-balance">
-                    {p.title}
-                  </h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed text-pretty">
-                    {p.body}
-                  </p>
+                  </span>
                 </div>
-              </article>
-            );
-          })}
+                <h3 className="font-display text-2xl md:text-3xl lg:text-4xl leading-[1.1] mb-4 text-balance">
+                  {p.headline}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed text-pretty">
+                  {p.body}
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
