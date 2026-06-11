@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Quote } from "lucide-react";
 import { SERVICE_BY_SLUG, type Service } from "@/lib/services-data";
 import { SITE } from "@/lib/site-data";
 
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/services/$slug")({
             "@context": "https://schema.org",
             "@type": "MedicalProcedure",
             name: s.name,
-            description: s.main,
+            description: s.intro,
             procedureType: "Orthodontic",
           }),
         },
@@ -72,10 +72,12 @@ function ServicePage() {
   return (
     <>
       <ServiceHero service={service} />
-      <ServiceBody service={service} />
+      <ServiceIntro service={service} />
       <ServiceHighlights service={service} />
-      <ServiceWhoHow service={service} />
+      <ServiceWhenAndExpect service={service} />
       {service.pullQuote && <PullQuote text={service.pullQuote} />}
+      <ServiceWhyUs service={service} />
+      {service.testimonial && <ServiceTestimonial service={service} />}
       <ServiceFAQ service={service} />
       {related.length > 0 && <RelatedServices items={related} />}
       <ServiceCTA service={service} />
@@ -88,7 +90,6 @@ function ServicePage() {
 function ServiceHero({ service }: { service: Service }) {
   const v = service.variant;
 
-  // BRAND variant (Invisalign) — full bleed with brand block
   if (v === "brand") {
     return (
       <section className="pt-32 lg:pt-40 pb-0 px-6 lg:px-10">
@@ -114,11 +115,13 @@ function ServiceHero({ service }: { service: Service }) {
                 </span>
               </div>
               <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-background leading-[0.95] max-w-3xl text-balance">
-                {service.name}
+                {service.heroTitle}
               </h1>
-              <p className="mt-6 text-background/80 text-lg md:text-xl max-w-xl leading-relaxed">
-                {service.hero}
-              </p>
+              {service.heroLead && (
+                <p className="mt-6 text-background/80 text-lg md:text-xl max-w-xl leading-relaxed">
+                  {service.heroLead}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -126,21 +129,22 @@ function ServiceHero({ service }: { service: Service }) {
     );
   }
 
-  // ADVISORY variant (Phase I) — quote-forward, centered
   if (v === "advisory") {
     return (
       <section className="pt-32 lg:pt-40 pb-16 lg:pb-20 px-6 lg:px-10">
         <div className="max-w-4xl mx-auto">
           <BackLink />
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
-            Service · For Children
+            {service.name} · For Children
           </div>
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-10 text-balance">
-            {service.name}
+            {service.heroTitle}
           </h1>
-          <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed max-w-2xl">
-            {service.hero}
-          </p>
+          {service.heroLead && (
+            <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed max-w-2xl">
+              {service.heroLead}
+            </p>
+          )}
         </div>
         <div className="max-w-6xl mx-auto mt-14 rounded-3xl overflow-hidden">
           <img
@@ -155,7 +159,6 @@ function ServiceHero({ service }: { service: Service }) {
     );
   }
 
-  // CLINICAL variant (Braces, MARPE) — image left, dense info right
   if (v === "clinical") {
     return (
       <section className="pt-32 lg:pt-40 pb-16 lg:pb-24 px-6 lg:px-10">
@@ -175,14 +178,16 @@ function ServiceHero({ service }: { service: Service }) {
             </div>
             <div className="lg:col-span-6 order-1 lg:order-2">
               <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
-                Clinical Service
+                {service.name}
               </div>
               <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 text-balance">
-                {service.name}
+                {service.heroTitle}
               </h1>
-              <p className="text-xl text-foreground/80 leading-relaxed">
-                {service.hero}
-              </p>
+              {service.heroLead && (
+                <p className="text-xl text-foreground/80 leading-relaxed">
+                  {service.heroLead}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -190,7 +195,6 @@ function ServiceHero({ service }: { service: Service }) {
     );
   }
 
-  // EDITORIAL variant (Adults) — magazine, image right tall
   if (v === "editorial") {
     return (
       <section className="pt-32 lg:pt-40 pb-16 lg:pb-24 px-6 lg:px-10">
@@ -199,14 +203,16 @@ function ServiceHero({ service }: { service: Service }) {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
             <div className="lg:col-span-7">
               <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
-                For Adults
+                {service.name}
               </div>
               <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.92] mb-8 text-balance">
-                {service.name}
+                {service.heroTitle}
               </h1>
-              <p className="text-xl md:text-2xl text-foreground/75 leading-relaxed max-w-xl">
-                {service.hero}
-              </p>
+              {service.heroLead && (
+                <p className="text-xl md:text-2xl text-foreground/75 leading-relaxed max-w-xl">
+                  {service.heroLead}
+                </p>
+              )}
             </div>
             <div className="lg:col-span-5">
               <div className="overflow-hidden rounded-3xl">
@@ -225,21 +231,22 @@ function ServiceHero({ service }: { service: Service }) {
     );
   }
 
-  // CONSIDERED variant (Airway) — narrow centered, careful framing
   if (v === "considered") {
     return (
       <section className="pt-32 lg:pt-40 pb-12 px-6 lg:px-10">
         <div className="max-w-3xl mx-auto text-center">
           <BackLink centered />
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
-            Specialist Assessment
+            {service.name}
           </div>
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 text-balance">
-            {service.name}
+            {service.heroTitle}
           </h1>
-          <p className="text-lg md:text-xl text-foreground/75 leading-relaxed">
-            {service.hero}
-          </p>
+          {service.heroLead && (
+            <p className="text-lg md:text-xl text-foreground/75 leading-relaxed">
+              {service.heroLead}
+            </p>
+          )}
         </div>
         <div className="max-w-5xl mx-auto mt-14 rounded-3xl overflow-hidden">
           <img
@@ -254,7 +261,6 @@ function ServiceHero({ service }: { service: Service }) {
     );
   }
 
-  // LONGTERM variant (Retainers) — split with subtle band
   if (v === "longterm") {
     return (
       <section className="pt-32 lg:pt-40 pb-0 px-6 lg:px-10">
@@ -263,14 +269,16 @@ function ServiceHero({ service }: { service: Service }) {
           <div className="bg-secondary/40 rounded-3xl overflow-hidden grid lg:grid-cols-2 gap-0">
             <div className="p-10 md:p-14 lg:p-16 flex flex-col justify-center">
               <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
-                Lifetime Care
+                {service.name}
               </div>
               <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 text-balance">
-                {service.name}
+                {service.heroTitle}
               </h1>
-              <p className="text-lg lg:text-xl text-foreground/80 leading-relaxed">
-                {service.hero}
-              </p>
+              {service.heroLead && (
+                <p className="text-lg lg:text-xl text-foreground/80 leading-relaxed">
+                  {service.heroLead}
+                </p>
+              )}
             </div>
             <div>
               <img
@@ -287,7 +295,7 @@ function ServiceHero({ service }: { service: Service }) {
     );
   }
 
-  // WARM variant (Children & Teens) — default family-forward
+  // WARM (Children & Teens)
   return (
     <section className="pt-32 lg:pt-40 pb-16 lg:pb-24 px-6 lg:px-10">
       <div className="max-w-7xl mx-auto">
@@ -295,14 +303,16 @@ function ServiceHero({ service }: { service: Service }) {
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-7">
             <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
-              For Families
+              {service.name}
             </div>
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 text-balance">
-              {service.name}
+              {service.heroTitle}
             </h1>
-            <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed max-w-2xl">
-              {service.hero}
-            </p>
+            {service.heroLead && (
+              <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed max-w-2xl">
+                {service.heroLead}
+              </p>
+            )}
           </div>
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-3xl">
@@ -334,16 +344,16 @@ function BackLink({ centered = false }: { centered?: boolean }) {
   );
 }
 
-/* ---------------- BODY / HIGHLIGHTS / WHO+HOW ---------------- */
+/* ---------------- INTRO ---------------- */
 
-function ServiceBody({ service }: { service: Service }) {
+function ServiceIntro({ service }: { service: Service }) {
   return (
     <section className="px-6 lg:px-10 py-20 lg:py-28">
       <div className="max-w-3xl mx-auto">
         <div className="text-primary text-[11px] uppercase tracking-[0.25em] mb-6">
           Overview
         </div>
-        {service.main.split("\n\n").map((p, i) => (
+        {service.intro.split("\n\n").map((p: string, i: number) => (
           <p
             key={i}
             className="text-lg lg:text-xl leading-relaxed text-foreground/85 mb-6 last:mb-0"
@@ -375,16 +385,23 @@ function ServiceHighlights({ service }: { service: Service }) {
   );
 }
 
-function ServiceWhoHow({ service }: { service: Service }) {
+/* ---------------- WHEN + WHAT TO EXPECT ---------------- */
+
+function ServiceWhenAndExpect({ service }: { service: Service }) {
+  const hasExpect = !!(service.expect && service.expect.length > 0);
   return (
     <section className="px-6 lg:px-10 py-20 lg:py-28 bg-secondary/30">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20">
+      <div
+        className={`max-w-6xl mx-auto grid gap-12 lg:gap-20 ${
+          hasExpect ? "md:grid-cols-2" : "md:grid-cols-1 max-w-3xl"
+        }`}
+      >
         <div>
           <div className="text-[11px] uppercase tracking-[0.25em] text-primary mb-6">
-            Who this is for
+            {service.whenLabel}
           </div>
           <ul className="space-y-4">
-            {service.who.map((w) => (
+            {service.when.map((w: string) => (
               <li key={w} className="flex gap-4 text-foreground/85 leading-relaxed">
                 <Check className="size-5 text-primary flex-none mt-1" />
                 <span>{w}</span>
@@ -392,18 +409,21 @@ function ServiceWhoHow({ service }: { service: Service }) {
             ))}
           </ul>
         </div>
-        <div>
-          <div className="text-[11px] uppercase tracking-[0.25em] text-primary mb-6">
-            How we approach it
+        {hasExpect && (
+          <div>
+            <div className="text-[11px] uppercase tracking-[0.25em] text-primary mb-6">
+              {service.expectLabel}
+            </div>
+            <ul className="space-y-4">
+              {service.expect!.map((w: string) => (
+                <li key={w} className="flex gap-4 text-foreground/85 leading-relaxed">
+                  <Check className="size-5 text-primary flex-none mt-1" />
+                  <span>{w}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="space-y-5">
-            {service.how.split("\n\n").map((p, i) => (
-              <p key={i} className="text-foreground/85 leading-relaxed">
-                {p}
-              </p>
-            ))}
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );
@@ -418,6 +438,42 @@ function PullQuote({ text }: { text: string }) {
             &ldquo;{text}&rdquo;
           </p>
         </blockquote>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- WHY US ---------------- */
+
+function ServiceWhyUs({ service }: { service: Service }) {
+  return (
+    <section className="px-6 lg:px-10 py-20 lg:py-28">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-4">
+          Why Tsai Orthodontics
+        </div>
+        <p className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-balance text-foreground/90">
+          {service.whyUs}
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- TESTIMONIAL ---------------- */
+
+function ServiceTestimonial({ service }: { service: Service }) {
+  const t = service.testimonial!;
+  return (
+    <section className="px-6 lg:px-10 py-20 lg:py-28 bg-secondary/30">
+      <div className="max-w-4xl mx-auto">
+        <Quote className="size-10 text-primary mb-8" strokeWidth={1.25} />
+        <p className="font-display text-2xl md:text-3xl lg:text-4xl leading-snug text-balance mb-8">
+          &ldquo;{t.quote}&rdquo;
+        </p>
+        <div className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+          — {t.attribution}
+        </div>
       </div>
     </section>
   );
@@ -482,7 +538,7 @@ function RelatedServices({ items }: { items: Service[] }) {
                 {r.short}
               </p>
               <span className="inline-flex items-center gap-1 text-primary text-[11px] uppercase tracking-[0.2em] group-hover:gap-2 transition-all">
-                Learn more <ArrowUpRight className="size-4" />
+                {r.ctaLabel} <ArrowUpRight className="size-4" />
               </span>
             </Link>
           ))}
