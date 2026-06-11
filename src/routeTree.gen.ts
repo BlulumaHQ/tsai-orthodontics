@@ -12,12 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhatSetsUsApartRouteImport } from './routes/what-sets-us-apart'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
-import { Route as ReferralRouteImport } from './routes/referral'
 import { Route as NewPatientsRouteImport } from './routes/new-patients'
 import { Route as FaqRouteImport } from './routes/faq'
-import { Route as DoctorsRouteImport } from './routes/doctors'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
@@ -36,11 +33,6 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReferralRoute = ReferralRouteImport.update({
-  id: '/referral',
-  path: '/referral',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const NewPatientsRoute = NewPatientsRouteImport.update({
   id: '/new-patients',
   path: '/new-patients',
@@ -51,19 +43,9 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DoctorsRoute = DoctorsRouteImport.update({
-  id: '/doctors',
-  path: '/doctors',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -79,12 +61,9 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/doctors': typeof DoctorsRoute
   '/faq': typeof FaqRoute
   '/new-patients': typeof NewPatientsRoute
-  '/referral': typeof ReferralRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/what-sets-us-apart': typeof WhatSetsUsApartRoute
@@ -92,12 +71,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/doctors': typeof DoctorsRoute
   '/faq': typeof FaqRoute
   '/new-patients': typeof NewPatientsRoute
-  '/referral': typeof ReferralRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/what-sets-us-apart': typeof WhatSetsUsApartRoute
@@ -106,12 +82,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/doctors': typeof DoctorsRoute
   '/faq': typeof FaqRoute
   '/new-patients': typeof NewPatientsRoute
-  '/referral': typeof ReferralRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/what-sets-us-apart': typeof WhatSetsUsApartRoute
@@ -121,12 +94,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
     | '/contact'
-    | '/doctors'
     | '/faq'
     | '/new-patients'
-    | '/referral'
     | '/services'
     | '/sitemap.xml'
     | '/what-sets-us-apart'
@@ -134,12 +104,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
     | '/contact'
-    | '/doctors'
     | '/faq'
     | '/new-patients'
-    | '/referral'
     | '/services'
     | '/sitemap.xml'
     | '/what-sets-us-apart'
@@ -147,12 +114,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/about'
     | '/contact'
-    | '/doctors'
     | '/faq'
     | '/new-patients'
-    | '/referral'
     | '/services'
     | '/sitemap.xml'
     | '/what-sets-us-apart'
@@ -161,12 +125,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  DoctorsRoute: typeof DoctorsRoute
   FaqRoute: typeof FaqRoute
   NewPatientsRoute: typeof NewPatientsRoute
-  ReferralRoute: typeof ReferralRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WhatSetsUsApartRoute: typeof WhatSetsUsApartRoute
@@ -195,13 +156,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/referral': {
-      id: '/referral'
-      path: '/referral'
-      fullPath: '/referral'
-      preLoaderRoute: typeof ReferralRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/new-patients': {
       id: '/new-patients'
       path: '/new-patients'
@@ -216,25 +170,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/doctors': {
-      id: '/doctors'
-      path: '/doctors'
-      fullPath: '/doctors'
-      preLoaderRoute: typeof DoctorsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -268,12 +208,9 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  DoctorsRoute: DoctorsRoute,
   FaqRoute: FaqRoute,
   NewPatientsRoute: NewPatientsRoute,
-  ReferralRoute: ReferralRoute,
   ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   WhatSetsUsApartRoute: WhatSetsUsApartRoute,
