@@ -148,14 +148,28 @@ function HomePage() {
       </section>
 
       {/* INTRO STATEMENT */}
-      <section className="py-28 lg:py-40 px-6 lg:px-10 bg-background">
+      <section className="pt-28 lg:pt-40 pb-16 lg:pb-24 px-6 lg:px-10 bg-background">
         <div className="max-w-5xl mx-auto">
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-8">
-            Why Tsai Orthodontics
+            What Sets Us Apart
           </div>
           <p className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-balance">
             We chose to build a different kind of orthodontic practice — one shaped by careful listening, specialist training, and the warmth of a small Vancouver family business.
           </p>
+        </div>
+      </section>
+
+      {/* FOUR PILLARS — large display */}
+      <section className="px-6 lg:px-10 pb-24 lg:pb-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/10 border border-foreground/10 rounded-3xl overflow-hidden">
+            {PILLARS.map((p) => (
+              <div key={p.label} className="bg-background p-8 lg:p-12 text-center">
+                <div className="text-primary text-[11px] uppercase tracking-[0.3em] font-mono mb-6">{p.n}</div>
+                <div className="font-display text-5xl md:text-6xl lg:text-7xl leading-none">{p.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
