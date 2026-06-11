@@ -4,7 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { SERVICES } from "@/lib/services-data";
 import { SITE } from "@/lib/site-data";
 
-export const Route = createFileRoute("/services")({
+export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Our Services — Tsai Orthodontics Vancouver" },
