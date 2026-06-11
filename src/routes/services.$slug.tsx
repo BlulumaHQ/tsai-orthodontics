@@ -303,7 +303,7 @@ function MarpePage({ service }: { service: Service }) {
 
 function RetainersPage({ service }: { service: Service }) {
   return (
-    <main>
+    <>
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
         <div className="max-w-7xl mx-auto">
           <BackLink />
@@ -332,7 +332,7 @@ function RetainersPage({ service }: { service: Service }) {
       </section>
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
-    </main>
+    </>
   );
 }
 
