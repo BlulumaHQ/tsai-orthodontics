@@ -9,13 +9,13 @@ import svcMarpe from "@/assets/svc-marpe.jpg";
 import svcAirway from "@/assets/svc-airway.jpg";
 
 export type ServiceVariant =
-  | "warm"        // family/kids — soft, parent-focused
-  | "editorial"   // adults — discreet, magazine-style
-  | "clinical"    // braces, MARPE — appliance/spec focus
-  | "brand"       // invisalign — brand-treatment hero
-  | "advisory"    // phase-i — short visit + pull quote forward
-  | "considered"  // airway — careful framing
-  | "longterm";   // retainers — retention/care
+  | "warm"
+  | "editorial"
+  | "clinical"
+  | "brand"
+  | "advisory"
+  | "considered"
+  | "longterm";
 
 export interface ServiceFAQ {
   q: string;
@@ -27,24 +27,49 @@ export interface ServiceHighlight {
   value: string;
 }
 
+export interface ServiceTestimonial {
+  quote: string;
+  attribution: string;
+}
+
 export interface Service {
   slug: string;
   name: string;
+  /** Short card description for grids/overviews */
   short: string;
-  hero: string;
-  main: string;
-  who: string[];
-  how: string;
+  /** Long-form hero headline shown as H1 on the detail page */
+  heroTitle: string;
+  /** Optional supporting line under the headline (kept short) */
+  heroLead?: string;
+  /** Multi-paragraph intro (split on \n\n) */
+  intro: string;
+  /** Section label for the bullet list (varies per service) */
+  whenLabel: string;
+  /** Bullet list shown under the whenLabel */
+  when: string[];
+  /** Optional second bullet list — "What to expect" or similar */
+  expectLabel?: string;
+  expect?: string[];
+  /** Short "Why Tsai Orthodontics" paragraph */
+  whyUs: string;
+  /** Optional pull quote (used by advisory layout) */
   pullQuote?: string;
+  /** Optional patient testimonial */
+  testimonial?: ServiceTestimonial;
+  /** Related service slugs */
   related: string[];
+  /** Hero image */
   image: string;
+  /** Layout variant — each page renders a different hero/layout */
   variant: ServiceVariant;
-  /** Small spec/data block — different per service */
+  /** Spec/data block — different per service */
   highlights: ServiceHighlight[];
-  /** Unique per-service FAQs — no two services share an entry */
+  /** Unique per-service FAQs */
   faqs: ServiceFAQ[];
   /** Optional brand mark label (e.g. "Invisalign Provider") */
   brandMark?: string;
+  /** CTA button label used on home grid + service nav */
+  ctaLabel: string;
   metaTitle: string;
   metaDescription: string;
 }
@@ -54,16 +79,34 @@ export const SERVICES: Service[] = [
     slug: "children-and-teens",
     name: "Children & Teens",
     short:
-      "Specialist evaluations and orthodontic care timed to a child or teen's natural development.",
-    hero: "Orthodontic care for growing smiles, explained clearly for parents and made easier for kids and teens.",
-    main: "Children and teens need more than straight teeth. They need the right timing, a clear plan, and an experience that does not feel intimidating. At Tsai Orthodontics, we take time to evaluate growth, bite development, spacing, crowding, and each patient's comfort level before recommending treatment.",
-    who: [
-      "Children who may need an early orthodontic evaluation",
-      "Teens who are ready for braces or clear aligners",
-      "Parents who want a clear answer about timing",
-      "Families looking for a calm, thoughtful orthodontic experience",
+      "Orthodontic care timed around a child or teen's natural growth — not a template.",
+    heroTitle: "Orthodontic Care That Grows With Your Child",
+    heroLead:
+      "Specialist evaluations, careful timing, and an experience that feels calm for kids and clear for parents.",
+    intro:
+      "Children and teenagers develop at different rates. Some benefit from early guidance, while others simply need careful monitoring until the right time.\n\nAt Tsai Orthodontics, treatment is timed around natural growth rather than rushing into unnecessary appliances. The goal is to create healthy function, balanced development, and a smile that will last.",
+    whenLabel: "When Treatment May Help",
+    when: [
+      "Crowded teeth",
+      "Bite problems",
+      "Teeth erupting in unusual positions",
+      "Jaw growth concerns",
+      "Monitoring developing smiles",
     ],
-    how: "We explain what we see, what can wait, and what may need attention sooner. Not every child needs treatment right away. The goal is to give parents clarity and help young patients feel comfortable throughout the process.",
+    expectLabel: "What Families Can Expect",
+    expect: [
+      "Careful evaluation",
+      "Clear explanation",
+      "Growth monitoring when appropriate",
+      "Treatment only when beneficial",
+    ],
+    whyUs:
+      "Parents should leave understanding exactly what is happening and why. Some children need treatment now. Others simply need time.",
+    testimonial: {
+      quote:
+        "Dr. Tsai took the time to actually explain what was going on. We didn't feel rushed into braces, and that made all the difference.",
+      attribution: "Parent of a 9-year-old patient",
+    },
     variant: "warm",
     highlights: [
       { label: "First evaluation", value: "Age 7" },
@@ -72,24 +115,25 @@ export const SERVICES: Service[] = [
     ],
     faqs: [
       {
-        q: "At what age should my child first see an orthodontist?",
-        a: "The Canadian Association of Orthodontists recommends a first evaluation around age 7. Most children won't need treatment that early — the visit is about screening growth and catching issues that are easier to guide while a child is still developing.",
+        q: "Does every child need braces?",
+        a: "No. Many children only require observation. We monitor growth and only recommend treatment when there is a clear clinical reason.",
       },
       {
-        q: "Will my child definitely need braces if we come in early?",
-        a: "No. Most early visits end with a simple monitoring plan and a follow-up in 6–12 months. We only recommend treatment when there's a clear clinical reason.",
+        q: "When should my child first visit?",
+        a: "Around age seven is often recommended. Most early visits result in a simple monitoring plan rather than treatment.",
       },
       {
-        q: "How long does treatment usually take for teens?",
-        a: "Most comprehensive teen cases run 12–24 months, depending on complexity. We give a realistic estimate after the consultation, not a marketing number.",
+        q: "How long does teen treatment usually take?",
+        a: "Most comprehensive teen cases run 12–24 months, depending on complexity. We give a realistic estimate at the consultation rather than a marketing number.",
       },
       {
         q: "Do you offer Invisalign for teens?",
-        a: "Yes, when it's the right fit clinically. We won't recommend aligners over braces simply because a family prefers them — the decision is based on the case.",
+        a: "Yes, when it is the right fit clinically. The decision is based on the case rather than family preference alone.",
       },
     ],
     related: ["phase-i-treatment", "braces-and-fixed-appliances", "invisalign", "retainers"],
     image: journeyKids,
+    ctaLabel: "Explore Children's Orthodontics",
     metaTitle: "Orthodontics for Children & Teens — Tsai Orthodontics Vancouver",
     metaDescription:
       "Specialist orthodontic care for children and teens in Vancouver. Calm consultations, clear timing, and treatment shaped around your child's development.",
@@ -97,17 +141,27 @@ export const SERVICES: Service[] = [
   {
     slug: "adults",
     name: "Adults",
-    short:
-      "Discreet, considered orthodontic treatment for adults — planned around real life.",
-    hero: "Orthodontic treatment for adults who want clear options, discreet solutions, and specialist guidance.",
-    main: "Adult orthodontic treatment is often about more than appearance. Some patients want to improve function, address long-standing concerns, or finally explore treatment they postponed earlier in life. Tsai Orthodontics provides adult care with careful planning, clear communication, and respect for work, family, and daily routines.",
-    who: [
-      "Adults considering orthodontic treatment for the first time",
-      "Adults who had braces before and noticed shifting",
-      "Patients interested in clear aligners",
-      "Patients who may need fixed appliances for more complex movement",
+    short: "Discreet, considered orthodontic treatment planned around real life.",
+    heroTitle: "Orthodontic Treatment That Fits Real Life",
+    heroLead:
+      "Clear options, discreet solutions, and specialist guidance for adult patients.",
+    intro:
+      "Many adults missed orthodontic treatment when they were younger. Others notice their teeth have shifted over time.\n\nModern orthodontics allows adults to improve both appearance and function while balancing work, family, and everyday commitments.",
+    whenLabel: "Common Reasons Adults Seek Treatment",
+    when: [
+      "Crowding",
+      "Relapse after childhood braces",
+      "Bite discomfort",
+      "Cosmetic concerns",
+      "Preparation for dental work",
     ],
-    how: "We begin with a clear evaluation and explain which options are realistic for your case. Invisalign may be appropriate for some adults, while braces or fixed appliances may be better for others. The recommendation depends on your goals, bite, and clinical needs.",
+    whyUs:
+      "Adult patients often have different priorities. Treatment should feel practical, comfortable, and clearly planned.",
+    testimonial: {
+      quote:
+        "I'd been thinking about treatment for years. Dr. Tsai walked me through the options without any pressure — I finally felt ready.",
+      attribution: "Adult Invisalign patient",
+    },
     variant: "editorial",
     highlights: [
       { label: "Common options", value: "Invisalign · Braces" },
@@ -125,7 +179,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "What if I had braces years ago and my teeth shifted?",
-        a: "This is common — it usually means retainers weren't worn long enough. A limited treatment with aligners or a short course of braces, followed by lifetime retention, often resolves it.",
+        a: "This is common — it usually means retainers were not worn long enough. A limited treatment with aligners or a short course of braces, followed by lifetime retention, often resolves it.",
       },
       {
         q: "Do I need a referral from my dentist?",
@@ -134,6 +188,7 @@ export const SERVICES: Service[] = [
     ],
     related: ["invisalign", "braces-and-fixed-appliances", "retainers"],
     image: journeyAdults,
+    ctaLabel: "Explore Adult Treatment",
     metaTitle: "Adult Orthodontics — Tsai Orthodontics Vancouver",
     metaDescription:
       "Specialist orthodontic care for adults in Vancouver. Discreet treatment options, careful planning, and clear answers from Dr. Andrew Tsai.",
@@ -141,17 +196,28 @@ export const SERVICES: Service[] = [
   {
     slug: "braces-and-fixed-appliances",
     name: "Braces & Fixed Appliances",
-    short:
-      "Reliable orthodontic tools for precise tooth movement and carefully planned results.",
-    hero: "Precise, dependable tooth movement — the original orthodontic technology, refined.",
-    main: "Braces and fixed appliances remain one of the most effective ways to guide tooth movement. They may be recommended for children, teens, or adults depending on the complexity of the case and the level of control needed.",
-    who: [
-      "Patients who need precise tooth movement",
-      "Children and teens starting comprehensive orthodontic treatment",
-      "Adults whose cases may require fixed appliance control",
-      "Patients who are not ideal candidates for clear aligners",
+    short: "Precise, dependable tooth movement — the original orthodontic technology, refined.",
+    heroTitle: "Reliable Solutions With Proven Results",
+    heroLead:
+      "Modern fixed appliances for precise tooth movement and carefully planned results.",
+    intro:
+      "Fixed appliances remain one of the most effective ways to guide tooth movement with precision.\n\nToday's braces are smaller and more comfortable while allowing excellent control over complex orthodontic treatment.",
+    whenLabel: "Suitable For",
+    when: [
+      "Crowding",
+      "Spacing",
+      "Overbite",
+      "Underbite",
+      "Crossbite",
+      "Complex alignment",
     ],
-    how: "Braces are not outdated. They are still a powerful and reliable orthodontic tool when used with careful planning. At Tsai Orthodontics, fixed appliances are recommended when they are the right fit for the patient, not because one option is promoted over another.",
+    whyUs:
+      "Braces are not outdated — they remain a powerful, predictable tool when used with careful planning. We recommend them when they are the right fit for the patient, not because one option is promoted over another.",
+    testimonial: {
+      quote:
+        "I expected braces to be a hassle. The visits were short, and I always knew what was happening at each step.",
+      attribution: "Teen braces patient",
+    },
     variant: "clinical",
     highlights: [
       { label: "Bracket options", value: "Metal · Ceramic" },
@@ -165,7 +231,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "What's the difference between metal and ceramic braces?",
-        a: "Ceramic brackets are tooth-coloured and far less visible. They function similarly to metal but require careful handling. We'll explain which is appropriate for your case.",
+        a: "Ceramic brackets are tooth-coloured and far less visible. They function similarly to metal but require careful handling. We will explain which is appropriate for your case.",
       },
       {
         q: "Are there foods I'll need to avoid?",
@@ -178,6 +244,7 @@ export const SERVICES: Service[] = [
     ],
     related: ["children-and-teens", "adults", "retainers"],
     image: svcBraces,
+    ctaLabel: "Explore Braces",
     metaTitle: "Braces & Fixed Appliances — Tsai Orthodontics Vancouver",
     metaDescription:
       "Modern braces and fixed orthodontic appliances in Vancouver, planned and supervised by specialist orthodontist Dr. Andrew Tsai.",
@@ -185,17 +252,26 @@ export const SERVICES: Service[] = [
   {
     slug: "invisalign",
     name: "Invisalign",
-    short:
-      "Clear aligner treatment planned with specialist-level attention.",
-    hero: "Clear aligner treatment planned with specialist-level attention.",
-    main: "Invisalign can be a discreet and effective orthodontic option for selected patients. It uses a series of removable clear aligners to guide tooth movement over time. Because clear aligner treatment depends on diagnosis, planning, and patient compliance, specialist oversight matters.",
-    who: [
-      "Teens and adults interested in a discreet orthodontic option",
-      "Patients who prefer removable aligners when clinically appropriate",
-      "Patients who can wear aligners consistently",
-      "Selected children or mixed dentition patients when appropriate",
+    short: "Clear aligner treatment planned with specialist-level attention.",
+    heroTitle: "A Clear Approach To Orthodontic Care",
+    heroLead:
+      "Discreet, removable, and digitally planned — supervised by a specialist orthodontist.",
+    intro:
+      "For many patients, clear aligners provide a discreet way to straighten teeth without traditional braces.\n\nTreatment is digitally planned and carefully monitored to achieve predictable results.",
+    whenLabel: "Benefits",
+    when: [
+      "Nearly invisible",
+      "Removable",
+      "Comfortable",
+      "Easier daily hygiene",
     ],
-    how: "Dr. Andrew Tsai completed advanced orthodontic training at the University of the Pacific, Arthur A. Dugoni School of Dentistry in San Francisco, one of the leading programs for clear aligner treatment. His Master's thesis focused on the stability of clear aligner treatment for mixed dentition children.\n\nNot every patient is an Invisalign candidate. We evaluate each case carefully and explain whether clear aligners are appropriate or whether another treatment option would be more predictable.",
+    whyUs:
+      "Dr. Andrew Tsai completed advanced orthodontic training at the University of the Pacific, Arthur A. Dugoni School of Dentistry in San Francisco — one of the leading programs for clear aligner treatment. Each stage of movement is planned personally rather than left to a software default.",
+    testimonial: {
+      quote:
+        "Most people had no idea I was in treatment. I just kept living my life and the aligners did their work.",
+      attribution: "Adult Invisalign patient",
+    },
     variant: "brand",
     brandMark: "Invisalign Provider",
     highlights: [
@@ -210,7 +286,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "Will Invisalign work for my case?",
-        a: "Not for everyone. We evaluate the bite, root anatomy, and the type of movement needed. If braces will give you a more predictable result, we'll say so.",
+        a: "Not for everyone. We evaluate the bite, root anatomy, and the type of movement needed. If braces will give you a more predictable result, we will say so.",
       },
       {
         q: "How long does Invisalign treatment take?",
@@ -223,6 +299,7 @@ export const SERVICES: Service[] = [
     ],
     related: ["adults", "children-and-teens", "retainers"],
     image: svcInvisalign,
+    ctaLabel: "Explore Invisalign",
     metaTitle: "Invisalign Clear Aligners — Tsai Orthodontics Vancouver",
     metaDescription:
       "Specialist-led Invisalign clear aligner treatment in Vancouver. Careful diagnosis and personalized planning from Dr. Andrew Tsai.",
@@ -230,19 +307,28 @@ export const SERVICES: Service[] = [
   {
     slug: "phase-i-treatment",
     name: "Phase I Treatment",
-    short:
-      "Early orthodontic guidance for children — only when it will genuinely help.",
-    hero: "Early orthodontic guidance when timing matters.",
-    main: "Phase I Treatment, also called early interceptive orthodontic treatment, may be recommended while a child is still growing. The goal is not to start treatment early for every child. The goal is to identify whether early guidance could make future treatment simpler, more stable, or more predictable.",
-    who: [
-      "Children with developing bite concerns",
-      "Children with crowding, spacing, or jaw growth concerns",
-      "Parents who are unsure if it is too early to see an orthodontist",
-      "Children who may benefit from early interceptive care",
+    short: "Early orthodontic guidance for children — only when it will genuinely help.",
+    heroTitle: "Early Guidance When It Truly Makes A Difference",
+    heroLead:
+      "Phase I is not for every child. It is recommended only when early intervention will simplify what comes later.",
+    intro:
+      "Phase I treatment is not recommended for every child.\n\nWhen growth patterns suggest future problems, early intervention may help guide development and simplify later treatment.",
+    whenLabel: "Goals",
+    when: [
+      "Guide jaw growth",
+      "Create space",
+      "Reduce future complexity",
+      "Improve developing bite",
     ],
-    how: "Not every child needs Phase I Treatment. At Tsai Orthodontics, we give parents a clear answer about what we see, what can wait, and what may benefit from earlier attention.",
+    whyUs:
+      "Not every child needs Phase I treatment. We give parents a clear answer about what we see, what can wait, and what may benefit from earlier attention — without pressure either way.",
     pullQuote:
       "Not sure if it's the right time? Come in. We'll take a look and give you a straight answer — no pressure.",
+    testimonial: {
+      quote:
+        "We were ready to start treatment. Dr. Tsai told us to wait six months and come back. That kind of honesty is rare.",
+      attribution: "Parent of a 7-year-old patient",
+    },
     variant: "advisory",
     highlights: [
       { label: "Typical age range", value: "7–10" },
@@ -252,23 +338,24 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: "What does Phase I treatment actually do?",
-        a: "It addresses specific developing problems — crossbites, severe crowding, jaw growth imbalances, harmful habits — while a child is still growing. It doesn't replace full orthodontics later, but it can make Phase II simpler.",
+        a: "It addresses specific developing problems — crossbites, severe crowding, jaw growth imbalances, harmful habits — while a child is still growing. It does not replace full orthodontics later, but it can make Phase II simpler.",
       },
       {
         q: "Will my child still need braces later?",
-        a: "Most likely, yes. Phase I makes the second phase shorter and more predictable; it rarely eliminates the need for it entirely. We'll be honest about that from the start.",
+        a: "Most likely, yes. Phase I makes the second phase shorter and more predictable; it rarely eliminates the need for it entirely. We will be honest about that from the start.",
       },
       {
         q: "Are you going to pressure us into early treatment?",
-        a: "No. We see many children whose best plan is to wait and monitor. If your child doesn't need Phase I, we'll say so plainly and book a follow-up to check in.",
+        a: "No. We see many children whose best plan is to wait and monitor. If your child does not need Phase I, we will say so plainly and book a follow-up to check in.",
       },
       {
         q: "How is Phase I different from regular orthodontic treatment?",
-        a: "It's shorter, more targeted, and uses simpler appliances. The goal is to guide growth, not to finish a smile — that comes later when all the permanent teeth are in.",
+        a: "It is shorter, more targeted, and uses simpler appliances. The goal is to guide growth, not to finish a smile — that comes later when all the permanent teeth are in.",
       },
     ],
     related: ["children-and-teens", "airway-friendly-orthodontics", "marpe"],
     image: journeyParents,
+    ctaLabel: "Explore Phase I Treatment",
     metaTitle: "Phase I Early Orthodontic Treatment — Tsai Orthodontics Vancouver",
     metaDescription:
       "Early interceptive orthodontic treatment for children in Vancouver. Honest guidance from a specialist on whether your child needs Phase I care.",
@@ -278,15 +365,25 @@ export const SERVICES: Service[] = [
     name: "Airway Friendly Orthodontics",
     short:
       "Orthodontic planning that considers growth, structure, and the bigger picture.",
-    hero: "Orthodontic planning that considers growth, structure, and the bigger picture.",
-    main: "Airway friendly orthodontics means looking carefully at growth, jaw development, bite relationships, and related concerns when they are relevant to treatment planning. It does not mean every patient needs airway-focused treatment, and it does not replace medical diagnosis.",
-    who: [
-      "Children whose growth and jaw development need evaluation",
-      "Patients with orthodontic concerns that may involve arch width or jaw structure",
-      "Families looking for thoughtful, comprehensive assessment",
-      "Patients who may need coordinated care with other providers",
+    heroTitle: "Looking Beyond The Teeth",
+    heroLead:
+      "Careful evaluation of growth, structure, and bite — not just alignment.",
+    intro:
+      "Orthodontic planning should consider more than alignment alone.\n\nGrowth, facial structure, and airway development are all part of the bigger picture when evaluating young patients.",
+    whenLabel: "Our Philosophy",
+    when: [
+      "Considered evaluation of growth and structure",
+      "Careful attention to arch development",
+      "Coordination with other healthcare providers when relevant",
+      "Honest scope — orthodontics is not a medical diagnosis",
     ],
-    how: "We use careful language, careful diagnosis, and individualized planning. If airway-related concerns are present, we explain what orthodontics can and cannot address, and when collaboration with other healthcare providers may be appropriate.",
+    whyUs:
+      "We believe every patient deserves an evaluation that considers overall development rather than focusing only on straight teeth.",
+    testimonial: {
+      quote:
+        "Dr. Tsai connected the dots between things our other providers had each looked at separately. It felt thorough.",
+      attribution: "Parent of a Phase I patient",
+    },
     variant: "considered",
     highlights: [
       { label: "Imaging", value: "3D & cephalometric" },
@@ -296,7 +393,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: "Can orthodontics cure sleep apnea?",
-        a: "No — and we won't claim it can. Sleep apnea is a medical diagnosis. Orthodontics can sometimes support breathing-related care by improving jaw and arch development, but that's a supporting role, not a cure.",
+        a: "No — and we will not claim it can. Sleep apnea is a medical diagnosis. Orthodontics can sometimes support breathing-related care by improving jaw and arch development, but that is a supporting role, not a cure.",
       },
       {
         q: "What does an airway-friendly evaluation include?",
@@ -308,11 +405,12 @@ export const SERVICES: Service[] = [
       },
       {
         q: "Who else might be involved in care?",
-        a: "Depending on the case: your general dentist, an ENT, a sleep physician, a pediatrician, or a myofunctional therapist. We coordinate, we don't replace.",
+        a: "Depending on the case: your general dentist, an ENT, a sleep physician, a pediatrician, or a myofunctional therapist. We coordinate, we do not replace.",
       },
     ],
     related: ["phase-i-treatment", "marpe", "children-and-teens"],
     image: svcAirway,
+    ctaLabel: "Explore Airway Friendly Care",
     metaTitle: "Airway Friendly Orthodontics — Tsai Orthodontics Vancouver",
     metaDescription:
       "Thoughtful, airway-aware orthodontic planning in Vancouver. Careful evaluation of growth, structure, and bite from a certified specialist.",
@@ -320,17 +418,26 @@ export const SERVICES: Service[] = [
   {
     slug: "marpe",
     name: "MARPE",
-    short:
-      "Miniscrew-assisted rapid palatal expansion for selected orthodontic cases.",
-    hero: "A specialized expansion approach for selected orthodontic cases.",
-    main: "MARPE stands for Miniscrew-Assisted Rapid Palatal Expansion. It may be used in selected cases where expansion is needed and traditional approaches may not be sufficient. MARPE requires careful diagnosis, planning, and case selection.",
-    who: [
-      "Selected patients who may need palatal expansion",
-      "Patients whose jaw structure requires specialist evaluation",
-      "Teens or adults in specific orthodontic situations",
-      "Patients being evaluated for more advanced orthodontic planning",
+    short: "Miniscrew-assisted rapid palatal expansion for selected orthodontic cases.",
+    heroTitle: "Advanced Expansion For Selected Cases",
+    heroLead:
+      "A specialised expansion technique used only when careful evaluation indicates it is the right tool.",
+    intro:
+      "MARPE (Miniscrew-Assisted Rapid Palatal Expansion) is an advanced technique used for carefully selected patients who require skeletal expansion.\n\nNot every patient is a candidate, which is why careful evaluation is essential.",
+    whenLabel: "Benefits",
+    when: [
+      "Skeletal expansion",
+      "Improved arch development",
+      "Reduced need for surgery in some cases",
+      "Specialist planning",
     ],
-    how: "MARPE is not for every patient. At Tsai Orthodontics, recommendations are based on diagnosis, growth stage, anatomy, and treatment goals. We explain the purpose, process, and limitations clearly before moving forward.",
+    whyUs:
+      "MARPE is not for every patient. Recommendations are based on diagnosis, growth stage, anatomy, and treatment goals. We explain the purpose, process, and limitations clearly before moving forward.",
+    testimonial: {
+      quote:
+        "I'd been told I would need jaw surgery elsewhere. Dr. Tsai explained MARPE clearly and gave me an alternative path to consider.",
+      attribution: "Adult MARPE patient",
+    },
     variant: "clinical",
     highlights: [
       { label: "Full name", value: "Miniscrew-Assisted Rapid Palatal Expansion" },
@@ -357,6 +464,7 @@ export const SERVICES: Service[] = [
     ],
     related: ["airway-friendly-orthodontics", "phase-i-treatment", "adults"],
     image: svcMarpe,
+    ctaLabel: "Explore MARPE",
     metaTitle: "MARPE Palatal Expansion — Tsai Orthodontics Vancouver",
     metaDescription:
       "Miniscrew-Assisted Rapid Palatal Expansion (MARPE) for selected orthodontic cases in Vancouver. Specialist diagnosis and planning by Dr. Andrew Tsai.",
@@ -364,17 +472,26 @@ export const SERVICES: Service[] = [
   {
     slug: "retainers",
     name: "Retainers",
-    short:
-      "Protecting the result of your treatment with thoughtful, long-term retention care.",
-    hero: "Protecting the result is part of the treatment.",
-    main: "Orthodontic care does not end when braces or aligners are finished. Retainers help maintain tooth position and protect the result over time. Retention is an important part of long-term orthodontic success.",
-    who: [
-      "Patients finishing braces",
-      "Patients finishing Invisalign",
-      "Adults who notice shifting after previous orthodontic treatment",
-      "Patients who need replacement or updated retainers",
+    short: "Protecting the result of your treatment with thoughtful, long-term retention care.",
+    heroTitle: "Keeping Your Smile Stable",
+    heroLead:
+      "Retainers preserve the result you worked hard to achieve.",
+    intro:
+      "Orthodontic treatment does not end when appliances come off.\n\nRetainers help preserve the result you worked hard to achieve and reduce the natural tendency for teeth to shift over time.",
+    whenLabel: "Retention Care",
+    when: [
+      "Clear retainers",
+      "Fixed retainers",
+      "Replacement retainers",
+      "Long-term maintenance",
     ],
-    how: "We explain how and when to wear retainers based on each patient's needs. Retainers work best when patients understand why they matter and how to care for them properly.",
+    whyUs:
+      "We explain how and when to wear retainers based on each patient's needs. Retainers work best when patients understand why they matter and how to care for them properly.",
+    testimonial: {
+      quote:
+        "I lost my retainer years after braces and my teeth had shifted. Dr. Tsai sorted it out without making me feel bad about it.",
+      attribution: "Returning adult patient",
+    },
     variant: "longterm",
     highlights: [
       { label: "Types", value: "Fixed · Clear · Hawley" },
@@ -388,7 +505,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "What happens if I stop wearing my retainer?",
-        a: "Teeth gradually drift back toward their original positions. This is the most common reason adults return for retreatment, and it's avoidable.",
+        a: "Teeth gradually drift back toward their original positions. This is the most common reason adults return for retreatment, and it is avoidable.",
       },
       {
         q: "What's the difference between fixed and removable retainers?",
@@ -401,6 +518,7 @@ export const SERVICES: Service[] = [
     ],
     related: ["braces-and-fixed-appliances", "invisalign", "adults"],
     image: svcRetainers,
+    ctaLabel: "Explore Retainers",
     metaTitle: "Orthodontic Retainers — Tsai Orthodontics Vancouver",
     metaDescription:
       "Custom orthodontic retainers and long-term retention care in Vancouver. Protect the result of your treatment with specialist follow-through.",

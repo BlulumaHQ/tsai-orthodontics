@@ -220,7 +220,7 @@ function HomePage() {
                     {s.short}
                   </p>
                   <span className="inline-flex items-center gap-1 text-primary text-[11px] uppercase tracking-[0.2em] group-hover:gap-2 transition-all">
-                    Learn more <ArrowUpRight className="size-4" />
+                    {s.ctaLabel} <ArrowUpRight className="size-4" />
                   </span>
                 </div>
               </Link>
