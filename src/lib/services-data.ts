@@ -6,6 +6,13 @@ import bracesFeature from "@/assets/brace-feature.webp.asset.json";
 import airwayFeature from "@/assets/air-way-004.webp.asset.json";
 import kidsFeature from "@/assets/005_1.webp.asset.json";
 import adultsFeature from "@/assets/012.webp.asset.json";
+import bracesCloseUp from "@/assets/tsai-brace.webp.asset.json";
+import consultScan from "@/assets/tsai-consult.webp.asset.json";
+import adultConsult from "@/assets/tsai-adult-consult.webp.asset.json";
+import careImg from "@/assets/care-004.webp.asset.json";
+import clarityImg from "@/assets/clarity-007.webp.asset.json";
+import craftImg from "@/assets/craft-026.webp.asset.json";
+import convenienceImg from "@/assets/convenience022.webp.asset.json";
 
 const svcBraces = bracesFeature.url;
 const svcInvisalign = invisalignFeature.url;
@@ -15,6 +22,23 @@ const svcAirway = airwayFeature.url;
 const journeyKids = kidsFeature.url;
 const journeyAdults = adultsFeature.url;
 const journeyParents = phaseOneFeature.url;
+
+const IMG = {
+  braces: bracesCloseUp.url,
+  consult: consultScan.url,
+  adultConsult: adultConsult.url,
+  care: careImg.url,
+  clarity: clarityImg.url,
+  craft: craftImg.url,
+  convenience: convenienceImg.url,
+  invisalign: invisalignFeature.url,
+  marpe: marpeFeature.url,
+  airway: airwayFeature.url,
+  kids: kidsFeature.url,
+  adults: adultsFeature.url,
+  retainer: retainerFeature.url,
+  phaseOne: phaseOneFeature.url,
+};
 
 export interface ServiceFAQ {
   q: string;
@@ -40,7 +64,59 @@ export interface Service {
   related: string[];
   metaTitle: string;
   metaDescription: string;
+  gallery?: { src: string; alt: string }[];
 }
+
+export const SERVICE_GALLERIES: Record<string, { src: string; alt: string }[]> = {
+  "children-and-teens": [
+    { src: IMG.kids, alt: "Young patient at Tsai Orthodontics" },
+    { src: IMG.consult, alt: "Dr. Tsai reviewing a 3D scan with a patient" },
+    { src: IMG.care, alt: "Warm consultation between clinician and child" },
+    { src: IMG.phaseOne, alt: "Friendly orthodontic visit for a young child" },
+  ],
+  adults: [
+    { src: IMG.adults, alt: "Adult patient at Tsai Orthodontics" },
+    { src: IMG.adultConsult, alt: "Adult patient discussing clear aligners with Dr. Tsai" },
+    { src: IMG.invisalign, alt: "Close-up of clear aligner therapy for adults" },
+    { src: IMG.clarity, alt: "Calm consultation room at Tsai Orthodontics" },
+  ],
+  "braces-and-fixed-appliances": [
+    { src: IMG.braces, alt: "Close-up of modern braces on healthy teeth" },
+    { src: IMG.consult, alt: "Treatment plan reviewed on a digital scan" },
+    { src: IMG.craft, alt: "Detailed orthodontic workflow at Tsai Orthodontics" },
+    { src: IMG.kids, alt: "Young patient comfortable in braces" },
+  ],
+  invisalign: [
+    { src: IMG.invisalign, alt: "Clear aligner held by a patient" },
+    { src: IMG.adultConsult, alt: "Dr. Tsai handing a clear aligner to a patient" },
+    { src: IMG.consult, alt: "Digital scan used to plan Invisalign treatment" },
+    { src: IMG.adults, alt: "Adult Invisalign patient smiling" },
+  ],
+  "phase-i-treatment": [
+    { src: IMG.phaseOne, alt: "Young child during an early orthodontic visit" },
+    { src: IMG.kids, alt: "Child meeting Dr. Tsai for a Phase I consultation" },
+    { src: IMG.care, alt: "Calm, family-centered consult room" },
+    { src: IMG.consult, alt: "Growth and bite reviewed on a digital scan" },
+  ],
+  "airway-friendly-orthodontics": [
+    { src: IMG.airway, alt: "Profile analysis used in airway-friendly planning" },
+    { src: IMG.consult, alt: "3D scan reviewed during airway evaluation" },
+    { src: IMG.phaseOne, alt: "Young patient assessed for airway and growth" },
+    { src: IMG.clarity, alt: "Quiet consultation space for thorough evaluation" },
+  ],
+  marpe: [
+    { src: IMG.marpe, alt: "Digital model used in MARPE planning" },
+    { src: IMG.consult, alt: "MARPE plan explained on a 3D scan" },
+    { src: IMG.adultConsult, alt: "Specialist consultation for MARPE candidacy" },
+    { src: IMG.craft, alt: "Precise orthodontic planning workflow" },
+  ],
+  retainers: [
+    { src: IMG.retainer, alt: "Clear retainer in a patient's hand" },
+    { src: IMG.invisalign, alt: "Custom-fit retainer detail" },
+    { src: IMG.adultConsult, alt: "Patient receiving retainer instructions from Dr. Tsai" },
+    { src: IMG.care, alt: "Long-term retention check-in" },
+  ],
+};
 
 export const SERVICES: Service[] = [
   {
@@ -274,7 +350,7 @@ export const SERVICES: Service[] = [
     metaDescription:
       "Clear retainers, fixed retainers, replacement retainers, and long-term orthodontic retention care in Vancouver.",
   },
-];
+].map((s) => ({ ...s, gallery: SERVICE_GALLERIES[s.slug] }));
 
 export const SERVICE_BY_SLUG: Record<string, Service> = Object.fromEntries(
   SERVICES.map((s) => [s.slug, s]),

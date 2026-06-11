@@ -115,6 +115,7 @@ function ChildrenAndTeensPage({ service }: { service: Service }) {
       <TwoColumnCare service={service} />
       <WhyPanel service={service} align="center" />
       <FAQSection service={service} />
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -143,6 +144,7 @@ function AdultsPage({ service }: { service: Service }) {
       </section>
       <SplitListSection service={service} />
       <WhyPanel service={service} align="left" />
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -179,6 +181,7 @@ function BracesPage({ service }: { service: Service }) {
           </div>
         </div>
       </section>
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -209,6 +212,7 @@ function InvisalignPage({ service }: { service: Service }) {
         </div>
       </section>
       <IconListBand service={service} />
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -236,6 +240,7 @@ function PhaseIPage({ service }: { service: Service }) {
           <NumberedList title={service.primarySectionTitle} items={service.primaryItems} />
         </div>
       </section>
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -268,6 +273,7 @@ function AirwayPage({ service }: { service: Service }) {
           </p>
         </div>
       </section>
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -295,6 +301,7 @@ function MarpePage({ service }: { service: Service }) {
         </div>
       </section>
       <IconListBand service={service} />
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -330,6 +337,7 @@ function RetainersPage({ service }: { service: Service }) {
           ))}
         </div>
       </section>
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -470,6 +478,39 @@ function FAQSection({ service }: { service: Service }) {
               </summary>
               <p className="mt-4 text-foreground/75 leading-relaxed max-w-3xl">{f.a}</p>
             </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ServiceGallery({ service }: { service: Service }) {
+  if (!service.gallery || service.gallery.length === 0) return null;
+  return (
+    <section className="px-6 lg:px-10 py-20 lg:py-28">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-end justify-between gap-6 mb-10 lg:mb-14">
+          <div>
+            <Eyebrow>Inside the practice</Eyebrow>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] max-w-2xl text-balance">
+              A closer look at {service.name.toLowerCase()} at Tsai Orthodontics.
+            </h2>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+          {service.gallery.map((g, i) => (
+            <div
+              key={g.src + i}
+              className={`overflow-hidden rounded-2xl bg-secondary/40 ${i === 0 ? "col-span-2 lg:col-span-2 lg:row-span-2 aspect-square lg:aspect-auto" : "aspect-[4/5]"}`}
+            >
+              <img
+                src={g.src}
+                alt={g.alt}
+                loading="lazy"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
           ))}
         </div>
       </div>

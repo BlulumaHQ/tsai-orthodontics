@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
-import drTsai from "@/assets/dr-tsai.jpg";
+import drAndrew from "@/assets/dr-andrew-tsai.webp.asset.json";
+import drMarjorie from "@/assets/dr-marjorie-tsai.webp.asset.json";
 
 export const Route = createFileRoute("/about-the-doctors/")({
   head: () => ({
@@ -37,7 +38,7 @@ function AboutTheDoctorsPage() {
             <Link to="/about-the-doctors/dr-andrew-tsai" className="block">
               <div className="overflow-hidden rounded-3xl mb-6 bg-foreground/5">
                 <img
-                  src={drTsai}
+                  src={drAndrew.url}
                   alt="Dr. Andrew Tsai"
                   className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
@@ -59,8 +60,13 @@ function AboutTheDoctorsPage() {
           {/* Dr. Marjorie */}
           <article className="group">
             <Link to="/about-the-doctors/dr-marjorie-tsai" className="block">
-              <div className="overflow-hidden rounded-3xl mb-6 bg-secondary/50 aspect-[4/5] flex items-center justify-center">
-                <span className="font-display text-5xl text-foreground/30">M.T.</span>
+              <div className="overflow-hidden rounded-3xl mb-6 bg-secondary/50 aspect-[4/5]">
+                <img
+                  src={drMarjorie.url}
+                  alt="Dr. Marjorie Tsai"
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                />
               </div>
               <div className="text-primary text-[11px] uppercase tracking-[0.25em] mb-2">
                 Biography Coming Soon

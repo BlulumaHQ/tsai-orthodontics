@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import drTsai from "@/assets/dr-tsai.jpg";
+import drTsai from "@/assets/dr-andrew-tsai.webp.asset.json";
 import hero1 from "@/assets/hero-001_1.webp.asset.json";
 import hero2 from "@/assets/hero-002_1.webp.asset.json";
 import pillarCraftAsset from "@/assets/craft-026.webp.asset.json";
@@ -16,8 +16,38 @@ const pillarCare = pillarCareAsset.url;
 const pillarClarity = pillarClarityAsset.url;
 const pillarConvenience = pillarConvenienceAsset.url;
 const HERO_SLIDES = [
-  { src: hero1.url, alt: "A Vancouver family laughing together in their living room" },
-  { src: hero2.url, alt: "A Vancouver family in a park with the city skyline behind them" },
+  {
+    src: hero1.url,
+    alt: "A Vancouver family laughing together",
+    eyebrow: "Specialist Orthodontics · Vancouver",
+    title: (
+      <>
+        Your smile,
+        <br />
+        <span className="italic font-normal">by design.</span>
+      </>
+    ),
+    tagline:
+      "Specialist orthodontic care in Vancouver, delivered with clarity, warmth, and personal attention.",
+    align: "center" as const,
+    objectPosition: "center",
+  },
+  {
+    src: hero2.url,
+    alt: "A Vancouver family outdoors",
+    eyebrow: "Care for every stage",
+    title: (
+      <>
+        Built on
+        <br />
+        <span className="italic font-normal">long relationships.</span>
+      </>
+    ),
+    tagline:
+      "From a child's first visit to adult treatment — orthodontic care planned around your family, not a template.",
+    align: "left" as const,
+    objectPosition: "right",
+  },
 ];
 
 export const Route = createFileRoute("/")({
@@ -94,47 +124,65 @@ function HomePage() {
               key={s.src}
               src={s.src}
               alt={s.alt}
+              style={{ objectPosition: s.objectPosition }}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1600ms] ease-in-out ${i === slide ? "opacity-100" : "opacity-0"}`}
               width={1920}
               height={1080}
               loading={i === 0 ? "eager" : "lazy"}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+          {HERO_SLIDES[slide].align === "left" ? (
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent" />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+          )}
         </div>
 
-
-        <div className="relative h-full flex flex-col items-center justify-end pb-20 lg:pb-28 text-center px-6">
-          <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-6 animate-fade-up">
-            Specialist Orthodontics · Vancouver
+        {HERO_SLIDES.map((s, i) => (
+          <div
+            key={s.src}
+            className={`relative h-full flex flex-col pb-20 lg:pb-28 px-6 lg:px-12 transition-opacity duration-[1200ms] ${
+              i === slide ? "opacity-100" : "opacity-0 pointer-events-none absolute inset-0"
+            } ${s.align === "left" ? "items-start justify-end text-left max-w-3xl" : "items-center justify-end text-center"}`}
+          >
+            <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-6">
+              {s.eyebrow}
+            </div>
+            <h1 className={`font-display text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] text-balance ${s.align === "left" ? "" : "max-w-5xl"}`}>
+              {s.title}
+            </h1>
+            <p className={`mt-8 text-white/85 text-base lg:text-lg leading-relaxed ${s.align === "left" ? "max-w-lg" : "max-w-xl"}`}>
+              {s.tagline}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 mt-10">
+              <Link
+                to="/contact"
+                className="px-8 py-4 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300 rounded-full text-xs font-medium uppercase tracking-[0.2em]"
+              >
+                Book a Consultation
+              </Link>
+              <Link
+                to="/about-the-doctors/dr-andrew-tsai"
+                className="px-8 py-4 border border-white/40 backdrop-blur-md text-white hover:bg-white/10 transition-all rounded-full text-xs font-medium uppercase tracking-[0.2em]"
+              >
+                Meet Dr. Andrew Tsai
+              </Link>
+            </div>
           </div>
-          <h1 className="font-display text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] max-w-5xl text-balance animate-fade-up [animation-delay:80ms]">
-            Your smile,
-            <br />
-            <span className="italic font-normal">by design.</span>
-          </h1>
-          <p className="mt-8 max-w-xl text-white/85 text-base lg:text-lg leading-relaxed animate-fade-up [animation-delay:160ms]">
-            Specialist orthodontic care in Vancouver, delivered with clarity, warmth, and personal attention.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 mt-10 animate-fade-up [animation-delay:240ms]">
-            <Link
-              to="/contact"
-              className="px-8 py-4 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300 rounded-full text-xs font-medium uppercase tracking-[0.2em]"
-            >
-              Book a Consultation
-            </Link>
-            <Link
-              to="/about-the-doctors/dr-andrew-tsai"
-              className="px-8 py-4 border border-white/40 backdrop-blur-md text-white hover:bg-white/10 transition-all rounded-full text-xs font-medium uppercase tracking-[0.2em]"
-            >
-              Meet Dr. Andrew Tsai
-            </Link>
-          </div>
-        </div>
+        ))}
 
-        <div className="absolute bottom-6 left-6 right-6 lg:left-10 lg:right-10 flex justify-between items-end text-[10px] uppercase tracking-[0.25em] text-white/60 animate-fade-in [animation-delay:600ms]">
+        <div className="absolute bottom-6 left-6 right-6 lg:left-10 lg:right-10 flex justify-between items-end text-[10px] uppercase tracking-[0.25em] text-white/60 z-10">
           <span>3431 Main Street</span>
-          <span className="hidden md:block">Est. for families like yours</span>
+          <div className="flex gap-2">
+            {HERO_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setSlide(i)}
+                aria-label={`Slide ${i + 1}`}
+                className={`h-[3px] transition-all ${i === slide ? "w-10 bg-white" : "w-6 bg-white/40"}`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -142,11 +190,15 @@ function HomePage() {
       <section className="pt-28 lg:pt-40 pb-16 lg:pb-24 px-6 lg:px-10 bg-background">
         <div className="max-w-5xl mx-auto">
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-8">
-            What Sets Us Apart
+            Our Philosophy
           </div>
           <p className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-balance">
             We chose to build a different kind of orthodontic practice — one shaped by careful listening, specialist training, and the warmth of a small Vancouver family business.
           </p>
+          <div className="mt-12 lg:mt-16 flex flex-wrap items-baseline gap-x-8 gap-y-3">
+            <span className="text-muted-foreground text-[11px] uppercase tracking-[0.3em]">Four principles guide every plan</span>
+            <span className="font-display text-foreground text-xl md:text-2xl">Clarity · Care · Craft · Convenience</span>
+          </div>
         </div>
       </section>
 
@@ -169,17 +221,17 @@ function HomePage() {
                 />
               </div>
               <div className="p-8 lg:p-10 flex flex-col flex-1">
-                <div className="flex items-baseline gap-4 mb-5">
-                  <span className="text-primary text-[10px] font-mono tracking-[0.25em]">
+                <div className="flex items-start justify-between gap-4 mb-6">
+                  <h3 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
+                    {p.label}
+                  </h3>
+                  <span className="text-primary text-[10px] font-mono tracking-[0.25em] mt-3">
                     {p.n}
                   </span>
-                  <span className="text-primary text-[11px] uppercase tracking-[0.3em] font-medium">
-                    {p.label}
-                  </span>
                 </div>
-                <h3 className="font-display text-2xl md:text-3xl lg:text-4xl leading-[1.1] mb-4 text-balance">
+                <p className="font-display text-xl md:text-2xl leading-snug mb-4 text-balance text-foreground/90">
                   {p.headline}
-                </h3>
+                </p>
                 <p className="text-muted-foreground leading-relaxed text-pretty">
                   {p.body}
                 </p>
@@ -265,7 +317,7 @@ function HomePage() {
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src={drTsai}
+                src={drTsai.url}
                 alt="Dr. Tsai, specialist orthodontist"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover"
