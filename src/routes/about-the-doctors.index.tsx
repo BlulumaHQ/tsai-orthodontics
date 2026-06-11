@@ -38,7 +38,7 @@ function AboutTheDoctorsPage() {
             <Link to="/about-the-doctors/dr-andrew-tsai" className="block">
               <div className="overflow-hidden rounded-3xl mb-6 bg-foreground/5">
                 <img
-                  src={drTsai}
+                  src={drAndrew.url}
                   alt="Dr. Andrew Tsai"
                   className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
