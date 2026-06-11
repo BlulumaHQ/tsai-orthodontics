@@ -190,11 +190,15 @@ function HomePage() {
       <section className="pt-28 lg:pt-40 pb-16 lg:pb-24 px-6 lg:px-10 bg-background">
         <div className="max-w-5xl mx-auto">
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-8">
-            What Sets Us Apart
+            Our Philosophy
           </div>
           <p className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-balance">
             We chose to build a different kind of orthodontic practice — one shaped by careful listening, specialist training, and the warmth of a small Vancouver family business.
           </p>
+          <div className="mt-12 lg:mt-16 flex flex-wrap items-baseline gap-x-8 gap-y-3">
+            <span className="text-muted-foreground text-[11px] uppercase tracking-[0.3em]">Four principles guide every plan</span>
+            <span className="font-display text-foreground text-xl md:text-2xl">Clarity · Care · Craft · Convenience</span>
+          </div>
         </div>
       </section>
 
@@ -217,17 +221,17 @@ function HomePage() {
                 />
               </div>
               <div className="p-8 lg:p-10 flex flex-col flex-1">
-                <div className="flex items-baseline gap-4 mb-5">
-                  <span className="text-primary text-[10px] font-mono tracking-[0.25em]">
+                <div className="flex items-start justify-between gap-4 mb-6">
+                  <h3 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
+                    {p.label}
+                  </h3>
+                  <span className="text-primary text-[10px] font-mono tracking-[0.25em] mt-3">
                     {p.n}
                   </span>
-                  <span className="text-primary text-[11px] uppercase tracking-[0.3em] font-medium">
-                    {p.label}
-                  </span>
                 </div>
-                <h3 className="font-display text-2xl md:text-3xl lg:text-4xl leading-[1.1] mb-4 text-balance">
+                <p className="font-display text-xl md:text-2xl leading-snug mb-4 text-balance text-foreground/90">
                   {p.headline}
-                </h3>
+                </p>
                 <p className="text-muted-foreground leading-relaxed text-pretty">
                   {p.body}
                 </p>
