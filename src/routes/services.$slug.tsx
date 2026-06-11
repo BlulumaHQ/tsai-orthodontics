@@ -115,6 +115,7 @@ function ChildrenAndTeensPage({ service }: { service: Service }) {
       <TwoColumnCare service={service} />
       <WhyPanel service={service} align="center" />
       <FAQSection service={service} />
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -143,6 +144,7 @@ function AdultsPage({ service }: { service: Service }) {
       </section>
       <SplitListSection service={service} />
       <WhyPanel service={service} align="left" />
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -179,6 +181,7 @@ function BracesPage({ service }: { service: Service }) {
           </div>
         </div>
       </section>
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -209,6 +212,7 @@ function InvisalignPage({ service }: { service: Service }) {
         </div>
       </section>
       <IconListBand service={service} />
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -236,6 +240,7 @@ function PhaseIPage({ service }: { service: Service }) {
           <NumberedList title={service.primarySectionTitle} items={service.primaryItems} />
         </div>
       </section>
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -268,6 +273,7 @@ function AirwayPage({ service }: { service: Service }) {
           </p>
         </div>
       </section>
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -295,6 +301,7 @@ function MarpePage({ service }: { service: Service }) {
         </div>
       </section>
       <IconListBand service={service} />
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
@@ -330,6 +337,7 @@ function RetainersPage({ service }: { service: Service }) {
           ))}
         </div>
       </section>
+      <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
