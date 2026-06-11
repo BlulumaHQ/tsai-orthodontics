@@ -2,15 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import heroFamily from "@/assets/hero-family.jpg";
 import drTsai from "@/assets/dr-tsai.jpg";
-import journeyParents from "@/assets/journey-parents.jpg";
-import journeyKids from "@/assets/journey-kids.jpg";
-import journeyTeens from "@/assets/journey-teens.jpg";
-import journeyAdults from "@/assets/journey-adults.jpg";
 import atmosClarity from "@/assets/atmos-clarity.jpg";
 import atmosEase from "@/assets/atmos-ease.jpg";
 import atmosCare from "@/assets/atmos-care.jpg";
 import atmosCraft from "@/assets/atmos-craft.jpg";
 import { SITE } from "@/lib/site-data";
+import { SERVICES } from "@/lib/services-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -63,37 +60,6 @@ const PILLARS = [
     title: "Care that fits the rhythm of your life.",
     body: "Flexible appointments before school and after work, family scheduling for siblings, and bilingual care in English, Mandarin, and Cantonese — so every visit feels effortless.",
     image: atmosEase,
-  },
-];
-
-const JOURNEYS = [
-  {
-    slug: "parents",
-    title: "For Parents",
-    body: "Early evaluations, honest guidance, and a clear sense of what your child needs — and what they don't.",
-    image: journeyParents,
-    link: "/services/children-and-teens" as const,
-  },
-  {
-    slug: "kids",
-    title: "For Kids",
-    body: "An unhurried, gentle first visit. We meet kids where they are, and we make sure they leave smiling.",
-    image: journeyKids,
-    link: "/services/phase-i-treatment" as const,
-  },
-  {
-    slug: "teens",
-    title: "For Teens",
-    body: "Braces or Invisalign that work around school, sport, and a full social life — without compromise.",
-    image: journeyTeens,
-    link: "/services/invisalign" as const,
-  },
-  {
-    slug: "adults",
-    title: "For Adults",
-    body: "Discreet, sophisticated treatment for the smile you've been thinking about for years. It is not too late.",
-    image: journeyAdults,
-    link: "/services/adults" as const,
   },
 ];
 
@@ -200,53 +166,73 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PATIENT JOURNEYS — horizontal scroll */}
-      <section className="py-24 lg:py-32 bg-secondary/30">
-        <div className="px-6 lg:px-10 mb-12 lg:mb-16 max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6">
-            <div>
+      {/* OUR SERVICES */}
+      <section className="py-24 lg:py-32 bg-secondary/30 px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-14 lg:mb-20">
+            <div className="max-w-2xl">
               <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-4">
-                Patient Journeys
+                Our Services
               </div>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-balance max-w-2xl">
-                Care for every chapter of your family's life.
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-balance">
+                Specialist care for every stage.
               </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mt-6 max-w-xl">
+                Orthodontic care for children, teens, and adults — planned carefully, explained clearly, and tailored to each patient&rsquo;s needs.
+              </p>
             </div>
-            <span className="hidden md:block text-muted-foreground text-[11px] uppercase tracking-[0.25em] pb-3">
-              Scroll to explore →
-            </span>
-          </div>
-        </div>
-        <div className="flex overflow-x-auto gap-6 lg:gap-8 px-6 lg:px-10 pb-12 snap-x snap-mandatory no-scrollbar">
-          {JOURNEYS.map((j) => (
             <Link
-              to={j.link}
-              key={j.slug}
-              className="flex-none w-[78vw] sm:w-[400px] lg:w-[460px] snap-start group"
+              to="/services"
+              className="hidden md:inline-flex items-center gap-2 text-primary text-xs uppercase tracking-[0.2em] font-medium border-b border-primary pb-1 hover:gap-3 transition-all self-start md:self-end"
             >
-              <div className="relative overflow-hidden rounded-3xl mb-6 bg-foreground/5">
-                <img
-                  src={j.image}
-                  alt={j.title}
-                  loading="lazy"
-                  className="w-full aspect-[3/4] object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute top-5 left-5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm text-[10px] uppercase tracking-[0.2em] text-foreground">
-                  {j.title.replace("For ", "")}
-                </div>
-              </div>
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-display text-2xl lg:text-3xl mb-2">{j.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
-                    {j.body}
-                  </p>
-                </div>
-                <ArrowUpRight className="size-5 text-foreground/40 group-hover:text-primary transition-colors flex-none mt-2" />
-              </div>
+              All services <ArrowRight className="size-4" />
             </Link>
-          ))}
-          <div className="flex-none w-6" aria-hidden />
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+            {SERVICES.map((s, i) => (
+              <Link
+                key={s.slug}
+                to="/services/$slug"
+                params={{ slug: s.slug }}
+                className="group bg-background rounded-3xl overflow-hidden border border-foreground/10 hover:border-primary hover:shadow-xl transition-all flex flex-col"
+              >
+                <div className="overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.name}
+                    loading="lazy"
+                    width={1280}
+                    height={1600}
+                    className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6 lg:p-7 flex flex-col flex-1">
+                  <div className="text-primary text-[10px] font-mono tracking-[0.25em] mb-3">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="font-display text-xl lg:text-2xl mb-3 leading-tight">
+                    {s.name}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
+                    {s.short}
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-primary text-[11px] uppercase tracking-[0.2em] group-hover:gap-2 transition-all">
+                    Learn more <ArrowUpRight className="size-4" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-10 md:hidden">
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 text-primary text-xs uppercase tracking-[0.2em] font-medium border-b border-primary pb-1"
+            >
+              All services <ArrowRight className="size-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -299,8 +285,8 @@ function HomePage() {
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
             What Sets Us Apart
           </div>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-16 max-w-3xl text-balance">
-            We are not the cheapest practice in Vancouver. We don't try to be.
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-16 max-w-4xl text-balance">
+            Orthodontic care should feel thoughtful from the first conversation. At Tsai Orthodontics, every treatment plan is shaped by specialist training, clear communication, and a calmer experience for patients and families.
           </h2>
           <div className="grid md:grid-cols-2 gap-x-16 gap-y-10 max-w-5xl">
             {[
