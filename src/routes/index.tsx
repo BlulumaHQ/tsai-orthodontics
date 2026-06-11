@@ -183,7 +183,9 @@ function HomePage() {
                   <div className="flex items-center gap-4 mb-6">
                     <span className="text-primary text-xs font-mono tracking-[0.2em]">{p.n}</span>
                     <span className="h-px flex-1 bg-foreground/10" />
-                    <span className="text-foreground/60 text-[11px] uppercase tracking-[0.25em]">{p.label}</span>
+                  </div>
+                  <div className="font-display text-6xl md:text-7xl lg:text-8xl leading-none mb-8 text-primary">
+                    {p.label}
                   </div>
                   <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] mb-6 text-balance">
                     {p.title}
