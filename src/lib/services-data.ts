@@ -46,9 +46,9 @@ export const SERVICES: Service[] = [
     ],
   },
   {
-    slug: "braces",
-    name: "Braces",
-    tagline: "Modern, refined, remarkably comfortable.",
+    slug: "braces-and-fixed-appliances",
+    name: "Braces & Fixed Appliances",
+    tagline: "Reliable precision, refined for today.",
     overview:
       "Today's braces are smaller, more precise, and more comfortable than a generation ago. We use a considered selection of bracket systems — including ceramic options — chosen for each patient's anatomy and aesthetic preferences.",
     who: "Patients of all ages who would benefit from comprehensive, fixed orthodontic treatment.",

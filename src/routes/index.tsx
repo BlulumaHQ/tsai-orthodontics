@@ -118,12 +118,12 @@ function HomePage() {
             Specialist Orthodontics · Vancouver
           </div>
           <h1 className="font-display text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] max-w-5xl text-balance animate-fade-up [animation-delay:80ms]">
-            Specialist orthodontic care.
+            Your smile,
             <br />
-            <span className="italic font-normal">Made personal.</span>
+            <span className="italic font-normal">by design.</span>
           </h1>
           <p className="mt-8 max-w-xl text-white/85 text-base lg:text-lg leading-relaxed animate-fade-up [animation-delay:160ms]">
-            A boutique Vancouver practice where every plan is designed by Dr. Tsai himself, and every family is known by name.
+            Specialist orthodontic care in Vancouver, delivered with clarity, warmth, and personal attention.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mt-10 animate-fade-up [animation-delay:240ms]">
             <Link
@@ -133,10 +133,10 @@ function HomePage() {
               Book a Consultation
             </Link>
             <Link
-              to="/doctors"
+              to="/about-the-doctors/dr-andrew-tsai"
               className="px-8 py-4 border border-white/40 backdrop-blur-md text-white hover:bg-white/10 transition-all rounded-full text-xs font-medium uppercase tracking-[0.2em]"
             >
-              Meet Dr. Tsai
+              Meet Dr. Andrew Tsai
             </Link>
           </div>
         </div>
@@ -282,10 +282,10 @@ function HomePage() {
               ))}
             </div>
             <Link
-              to="/doctors"
+              to="/about-the-doctors/dr-andrew-tsai"
               className="inline-flex items-center gap-2 text-primary text-xs uppercase tracking-[0.2em] font-medium border-b border-primary pb-1 hover:gap-3 transition-all"
             >
-              Read Dr. Tsai's Story <ArrowRight className="size-4" />
+              Meet Dr. Andrew Tsai <ArrowRight className="size-4" />
             </Link>
           </div>
         </div>
