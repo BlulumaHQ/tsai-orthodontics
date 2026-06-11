@@ -1,13 +1,24 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import heroFamily from "@/assets/hero-family.jpg";
 import drTsai from "@/assets/dr-tsai.jpg";
-import pillarCraft from "@/assets/pillar-craft.jpg";
-import pillarCare from "@/assets/pillar-care.jpg";
-import pillarClarity from "@/assets/pillar-clarity.jpg";
-import pillarConvenience from "@/assets/pillar-convenience.jpg";
+import hero1 from "@/assets/hero-001_1.webp.asset.json";
+import hero2 from "@/assets/hero-002_1.webp.asset.json";
+import pillarCraftAsset from "@/assets/craft-026.webp.asset.json";
+import pillarCareAsset from "@/assets/care-004.webp.asset.json";
+import pillarClarityAsset from "@/assets/clarity-007.webp.asset.json";
+import pillarConvenienceAsset from "@/assets/convenience022.webp.asset.json";
 import { SITE } from "@/lib/site-data";
 import { SERVICES } from "@/lib/services-data";
+
+const pillarCraft = pillarCraftAsset.url;
+const pillarCare = pillarCareAsset.url;
+const pillarClarity = pillarClarityAsset.url;
+const pillarConvenience = pillarConvenienceAsset.url;
+const HERO_SLIDES = [
+  { src: hero1.url, alt: "A Vancouver family laughing together in their living room" },
+  { src: hero2.url, alt: "A Vancouver family in a park with the city skyline behind them" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({

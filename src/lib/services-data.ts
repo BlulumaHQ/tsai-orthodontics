@@ -1,11 +1,16 @@
 import journeyKids from "@/assets/journey-kids.jpg";
 import journeyAdults from "@/assets/journey-adults.jpg";
-import journeyParents from "@/assets/journey-parents.jpg";
-import svcBraces from "@/assets/svc-braces.jpg";
-import svcInvisalign from "@/assets/svc-invisalign.jpg";
-import svcRetainers from "@/assets/svc-retainers.jpg";
-import svcMarpe from "@/assets/svc-marpe.jpg";
 import svcAirway from "@/assets/svc-airway.jpg";
+import phaseOneFeature from "@/assets/phase-1-feature-001.webp.asset.json";
+import invisalignFeature from "@/assets/invisalign_feature.webp.asset.json";
+import marpeFeature from "@/assets/marpe-007.webp.asset.json";
+import retainerFeature from "@/assets/retainer-009-feature.webp.asset.json";
+
+const svcBraces = phaseOneFeature.url;
+const svcInvisalign = invisalignFeature.url;
+const svcRetainers = retainerFeature.url;
+const svcMarpe = marpeFeature.url;
+const journeyParents = phaseOneFeature.url;
 
 export interface ServiceFAQ {
   q: string;
