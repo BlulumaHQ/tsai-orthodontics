@@ -18,6 +18,7 @@ import { Route as DentistReferralRouteImport } from './routes/dentist-referral'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutTheDoctorsRouteImport } from './routes/about-the-doctors'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as AboutTheDoctorsIndexRouteImport } from './routes/about-the-doctors.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as AboutTheDoctorsDrMarjorieTsaiRouteImport } from './routes/about-the-doctors.dr-marjorie-tsai'
@@ -68,6 +69,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const AboutTheDoctorsIndexRoute = AboutTheDoctorsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/about-the-doctors/dr-marjorie-tsai': typeof AboutTheDoctorsDrMarjorieTsaiRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/about-the-doctors/': typeof AboutTheDoctorsIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -112,13 +119,13 @@ export interface FileRoutesByTo {
   '/dentist-referral': typeof DentistReferralRoute
   '/faq': typeof FaqRoute
   '/new-patients': typeof NewPatientsRoute
-  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/what-sets-us-apart': typeof WhatSetsUsApartRoute
   '/about-the-doctors/dr-andrew-tsai': typeof AboutTheDoctorsDrAndrewTsaiRoute
   '/about-the-doctors/dr-marjorie-tsai': typeof AboutTheDoctorsDrMarjorieTsaiRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/about-the-doctors': typeof AboutTheDoctorsIndexRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -135,6 +142,7 @@ export interface FileRoutesById {
   '/about-the-doctors/dr-marjorie-tsai': typeof AboutTheDoctorsDrMarjorieTsaiRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/about-the-doctors/': typeof AboutTheDoctorsIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -152,6 +160,7 @@ export interface FileRouteTypes {
     | '/about-the-doctors/dr-marjorie-tsai'
     | '/services/$slug'
     | '/about-the-doctors/'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -159,13 +168,13 @@ export interface FileRouteTypes {
     | '/dentist-referral'
     | '/faq'
     | '/new-patients'
-    | '/services'
     | '/sitemap.xml'
     | '/what-sets-us-apart'
     | '/about-the-doctors/dr-andrew-tsai'
     | '/about-the-doctors/dr-marjorie-tsai'
     | '/services/$slug'
     | '/about-the-doctors'
+    | '/services'
   id:
     | '__root__'
     | '/'
@@ -181,6 +190,7 @@ export interface FileRouteTypes {
     | '/about-the-doctors/dr-marjorie-tsai'
     | '/services/$slug'
     | '/about-the-doctors/'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -260,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/about-the-doctors/': {
       id: '/about-the-doctors/'
       path: '/'
@@ -309,10 +326,12 @@ const AboutTheDoctorsRouteWithChildren = AboutTheDoctorsRoute._addFileChildren(
 
 interface ServicesRouteChildren {
   ServicesSlugRoute: typeof ServicesSlugRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesSlugRoute: ServicesSlugRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 
 const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
