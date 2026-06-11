@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
-import { SERVICE_BY_SLUG, SERVICES } from "@/lib/services-data";
+import { SERVICE_BY_SLUG, SERVICES, type Service } from "@/lib/services-data";
 import { SITE } from "@/lib/site-data";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -51,9 +51,9 @@ export const Route = createFileRoute("/services/$slug")({
 });
 
 function ServicePage() {
-  const { service } = Route.useLoaderData();
+  const { service } = Route.useLoaderData() as { service: Service };
   const related = service.related
-    .map((slug) => SERVICE_BY_SLUG[slug])
+    .map((slug: string) => SERVICE_BY_SLUG[slug])
     .filter(Boolean);
 
   return (
@@ -105,7 +105,7 @@ function ServicePage() {
       {/* MAIN COPY */}
       <section className="px-6 lg:px-10 pb-24 lg:pb-32">
         <div className="max-w-4xl mx-auto">
-          {service.main.split("\n\n").map((p, i) => (
+          {service.main.split("\n\n").map((p: string, i: number) => (
             <p
               key={i}
               className="text-lg lg:text-xl leading-relaxed text-foreground/85 mb-6"
@@ -137,7 +137,7 @@ function ServicePage() {
               Who this is for
             </div>
             <ul className="space-y-4">
-              {service.who.map((w) => (
+              {service.who.map((w: string) => (
                 <li key={w} className="flex gap-4 text-foreground/85 leading-relaxed">
                   <Check className="size-5 text-primary flex-none mt-1" />
                   <span>{w}</span>
@@ -150,7 +150,7 @@ function ServicePage() {
               How we approach it
             </div>
             <div className="space-y-5">
-              {service.how.split("\n\n").map((p, i) => (
+              {service.how.split("\n\n").map((p: string, i: number) => (
                 <p key={i} className="text-foreground/85 leading-relaxed">
                   {p}
                 </p>
@@ -171,7 +171,7 @@ function ServicePage() {
               You might also be looking at —
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {related.map((r) => (
+              {related.map((r: Service) => (
                 <Link
                   key={r.slug}
                   to="/services/$slug"
