@@ -123,7 +123,7 @@ function ChildrenAndTeensPage({ service }: { service: Service }) {
 
 function AdultsPage({ service }: { service: Service }) {
   return (
-    <main>
+    <>
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20 lg:pb-28">
         <div className="max-w-7xl mx-auto">
           <BackLink />
@@ -145,13 +145,13 @@ function AdultsPage({ service }: { service: Service }) {
       <WhyPanel service={service} align="left" />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
-    </main>
+    </>
   );
 }
 
 function BracesPage({ service }: { service: Service }) {
   return (
-    <main>
+    <>
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-12">
         <div className="max-w-7xl mx-auto">
           <BackLink />
@@ -181,13 +181,13 @@ function BracesPage({ service }: { service: Service }) {
       </section>
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
-    </main>
+    </>
   );
 }
 
 function InvisalignPage({ service }: { service: Service }) {
   return (
-    <main>
+    <>
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
         <div className="max-w-7xl mx-auto">
           <BackLink />
@@ -211,7 +211,7 @@ function InvisalignPage({ service }: { service: Service }) {
       <IconListBand service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
-    </main>
+    </>
   );
 }
 
