@@ -16,8 +16,38 @@ const pillarCare = pillarCareAsset.url;
 const pillarClarity = pillarClarityAsset.url;
 const pillarConvenience = pillarConvenienceAsset.url;
 const HERO_SLIDES = [
-  { src: hero1.url, alt: "A Vancouver family laughing together in their living room" },
-  { src: hero2.url, alt: "A Vancouver family in a park with the city skyline behind them" },
+  {
+    src: hero1.url,
+    alt: "A Vancouver family laughing together",
+    eyebrow: "Specialist Orthodontics · Vancouver",
+    title: (
+      <>
+        Your smile,
+        <br />
+        <span className="italic font-normal">by design.</span>
+      </>
+    ),
+    tagline:
+      "Specialist orthodontic care in Vancouver, delivered with clarity, warmth, and personal attention.",
+    align: "center" as const,
+    objectPosition: "center",
+  },
+  {
+    src: hero2.url,
+    alt: "A Vancouver family outdoors",
+    eyebrow: "Care for every stage",
+    title: (
+      <>
+        Built on
+        <br />
+        <span className="italic font-normal">long relationships.</span>
+      </>
+    ),
+    tagline:
+      "From a child's first visit to adult treatment — orthodontic care planned around your family, not a template.",
+    align: "left" as const,
+    objectPosition: "right",
+  },
 ];
 
 export const Route = createFileRoute("/")({
