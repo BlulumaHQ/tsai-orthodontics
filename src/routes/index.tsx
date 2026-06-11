@@ -124,47 +124,65 @@ function HomePage() {
               key={s.src}
               src={s.src}
               alt={s.alt}
+              style={{ objectPosition: s.objectPosition }}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1600ms] ease-in-out ${i === slide ? "opacity-100" : "opacity-0"}`}
               width={1920}
               height={1080}
               loading={i === 0 ? "eager" : "lazy"}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+          {HERO_SLIDES[slide].align === "left" ? (
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent" />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+          )}
         </div>
 
-
-        <div className="relative h-full flex flex-col items-center justify-end pb-20 lg:pb-28 text-center px-6">
-          <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-6 animate-fade-up">
-            Specialist Orthodontics · Vancouver
+        {HERO_SLIDES.map((s, i) => (
+          <div
+            key={s.src}
+            className={`relative h-full flex flex-col pb-20 lg:pb-28 px-6 lg:px-12 transition-opacity duration-[1200ms] ${
+              i === slide ? "opacity-100" : "opacity-0 pointer-events-none absolute inset-0"
+            } ${s.align === "left" ? "items-start justify-end text-left max-w-3xl" : "items-center justify-end text-center"}`}
+          >
+            <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-6">
+              {s.eyebrow}
+            </div>
+            <h1 className={`font-display text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] text-balance ${s.align === "left" ? "" : "max-w-5xl"}`}>
+              {s.title}
+            </h1>
+            <p className={`mt-8 text-white/85 text-base lg:text-lg leading-relaxed ${s.align === "left" ? "max-w-lg" : "max-w-xl"}`}>
+              {s.tagline}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 mt-10">
+              <Link
+                to="/contact"
+                className="px-8 py-4 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300 rounded-full text-xs font-medium uppercase tracking-[0.2em]"
+              >
+                Book a Consultation
+              </Link>
+              <Link
+                to="/about-the-doctors/dr-andrew-tsai"
+                className="px-8 py-4 border border-white/40 backdrop-blur-md text-white hover:bg-white/10 transition-all rounded-full text-xs font-medium uppercase tracking-[0.2em]"
+              >
+                Meet Dr. Andrew Tsai
+              </Link>
+            </div>
           </div>
-          <h1 className="font-display text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] max-w-5xl text-balance animate-fade-up [animation-delay:80ms]">
-            Your smile,
-            <br />
-            <span className="italic font-normal">by design.</span>
-          </h1>
-          <p className="mt-8 max-w-xl text-white/85 text-base lg:text-lg leading-relaxed animate-fade-up [animation-delay:160ms]">
-            Specialist orthodontic care in Vancouver, delivered with clarity, warmth, and personal attention.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 mt-10 animate-fade-up [animation-delay:240ms]">
-            <Link
-              to="/contact"
-              className="px-8 py-4 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300 rounded-full text-xs font-medium uppercase tracking-[0.2em]"
-            >
-              Book a Consultation
-            </Link>
-            <Link
-              to="/about-the-doctors/dr-andrew-tsai"
-              className="px-8 py-4 border border-white/40 backdrop-blur-md text-white hover:bg-white/10 transition-all rounded-full text-xs font-medium uppercase tracking-[0.2em]"
-            >
-              Meet Dr. Andrew Tsai
-            </Link>
-          </div>
-        </div>
+        ))}
 
-        <div className="absolute bottom-6 left-6 right-6 lg:left-10 lg:right-10 flex justify-between items-end text-[10px] uppercase tracking-[0.25em] text-white/60 animate-fade-in [animation-delay:600ms]">
+        <div className="absolute bottom-6 left-6 right-6 lg:left-10 lg:right-10 flex justify-between items-end text-[10px] uppercase tracking-[0.25em] text-white/60 z-10">
           <span>3431 Main Street</span>
-          <span className="hidden md:block">Est. for families like yours</span>
+          <div className="flex gap-2">
+            {HERO_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setSlide(i)}
+                aria-label={`Slide ${i + 1}`}
+                className={`h-[3px] transition-all ${i === slide ? "w-10 bg-white" : "w-6 bg-white/40"}`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
