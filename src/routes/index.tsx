@@ -79,20 +79,30 @@ const PILLARS = [
 ];
 
 function HomePage() {
+  const [slide, setSlide] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setSlide((s) => (s + 1) % HERO_SLIDES.length), 6000);
+    return () => clearInterval(id);
+  }, []);
   return (
     <>
       {/* HERO */}
       <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-foreground">
         <div className="absolute inset-0">
-          <img
-            src={heroFamily}
-            alt="A Vancouver family laughing together in a sun-drenched living room"
-            className="w-full h-full object-cover animate-scale-in"
-            width={1920}
-            height={1080}
-          />
+          {HERO_SLIDES.map((s, i) => (
+            <img
+              key={s.src}
+              src={s.src}
+              alt={s.alt}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1600ms] ease-in-out ${i === slide ? "opacity-100" : "opacity-0"}`}
+              width={1920}
+              height={1080}
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          ))}
           <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
         </div>
+
 
         <div className="relative h-full flex flex-col items-center justify-end pb-20 lg:pb-28 text-center px-6">
           <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-6 animate-fade-up">
