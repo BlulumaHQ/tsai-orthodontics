@@ -14,9 +14,13 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as NewPatientsRouteImport } from './routes/new-patients'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as DentistReferralRouteImport } from './routes/dentist-referral'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutTheDoctorsRouteImport } from './routes/about-the-doctors'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as AboutTheDoctorsDrMarjorieTsaiRouteImport } from './routes/about-the-doctors.dr-marjorie-tsai'
+import { Route as AboutTheDoctorsDrAndrewTsaiRouteImport } from './routes/about-the-doctors.dr-andrew-tsai'
 
 const WhatSetsUsApartRoute = WhatSetsUsApartRouteImport.update({
   id: '/what-sets-us-apart',
@@ -43,9 +47,19 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DentistReferralRoute = DentistReferralRouteImport.update({
+  id: '/dentist-referral',
+  path: '/dentist-referral',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutTheDoctorsRoute = AboutTheDoctorsRouteImport.update({
+  id: '/about-the-doctors',
+  path: '/about-the-doctors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -58,74 +72,112 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ServicesRoute,
 } as any)
+const AboutTheDoctorsDrMarjorieTsaiRoute =
+  AboutTheDoctorsDrMarjorieTsaiRouteImport.update({
+    id: '/dr-marjorie-tsai',
+    path: '/dr-marjorie-tsai',
+    getParentRoute: () => AboutTheDoctorsRoute,
+  } as any)
+const AboutTheDoctorsDrAndrewTsaiRoute =
+  AboutTheDoctorsDrAndrewTsaiRouteImport.update({
+    id: '/dr-andrew-tsai',
+    path: '/dr-andrew-tsai',
+    getParentRoute: () => AboutTheDoctorsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-the-doctors': typeof AboutTheDoctorsRouteWithChildren
   '/contact': typeof ContactRoute
+  '/dentist-referral': typeof DentistReferralRoute
   '/faq': typeof FaqRoute
   '/new-patients': typeof NewPatientsRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/what-sets-us-apart': typeof WhatSetsUsApartRoute
+  '/about-the-doctors/dr-andrew-tsai': typeof AboutTheDoctorsDrAndrewTsaiRoute
+  '/about-the-doctors/dr-marjorie-tsai': typeof AboutTheDoctorsDrMarjorieTsaiRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-the-doctors': typeof AboutTheDoctorsRouteWithChildren
   '/contact': typeof ContactRoute
+  '/dentist-referral': typeof DentistReferralRoute
   '/faq': typeof FaqRoute
   '/new-patients': typeof NewPatientsRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/what-sets-us-apart': typeof WhatSetsUsApartRoute
+  '/about-the-doctors/dr-andrew-tsai': typeof AboutTheDoctorsDrAndrewTsaiRoute
+  '/about-the-doctors/dr-marjorie-tsai': typeof AboutTheDoctorsDrMarjorieTsaiRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-the-doctors': typeof AboutTheDoctorsRouteWithChildren
   '/contact': typeof ContactRoute
+  '/dentist-referral': typeof DentistReferralRoute
   '/faq': typeof FaqRoute
   '/new-patients': typeof NewPatientsRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/what-sets-us-apart': typeof WhatSetsUsApartRoute
+  '/about-the-doctors/dr-andrew-tsai': typeof AboutTheDoctorsDrAndrewTsaiRoute
+  '/about-the-doctors/dr-marjorie-tsai': typeof AboutTheDoctorsDrMarjorieTsaiRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about-the-doctors'
     | '/contact'
+    | '/dentist-referral'
     | '/faq'
     | '/new-patients'
     | '/services'
     | '/sitemap.xml'
     | '/what-sets-us-apart'
+    | '/about-the-doctors/dr-andrew-tsai'
+    | '/about-the-doctors/dr-marjorie-tsai'
     | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about-the-doctors'
     | '/contact'
+    | '/dentist-referral'
     | '/faq'
     | '/new-patients'
     | '/services'
     | '/sitemap.xml'
     | '/what-sets-us-apart'
+    | '/about-the-doctors/dr-andrew-tsai'
+    | '/about-the-doctors/dr-marjorie-tsai'
     | '/services/$slug'
   id:
     | '__root__'
     | '/'
+    | '/about-the-doctors'
     | '/contact'
+    | '/dentist-referral'
     | '/faq'
     | '/new-patients'
     | '/services'
     | '/sitemap.xml'
     | '/what-sets-us-apart'
+    | '/about-the-doctors/dr-andrew-tsai'
+    | '/about-the-doctors/dr-marjorie-tsai'
     | '/services/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutTheDoctorsRoute: typeof AboutTheDoctorsRouteWithChildren
   ContactRoute: typeof ContactRoute
+  DentistReferralRoute: typeof DentistReferralRoute
   FaqRoute: typeof FaqRoute
   NewPatientsRoute: typeof NewPatientsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
@@ -170,11 +222,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dentist-referral': {
+      id: '/dentist-referral'
+      path: '/dentist-referral'
+      fullPath: '/dentist-referral'
+      preLoaderRoute: typeof DentistReferralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-the-doctors': {
+      id: '/about-the-doctors'
+      path: '/about-the-doctors'
+      fullPath: '/about-the-doctors'
+      preLoaderRoute: typeof AboutTheDoctorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -191,8 +257,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/about-the-doctors/dr-marjorie-tsai': {
+      id: '/about-the-doctors/dr-marjorie-tsai'
+      path: '/dr-marjorie-tsai'
+      fullPath: '/about-the-doctors/dr-marjorie-tsai'
+      preLoaderRoute: typeof AboutTheDoctorsDrMarjorieTsaiRouteImport
+      parentRoute: typeof AboutTheDoctorsRoute
+    }
+    '/about-the-doctors/dr-andrew-tsai': {
+      id: '/about-the-doctors/dr-andrew-tsai'
+      path: '/dr-andrew-tsai'
+      fullPath: '/about-the-doctors/dr-andrew-tsai'
+      preLoaderRoute: typeof AboutTheDoctorsDrAndrewTsaiRouteImport
+      parentRoute: typeof AboutTheDoctorsRoute
+    }
   }
 }
+
+interface AboutTheDoctorsRouteChildren {
+  AboutTheDoctorsDrAndrewTsaiRoute: typeof AboutTheDoctorsDrAndrewTsaiRoute
+  AboutTheDoctorsDrMarjorieTsaiRoute: typeof AboutTheDoctorsDrMarjorieTsaiRoute
+}
+
+const AboutTheDoctorsRouteChildren: AboutTheDoctorsRouteChildren = {
+  AboutTheDoctorsDrAndrewTsaiRoute: AboutTheDoctorsDrAndrewTsaiRoute,
+  AboutTheDoctorsDrMarjorieTsaiRoute: AboutTheDoctorsDrMarjorieTsaiRoute,
+}
+
+const AboutTheDoctorsRouteWithChildren = AboutTheDoctorsRoute._addFileChildren(
+  AboutTheDoctorsRouteChildren,
+)
 
 interface ServicesRouteChildren {
   ServicesSlugRoute: typeof ServicesSlugRoute
@@ -208,7 +302,9 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutTheDoctorsRoute: AboutTheDoctorsRouteWithChildren,
   ContactRoute: ContactRoute,
+  DentistReferralRoute: DentistReferralRoute,
   FaqRoute: FaqRoute,
   NewPatientsRoute: NewPatientsRoute,
   ServicesRoute: ServicesRouteWithChildren,
