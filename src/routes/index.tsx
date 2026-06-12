@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Boutique specialist orthodontics on Main Street in Vancouver. Braces, Invisalign, and unhurried family care from Dr. Tsai.",
+          "Specialist orthodontic care on Main Street in Vancouver. Braces, Invisalign, and unhurried family care from Dr. Tsai.",
       },
       { property: "og:title", content: "Tsai Orthodontics — Specialist Care, Made Personal" },
       {
@@ -77,12 +77,12 @@ function HomePage() {
         <>
           Built on
           <br />
-          <span className="italic font-normal">long relationships.</span>
+          long relationships.
         </>,
         <>
           建立在
           <br />
-          <span className="italic font-normal">長期信任之上。</span>
+          長期信任之上。
         </>,
       ),
       tagline: t(
@@ -103,10 +103,10 @@ function HomePage() {
     {
       n: "01",
       label: t("Craft", "Craft"),
-      headline: t("Precision matters.", "精準，至關重要。"),
+      headline: t("Careful planning, specialist training.", "細膩規劃，專科訓練。"),
       body: t(
-        "Careful planning and specialist training help us build treatment plans that are tailored to the individual patient — never to a template.",
-        "細膩的規劃與專科訓練，讓我們為每一位病患量身打造療程，而非套用既有模板。",
+        "We believe careful planning and specialist training create better treatment experiences.",
+        "我們相信，細膩的規劃與專科訓練，能帶來更好的治療體驗。",
       ),
       image: pillarCraft,
       alt: "Close-up of a digital orthodontic treatment plan on a clinical monitor",
@@ -114,10 +114,10 @@ function HomePage() {
     {
       n: "02",
       label: t("Care", "Care"),
-      headline: t("Orthodontics is personal.", "矯正治療，是非常個人的事。"),
+      headline: t("Heard, supported, comfortable.", "被傾聽、被支持、感到安心。"),
       body: t(
-        "We take time to listen, to explain, and to help every patient feel comfortable throughout the process — children, teens, and adults alike.",
-        "我們願意花時間傾聽、說明，並讓每一位病患——無論是孩子、青少年或成人——在整個療程中都感到安心。",
+        "We believe patients should feel heard, supported, and comfortable throughout treatment.",
+        "我們相信，病患在整個療程中都應該感受到被傾聽、被支持，並且安心自在。",
       ),
       image: pillarCare,
       alt: "An orthodontist gently talking with a young patient in a consult room",
@@ -125,10 +125,10 @@ function HomePage() {
     {
       n: "03",
       label: t("Clarity", "Clarity"),
-      headline: t("Patients deserve clear answers.", "病患值得清楚的答案。"),
+      headline: t("Straightforward answers.", "清楚直接的回答。"),
       body: t(
-        "We explain what we see, what we recommend, and why — using your own images, in plain language, before any treatment decision is made.",
-        "在做任何治療決定之前，我們會以您自己的口腔影像，用淺白的語言說明我們看到的狀況、建議的方式以及背後的原因。",
+        "We believe families deserve straightforward answers and a clear understanding of their options.",
+        "我們相信，家屬值得獲得清楚、直接的回答，並充分理解所有可行的選擇。",
       ),
       image: pillarClarity,
       alt: "Clinician reviewing a 3D dental scan on screen with a patient",
@@ -136,10 +136,10 @@ function HomePage() {
     {
       n: "04",
       label: t("Convenience", "Convenience"),
-      headline: t("Care that fits into your life.", "貼近生活節奏的看診體驗。"),
+      headline: t("Care that fits everyday life.", "貼近日常生活的看診體驗。"),
       body: t(
-        "Flexible appointments, family scheduling for siblings, and bilingual care in English, Mandarin, and Cantonese — so every visit feels effortless, not interruptive.",
-        "彈性的看診時段、可一同安排的家庭預約，並提供英文、國語與廣東話雙語服務，讓每一次回診都更從容、不打亂生活。",
+        "We believe orthodontic care should fit naturally into everyday life.",
+        "我們相信，齒顎矯正照護應該自然融入每天的生活節奏。",
       ),
       image: pillarConvenience,
       alt: "A warm, sunlit modern orthodontic consultation space",
