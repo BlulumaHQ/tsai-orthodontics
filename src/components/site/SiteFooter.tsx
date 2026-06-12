@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { FOOTER_NAV, FOOTER_SERVICES, SITE } from "@/lib/site-data";
+import { useT } from "@/lib/i18n";
 
 export function SiteFooter() {
+  const { t, lang } = useT();
   return (
     <footer className="bg-foreground text-background pt-24 pb-10 px-6 lg:px-10">
       <div className="max-w-7xl mx-auto">
@@ -12,7 +14,10 @@ export function SiteFooter() {
               {SITE.name}
             </div>
             <p className="text-white/60 text-sm leading-relaxed">
-              Specialist orthodontic care in Vancouver — delivered with clarity, warmth, and personal attention.
+              {t(
+                "Specialist orthodontic care in Vancouver — delivered with clarity, warmth, and personal attention.",
+                "溫哥華專科齒顎矯正診所——以清晰、溫暖與個人化的關懷，陪伴每一位病患。",
+              )}
             </p>
           </div>
 
@@ -22,13 +27,13 @@ export function SiteFooter() {
           {/* Column 3 — practice nav */}
           <div>
             <div className="text-[10px] uppercase tracking-[0.22em] text-white/40 mb-4">
-              Practice
+              {t("Practice", "診所")}
             </div>
             <ul className="space-y-2 text-sm">
               {FOOTER_NAV.map((l) => (
                 <li key={l.to}>
                   <Link to={l.to} className="text-white/85 hover:text-primary transition">
-                    {l.label}
+                    {lang === "zh" ? l.labelZh : l.label}
                   </Link>
                 </li>
               ))}
@@ -38,13 +43,13 @@ export function SiteFooter() {
           {/* Column 4 — services */}
           <div>
             <div className="text-[10px] uppercase tracking-[0.22em] text-white/40 mb-4">
-              Services
+              {t("Services", "矯正服務")}
             </div>
             <ul className="space-y-2 text-sm">
               {FOOTER_SERVICES.map((l) => (
                 <li key={l.to}>
                   <Link to={l.to} className="text-white/85 hover:text-primary transition">
-                    {l.label}
+                    {lang === "zh" ? l.labelZh : l.label}
                   </Link>
                 </li>
               ))}
@@ -54,7 +59,7 @@ export function SiteFooter() {
           {/* Column 5 — contact */}
           <div>
             <div className="text-[10px] uppercase tracking-[0.22em] text-white/40 mb-4">
-              Contact
+              {t("Contact", "聯絡我們")}
             </div>
             <address className="not-italic text-white/85 leading-relaxed text-sm">
               {SITE.address.street}<br />
@@ -74,13 +79,13 @@ export function SiteFooter() {
             </a>
 
             <div className="mt-6 text-[10px] uppercase tracking-[0.22em] text-white/40 mb-2">
-              Hours
+              {t("Hours", "看診時間")}
             </div>
             <ul className="space-y-1 text-xs text-white/70">
               {SITE.hours.map((h) => (
                 <li key={h.day} className="flex justify-between gap-4">
-                  <span>{h.day}</span>
-                  <span className="text-white/50">{h.time}</span>
+                  <span>{lang === "zh" ? h.dayZh : h.day}</span>
+                  <span className="text-white/50">{lang === "zh" ? h.timeZh : h.time}</span>
                 </li>
               ))}
             </ul>
@@ -89,7 +94,8 @@ export function SiteFooter() {
 
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-3 text-[11px] tracking-[0.04em] text-white/40">
           <p>
-            © 2026 {SITE.name}. All rights reserved. | Web Design by{" "}
+            © 2026 {SITE.name}.{" "}
+            {t("All rights reserved.", "版權所有。")} | {t("Web Design by", "網站設計：")}{" "}
             <a
               href="https://bluluma.com"
               target="_blank"

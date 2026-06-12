@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
+import { useT } from "@/lib/i18n";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
@@ -12,17 +13,18 @@ const schema = z.object({
 
 type FormState = z.infer<typeof schema>;
 
-const INTERESTS = [
-  "Consultation for my child",
-  "Consultation for my teen",
-  "Consultation for myself",
-  "Invisalign",
-  "Braces",
-  "Second opinion",
-  "Other",
+const INTERESTS: { en: string; zh: string }[] = [
+  { en: "Consultation for my child", zh: "兒童矯正諮詢" },
+  { en: "Consultation for my teen", zh: "青少年矯正諮詢" },
+  { en: "Consultation for myself", zh: "成人矯正諮詢" },
+  { en: "Invisalign", zh: "Invisalign" },
+  { en: "Braces", zh: "Braces" },
+  { en: "Second opinion", zh: "第二意見" },
+  { en: "Other", zh: "其他" },
 ];
 
 export function ConsultationForm() {
+  const { t } = useT();
   const [values, setValues] = useState<FormState>({
     name: "",
     email: "",
@@ -52,14 +54,19 @@ export function ConsultationForm() {
     }
     setSubmitting(true);
     await new Promise((r) => setTimeout(r, 600));
-    toast.success("Thank you — we will be in touch within one business day.");
+    toast.success(
+      t(
+        "Thank you — we will be in touch within one business day.",
+        "感謝您的來訊——我們會在一個工作天內與您聯繫。",
+      ),
+    );
     setValues({ name: "", email: "", phone: "", interest: "", message: "" });
     setSubmitting(false);
   }
 
   return (
     <form onSubmit={onSubmit} className="space-y-6" noValidate>
-      <Field label="Your name" error={errors.name}>
+      <Field label={t("Your name", "您的姓名")} error={errors.name}>
         <input
           type="text"
           value={values.name}
@@ -70,7 +77,7 @@ export function ConsultationForm() {
         />
       </Field>
       <div className="grid sm:grid-cols-2 gap-6">
-        <Field label="Email" error={errors.email}>
+        <Field label={t("Email", "電子郵件")} error={errors.email}>
           <input
             type="email"
             value={values.email}
@@ -80,7 +87,7 @@ export function ConsultationForm() {
             required
           />
         </Field>
-        <Field label="Phone" error={errors.phone}>
+        <Field label={t("Phone", "聯絡電話")} error={errors.phone}>
           <input
             type="tel"
             value={values.phone}
@@ -91,19 +98,21 @@ export function ConsultationForm() {
           />
         </Field>
       </div>
-      <Field label="I'm interested in" error={errors.interest}>
+      <Field label={t("I'm interested in", "我想了解的項目")} error={errors.interest}>
         <select
           value={values.interest}
           onChange={(e) => onChange("interest", e.target.value)}
           className={inputCls}
         >
-          <option value="">Select an option</option>
+          <option value="">{t("Select an option", "請選擇")}</option>
           {INTERESTS.map((i) => (
-            <option key={i} value={i}>{i}</option>
+            <option key={i.en} value={i.en}>
+              {t(i.en, i.zh)}
+            </option>
           ))}
         </select>
       </Field>
-      <Field label="Tell us a little more" error={errors.message}>
+      <Field label={t("Tell us a little more", "請告訴我們更多")} error={errors.message}>
         <textarea
           rows={5}
           value={values.message}
@@ -117,7 +126,9 @@ export function ConsultationForm() {
         disabled={submitting}
         className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-primary text-primary-foreground text-sm uppercase tracking-[0.18em] font-medium hover:bg-foreground transition-colors disabled:opacity-50"
       >
-        {submitting ? "Sending…" : "Request Consultation"}
+        {submitting
+          ? t("Sending…", "送出中…")
+          : t("Request Consultation", "預約諮詢")}
       </button>
     </form>
   );

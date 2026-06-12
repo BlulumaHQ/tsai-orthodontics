@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
+import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/about-the-doctors/dr-marjorie-tsai")({
   head: () => ({
@@ -20,25 +21,42 @@ export const Route = createFileRoute("/about-the-doctors/dr-marjorie-tsai")({
 });
 
 function DrMarjoriePage() {
+  const { t } = useT();
   return (
     <>
       <PageHero
         eyebrow="Dr. Marjorie Tsai"
-        title={<>Biography <span className="italic font-normal">coming soon.</span></>}
-        intro="This page is being prepared as part of the complete Tsai Orthodontics website."
+        title={t(
+          <>
+            Biography <span className="italic font-normal">coming soon.</span>
+          </>,
+          <>
+            醫師介紹<span className="italic font-normal">即將上線。</span>
+          </>,
+        )}
+        intro={t(
+          "This page is being prepared as part of the complete Tsai Orthodontics website.",
+          "本頁面正在準備中，將與 Tsai Orthodontics 完整網站一同推出。",
+        )}
       />
 
       <section className="px-6 lg:px-10 pb-24 lg:pb-32">
         <div className="max-w-3xl mx-auto">
           <div className="rounded-3xl border border-foreground/8 bg-secondary/30 p-10 lg:p-14">
             <div className="text-primary text-[11px] uppercase tracking-[0.25em] mb-4">
-              About Dr. Marjorie Tsai
+              {t("About Dr. Marjorie Tsai", "關於 Dr. Marjorie Tsai")}
             </div>
             <p className="text-lg text-foreground/85 leading-relaxed mb-6">
-              Dr. Marjorie Tsai's full biography will be added soon. Patients can expect the same thoughtful, family-centered approach that defines the Tsai Orthodontics experience — careful explanation, warm communication, and specialist-level orthodontic planning.
+              {t(
+                "Dr. Marjorie Tsai's full biography will be added soon. Patients can expect the same thoughtful, family-centered approach that defines the Tsai Orthodontics experience — careful explanation, warm communication, and specialist-level orthodontic planning.",
+                "Dr. Marjorie Tsai 的完整介紹將於近期上線。您可以期待與 Tsai Orthodontics 一貫相同的細膩、以家庭為中心的照護方式——仔細的說明、溫暖的溝通，以及專科層級的矯正規劃。",
+              )}
             </p>
             <p className="text-foreground/70 leading-relaxed">
-              In the meantime, please feel free to contact the practice directly with any questions.
+              {t(
+                "In the meantime, please feel free to contact the practice directly with any questions.",
+                "在此之前，若您有任何問題，歡迎直接與診所聯繫。",
+              )}
             </p>
           </div>
         </div>
@@ -49,7 +67,7 @@ function DrMarjoriePage() {
           to="/contact"
           className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-foreground transition-colors"
         >
-          Contact the Practice
+          {t("Contact the Practice", "聯絡診所")}
         </Link>
       </section>
     </>

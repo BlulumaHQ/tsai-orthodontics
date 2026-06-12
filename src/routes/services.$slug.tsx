@@ -1,8 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
-import { SERVICE_BY_SLUG, type Service } from "@/lib/services-data";
+import {
+  SERVICE_BY_SLUG,
+  localizedService,
+  type Service,
+} from "@/lib/services-data";
 import { SITE } from "@/lib/site-data";
+import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -57,18 +62,28 @@ export const Route = createFileRoute("/services/$slug")({
     };
   },
   component: ServicePage,
-  notFoundComponent: () => (
-    <div className="pt-40 pb-32 text-center px-6">
-      <h1 className="font-display text-5xl mb-6">Service not found</h1>
-      <Link to="/services" className="text-primary uppercase tracking-[0.2em] text-xs border-b border-primary pb-1">
-        Back to all services
-      </Link>
-    </div>
-  ),
+  notFoundComponent: () => <NotFound />,
 });
 
+function NotFound() {
+  const { t } = useT();
+  return (
+    <div className="pt-40 pb-32 text-center px-6">
+      <h1 className="font-display text-5xl mb-6">{t("Service not found", "找不到該項服務")}</h1>
+      <Link
+        to="/services"
+        className="text-primary uppercase tracking-[0.2em] text-xs border-b border-primary pb-1"
+      >
+        {t("Back to all services", "返回全部服務")}
+      </Link>
+    </div>
+  );
+}
+
 function ServicePage() {
-  const { service } = Route.useLoaderData() as { service: Service };
+  const { service: raw } = Route.useLoaderData() as { service: Service };
+  const { lang } = useT();
+  const service = localizedService(raw, lang);
 
   switch (service.slug) {
     case "children-and-teens":
@@ -152,6 +167,7 @@ function AdultsPage({ service }: { service: Service }) {
 }
 
 function BracesPage({ service }: { service: Service }) {
+  const { t } = useT();
   return (
     <>
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-12">
@@ -174,7 +190,7 @@ function BracesPage({ service }: { service: Service }) {
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-foreground/10 rounded-[1.25rem] overflow-hidden border border-foreground/10">
             {service.primaryItems.map((item) => (
               <div key={item} className="bg-background p-7 lg:p-8 flex items-center gap-4">
-                <Check className="size-5 text-primary flex-none" />
+                <Check className="size-5 text-primary flex-none" aria-label={t("included", "包含")} />
                 <span className="font-display text-2xl leading-tight">{item}</span>
               </div>
             ))}
@@ -189,6 +205,7 @@ function BracesPage({ service }: { service: Service }) {
 }
 
 function InvisalignPage({ service }: { service: Service }) {
+  const { t } = useT();
   return (
     <>
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
@@ -201,7 +218,9 @@ function InvisalignPage({ service }: { service: Service }) {
               <div className="inline-flex items-center gap-3 rounded-full bg-background/95 text-foreground px-5 py-2 mb-8">
                 <span className="font-display italic text-xl">Invisalign</span>
                 <span className="h-4 w-px bg-foreground/20" />
-                <span className="text-[10px] uppercase tracking-[0.22em] text-foreground/65">Clear aligners</span>
+                <span className="text-[10px] uppercase tracking-[0.22em] text-foreground/65">
+                  {t("Clear aligners", "隱形牙套")}
+                </span>
               </div>
               <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.92] text-balance">
                 {service.heroTitle}
@@ -345,10 +364,11 @@ function RetainersPage({ service }: { service: Service }) {
 }
 
 function BackLink({ centered = false }: { centered?: boolean }) {
+  const { t } = useT();
   return (
     <div className={centered ? "mb-8 flex justify-center" : "mb-8 lg:mb-10"}>
       <Link to="/services" className="inline-flex items-center text-[11px] uppercase tracking-[0.25em] text-muted-foreground hover:text-primary">
-        ← All services
+        ← {t("All services", "全部服務")}
       </Link>
     </div>
   );
@@ -452,11 +472,12 @@ function IconListBand({ service }: { service: Service }) {
 }
 
 function WhyPanel({ service, align }: { service: Service; align: "left" | "center" }) {
+  const { t } = useT();
   if (!service.whyUs) return null;
   return (
     <section className="px-6 lg:px-10 py-20 lg:py-28">
       <div className={`max-w-4xl mx-auto ${align === "center" ? "text-center" : ""}`}>
-        <Eyebrow>Why Tsai Orthodontics</Eyebrow>
+        <Eyebrow>{t("Why Tsai Orthodontics", "為什麼選擇 Tsai Orthodontics")}</Eyebrow>
         <p className="font-display text-3xl md:text-5xl leading-[1.12] text-balance">{service.whyUs}</p>
       </div>
     </section>
@@ -464,11 +485,12 @@ function WhyPanel({ service, align }: { service: Service; align: "left" | "cente
 }
 
 function FAQSection({ service }: { service: Service }) {
+  const { t } = useT();
   if (service.faqs.length === 0) return null;
   return (
     <section className="px-6 lg:px-10 py-20 lg:py-28 bg-secondary/35">
       <div className="max-w-5xl mx-auto">
-        <Eyebrow>FAQ</Eyebrow>
+        <Eyebrow>{t("FAQ", "常見問題")}</Eyebrow>
         <div className="divide-y divide-foreground/10 border-y border-foreground/10">
           {service.faqs.map((f) => (
             <details key={f.q} className="group py-6 lg:py-7">
@@ -486,15 +508,19 @@ function FAQSection({ service }: { service: Service }) {
 }
 
 function ServiceGallery({ service }: { service: Service }) {
+  const { t } = useT();
   if (!service.gallery || service.gallery.length === 0) return null;
   return (
     <section className="px-6 lg:px-10 py-20 lg:py-28">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between gap-6 mb-10 lg:mb-14">
           <div>
-            <Eyebrow>Inside the practice</Eyebrow>
+            <Eyebrow>{t("Inside the practice", "走進診所")}</Eyebrow>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] max-w-2xl text-balance">
-              A closer look at {service.name.toLowerCase()} at Tsai Orthodontics.
+              {t(
+                `A closer look at ${service.name.toLowerCase()} at Tsai Orthodontics.`,
+                `走近看看 Tsai Orthodontics 的 ${service.name}。`,
+              )}
             </h2>
           </div>
         </div>
@@ -519,11 +545,15 @@ function ServiceGallery({ service }: { service: Service }) {
 }
 
 function RelatedServices({ service }: { service: Service }) {
-  const related = service.related.map((slug) => SERVICE_BY_SLUG[slug]).filter(Boolean);
+  const { t, lang } = useT();
+  const related = service.related
+    .map((slug) => SERVICE_BY_SLUG[slug])
+    .filter(Boolean)
+    .map((s) => localizedService(s, lang));
   return (
     <section className="px-6 lg:px-10 py-20 lg:py-28 bg-secondary/35">
       <div className="max-w-7xl mx-auto">
-        <Eyebrow>Related Services</Eyebrow>
+        <Eyebrow>{t("Related Services", "相關服務")}</Eyebrow>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {related.map((r) => (
             <Link key={r.slug} to="/services/$slug" params={{ slug: r.slug }} className="group bg-background border border-foreground/10 rounded-[1.25rem] p-7 hover:border-primary transition-all">
@@ -541,18 +571,22 @@ function RelatedServices({ service }: { service: Service }) {
 }
 
 function ConsultationCTA({ service }: { service: Service }) {
+  const { t } = useT();
   return (
     <section className="px-6 lg:px-10 py-20 lg:py-28">
       <div className="max-w-5xl mx-auto bg-foreground text-background rounded-[1.5rem] p-8 md:p-12 lg:p-16">
         <h2 className="font-display text-3xl md:text-5xl leading-[1.1] mb-8 max-w-3xl text-balance">
-          Curious if {service.name.toLowerCase()} is right for you?
+          {t(
+            `Curious if ${service.name.toLowerCase()} is right for you?`,
+            `想了解 ${service.name} 是否適合您嗎？`,
+          )}
         </h2>
         <div className="flex flex-col sm:flex-row gap-3">
           <Link to="/contact" className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-background hover:text-foreground transition-colors inline-flex items-center justify-center gap-2">
-            Book a Consultation <ArrowRight className="size-4" />
+            {t("Book a Consultation", "預約諮詢")} <ArrowRight className="size-4" />
           </Link>
           <a href={SITE.phoneHref} className="px-8 py-4 rounded-full border border-background/20 text-background text-xs uppercase tracking-[0.2em] hover:bg-background/10 transition-colors text-center">
-            Call {SITE.phone}
+            {t("Call", "電話聯絡")} {SITE.phone}
           </a>
         </div>
       </div>

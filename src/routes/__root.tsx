@@ -16,6 +16,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { SITE } from "@/lib/site-data";
+import { LanguageProvider } from "@/lib/i18n";
 
 function NotFoundComponent() {
   return (
@@ -166,13 +167,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SiteHeader transparent={transparent} />
-      <main className="min-h-screen">
-        <Outlet />
-      </main>
-      <SiteFooter />
-      <MobileStickyCTA />
-      <Toaster position="top-center" richColors />
+      <LanguageProvider>
+        <SiteHeader transparent={transparent} />
+        <main className="min-h-screen">
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <MobileStickyCTA />
+        <Toaster position="top-center" richColors />
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { FAQ_GROUPS, ALL_FAQS } from "@/lib/faq-data";
+import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -12,7 +13,10 @@ export const Route = createFileRoute("/faq")({
           "Answers to common questions about specialist orthodontic care at Tsai Orthodontics in Vancouver — consultations, treatment, insurance, financing.",
       },
       { property: "og:title", content: "Frequently Asked Questions" },
-      { property: "og:description", content: "Clear answers to common orthodontic questions, from Tsai Orthodontics." },
+      {
+        property: "og:description",
+        content: "Clear answers to common orthodontic questions, from Tsai Orthodontics.",
+      },
       { property: "og:url", content: "/faq" },
     ],
     links: [{ rel: "canonical", href: "/faq" }],
@@ -35,19 +39,32 @@ export const Route = createFileRoute("/faq")({
 });
 
 function FaqPage() {
+  const { t, lang } = useT();
   return (
     <>
       <PageHero
-        eyebrow="Frequently Asked"
-        title={<>The questions <span className="italic font-normal">most families ask.</span></>}
-        intro="If yours isn't here, please reach out — we are always happy to talk it through."
+        eyebrow={t("Frequently Asked", "常見問題")}
+        title={t(
+          <>
+            The questions <span className="italic font-normal">most families ask.</span>
+          </>,
+          <>
+            病患與家屬<span className="italic font-normal">最常詢問的問題。</span>
+          </>,
+        )}
+        intro={t(
+          "If yours isn't here, please reach out — we are always happy to talk it through.",
+          "若這裡沒有您的問題，歡迎直接聯絡我們，我們很樂意進一步說明。",
+        )}
       />
 
       <section className="px-6 lg:px-10 pb-32">
         <div className="max-w-3xl mx-auto space-y-20">
           {FAQ_GROUPS.map((group) => (
             <div key={group.title}>
-              <h2 className="font-display text-3xl md:text-4xl mb-8">{group.title}</h2>
+              <h2 className="font-display text-3xl md:text-4xl mb-8">
+                {lang === "zh" ? group.titleZh : group.title}
+              </h2>
               <div>
                 {group.items.map((item) => (
                   <details
@@ -55,10 +72,14 @@ function FaqPage() {
                     className="group border-t border-foreground/10 last:border-b py-6"
                   >
                     <summary className="flex justify-between gap-6 cursor-pointer font-display text-lg md:text-xl leading-snug list-none">
-                      <span>{item.q}</span>
-                      <span className="text-primary transition-transform group-open:rotate-45 text-2xl leading-none flex-none">+</span>
+                      <span>{lang === "zh" ? item.qZh : item.q}</span>
+                      <span className="text-primary transition-transform group-open:rotate-45 text-2xl leading-none flex-none">
+                        +
+                      </span>
                     </summary>
-                    <p className="mt-4 text-muted-foreground leading-relaxed">{item.a}</p>
+                    <p className="mt-4 text-muted-foreground leading-relaxed">
+                      {lang === "zh" ? item.aZh : item.a}
+                    </p>
                   </details>
                 ))}
               </div>
