@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tsai-orthodontics",
+  "compatibility_date": "2026-06-12",
+  "main": "@tanstack/react-start/server-entry",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist/client"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
