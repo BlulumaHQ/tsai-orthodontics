@@ -89,9 +89,9 @@ export const FAQ_GROUPS: FaqGroup[] = [
     titleZh: "家庭與雙語服務",
     items: [
       {
-        q: "Do you offer service in Chinese?",
+        q: "Do you offer service in Mandarin?",
         qZh: "你們有提供中文服務嗎？",
-        a: "Yes. We provide consultations and ongoing care in both English and Chinese.",
+        a: "Yes. We provide consultations and ongoing care in both English and Mandarin.",
         aZh: "有的。我們以英文與中文提供諮詢與後續療程照護。",
       },
       {

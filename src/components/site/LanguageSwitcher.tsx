@@ -42,7 +42,7 @@ export function LanguageSwitcher({
         lang="zh-Hant"
         className={`${base} ${lang === "zh" ? activeCls : inactiveCls}`}
       >
-        繁中
+        中文
       </button>
     </div>
   );
