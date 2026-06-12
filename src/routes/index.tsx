@@ -195,18 +195,25 @@ function HomePage() {
       {/* HERO */}
       <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-foreground">
         <div className="absolute inset-0">
-          {HERO_SLIDES.map((s, i) => (
-            <img
-              key={s.src}
-              src={s.src}
-              alt={String(s.alt)}
-              style={{ objectPosition: s.objectPosition }}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1600ms] ease-in-out ${i === slide ? "opacity-100" : "opacity-0"}`}
-              width={1920}
-              height={1080}
-              loading={i === 0 ? "eager" : "lazy"}
-            />
-          ))}
+          {HERO_SLIDES.map((s, i) => {
+            // On mobile, slide 2 ("right" focal) crops the person off-screen.
+            // Center it on mobile, then return to the designed focal point at md+.
+            const isRight = s.objectPosition === "right";
+            const positionClass = isRight
+              ? "[object-position:50%_30%] md:[object-position:right]"
+              : "[object-position:center]";
+            return (
+              <img
+                key={s.src}
+                src={s.src}
+                alt={String(s.alt)}
+                className={`absolute inset-0 w-full h-full object-cover ${positionClass} transition-opacity duration-[1600ms] ease-in-out ${i === slide ? "opacity-100" : "opacity-0"}`}
+                width={1920}
+                height={1080}
+                loading={i === 0 ? "eager" : "lazy"}
+              />
+            );
+          })}
           {HERO_SLIDES[slide].align === "left" ? (
             <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent" />
           ) : (
