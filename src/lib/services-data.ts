@@ -97,8 +97,7 @@ export const SERVICE_GALLERIES: Record<string, { src: string; alt: string }[]> =
   ],
   "braces-and-fixed-appliances": [
     { src: "/images/services/braces.webp", alt: "Modern braces close-up" },
-    { src: "/images/services/braces-2.webp", alt: "Patient with fixed braces" },
-    { src: "/images/services/tsai-brace.webp", alt: "Detailed view of braces at Tsai Orthodontics" },
+    { src: "/images/services/braces-2.webp", alt: "Patient with fixed braces at Tsai Orthodontics" },
   ],
   invisalign: [
     { src: "/images/services/invisalign.webp", alt: "Invisalign clear aligner" },
