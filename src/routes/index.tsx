@@ -440,33 +440,39 @@ function HomePage() {
         </div>
       </section>
 
-      {/* DIFFERENTIATORS */}
-      <section className="py-24 lg:py-32 bg-foreground text-background px-6 lg:px-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
-            {t("What Sets Us Apart", "我們的不同之處")}
-          </div>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-16 max-w-4xl text-balance">
-            {t(
-              "Orthodontic care should feel thoughtful from the first conversation. At Tsai Orthodontics, every treatment plan is shaped by specialist training, clear communication, and a calmer experience for patients and families.",
-              "矯正治療應該從第一次對話就讓人感到細膩用心。在 Tsai Orthodontics，每一份治療計畫都建立在專科訓練、清楚溝通，以及讓病患與家屬更安心的就診體驗之上。",
-            )}
-          </h2>
-          <div className="grid md:grid-cols-2 gap-x-16 gap-y-10 max-w-5xl">
-            {DIFFERENTIATORS.map(([title, body]) => (
-              <div key={title}>
-                <h3 className="font-display text-2xl mb-3 text-background">{title}</h3>
-                <p className="text-background/65 leading-relaxed">{body}</p>
+      {/*
+        Google Reviews — Placeholder Google Reviews.
+        Replace with real Google Business reviews before public launch.
+      */}
+      <section className="py-16 lg:py-24 px-6 lg:px-10 bg-secondary/30">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 lg:mb-14">
+            <div>
+              <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-3">
+                {t("Google Reviews", "Google 評論")}
               </div>
-            ))}
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-balance">
+                {t("What our families say.", "病患與家屬的真實回饋。")}
+              </h2>
+            </div>
           </div>
-          <div className="mt-16">
-            <Link
-              to="/what-sets-us-apart"
-              className="inline-flex items-center gap-2 text-primary text-xs uppercase tracking-[0.2em] font-medium border-b border-primary pb-1"
-            >
-              {t("The full comparison", "完整比較")} <ArrowRight className="size-4" />
-            </Link>
+          <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
+            {REVIEWS.map((r) => (
+              <article
+                key={r.name}
+                className="bg-background rounded-3xl border border-foreground/10 p-7 lg:p-8 flex flex-col"
+              >
+                <div className="text-primary tracking-widest text-base mb-4" aria-label="5 out of 5 stars">
+                  ★★★★★
+                </div>
+                <p className="text-foreground/85 leading-relaxed text-[15px] flex-1">
+                  &ldquo;{r.text}&rdquo;
+                </p>
+                <div className="mt-6 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  {r.name}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
