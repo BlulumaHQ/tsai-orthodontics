@@ -252,8 +252,8 @@ function PhaseIPage({ service }: { service: Service }) {
             {service.heroTitle}
           </h1>
         </div>
-        <div className="max-w-6xl mx-auto mt-14 rounded-[1.5rem] overflow-hidden">
-          <img src={service.image} alt={service.heroAlt} width={1600} height={1000} className="w-full aspect-[16/8] object-cover" />
+        <div className="max-w-6xl mx-auto mt-14 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
+          <Zoomable src={service.image} alt={service.heroAlt} width={1600} height={1000} className="w-full h-auto max-h-[560px] object-contain" />
         </div>
       </section>
       <section className="px-6 lg:px-10 py-20 bg-secondary/35">
