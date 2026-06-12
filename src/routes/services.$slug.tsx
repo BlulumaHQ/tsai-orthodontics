@@ -529,17 +529,17 @@ function ServiceGallery({ service }: { service: Service }) {
             </h2>
           </div>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 lg:gap-5 [column-fill:_balance]">
           {service.gallery.map((g, i) => (
             <div
               key={g.src + i}
-              className={`overflow-hidden rounded-2xl bg-secondary/40 ${i === 0 ? "col-span-2 lg:col-span-2 lg:row-span-2 aspect-square lg:aspect-auto" : "aspect-[4/5]"}`}
+              className="mb-4 lg:mb-5 break-inside-avoid overflow-hidden rounded-2xl bg-secondary/40"
             >
-              <img
+              <Zoomable
                 src={g.src}
                 alt={g.alt}
                 loading="lazy"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                className="w-full h-auto block hover:scale-[1.02] transition-transform duration-700"
               />
             </div>
           ))}
