@@ -11,12 +11,13 @@ export function LanguageSwitcher({
 
   const base =
     "px-2.5 py-1 text-[11px] tracking-[0.12em] font-medium uppercase transition-colors";
-  const activeCls =
-    tone === "light" ? "text-white" : "text-foreground";
+  // Active language is rendered in the brand orange in both tones for a
+  // consistent, recognizable cue.
+  const activeCls = "text-primary";
   const inactiveCls =
     tone === "light"
-      ? "text-white/55 hover:text-white"
-      : "text-foreground/55 hover:text-foreground";
+      ? "text-white/55 hover:text-primary"
+      : "text-foreground/55 hover:text-primary";
   const dividerCls = tone === "light" ? "text-white/30" : "text-foreground/25";
 
   return (

@@ -169,18 +169,22 @@ function NewPatients() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {FORMS.map((f) => (
-              <a
+              <div
                 key={f.title}
-                href={f.href}
-                className="group bg-background border border-foreground/10 rounded-3xl p-8 hover:border-primary transition-colors flex flex-col"
+                className="bg-background border border-foreground/10 rounded-3xl p-8 hover:border-primary transition-colors flex flex-col"
               >
-                <Download className="size-6 text-primary mb-6 group-hover:translate-y-0.5 transition-transform" />
+                <Download className="size-6 text-primary mb-6" />
                 <h3 className="font-display text-xl mb-3 leading-snug">{f.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed flex-1">{f.body}</p>
-                <div className="mt-6 text-[11px] uppercase tracking-[0.2em] text-primary">
+                <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-8">{f.body}</p>
+                <a
+                  href={f.href}
+                  download
+                  className="mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground text-[11px] uppercase tracking-[0.2em] font-medium hover:bg-foreground transition-colors"
+                >
+                  <Download className="size-4" />
                   {t("Download PDF", "下載 PDF")}
-                </div>
-              </a>
+                </a>
+              </div>
             ))}
           </div>
           <p className="text-muted-foreground text-sm mt-8 max-w-2xl">

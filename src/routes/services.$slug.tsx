@@ -8,6 +8,7 @@ import {
 } from "@/lib/services-data";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
+import dentalChairBg from "@/assets/dental-chair-brand.jpg.asset.json";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -574,7 +575,14 @@ function ConsultationCTA({ service }: { service: Service }) {
   const { t } = useT();
   return (
     <section className="px-6 lg:px-10 py-20 lg:py-28">
-      <div className="max-w-5xl mx-auto bg-foreground text-background rounded-[1.5rem] p-8 md:p-12 lg:p-16">
+      <div
+        className="relative max-w-5xl mx-auto rounded-[1.5rem] overflow-hidden p-8 md:p-12 lg:p-16 text-background"
+        style={{
+          backgroundImage: `linear-gradient(120deg, oklch(0.45 0.12 50 / 0.92), oklch(0.63 0.12 50 / 0.78)), url(${dentalChairBg.url})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <h2 className="font-display text-3xl md:text-5xl leading-[1.1] mb-8 max-w-3xl text-balance">
           {t(
             `Curious if ${service.name.toLowerCase()} is right for you?`,
@@ -582,10 +590,10 @@ function ConsultationCTA({ service }: { service: Service }) {
           )}
         </h2>
         <div className="flex flex-col sm:flex-row gap-3">
-          <Link to="/contact" className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-background hover:text-foreground transition-colors inline-flex items-center justify-center gap-2">
+          <Link to="/contact" className="px-8 py-4 rounded-full bg-background text-foreground text-xs uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-colors inline-flex items-center justify-center gap-2">
             {t("Book a Consultation", "預約諮詢")} <ArrowRight className="size-4" />
           </Link>
-          <a href={SITE.phoneHref} className="px-8 py-4 rounded-full border border-background/20 text-background text-xs uppercase tracking-[0.2em] hover:bg-background/10 transition-colors text-center">
+          <a href={SITE.phoneHref} className="px-8 py-4 rounded-full border border-background/40 text-background text-xs uppercase tracking-[0.2em] hover:bg-background/15 transition-colors text-center">
             {t("Call", "電話聯絡")} {SITE.phone}
           </a>
         </div>

@@ -57,34 +57,18 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
             ))}
           </nav>
 
-          {/* Desktop right cluster: phone · switcher · CTA */}
+          {/* Desktop right cluster: CTA only (phone + lang live in top bar) */}
           <div className="hidden lg:flex items-center gap-4 shrink-0">
-            <a
-              href={SITE.phoneHref}
-              className={`text-[11px] uppercase tracking-[0.18em] font-medium transition-colors ${
-                solid
-                  ? "text-foreground/75 hover:text-primary"
-                  : "text-white/85 hover:text-white"
-              }`}
-            >
-              {SITE.phone}
-            </a>
-            <span
-              className={`h-3 w-px ${solid ? "bg-foreground/15" : "bg-white/25"}`}
-              aria-hidden
-            />
-            <LanguageSwitcher tone={solid ? "dark" : "light"} />
             <Link
               to="/contact"
-              className="ml-2 text-[11px] uppercase tracking-[0.18em] font-medium px-5 py-2.5 rounded-full bg-primary text-primary-foreground hover:bg-foreground transition-colors"
+              className="text-[11px] uppercase tracking-[0.18em] font-medium px-5 py-2.5 rounded-full bg-primary text-primary-foreground hover:bg-foreground transition-colors"
             >
               {t("Book a Consultation", "預約諮詢")}
             </Link>
           </div>
 
-          {/* Mobile right cluster: switcher · hamburger */}
-          <div className="lg:hidden flex items-center gap-3">
-            <LanguageSwitcher tone={solid ? "dark" : "light"} />
+          {/* Mobile right cluster: hamburger only (lang switcher is in top bar) */}
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setOpen(true)}
               aria-label={t("Open menu", "開啟選單")}
