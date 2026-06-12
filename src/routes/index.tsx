@@ -146,49 +146,28 @@ function HomePage() {
     },
   ];
 
-  const DIFFERENTIATORS: [string, string][] = [
-    [
-      t("Specialist-led from the first call", "從第一通電話起，皆由專科醫師主導"),
-      t(
-        "Every plan is designed and supervised by Dr. Tsai — never delegated to an algorithm or a junior associate.",
-        "每一份矯正計畫都由 Dr. Tsai 親自設計與監督，不會交由演算法或資淺助理執行。",
+  const REVIEWS = [
+    {
+      name: "Sarah L.",
+      text: t(
+        "Dr. Tsai took the time to explain every step of the process. My daughter actually looks forward to her visits.",
+        "Dr. Tsai 花了很多時間，把每一個療程步驟解釋得很清楚。我女兒甚至很期待回診。",
       ),
-    ],
-    [
-      t("Advanced digital workflow", "完整的數位化看診流程"),
-      t(
-        "Intraoral scanning, 3D treatment simulation, and a fully paperless practice — built for accuracy, not novelty.",
-        "口內掃描、3D 治療模擬與無紙化作業——一切設計都以精準為目的，而非追求新奇。",
+    },
+    {
+      name: "Michael W.",
+      text: t(
+        "The office feels welcoming and organized. I appreciated the clear communication and thoughtful approach.",
+        "診所的氛圍親切、流程也很有條理。我特別欣賞他們清楚的溝通與細膩的看診方式。",
       ),
-    ],
-    [
-      t("Personalized treatment planning", "個人化療程規劃"),
-      t(
-        "No templates, no aligner-mill shortcuts. Each plan is built from scratch around one set of teeth and one life.",
-        "不套用模板、不走流水線。每一份治療計畫，都依照單一病患的牙齒與生活方式，從零開始量身規劃。",
+    },
+    {
+      name: "Emily C.",
+      text: t(
+        "We never felt rushed. Every question was answered, and the entire experience has been positive for our family.",
+        "整個過程我們從來沒有被催促的感覺。每個問題都得到回應，對全家來說都是非常正面的體驗。",
       ),
-    ],
-    [
-      t("Family-centered experience", "以家庭為中心的就診體驗"),
-      t(
-        "Coordinated scheduling for siblings, quiet appointment slots for nervous kids, and a calm waiting area that doesn't feel clinical.",
-        "可同時安排兄弟姊妹的看診時段，為較緊張的孩子保留安靜時段，候診空間也刻意設計得不像傳統診所。",
-      ),
-    ],
-    [
-      t("Long-term relationships", "長期的醫病關係"),
-      t(
-        "We follow patients for years — through retention, college, and beyond. The smile you finish with is the smile we protect.",
-        "我們會陪伴病患許多年——從維持器階段、上大學，到日後人生的不同階段。完成矯正時的笑容，就是我們長期守護的目標。",
-      ),
-    ],
-    [
-      t("Mandarin and English support", "提供國語與英文服務"),
-      t(
-        "Consultations and care delivered in both languages, so your whole family can participate fully in every conversation.",
-        "諮詢與療程皆以雙語進行，讓全家人都能完整參與每一次對話。",
-      ),
-    ],
+    },
   ];
 
   return (
@@ -271,23 +250,23 @@ function HomePage() {
       </section>
 
       {/* INTRO STATEMENT */}
-      <section className="pt-28 lg:pt-40 pb-16 lg:pb-24 px-6 lg:px-10 bg-background">
+      <section className="pt-20 lg:pt-40 pb-12 lg:pb-24 px-6 lg:px-10 bg-background">
         <div className="max-w-5xl mx-auto">
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-8">
-            {t("Our Philosophy", "我們的理念")}
+            {t("What We Believe In", "我們所相信的")}
           </div>
           <p className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-balance">
             {t(
-              "We chose to build a different kind of orthodontic practice — one shaped by careful listening, specialist training, and the warmth of a small Vancouver family business.",
-              "我們選擇打造一間不一樣的矯正診所——以細心聆聽、專科訓練，以及溫哥華在地小型家族診所的溫度，作為一切的起點。",
+              "A neighbourhood specialist practice, shaped by careful listening, specialist training, and the warmth of a Vancouver family business.",
+              "一間在地的專科診所——以細心聆聽、專科訓練，以及溫哥華家族診所的溫度，作為一切的起點。",
             )}
           </p>
-          <div className="mt-12 lg:mt-16 flex flex-wrap items-baseline gap-x-8 gap-y-3">
+          <div className="mt-10 lg:mt-16 flex flex-wrap items-baseline gap-x-8 gap-y-3">
             <span className="text-muted-foreground text-[11px] uppercase tracking-[0.3em]">
-              {t("Four principles guide every plan", "四項核心理念，貫穿每一份治療計畫")}
+              {t("Four beliefs guide every plan", "四項信念，貫穿每一份治療計畫")}
             </span>
             <span className="font-display text-foreground text-xl md:text-2xl">
-              Clarity · Care · Craft · Convenience
+              Craft · Care · Clarity · Convenience
             </span>
           </div>
         </div>
