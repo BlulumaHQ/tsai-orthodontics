@@ -35,14 +35,7 @@ function ServicesIndex() {
     <>
       <PageHero
         eyebrow={t("Our Services", "矯正服務")}
-        title={t(
-          <>
-            Our <span className="italic font-normal">Services</span>
-          </>,
-          <>
-            我們的<span className="italic font-normal">矯正服務</span>
-          </>,
-        )}
+        title={t("Our Services", "我們的矯正服務")}
         intro={t(
           "Specialist orthodontic care for children, teens, and adults in Vancouver.",
           "為溫哥華的兒童、青少年與成人提供的齒顎矯正專科照護。",

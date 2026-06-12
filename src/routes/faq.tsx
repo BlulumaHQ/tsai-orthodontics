@@ -45,12 +45,8 @@ function FaqPage() {
       <PageHero
         eyebrow={t("Frequently Asked", "常見問題")}
         title={t(
-          <>
-            The questions <span className="italic font-normal">most families ask.</span>
-          </>,
-          <>
-            病患與家屬<span className="italic font-normal">最常詢問的問題。</span>
-          </>,
+          "The questions most families ask.",
+          "病患與家屬最常詢問的問題。",
         )}
         intro={t(
           "If yours isn't here, please reach out — we are always happy to talk it through.",

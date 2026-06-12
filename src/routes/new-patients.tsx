@@ -136,12 +136,8 @@ function NewPatients() {
       <PageHero
         eyebrow={t("New Patients", "初診須知")}
         title={t(
-          <>
-            A first visit that <span className="italic font-normal">actually feels like a conversation.</span>
-          </>,
-          <>
-            真正像是<span className="italic font-normal">一次對話的初診體驗。</span>
-          </>,
+          "A first visit that actually feels like a conversation.",
+          "真正像是一次對話的初診體驗。",
         )}
         intro={t(
           "From the moment you walk in, our goal is the same: make sure you leave with answers, not pressure. Here's what to expect.",
