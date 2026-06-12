@@ -8,6 +8,7 @@ import {
 } from "@/lib/services-data";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
+import { Zoomable } from "@/components/site/Zoomable";
 import dentalChairBg from "@/assets/dental-chair-brand.jpg.asset.json";
 
 export const Route = createFileRoute("/services/$slug")({
