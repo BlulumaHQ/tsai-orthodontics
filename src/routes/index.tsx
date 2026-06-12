@@ -16,6 +16,7 @@ const pillarCraft = pillarCraftAsset.url;
 const pillarCare = pillarCareAsset.url;
 const pillarClarity = pillarClarityAsset.url;
 const pillarConvenience = pillarConvenienceAsset.url;
+const clinicChairBackground = "/images/backgrounds/dental-chair.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -492,9 +493,17 @@ function HomePage() {
       </section>
 
       {/* CONTACT CTA */}
-      <section className="py-24 lg:py-40 px-6 lg:px-10">
+      <section
+        className="py-24 lg:py-40 px-6 lg:px-10 text-background"
+        style={{
+          backgroundImage: `linear-gradient(120deg, color-mix(in oklab, var(--foreground) 50%, var(--primary) 50%), color-mix(in oklab, var(--primary) 76%, var(--secondary) 24%)), url(${clinicChairBackground})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundBlendMode: "multiply",
+        }}
+      >
         <div className="max-w-5xl mx-auto text-center">
-          <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
+          <div className="text-background/75 text-[11px] uppercase tracking-[0.3em] mb-6">
             {t("Start the conversation", "從一次對話開始")}
           </div>
           <h2 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.0] mb-10 text-balance">
@@ -503,7 +512,7 @@ function HomePage() {
               "歡迎來認識我們，看看是否適合您的家庭。",
             )}
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-12">
+          <p className="text-background/80 text-lg max-w-2xl mx-auto mb-12">
             {t(
               "The first consultation is complimentary. Bring your questions, bring your family, and we'll take it from there.",
               "第一次諮詢完全免費。歡迎帶著您的問題與家人一同前來，後續由我們陪您一步一步討論。",
@@ -512,13 +521,13 @@ function HomePage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               to="/contact"
-              className="px-8 py-4 bg-primary text-primary-foreground rounded-full text-xs uppercase tracking-[0.2em] font-medium hover:bg-foreground transition-colors"
+              className="px-8 py-4 bg-background text-foreground rounded-full text-xs uppercase tracking-[0.2em] font-medium hover:bg-foreground hover:text-background transition-colors"
             >
               {t("Book a Consultation", "預約諮詢")}
             </Link>
             <a
               href={SITE.phoneHref}
-              className="px-8 py-4 border border-foreground/15 rounded-full text-xs uppercase tracking-[0.2em] font-medium hover:bg-foreground hover:text-background transition-colors"
+              className="px-8 py-4 border border-background/40 rounded-full text-xs uppercase tracking-[0.2em] font-medium hover:bg-background/15 transition-colors"
             >
               {t("Call", "電話聯絡")} {SITE.phone}
             </a>
