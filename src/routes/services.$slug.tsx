@@ -311,8 +311,8 @@ function MarpePage({ service }: { service: Service }) {
         <div className="max-w-7xl mx-auto">
           <BackLink />
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            <div className="lg:col-span-5">
-              <img src={service.image} alt={service.heroAlt} width={1100} height={1100} className="w-full aspect-square object-cover rounded-full" />
+            <div className="lg:col-span-5 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center p-4 lg:p-6">
+              <Zoomable src={service.image} alt={service.heroAlt} width={1100} height={1100} className="w-full h-auto max-h-[560px] object-contain" />
             </div>
             <div className="lg:col-span-7">
               <Eyebrow>{service.name}</Eyebrow>
