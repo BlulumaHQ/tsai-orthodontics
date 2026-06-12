@@ -492,7 +492,17 @@ export const SERVICES: Service[] = [
     metaDescription:
       "Clear retainers, fixed retainers, replacement retainers, and long-term orthodontic retention care in Vancouver.",
   },
-].map((s) => ({ ...s, gallery: SERVICE_GALLERIES[s.slug] }));
+].map((s) => {
+  const raw = SERVICE_GALLERIES[s.slug] ?? [];
+  // Drop any gallery photo that matches the hero image or repeats another entry.
+  const seen = new Set<string>([s.image]);
+  const gallery = raw.filter((g) => {
+    if (seen.has(g.src)) return false;
+    seen.add(g.src);
+    return true;
+  });
+  return { ...s, gallery };
+});
 
 export const SERVICE_BY_SLUG: Record<string, Service> = Object.fromEntries(
   SERVICES.map((s) => [s.slug, s]),
