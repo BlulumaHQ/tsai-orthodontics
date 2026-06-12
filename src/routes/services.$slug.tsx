@@ -9,7 +9,8 @@ import {
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
 import { Zoomable } from "@/components/site/Zoomable";
-import dentalChairBg from "@/assets/dental-chair-brand.jpg.asset.json";
+
+const clinicChairBackground = "/images/backgrounds/dental-chair.jpg";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -582,9 +583,10 @@ function ConsultationCTA({ service }: { service: Service }) {
       <div
         className="relative max-w-5xl mx-auto rounded-[1.5rem] overflow-hidden p-8 md:p-12 lg:p-16 text-background"
         style={{
-          backgroundImage: `linear-gradient(120deg, oklch(0.45 0.12 50 / 0.92), oklch(0.63 0.12 50 / 0.78)), url(${dentalChairBg.url})`,
+          backgroundImage: `linear-gradient(120deg, color-mix(in oklab, var(--foreground) 48%, var(--primary) 52%), color-mix(in oklab, var(--primary) 78%, var(--secondary) 22%)), url(${clinicChairBackground})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          backgroundBlendMode: "multiply",
         }}
       >
         <h2 className="font-display text-3xl md:text-5xl leading-[1.1] mb-8 max-w-3xl text-balance">

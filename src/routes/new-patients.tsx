@@ -4,6 +4,8 @@ import { PageHero } from "@/components/site/PageHero";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
 
+const clinicChairBackground = "/images/backgrounds/dental-chair.jpg";
+
 export const Route = createFileRoute("/new-patients")({
   head: () => ({
     meta: [
@@ -234,9 +236,17 @@ function NewPatients() {
       </section>
 
       <section className="px-6 lg:px-10 pb-24 lg:pb-32">
-        <div className="max-w-6xl mx-auto bg-secondary/40 rounded-3xl p-10 lg:p-14 grid md:grid-cols-3 gap-10">
+        <div
+          className="max-w-6xl mx-auto rounded-3xl p-10 lg:p-14 grid md:grid-cols-3 gap-10 text-background overflow-hidden"
+          style={{
+            backgroundImage: `linear-gradient(120deg, color-mix(in oklab, var(--foreground) 50%, var(--primary) 50%), color-mix(in oklab, var(--primary) 76%, var(--secondary) 24%)), url(${clinicChairBackground})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundBlendMode: "multiply",
+          }}
+        >
           <div>
-            <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">
+            <div className="text-[10px] uppercase tracking-[0.22em] text-background/75 mb-3">
               {t("Length", "時間長度")}
             </div>
             <p className="font-display text-2xl leading-snug">
@@ -244,7 +254,7 @@ function NewPatients() {
             </p>
           </div>
           <div>
-            <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">
+            <div className="text-[10px] uppercase tracking-[0.22em] text-background/75 mb-3">
               {t("Bring", "請攜帶")}
             </div>
             <p className="font-display text-2xl leading-snug">
@@ -252,7 +262,7 @@ function NewPatients() {
             </p>
           </div>
           <div>
-            <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">
+            <div className="text-[10px] uppercase tracking-[0.22em] text-background/75 mb-3">
               {t("Leave with", "離開時")}
             </div>
             <p className="font-display text-2xl leading-snug">
