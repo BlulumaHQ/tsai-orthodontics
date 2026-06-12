@@ -80,54 +80,40 @@ export interface Service {
   gallery?: { src: string; alt: string }[];
 }
 
+// Only photos that actually match the service. Number of photos varies by service —
+// we don't force every page to have the same count.
 export const SERVICE_GALLERIES: Record<string, { src: string; alt: string }[]> = {
   "children-and-teens": [
     { src: IMG.kids, alt: "Young patient at Tsai Orthodontics" },
-    { src: IMG.consult, alt: "Dr. Tsai reviewing a 3D scan with a patient" },
-    { src: IMG.care, alt: "Warm consultation between clinician and child" },
     { src: IMG.phaseOne, alt: "Friendly orthodontic visit for a young child" },
+    { src: IMG.consult, alt: "Dr. Tsai reviewing a 3D scan with a young patient" },
   ],
   adults: [
     { src: IMG.adults, alt: "Adult patient at Tsai Orthodontics" },
     { src: IMG.adultConsult, alt: "Adult patient discussing clear aligners with Dr. Tsai" },
-    { src: IMG.invisalign, alt: "Close-up of clear aligner therapy for adults" },
-    { src: IMG.clarity, alt: "Calm consultation room at Tsai Orthodontics" },
   ],
   "braces-and-fixed-appliances": [
     { src: IMG.braces, alt: "Close-up of modern braces on healthy teeth" },
     { src: IMG.consult, alt: "Treatment plan reviewed on a digital scan" },
-    { src: IMG.craft, alt: "Detailed orthodontic workflow at Tsai Orthodontics" },
-    { src: IMG.kids, alt: "Young patient comfortable in braces" },
   ],
   invisalign: [
     { src: IMG.invisalign, alt: "Clear aligner held by a patient" },
     { src: IMG.adultConsult, alt: "Dr. Tsai handing a clear aligner to a patient" },
-    { src: IMG.consult, alt: "Digital scan used to plan Invisalign treatment" },
-    { src: IMG.adults, alt: "Adult Invisalign patient smiling" },
   ],
   "phase-i-treatment": [
     { src: IMG.phaseOne, alt: "Young child during an early orthodontic visit" },
     { src: IMG.kids, alt: "Child meeting Dr. Tsai for a Phase I consultation" },
-    { src: IMG.care, alt: "Calm, family-centered consult room" },
-    { src: IMG.consult, alt: "Growth and bite reviewed on a digital scan" },
   ],
   "airway-friendly-orthodontics": [
     { src: IMG.airway, alt: "Profile analysis used in airway-friendly planning" },
     { src: IMG.consult, alt: "3D scan reviewed during airway evaluation" },
-    { src: IMG.phaseOne, alt: "Young patient assessed for airway and growth" },
-    { src: IMG.clarity, alt: "Quiet consultation space for thorough evaluation" },
   ],
   marpe: [
     { src: IMG.marpe, alt: "Digital model used in MARPE planning" },
     { src: IMG.consult, alt: "MARPE plan explained on a 3D scan" },
-    { src: IMG.adultConsult, alt: "Specialist consultation for MARPE candidacy" },
-    { src: IMG.craft, alt: "Precise orthodontic planning workflow" },
   ],
   retainers: [
     { src: IMG.retainer, alt: "Clear retainer in a patient's hand" },
-    { src: IMG.invisalign, alt: "Custom-fit retainer detail" },
-    { src: IMG.adultConsult, alt: "Patient receiving retainer instructions from Dr. Tsai" },
-    { src: IMG.care, alt: "Long-term retention check-in" },
   ],
 };
 
