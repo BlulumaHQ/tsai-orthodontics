@@ -254,7 +254,7 @@ function NewPatients() {
             </p>
           </div>
           <div>
-            <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">
+            <div className="text-[10px] uppercase tracking-[0.22em] text-background/75 mb-3">
               {t("Bring", "請攜帶")}
             </div>
             <p className="font-display text-2xl leading-snug">
@@ -262,7 +262,7 @@ function NewPatients() {
             </p>
           </div>
           <div>
-            <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">
+            <div className="text-[10px] uppercase tracking-[0.22em] text-background/75 mb-3">
               {t("Leave with", "離開時")}
             </div>
             <p className="font-display text-2xl leading-snug">
