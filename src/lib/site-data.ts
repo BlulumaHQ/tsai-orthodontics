@@ -37,7 +37,7 @@ export const NAV: NavItem[] = [
       { label: "About the Doctors", labelZh: "認識醫師", to: "/about-the-doctors" },
       { label: "Dr. Andrew Tsai", labelZh: "Dr. Andrew Tsai", to: "/about-the-doctors/dr-andrew-tsai" },
       { label: "Dr. Marjorie Tsai", labelZh: "Dr. Marjorie Tsai", to: "/about-the-doctors/dr-marjorie-tsai" },
-      { label: "What Sets Us Apart", labelZh: "我們的不同之處", to: "/what-sets-us-apart" },
+      { label: "What We Believe In", labelZh: "我們所相信的", to: "/what-sets-us-apart" },
     ],
   },
   {
@@ -64,7 +64,7 @@ export const NAV: NavItem[] = [
 export const FOOTER_NAV = [
   { label: "Home", labelZh: "首頁", to: "/" },
   { label: "About the Doctors", labelZh: "認識醫師", to: "/about-the-doctors" },
-  { label: "What Sets Us Apart", labelZh: "我們的不同之處", to: "/what-sets-us-apart" },
+  { label: "What We Believe In", labelZh: "我們所相信的", to: "/what-sets-us-apart" },
   { label: "New Patients", labelZh: "初診須知", to: "/new-patients" },
   { label: "FAQ", labelZh: "常見問題", to: "/faq" },
   { label: "Dentist Referral", labelZh: "牙醫轉診", to: "/dentist-referral" },
