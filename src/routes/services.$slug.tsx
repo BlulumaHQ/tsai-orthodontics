@@ -346,8 +346,8 @@ function RetainersPage({ service }: { service: Service }) {
               </h1>
               <IntroBlock service={service} className="mt-10 max-w-2xl" />
             </div>
-            <div className="rounded-[1.5rem] overflow-hidden bg-secondary/40 p-3">
-              <img src={service.image} alt={service.heroAlt} width={1080} height={1080} className="w-full aspect-square object-cover rounded-[1.1rem]" />
+            <div className="rounded-[1.5rem] overflow-hidden bg-secondary/40 p-3 flex items-center justify-center">
+              <Zoomable src={service.image} alt={service.heroAlt} width={1080} height={1080} className="w-full h-auto max-h-[520px] object-contain rounded-[1.1rem]" />
             </div>
           </div>
         </div>
