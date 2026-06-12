@@ -41,7 +41,7 @@ const BELIEFS: Belief[] = [
     labelZh: "Convenience",
     headline: "Care that fits everyday life.",
     headlineZh: "貼近日常生活的看診體驗。",
-    body: "We believe orthodontic care should fit naturally into everyday life. Flexible appointments, family scheduling for siblings, and bilingual support in English and Chinese, so every visit feels effortless.",
+    body: "We believe orthodontic care should fit naturally into everyday life. Flexible appointments, family scheduling for siblings, and bilingual support in English and Mandarin, so every visit feels effortless.",
     bodyZh: "我們相信，齒顎矯正照護應該自然融入每天的生活節奏。彈性的看診時段、可一同安排的家庭預約，並提供英文與中文雙語服務，讓每一次回診都更從容。",
   },
 ];

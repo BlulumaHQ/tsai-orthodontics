@@ -420,7 +420,7 @@ function HomePage() {
               {[
                 t("Certified Specialist", "認證專科醫師"),
                 t("University Trained", "大學專科訓練"),
-                t("English & Chinese", "英文與中文服務"),
+                t("English & Mandarin", "英文與中文服務"),
               ].map((c) => (
                 <span
                   key={c}
