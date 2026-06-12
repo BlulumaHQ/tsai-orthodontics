@@ -168,6 +168,20 @@ function HomePage() {
         "整個過程我們從來沒有被催促的感覺。每個問題都得到回應，對全家來說都是非常正面的體驗。",
       ),
     },
+    {
+      name: "Jason H.",
+      text: t(
+        "Highly recommend Tsai Orthodontics. The team is professional, patient, and made my Invisalign journey smooth from start to finish.",
+        "非常推薦 Tsai Orthodontics。整個團隊專業又有耐心，讓我整個隱適美療程從頭到尾都很順利。",
+      ),
+    },
+    {
+      name: "Linda K.",
+      text: t(
+        "Being able to communicate in Mandarin made a huge difference for our family. Dr. Tsai is genuinely caring and detail-oriented.",
+        "能夠用中文溝通，對我們全家來說真的差很多。Dr. Tsai 真的很細心，也非常用心。",
+      ),
+    },
   ];
 
   return (
