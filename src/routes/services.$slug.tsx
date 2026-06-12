@@ -122,8 +122,8 @@ function ChildrenAndTeensPage({ service }: { service: Service }) {
                 {service.heroTitle}
               </h1>
             </div>
-            <div className="lg:col-span-5 rounded-[1.5rem] overflow-hidden bg-secondary/40">
-              <img src={service.image} alt={service.heroAlt} width={1280} height={960} className="w-full aspect-[4/3] object-cover" />
+            <div className="lg:col-span-5 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
+              <Zoomable src={service.image} alt={service.heroAlt} width={1280} height={960} className="w-full h-auto max-h-[520px] object-contain" />
             </div>
           </div>
           <IntroBlock service={service} className="mt-16 lg:mt-20 max-w-3xl" />
