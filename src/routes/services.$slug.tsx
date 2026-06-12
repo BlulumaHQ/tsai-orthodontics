@@ -146,8 +146,8 @@ function AdultsPage({ service }: { service: Service }) {
         <div className="max-w-7xl mx-auto">
           <BackLink />
           <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-20 items-end">
-            <div className="order-2 lg:order-1 rounded-[1.5rem] overflow-hidden">
-              <img src={service.image} alt={service.heroAlt} width={1080} height={1350} className="w-full aspect-[4/5] object-cover" />
+            <div className="order-2 lg:order-1 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
+              <Zoomable src={service.image} alt={service.heroAlt} width={1080} height={1350} className="w-full h-auto max-h-[640px] object-contain" />
             </div>
             <div className="order-1 lg:order-2 pb-0 lg:pb-10">
               <Eyebrow>{service.name}</Eyebrow>
