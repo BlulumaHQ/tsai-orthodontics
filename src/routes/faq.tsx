@@ -66,9 +66,10 @@ function FaqPage() {
                 {lang === "zh" ? group.titleZh : group.title}
               </h2>
               <div>
-                {group.items.map((item) => (
+                {group.items.map((item, idx) => (
                   <details
                     key={item.q}
+                    open={idx === 0}
                     className="group border-t border-foreground/10 last:border-b py-6"
                   >
                     <summary className="flex justify-between gap-6 cursor-pointer font-display text-lg md:text-xl leading-snug list-none">
