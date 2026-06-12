@@ -275,7 +275,7 @@ function AirwayPage({ service }: { service: Service }) {
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
         <div className="max-w-7xl mx-auto">
           <BackLink />
-          <div className="grid lg:grid-cols-2 gap-0 rounded-[1.75rem] overflow-hidden bg-secondary/35">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-0 rounded-[1.75rem] overflow-hidden bg-secondary/35 items-center">
             <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center">
               <Eyebrow>{service.name}</Eyebrow>
               <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.96] text-balance">
@@ -283,7 +283,9 @@ function AirwayPage({ service }: { service: Service }) {
               </h1>
               <IntroBlock service={service} className="mt-10" />
             </div>
-            <img src={service.image} alt={service.heroAlt} width={1280} height={1280} className="w-full h-full min-h-[420px] object-cover" />
+            <div className="bg-secondary/40 flex items-center justify-center p-4 lg:p-6">
+              <Zoomable src={service.image} alt={service.heroAlt} width={1280} height={1280} className="w-full h-auto max-h-[560px] object-contain" />
+            </div>
           </div>
         </div>
       </section>
