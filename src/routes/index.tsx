@@ -273,7 +273,7 @@ function HomePage() {
       </section>
 
       {/* PILLARS */}
-      <section className="px-6 lg:px-10 pb-24 lg:pb-32">
+      <section className="px-6 lg:px-10 pb-16 lg:pb-32">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6 lg:gap-8">
           {PILLARS.map((p) => (
             <article
@@ -312,7 +312,7 @@ function HomePage() {
       </section>
 
       {/* OUR SERVICES */}
-      <section className="py-24 lg:py-32 bg-secondary/30 px-6 lg:px-10">
+      <section className="py-16 lg:py-32 bg-secondary/30 px-6 lg:px-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-14 lg:mb-20">
             <div className="max-w-2xl">
@@ -388,7 +388,7 @@ function HomePage() {
       </section>
 
       {/* DOCTOR TEASER */}
-      <section className="py-24 lg:py-32 px-6 lg:px-10">
+      <section className="py-16 lg:py-32 px-6 lg:px-10">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-3xl">
@@ -420,7 +420,7 @@ function HomePage() {
               {[
                 t("Certified Specialist", "認證專科醫師"),
                 t("University Trained", "大學專科訓練"),
-                t("Mandarin & English", "國語與英文服務"),
+                t("English & Chinese", "英文與中文服務"),
               ].map((c) => (
                 <span
                   key={c}
