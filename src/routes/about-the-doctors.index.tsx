@@ -30,12 +30,8 @@ function AboutTheDoctorsPage() {
       <PageHero
         eyebrow={t("About the Doctors", "認識醫師")}
         title={t(
-          <>
-            Specialist orthodontic care, <span className="italic font-normal">shaped by training and personal attention.</span>
-          </>,
-          <>
-            齒顎矯正專科照護，<span className="italic font-normal">由完整訓練與細膩關懷一同打造。</span>
-          </>,
+          "Specialist orthodontic care, shaped by training and personal attention.",
+          "齒顎矯正專科照護，由完整訓練與細膩關懷一同打造。",
         )}
         intro={t(
           "Tsai Orthodontics is led by orthodontists who have completed the highest levels of training in the profession — and who believe great care begins with a real conversation.",

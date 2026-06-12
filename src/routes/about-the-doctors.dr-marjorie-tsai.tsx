@@ -29,12 +29,8 @@ function DrMarjoriePage() {
       <PageHero
         eyebrow="Dr. Marjorie Tsai"
         title={t(
-          <>
-            Biography <span className="italic font-normal">coming soon.</span>
-          </>,
-          <>
-            醫師介紹<span className="italic font-normal">即將上線。</span>
-          </>,
+          "Biography coming soon.",
+          "醫師介紹即將上線。",
         )}
         intro={t(
           "This page is being prepared as part of the complete Tsai Orthodontics website.",

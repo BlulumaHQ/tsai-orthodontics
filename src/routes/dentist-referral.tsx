@@ -205,14 +205,7 @@ function DentistReferralPage() {
     <>
       <PageHero
         eyebrow={t("For Referring Dentists", "提供給轉診牙醫")}
-        title={t(
-          <>
-            Dentist <span className="italic font-normal">Referral</span>
-          </>,
-          <>
-            牙醫<span className="italic font-normal">轉診</span>
-          </>,
-        )}
+        title={t("Dentist Referral", "牙醫轉診")}
         intro={t(
           "We welcome referrals from general dentists and healthcare professionals. Tsai Orthodontics is committed to clear communication, thoughtful follow-through, and respectful coordination with the referring office.",
           "我們歡迎一般牙醫師與其他醫療專業人員的轉診。Tsai Orthodontics 重視清楚的溝通、細膩的後續追蹤，以及與轉診診所之間互相尊重的協作。",
