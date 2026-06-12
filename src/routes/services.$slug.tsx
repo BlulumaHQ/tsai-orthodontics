@@ -497,8 +497,8 @@ function FAQSection({ service }: { service: Service }) {
       <div className="max-w-5xl mx-auto">
         <Eyebrow>{t("FAQ", "常見問題")}</Eyebrow>
         <div className="divide-y divide-foreground/10 border-y border-foreground/10">
-          {service.faqs.map((f) => (
-            <details key={f.q} className="group py-6 lg:py-7">
+          {service.faqs.map((f, idx) => (
+            <details key={f.q} open={idx === 0} className="group py-6 lg:py-7">
               <summary className="cursor-pointer list-none flex items-start justify-between gap-6">
                 <span className="font-display text-xl md:text-2xl leading-snug text-balance">{f.q}</span>
                 <span className="text-primary text-2xl leading-none mt-1 transition-transform group-open:rotate-45">+</span>
