@@ -8,6 +8,7 @@ import {
 } from "@/lib/services-data";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
+import { Zoomable } from "@/components/site/Zoomable";
 import dentalChairBg from "@/assets/dental-chair-brand.jpg.asset.json";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -121,8 +122,8 @@ function ChildrenAndTeensPage({ service }: { service: Service }) {
                 {service.heroTitle}
               </h1>
             </div>
-            <div className="lg:col-span-5 rounded-[1.5rem] overflow-hidden bg-secondary/40">
-              <img src={service.image} alt={service.heroAlt} width={1280} height={960} className="w-full aspect-[4/3] object-cover" />
+            <div className="lg:col-span-5 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
+              <Zoomable src={service.image} alt={service.heroAlt} width={1280} height={960} className="w-full h-auto max-h-[520px] object-contain" />
             </div>
           </div>
           <IntroBlock service={service} className="mt-16 lg:mt-20 max-w-3xl" />
@@ -145,8 +146,8 @@ function AdultsPage({ service }: { service: Service }) {
         <div className="max-w-7xl mx-auto">
           <BackLink />
           <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-20 items-end">
-            <div className="order-2 lg:order-1 rounded-[1.5rem] overflow-hidden">
-              <img src={service.image} alt={service.heroAlt} width={1080} height={1350} className="w-full aspect-[4/5] object-cover" />
+            <div className="order-2 lg:order-1 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
+              <Zoomable src={service.image} alt={service.heroAlt} width={1080} height={1350} className="w-full h-auto max-h-[640px] object-contain" />
             </div>
             <div className="order-1 lg:order-2 pb-0 lg:pb-10">
               <Eyebrow>{service.name}</Eyebrow>
@@ -181,8 +182,8 @@ function BracesPage({ service }: { service: Service }) {
             </h1>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto mt-12 rounded-[1.5rem] overflow-hidden">
-          <img src={service.image} alt={service.heroAlt} width={1600} height={900} className="w-full aspect-[16/7] object-cover" />
+        <div className="max-w-7xl mx-auto mt-12 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
+          <Zoomable src={service.image} alt={service.heroAlt} width={1600} height={900} className="w-full h-auto max-h-[560px] object-contain" />
         </div>
       </section>
       <section className="px-6 lg:px-10 py-20">
@@ -212,23 +213,24 @@ function InvisalignPage({ service }: { service: Service }) {
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
         <div className="max-w-7xl mx-auto">
           <BackLink />
-          <div className="relative overflow-hidden rounded-[1.75rem] bg-foreground text-background min-h-[620px] flex items-end">
-            <img src={service.image} alt={service.heroAlt} width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover opacity-75" />
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/35 to-transparent" />
-            <div className="relative p-8 md:p-12 lg:p-16 max-w-4xl">
-              <div className="inline-flex items-center gap-3 rounded-full bg-background/95 text-foreground px-5 py-2 mb-8">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>
+              <div className="inline-flex items-center gap-3 rounded-full bg-secondary/60 text-foreground px-5 py-2 mb-8">
                 <span className="font-display italic text-xl">Invisalign</span>
                 <span className="h-4 w-px bg-foreground/20" />
                 <span className="text-[10px] uppercase tracking-[0.22em] text-foreground/65">
                   {t("Clear aligners", "隱形牙套")}
                 </span>
               </div>
-              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.92] text-balance">
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.94] text-balance">
                 {service.heroTitle}
               </h1>
+              <IntroBlock service={service} className="mt-10 max-w-xl" dark={false} />
+            </div>
+            <div className="rounded-[1.75rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
+              <Zoomable src={service.image} alt={service.heroAlt} width={1280} height={1280} className="w-full h-auto max-h-[620px] object-contain" />
             </div>
           </div>
-          <IntroBlock service={service} className="mt-16 max-w-3xl" dark={false} />
         </div>
       </section>
       <IconListBand service={service} />
@@ -250,8 +252,8 @@ function PhaseIPage({ service }: { service: Service }) {
             {service.heroTitle}
           </h1>
         </div>
-        <div className="max-w-6xl mx-auto mt-14 rounded-[1.5rem] overflow-hidden">
-          <img src={service.image} alt={service.heroAlt} width={1600} height={1000} className="w-full aspect-[16/8] object-cover" />
+        <div className="max-w-6xl mx-auto mt-14 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
+          <Zoomable src={service.image} alt={service.heroAlt} width={1600} height={1000} className="w-full h-auto max-h-[560px] object-contain" />
         </div>
       </section>
       <section className="px-6 lg:px-10 py-20 bg-secondary/35">
@@ -273,7 +275,7 @@ function AirwayPage({ service }: { service: Service }) {
       <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
         <div className="max-w-7xl mx-auto">
           <BackLink />
-          <div className="grid lg:grid-cols-2 gap-0 rounded-[1.75rem] overflow-hidden bg-secondary/35">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-0 rounded-[1.75rem] overflow-hidden bg-secondary/35 items-center">
             <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center">
               <Eyebrow>{service.name}</Eyebrow>
               <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.96] text-balance">
@@ -281,7 +283,9 @@ function AirwayPage({ service }: { service: Service }) {
               </h1>
               <IntroBlock service={service} className="mt-10" />
             </div>
-            <img src={service.image} alt={service.heroAlt} width={1280} height={1280} className="w-full h-full min-h-[420px] object-cover" />
+            <div className="bg-secondary/40 flex items-center justify-center p-4 lg:p-6">
+              <Zoomable src={service.image} alt={service.heroAlt} width={1280} height={1280} className="w-full h-auto max-h-[560px] object-contain" />
+            </div>
           </div>
         </div>
       </section>
@@ -307,8 +311,8 @@ function MarpePage({ service }: { service: Service }) {
         <div className="max-w-7xl mx-auto">
           <BackLink />
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            <div className="lg:col-span-5">
-              <img src={service.image} alt={service.heroAlt} width={1100} height={1100} className="w-full aspect-square object-cover rounded-full" />
+            <div className="lg:col-span-5 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center p-4 lg:p-6">
+              <Zoomable src={service.image} alt={service.heroAlt} width={1100} height={1100} className="w-full h-auto max-h-[560px] object-contain" />
             </div>
             <div className="lg:col-span-7">
               <Eyebrow>{service.name}</Eyebrow>
@@ -342,8 +346,8 @@ function RetainersPage({ service }: { service: Service }) {
               </h1>
               <IntroBlock service={service} className="mt-10 max-w-2xl" />
             </div>
-            <div className="rounded-[1.5rem] overflow-hidden bg-secondary/40 p-3">
-              <img src={service.image} alt={service.heroAlt} width={1080} height={1080} className="w-full aspect-square object-cover rounded-[1.1rem]" />
+            <div className="rounded-[1.5rem] overflow-hidden bg-secondary/40 p-3 flex items-center justify-center">
+              <Zoomable src={service.image} alt={service.heroAlt} width={1080} height={1080} className="w-full h-auto max-h-[520px] object-contain rounded-[1.1rem]" />
             </div>
           </div>
         </div>
@@ -525,17 +529,17 @@ function ServiceGallery({ service }: { service: Service }) {
             </h2>
           </div>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 lg:gap-5 [column-fill:_balance]">
           {service.gallery.map((g, i) => (
             <div
               key={g.src + i}
-              className={`overflow-hidden rounded-2xl bg-secondary/40 ${i === 0 ? "col-span-2 lg:col-span-2 lg:row-span-2 aspect-square lg:aspect-auto" : "aspect-[4/5]"}`}
+              className="mb-4 lg:mb-5 break-inside-avoid overflow-hidden rounded-2xl bg-secondary/40"
             >
-              <img
+              <Zoomable
                 src={g.src}
                 alt={g.alt}
                 loading="lazy"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                className="w-full h-auto block hover:scale-[1.02] transition-transform duration-700"
               />
             </div>
           ))}
