@@ -8,7 +8,7 @@ export function TopBar() {
     <div className="bg-foreground text-background/85 text-[11px] tracking-[0.12em]">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-9 flex items-center justify-between gap-4">
         <p className="uppercase tracking-[0.18em] text-background/70 truncate hidden sm:block">
-          {t("Boutique orthodontic care in Vancouver", "溫哥華精品齒顎矯正診所")}
+          {t("Specialist orthodontic care in Vancouver", "溫哥華齒顎矯正專科診所")}
         </p>
         <div className="flex items-center gap-4 lg:gap-5 shrink-0 ml-auto">
           <a
