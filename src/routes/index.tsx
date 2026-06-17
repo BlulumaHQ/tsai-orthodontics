@@ -208,6 +208,7 @@ function HomePage() {
                 muted
                 loop
                 playsInline
+                preload="metadata"
                 className={baseClass}
               />
             ) : (
