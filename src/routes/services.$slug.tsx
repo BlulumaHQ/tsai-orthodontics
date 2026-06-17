@@ -1,6 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import type { ReactNode } from "react";
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 import {
   SERVICE_BY_SLUG,
   localizedService,
@@ -85,408 +84,80 @@ function NotFound() {
 
 function ServicePage() {
   const { service: raw } = Route.useLoaderData() as { service: Service };
-  const { lang } = useT();
+  const { t, lang } = useT();
   const service = localizedService(raw, lang);
 
-  switch (service.slug) {
-    case "children-and-teens":
-      return <ChildrenAndTeensPage service={service} />;
-    case "adults":
-      return <AdultsPage service={service} />;
-    case "braces-and-fixed-appliances":
-      return <BracesPage service={service} />;
-    case "invisalign":
-      return <InvisalignPage service={service} />;
-    case "phase-i-treatment":
-      return <PhaseIPage service={service} />;
-    case "airway-friendly-orthodontics":
-      return <AirwayPage service={service} />;
-    case "marpe":
-      return <MarpePage service={service} />;
-    case "retainers":
-      return <RetainersPage service={service} />;
-    default:
-      return <ChildrenAndTeensPage service={service} />;
-  }
-}
-
-function ChildrenAndTeensPage({ service }: { service: Service }) {
   return (
     <>
-      <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-16">
+      {/* HERO */}
+      <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-12 lg:pb-16">
         <div className="max-w-7xl mx-auto">
-          <BackLink />
+          <div className="mb-8 lg:mb-10">
+            <Link
+              to="/services"
+              className="inline-flex items-center text-[11px] uppercase tracking-[0.25em] text-muted-foreground hover:text-primary"
+            >
+              ← {t("All services", "全部服務")}
+            </Link>
+          </div>
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             <div className="lg:col-span-7">
-              <Eyebrow>{service.name}</Eyebrow>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.98] max-w-3xl text-balance">
+              <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
+                {service.name}
+              </div>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[0.98] max-w-3xl text-balance">
                 {service.heroTitle}
               </h1>
             </div>
             <div className="lg:col-span-5 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
-              <Zoomable src={service.image} alt={service.heroAlt} width={1280} height={960} className="w-full h-auto max-h-[520px] object-contain" />
+              <Zoomable
+                src={service.image}
+                alt={service.heroAlt}
+                width={1280}
+                height={960}
+                className="w-full h-auto max-h-[520px] object-cover"
+              />
             </div>
           </div>
-          <IntroBlock service={service} className="mt-16 lg:mt-20 max-w-3xl" />
         </div>
       </section>
-      <TwoColumnCare service={service} />
-      <WhyPanel service={service} align="center" />
+
+      {/* STANDARDIZED INTRO (2-3 paragraphs of prose) */}
+      <section className="px-6 lg:px-10 py-12 lg:py-20">
+        <div className="max-w-3xl mx-auto">
+          {service.intro.map((p) => (
+            <p
+              key={p}
+              className="font-serif text-xl md:text-2xl leading-relaxed text-foreground/85 mb-6 last:mb-0 text-pretty"
+            >
+              {p}
+            </p>
+          ))}
+        </div>
+      </section>
+
+      {/* SINGLE "TYPICALLY MOST EFFECTIVE" CALLOUT */}
+      <section className="px-6 lg:px-10 pb-20 lg:pb-28">
+        <div className="max-w-4xl mx-auto">
+          <div className="rounded-[1.5rem] border border-primary/25 bg-secondary/30 p-8 md:p-10 lg:p-12">
+            <div className="flex items-center gap-3 mb-5">
+              <Sparkles className="size-4 text-primary" />
+              <span className="text-primary text-[11px] uppercase tracking-[0.3em] font-medium">
+                {t("Typically Most Effective", "通常最有效的選擇")}
+              </span>
+            </div>
+            <p className="font-display text-2xl md:text-3xl leading-snug text-balance text-foreground">
+              {service.mostEffective}
+            </p>
+          </div>
+        </div>
+      </section>
+
       <FAQSection service={service} />
       <ServiceGallery service={service} />
       <RelatedServices service={service} />
       <ConsultationCTA service={service} />
     </>
-  );
-}
-
-function AdultsPage({ service }: { service: Service }) {
-  return (
-    <>
-      <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20 lg:pb-28">
-        <div className="max-w-7xl mx-auto">
-          <BackLink />
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-20 items-end">
-            <div className="order-2 lg:order-1 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
-              <Zoomable src={service.image} alt={service.heroAlt} width={1080} height={1350} className="w-full h-auto max-h-[640px] object-contain" />
-            </div>
-            <div className="order-1 lg:order-2 pb-0 lg:pb-10">
-              <Eyebrow>{service.name}</Eyebrow>
-              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.92] text-balance">
-                {service.heroTitle}
-              </h1>
-              <IntroBlock service={service} className="mt-10 max-w-xl" />
-            </div>
-          </div>
-        </div>
-      </section>
-      <SplitListSection service={service} />
-      <WhyPanel service={service} align="left" />
-      <ServiceGallery service={service} />
-      <RelatedServices service={service} />
-      <ConsultationCTA service={service} />
-    </>
-  );
-}
-
-function BracesPage({ service }: { service: Service }) {
-  const { t } = useT();
-  return (
-    <>
-      <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-12">
-        <div className="max-w-7xl mx-auto">
-          <BackLink />
-          <div className="max-w-4xl">
-            <Eyebrow>{service.name}</Eyebrow>
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.94] text-balance">
-              {service.heroTitle}
-            </h1>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto mt-12 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
-          <Zoomable src={service.image} alt={service.heroAlt} width={1600} height={900} className="w-full h-auto max-h-[560px] object-contain" />
-        </div>
-      </section>
-      <section className="px-6 lg:px-10 py-20">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12">
-          <IntroBlock service={service} className="lg:col-span-5" />
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-foreground/10 rounded-[1.25rem] overflow-hidden border border-foreground/10">
-            {service.primaryItems.map((item) => (
-              <div key={item} className="bg-background p-7 lg:p-8 flex items-center gap-4">
-                <Check className="size-5 text-primary flex-none" aria-label={t("included", "包含")} />
-                <span className="font-display text-2xl leading-tight">{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <ServiceGallery service={service} />
-      <RelatedServices service={service} />
-      <ConsultationCTA service={service} />
-    </>
-  );
-}
-
-function InvisalignPage({ service }: { service: Service }) {
-  const { t } = useT();
-  return (
-    <>
-      <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
-        <div className="max-w-7xl mx-auto">
-          <BackLink />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-            <div>
-              <div className="inline-flex items-center gap-3 rounded-full bg-secondary/60 text-foreground px-5 py-2 mb-8">
-                <span className="font-display italic text-xl">Invisalign</span>
-                <span className="h-4 w-px bg-foreground/20" />
-                <span className="text-[10px] uppercase tracking-[0.22em] text-foreground/65">
-                  {t("Clear aligners", "隱形牙套")}
-                </span>
-              </div>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.94] text-balance">
-                {service.heroTitle}
-              </h1>
-              <IntroBlock service={service} className="mt-10 max-w-xl" dark={false} />
-            </div>
-            <div className="rounded-[1.75rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
-              <Zoomable src={service.image} alt={service.heroAlt} width={1280} height={1280} className="w-full h-auto max-h-[620px] object-contain" />
-            </div>
-          </div>
-        </div>
-      </section>
-      <IconListBand service={service} />
-      <ServiceGallery service={service} />
-      <RelatedServices service={service} />
-      <ConsultationCTA service={service} />
-    </>
-  );
-}
-
-function PhaseIPage({ service }: { service: Service }) {
-  return (
-    <>
-      <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20 lg:pb-28">
-        <div className="max-w-5xl mx-auto text-center">
-          <BackLink centered />
-          <Eyebrow>{service.name}</Eyebrow>
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.96] text-balance mx-auto">
-            {service.heroTitle}
-          </h1>
-        </div>
-        <div className="max-w-6xl mx-auto mt-14 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center">
-          <Zoomable src={service.image} alt={service.heroAlt} width={1600} height={1000} className="w-full h-auto max-h-[560px] object-contain" />
-        </div>
-      </section>
-      <section className="px-6 lg:px-10 py-20 bg-secondary/35">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          <IntroBlock service={service} />
-          <NumberedList title={service.primarySectionTitle} items={service.primaryItems} />
-        </div>
-      </section>
-      <ServiceGallery service={service} />
-      <RelatedServices service={service} />
-      <ConsultationCTA service={service} />
-    </>
-  );
-}
-
-function AirwayPage({ service }: { service: Service }) {
-  return (
-    <>
-      <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
-        <div className="max-w-7xl mx-auto">
-          <BackLink />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-0 rounded-[1.75rem] overflow-hidden bg-secondary/35 items-center">
-            <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center">
-              <Eyebrow>{service.name}</Eyebrow>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.96] text-balance">
-                {service.heroTitle}
-              </h1>
-              <IntroBlock service={service} className="mt-10" />
-            </div>
-            <div className="bg-secondary/40 flex items-center justify-center p-4 lg:p-6">
-              <Zoomable src={service.image} alt={service.heroAlt} width={1280} height={1280} className="w-full h-auto max-h-[560px] object-contain" />
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="px-6 lg:px-10 py-20 lg:py-28">
-        <div className="max-w-4xl mx-auto border-l-2 border-primary pl-8 lg:pl-12">
-          <Eyebrow>{service.primarySectionTitle}</Eyebrow>
-          <p className="font-display text-3xl md:text-5xl leading-[1.12] text-balance">
-            {service.primaryItems[0]}
-          </p>
-        </div>
-      </section>
-      <ServiceGallery service={service} />
-      <RelatedServices service={service} />
-      <ConsultationCTA service={service} />
-    </>
-  );
-}
-
-function MarpePage({ service }: { service: Service }) {
-  return (
-    <>
-      <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
-        <div className="max-w-7xl mx-auto">
-          <BackLink />
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            <div className="lg:col-span-5 rounded-[1.5rem] overflow-hidden bg-secondary/40 flex items-center justify-center p-4 lg:p-6">
-              <Zoomable src={service.image} alt={service.heroAlt} width={1100} height={1100} className="w-full h-auto max-h-[560px] object-contain" />
-            </div>
-            <div className="lg:col-span-7">
-              <Eyebrow>{service.name}</Eyebrow>
-              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.92] text-balance">
-                {service.heroTitle}
-              </h1>
-              <IntroBlock service={service} className="mt-10 max-w-2xl" />
-            </div>
-          </div>
-        </div>
-      </section>
-      <IconListBand service={service} />
-      <ServiceGallery service={service} />
-      <RelatedServices service={service} />
-      <ConsultationCTA service={service} />
-    </>
-  );
-}
-
-function RetainersPage({ service }: { service: Service }) {
-  return (
-    <>
-      <section className="pt-32 lg:pt-40 px-6 lg:px-10 pb-20">
-        <div className="max-w-7xl mx-auto">
-          <BackLink />
-          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-16 items-center">
-            <div>
-              <Eyebrow>{service.name}</Eyebrow>
-              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.94] text-balance">
-                {service.heroTitle}
-              </h1>
-              <IntroBlock service={service} className="mt-10 max-w-2xl" />
-            </div>
-            <div className="rounded-[1.5rem] overflow-hidden bg-secondary/40 p-3 flex items-center justify-center">
-              <Zoomable src={service.image} alt={service.heroAlt} width={1080} height={1080} className="w-full h-auto max-h-[520px] object-contain rounded-[1.1rem]" />
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="px-6 lg:px-10 pb-20 lg:pb-28">
-        <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {service.primaryItems.map((item) => (
-            <div key={item} className="min-h-40 bg-secondary/35 p-7 rounded-[1.25rem] flex items-end">
-              <h2 className="font-display text-2xl leading-tight">{item}</h2>
-            </div>
-          ))}
-        </div>
-      </section>
-      <ServiceGallery service={service} />
-      <RelatedServices service={service} />
-      <ConsultationCTA service={service} />
-    </>
-  );
-}
-
-function BackLink({ centered = false }: { centered?: boolean }) {
-  const { t } = useT();
-  return (
-    <div className={centered ? "mb-8 flex justify-center" : "mb-8 lg:mb-10"}>
-      <Link to="/services" className="inline-flex items-center text-[11px] uppercase tracking-[0.25em] text-muted-foreground hover:text-primary">
-        ← {t("All services", "全部服務")}
-      </Link>
-    </div>
-  );
-}
-
-function Eyebrow({ children }: { children: ReactNode }) {
-  return <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">{children}</div>;
-}
-
-function IntroBlock({ service, className = "", dark = false }: { service: Service; className?: string; dark?: boolean }) {
-  return (
-    <div className={className}>
-      {service.intro.map((p) => (
-        <p key={p} className={`text-lg lg:text-xl leading-relaxed mb-5 last:mb-0 ${dark ? "text-background/80" : "text-foreground/80"}`}>
-          {p}
-        </p>
-      ))}
-    </div>
-  );
-}
-
-function TwoColumnCare({ service }: { service: Service }) {
-  return (
-    <section className="px-6 lg:px-10 py-20 lg:py-28 bg-secondary/35">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20">
-        <CheckList title={service.primarySectionTitle} items={service.primaryItems} />
-        {service.expectTitle && service.expectItems && <CheckList title={service.expectTitle} items={service.expectItems} />}
-      </div>
-    </section>
-  );
-}
-
-function SplitListSection({ service }: { service: Service }) {
-  return (
-    <section className="px-6 lg:px-10 py-20 lg:py-28 bg-foreground text-background">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-5">
-          <Eyebrow>{service.primarySectionTitle}</Eyebrow>
-          <h2 className="font-display text-4xl md:text-5xl leading-[1.05] text-balance">{service.primarySectionTitle}</h2>
-        </div>
-        <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-          {service.primaryItems.map((item) => (
-            <div key={item} className="border border-background/15 p-6 rounded-[1rem] text-lg text-background/85">
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CheckList({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div>
-      <Eyebrow>{title}</Eyebrow>
-      <ul className="space-y-4">
-        {items.map((item) => (
-          <li key={item} className="flex gap-4 text-foreground/85 leading-relaxed">
-            <Check className="size-5 text-primary flex-none mt-1" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function NumberedList({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div>
-      <Eyebrow>{title}</Eyebrow>
-      <div className="space-y-3">
-        {items.map((item, index) => (
-          <div key={item} className="flex items-center gap-5 border-b border-foreground/10 py-5">
-            <span className="text-primary text-[10px] font-mono tracking-[0.25em]">{String(index + 1).padStart(2, "0")}</span>
-            <span className="font-display text-2xl leading-tight">{item}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function IconListBand({ service }: { service: Service }) {
-  return (
-    <section className="px-6 lg:px-10 py-20 lg:py-28 bg-secondary/35">
-      <div className="max-w-6xl mx-auto">
-        <Eyebrow>{service.primarySectionTitle}</Eyebrow>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {service.primaryItems.map((item) => (
-            <div key={item} className="bg-background border border-foreground/10 rounded-[1.25rem] p-7 min-h-44 flex flex-col justify-between">
-              <Check className="size-5 text-primary" />
-              <h2 className="font-display text-2xl leading-tight mt-10">{item}</h2>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WhyPanel({ service, align }: { service: Service; align: "left" | "center" }) {
-  const { t } = useT();
-  if (!service.whyUs) return null;
-  return (
-    <section className="px-6 lg:px-10 py-20 lg:py-28">
-      <div className={`max-w-4xl mx-auto ${align === "center" ? "text-center" : ""}`}>
-        <Eyebrow>{t("Why Tsai Orthodontics", "為什麼選擇 Tsai Orthodontics")}</Eyebrow>
-        <p className="font-display text-3xl md:text-5xl leading-[1.12] text-balance">{service.whyUs}</p>
-      </div>
-    </section>
   );
 }
 
@@ -496,7 +167,9 @@ function FAQSection({ service }: { service: Service }) {
   return (
     <section className="px-6 lg:px-10 py-20 lg:py-28 bg-secondary/35">
       <div className="max-w-5xl mx-auto">
-        <Eyebrow>{t("FAQ", "常見問題")}</Eyebrow>
+        <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
+          {t("FAQ", "常見問題")}
+        </div>
         <div className="divide-y divide-foreground/10 border-y border-foreground/10">
           {service.faqs.map((f, idx) => (
             <details key={f.q} open={idx === 0} className="group py-6 lg:py-7">
@@ -521,7 +194,9 @@ function ServiceGallery({ service }: { service: Service }) {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between gap-6 mb-10 lg:mb-14">
           <div>
-            <Eyebrow>{t("Inside the practice", "走進診所")}</Eyebrow>
+            <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-4">
+              {t("Inside the practice", "走進診所")}
+            </div>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] max-w-2xl text-balance">
               {t(
                 `A closer look at ${service.name.toLowerCase()} at Tsai Orthodontics.`,
@@ -559,7 +234,9 @@ function RelatedServices({ service }: { service: Service }) {
   return (
     <section className="px-6 lg:px-10 py-20 lg:py-28 bg-secondary/35">
       <div className="max-w-7xl mx-auto">
-        <Eyebrow>{t("Related Services", "相關服務")}</Eyebrow>
+        <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
+          {t("Related Services", "相關服務")}
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {related.map((r) => (
             <Link key={r.slug} to="/services/$slug" params={{ slug: r.slug }} className="group bg-background border border-foreground/10 rounded-[1.25rem] p-7 hover:border-primary transition-all">
