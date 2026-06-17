@@ -269,7 +269,7 @@ function HomePage() {
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-8">
             {t("What We Believe In", "我們所相信的")}
           </div>
-          <p className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-balance">
+          <p className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-balance text-foreground/90">
             {t(
               "A neighbourhood specialist practice, shaped by careful listening, specialist training, and the warmth of a Vancouver family business.",
               "一間在地的專科診所——以細心聆聽、專科訓練，以及溫哥華家族診所的溫度，作為一切的起點。",
