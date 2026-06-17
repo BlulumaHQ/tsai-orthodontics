@@ -76,6 +76,6 @@ export const FOOTER_SERVICES = [
   { label: "Invisalign", labelZh: "Invisalign", to: "/services/invisalign" },
   { label: "Phase I Treatment", labelZh: "Phase I Treatment", to: "/services/phase-i-treatment" },
   { label: "Airway Friendly Orthodontics", labelZh: "Airway Friendly Orthodontics", to: "/services/airway-friendly-orthodontics" },
-  { label: "MARPE", labelZh: "MARPE", to: "/services/marpe" },
+  { label: "MARPE / TADs", labelZh: "MARPE / TADs", to: "/services/marpe" },
   { label: "Retainers", labelZh: "Retainers", to: "/services/retainers" },
 ];
