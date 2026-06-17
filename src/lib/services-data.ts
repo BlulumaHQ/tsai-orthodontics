@@ -548,6 +548,7 @@ export function localizedService(s: Service, lang: Lang): Service {
     expectItems:
       s.expectItemsZh && s.expectItemsZh.length ? s.expectItemsZh : s.expectItems,
     whyUs: s.whyUsZh ?? s.whyUs,
+    mostEffective: s.mostEffectiveZh || s.mostEffective,
     faqs: s.faqs.map((f) => ({
       ...f,
       q: f.qZh || f.q,
