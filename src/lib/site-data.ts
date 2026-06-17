@@ -62,7 +62,7 @@ export const NAV: NavItem[] = [
 export const FOOTER_NAV = [
   { label: "Home", labelZh: "首頁", to: "/" },
   { label: "About the Doctors", labelZh: "認識醫師", to: "/about-the-doctors" },
-  { label: "What We Believe In", labelZh: "我們所相信的", to: "/what-sets-us-apart" },
+  { label: "What Sets Us Apart", labelZh: "我們的不同之處", to: "/what-sets-us-apart" },
   { label: "New Patients", labelZh: "初診須知", to: "/new-patients" },
   { label: "FAQ", labelZh: "常見問題", to: "/faq" },
   { label: "Dentist Referral", labelZh: "牙醫轉診", to: "/dentist-referral" },
