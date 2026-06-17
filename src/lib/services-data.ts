@@ -375,6 +375,8 @@ export const SERVICES: Service[] = [
       "降低未來治療的複雜度",
       "改善發育中的咬合",
     ],
+    mostEffective: "Carefully timed Phase I treatment with a targeted appliance (often a palatal expander) — most effective when used only for children whose growth patterns genuinely benefit from early intervention.",
+    mostEffectiveZh: "在發育關鍵期，使用針對性的矯正裝置（常見為上顎擴張器）進行 Phase I 治療——僅針對發育模式確實能受益的孩子使用，效果最佳。",
     faqs: [],
     related: ["children-and-teens", "airway-friendly-orthodontics", "marpe"],
     metaTitle: "Phase I Treatment — Tsai Orthodontics Vancouver",
