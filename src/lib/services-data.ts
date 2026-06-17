@@ -73,6 +73,8 @@ export interface Service {
   expectItemsZh?: string[];
   whyUs?: string;
   whyUsZh?: string;
+  mostEffective: string;
+  mostEffectiveZh: string;
   faqs: ServiceFAQ[];
   related: string[];
   metaTitle: string;
