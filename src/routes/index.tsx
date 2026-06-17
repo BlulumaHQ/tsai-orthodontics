@@ -96,9 +96,9 @@ function HomePage() {
   ];
 
   useEffect(() => {
-    const id = setInterval(() => setSlide((s) => (s + 1) % HERO_SLIDES.length), 6000);
-    return () => clearInterval(id);
-  }, [HERO_SLIDES.length]);
+    const id = window.setTimeout(() => setSlide((s) => (s + 1) % HERO_SLIDES.length), 6000);
+    return () => window.clearTimeout(id);
+  }, [slide, HERO_SLIDES.length]);
 
   const PILLARS = [
     {
