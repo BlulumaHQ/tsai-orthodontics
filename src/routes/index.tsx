@@ -188,8 +188,8 @@ function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-foreground">
-        <div className="absolute inset-0">
+      <section className="relative isolate h-[100svh] min-h-[640px] w-full overflow-hidden bg-foreground">
+        <div className="absolute inset-0 z-0">
           {HERO_SLIDES.map((s, i) => {
             // On mobile, slide 2 ("right" focal) crops the person off-screen.
             // Center it on mobile, then return to the designed focal point at md+.
@@ -198,42 +198,47 @@ function HomePage() {
               ? "[object-position:50%_30%] md:[object-position:right]"
               : "[object-position:center]";
             const video = (s as { video?: string }).video;
-            const baseClass = `absolute inset-0 w-full h-full object-cover ${positionClass} transition-opacity duration-[1600ms] ease-in-out ${i === slide ? "opacity-100" : "opacity-0"}`;
-            return video ? (
-              <video
+            const mediaClass = `absolute inset-0 h-full w-full object-cover ${positionClass}`;
+            return (
+              <div
                 key={s.src}
-                src={video}
-                poster={s.src}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                className={baseClass}
-              />
-            ) : (
+                className={`absolute inset-0 transition-opacity duration-[1600ms] ease-in-out ${i === slide ? "opacity-100" : "opacity-0"}`}
+              >
               <img
-                key={s.src}
                 src={s.src}
                 alt={String(s.alt)}
-                className={baseClass}
+                className={mediaClass}
                 width={1920}
                 height={1080}
                 loading={i === 0 ? "eager" : "lazy"}
               />
+                {video ? (
+                  <video
+                    src={video}
+                    poster={s.src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-hidden="true"
+                    className={mediaClass}
+                  />
+                ) : null}
+              </div>
             );
           })}
           {HERO_SLIDES[slide].align === "left" ? (
-            <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent" />
           ) : (
-            <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
           )}
         </div>
 
         {HERO_SLIDES.map((s, i) => (
           <div
             key={s.src}
-            className={`relative h-full flex flex-col pb-20 lg:pb-28 px-6 lg:px-12 transition-opacity duration-[1200ms] ${
+            className={`relative z-20 h-full flex flex-col pb-20 lg:pb-28 px-6 lg:px-12 transition-opacity duration-[1200ms] ${
               i === slide ? "opacity-100" : "opacity-0 pointer-events-none absolute inset-0"
             } ${s.align === "left" ? "items-start justify-end text-left max-w-3xl" : "items-center justify-end text-center"}`}
           >
@@ -264,7 +269,7 @@ function HomePage() {
           </div>
         ))}
 
-        <div className="absolute bottom-6 left-6 right-6 lg:left-10 lg:right-10 flex justify-between items-end text-[10px] uppercase tracking-[0.25em] text-white/60 z-10">
+        <div className="absolute bottom-6 left-6 right-6 lg:left-10 lg:right-10 z-30 flex justify-between items-end text-[10px] uppercase tracking-[0.25em] text-white/60">
           <span>3431 Main Street</span>
           <div className="flex gap-2">
             {HERO_SLIDES.map((_, i) => (
