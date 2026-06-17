@@ -289,6 +289,8 @@ export const SERVICES: Service[] = [
       "錯咬",
       "較複雜的齒列排列",
     ],
+    mostEffective: "Modern fixed metal braces — the most precise and reliable option for complex tooth movement and bite correction.",
+    mostEffectiveZh: "現代化的固定式金屬 Braces——處理複雜牙齒移動與咬合矯正時，最精準也最穩定的選擇。",
     faqs: [],
     related: ["children-and-teens", "adults", "retainers"],
     metaTitle: "Braces & Fixed Appliances — Tsai Orthodontics Vancouver",
