@@ -239,7 +239,8 @@ function HomePage() {
                 {t("Book a Consultation", "預約諮詢")}
               </Link>
               <Link
-                to="/about-the-doctors/dr-andrew-tsai"
+                to="/about-the-doctors"
+                hash="dr-andrew-tsai"
                 className="px-8 py-4 border border-white/40 backdrop-blur-md text-white hover:bg-white/10 transition-all rounded-full text-xs font-medium uppercase tracking-[0.2em]"
               >
                 {t("Meet Dr. Andrew Tsai", "認識 Dr. Andrew Tsai")}
