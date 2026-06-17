@@ -496,6 +496,8 @@ export const SERVICES: Service[] = [
       "維持器補製",
       "長期穩定維護",
     ],
+    mostEffective: "A combination of bonded fixed retainers behind the front teeth with clear removable retainers worn at night — the most reliable way to keep teeth stable long-term.",
+    mostEffectiveZh: "前牙背面黏著的固定式維持器，搭配夜間配戴的透明活動式維持器——長期維持牙齒穩定最可靠的做法。",
     faqs: [],
     related: ["braces-and-fixed-appliances", "invisalign", "adults"],
     metaTitle: "Orthodontic Retainers — Tsai Orthodontics Vancouver",
