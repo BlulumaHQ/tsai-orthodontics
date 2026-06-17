@@ -332,6 +332,8 @@ export const SERVICES: Service[] = [
       "配戴舒適",
       "日常清潔更方便",
     ],
+    mostEffective: "A full-arch Invisalign clear aligner plan with carefully placed attachments and planned refinements for predictable results.",
+    mostEffectiveZh: "完整齒列的 Invisalign 隱形牙套療程，搭配精心配置的附件與後續微調，達成可預期的矯正成果。",
     faqs: [],
     related: ["adults", "children-and-teens", "retainers"],
     metaTitle: "Invisalign Clear Aligners — Tsai Orthodontics Vancouver",
