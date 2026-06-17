@@ -196,12 +196,25 @@ function HomePage() {
             const positionClass = isRight
               ? "[object-position:50%_30%] md:[object-position:right]"
               : "[object-position:center]";
-            return (
+            const video = (s as { video?: string }).video;
+            const baseClass = `absolute inset-0 w-full h-full object-cover ${positionClass} transition-opacity duration-[1600ms] ease-in-out ${i === slide ? "opacity-100" : "opacity-0"}`;
+            return video ? (
+              <video
+                key={s.src}
+                src={video}
+                poster={s.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className={baseClass}
+              />
+            ) : (
               <img
                 key={s.src}
                 src={s.src}
                 alt={String(s.alt)}
-                className={`absolute inset-0 w-full h-full object-cover ${positionClass} transition-opacity duration-[1600ms] ease-in-out ${i === slide ? "opacity-100" : "opacity-0"}`}
+                className={baseClass}
                 width={1920}
                 height={1080}
                 loading={i === 0 ? "eager" : "lazy"}
@@ -239,7 +252,8 @@ function HomePage() {
                 {t("Book a Consultation", "預約諮詢")}
               </Link>
               <Link
-                to="/about-the-doctors/dr-andrew-tsai"
+                to="/about-the-doctors"
+                hash="dr-andrew-tsai"
                 className="px-8 py-4 border border-white/40 backdrop-blur-md text-white hover:bg-white/10 transition-all rounded-full text-xs font-medium uppercase tracking-[0.2em]"
               >
                 {t("Meet Dr. Andrew Tsai", "認識 Dr. Andrew Tsai")}
@@ -269,7 +283,7 @@ function HomePage() {
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-8">
             {t("What We Believe In", "我們所相信的")}
           </div>
-          <p className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-balance">
+          <p className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-balance text-foreground/90">
             {t(
               "A neighbourhood specialist practice, shaped by careful listening, specialist training, and the warmth of a Vancouver family business.",
               "一間在地的專科診所——以細心聆聽、專科訓練，以及溫哥華家族診所的溫度，作為一切的起點。",
@@ -322,6 +336,66 @@ function HomePage() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* DOCTOR TEASER */}
+      <section className="py-16 lg:py-32 px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="lg:col-span-5">
+            <div className="overflow-hidden rounded-3xl">
+              <img
+                src={drTsai.url}
+                alt="Dr. Tsai, specialist orthodontist"
+                loading="lazy"
+                className="w-full aspect-[4/5] object-cover"
+              />
+            </div>
+          </div>
+          <div className="lg:col-span-7 lg:pl-8">
+            <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
+              {t("Meet the Specialist", "認識專科醫師")}
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-2 text-balance">
+              Dr. Andrew Tsai
+            </h2>
+            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-8">
+              DMD, MSD, FRCD(C)
+            </div>
+            <p className="font-serif text-xl lg:text-2xl text-foreground/85 leading-relaxed mb-6 max-w-xl">
+              {t(
+                "Dr. Tsai believes good orthodontics is mostly good listening.",
+                "Dr. Tsai 相信，好的矯正治療，大半來自願意傾聽。",
+              )}
+            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-xl">
+              {t(
+                "A certified specialist in orthodontics with university training, published research, and a quiet practice on Main Street — Dr. Tsai built this clinic to be the kind of place his own family would choose.",
+                "Dr. Tsai 為認證的齒顎矯正專科醫師，具備完整的大學專科訓練與發表期刊論文的研究經驗。他在 Main Street 上打造這間沉靜的診所，希望它是自己家人也會願意選擇的地方。",
+              )}
+            </p>
+            <div className="flex flex-wrap gap-3 mb-10">
+              {[
+                t("Certified Specialist", "認證專科醫師"),
+                t("University Trained", "大學專科訓練"),
+                t("English & Mandarin", "英文與中文服務"),
+              ].map((c) => (
+                <span
+                  key={c}
+                  className="text-[11px] uppercase tracking-[0.2em] py-2 px-4 border border-foreground/10 rounded-full text-foreground/70"
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+            <Link
+              to="/about-the-doctors"
+              hash="dr-andrew-tsai"
+              className="inline-flex items-center gap-2 text-primary text-xs uppercase tracking-[0.2em] font-medium border-b border-primary pb-1 hover:gap-3 transition-all"
+            >
+              {t("Meet Dr. Andrew Tsai", "認識 Dr. Andrew Tsai")} <ArrowRight className="size-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -401,58 +475,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* DOCTOR TEASER */}
-      <section className="py-16 lg:py-32 px-6 lg:px-10">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          <div className="lg:col-span-5">
-            <div className="overflow-hidden rounded-3xl">
-              <img
-                src={drTsai.url}
-                alt="Dr. Tsai, specialist orthodontist"
-                loading="lazy"
-                className="w-full aspect-[4/5] object-cover"
-              />
-            </div>
-          </div>
-          <div className="lg:col-span-7 lg:pl-8">
-            <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
-              {t("Meet the Specialist", "認識專科醫師")}
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8 text-balance">
-              {t(
-                "Dr. Tsai believes good orthodontics is mostly good listening.",
-                "Dr. Tsai 相信，好的矯正治療，大半來自願意傾聽。",
-              )}
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-xl">
-              {t(
-                "A certified specialist in orthodontics with university training, published research, and a quiet practice on Main Street — Dr. Tsai built this clinic to be the kind of place his own family would choose.",
-                "Dr. Tsai 為認證的齒顎矯正專科醫師，具備完整的大學專科訓練與發表期刊論文的研究經驗。他在 Main Street 上打造這間沉靜的診所，希望它是自己家人也會願意選擇的地方。",
-              )}
-            </p>
-            <div className="flex flex-wrap gap-3 mb-10">
-              {[
-                t("Certified Specialist", "認證專科醫師"),
-                t("University Trained", "大學專科訓練"),
-                t("English & Mandarin", "英文與中文服務"),
-              ].map((c) => (
-                <span
-                  key={c}
-                  className="text-[11px] uppercase tracking-[0.2em] py-2 px-4 border border-foreground/10 rounded-full text-foreground/70"
-                >
-                  {c}
-                </span>
-              ))}
-            </div>
-            <Link
-              to="/about-the-doctors/dr-andrew-tsai"
-              className="inline-flex items-center gap-2 text-primary text-xs uppercase tracking-[0.2em] font-medium border-b border-primary pb-1 hover:gap-3 transition-all"
-            >
-              {t("Meet Dr. Andrew Tsai", "認識 Dr. Andrew Tsai")} <ArrowRight className="size-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
+
 
       {/*
         Google Reviews — Placeholder Google Reviews.
@@ -532,6 +555,29 @@ function HomePage() {
             >
               {t("Call", "電話聯絡")} {SITE.phone}
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FIND US — MAP BAND */}
+      <section className="pb-20 lg:pb-32 px-6 lg:px-10 pt-16 lg:pt-24 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-4">
+            {t("Find Us", "診所位置")}
+          </div>
+          <address className="not-italic font-serif text-2xl md:text-3xl leading-snug mb-8 text-foreground/85">
+            {SITE.address.street}, {SITE.address.city}, {SITE.address.region} {SITE.address.postal}
+          </address>
+          <div className="rounded-3xl overflow-hidden border border-foreground/5">
+            <iframe
+              title="Tsai Orthodontics location"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(`${SITE.address.street}, ${SITE.address.city}, ${SITE.address.region} ${SITE.address.postal}`)}&output=embed`}
+              width="100%"
+              height="450"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="block w-full"
+            />
           </div>
         </div>
       </section>

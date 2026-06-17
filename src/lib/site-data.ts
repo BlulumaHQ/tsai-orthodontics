@@ -35,9 +35,7 @@ export const NAV: NavItem[] = [
     to: "/about-the-doctors",
     children: [
       { label: "About the Doctors", labelZh: "認識醫師", to: "/about-the-doctors" },
-      { label: "Dr. Andrew Tsai", labelZh: "Dr. Andrew Tsai", to: "/about-the-doctors/dr-andrew-tsai" },
-      { label: "Dr. Marjorie Tsai", labelZh: "Dr. Marjorie Tsai", to: "/about-the-doctors/dr-marjorie-tsai" },
-      { label: "What We Believe In", labelZh: "我們所相信的", to: "/what-sets-us-apart" },
+      { label: "What Sets Us Apart", labelZh: "我們的不同之處", to: "/what-sets-us-apart" },
     ],
   },
   {
@@ -51,7 +49,7 @@ export const NAV: NavItem[] = [
       { label: "Invisalign", labelZh: "Invisalign", to: "/services/invisalign" },
       { label: "Phase I Treatment", labelZh: "Phase I Treatment", to: "/services/phase-i-treatment" },
       { label: "Airway Friendly Orthodontics", labelZh: "Airway Friendly Orthodontics", to: "/services/airway-friendly-orthodontics" },
-      { label: "MARPE", labelZh: "MARPE", to: "/services/marpe" },
+      { label: "MARPE / TADs", labelZh: "MARPE / TADs", to: "/services/marpe" },
       { label: "Retainers", labelZh: "Retainers", to: "/services/retainers" },
     ],
   },
@@ -64,7 +62,7 @@ export const NAV: NavItem[] = [
 export const FOOTER_NAV = [
   { label: "Home", labelZh: "首頁", to: "/" },
   { label: "About the Doctors", labelZh: "認識醫師", to: "/about-the-doctors" },
-  { label: "What We Believe In", labelZh: "我們所相信的", to: "/what-sets-us-apart" },
+  { label: "What Sets Us Apart", labelZh: "我們的不同之處", to: "/what-sets-us-apart" },
   { label: "New Patients", labelZh: "初診須知", to: "/new-patients" },
   { label: "FAQ", labelZh: "常見問題", to: "/faq" },
   { label: "Dentist Referral", labelZh: "牙醫轉診", to: "/dentist-referral" },
@@ -78,6 +76,6 @@ export const FOOTER_SERVICES = [
   { label: "Invisalign", labelZh: "Invisalign", to: "/services/invisalign" },
   { label: "Phase I Treatment", labelZh: "Phase I Treatment", to: "/services/phase-i-treatment" },
   { label: "Airway Friendly Orthodontics", labelZh: "Airway Friendly Orthodontics", to: "/services/airway-friendly-orthodontics" },
-  { label: "MARPE", labelZh: "MARPE", to: "/services/marpe" },
+  { label: "MARPE / TADs", labelZh: "MARPE / TADs", to: "/services/marpe" },
   { label: "Retainers", labelZh: "Retainers", to: "/services/retainers" },
 ];

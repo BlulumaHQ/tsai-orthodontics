@@ -73,6 +73,8 @@ export interface Service {
   expectItemsZh?: string[];
   whyUs?: string;
   whyUsZh?: string;
+  mostEffective: string;
+  mostEffectiveZh: string;
   faqs: ServiceFAQ[];
   related: string[];
   metaTitle: string;
@@ -178,6 +180,8 @@ export const SERVICES: Service[] = [
       "Parents should leave understanding exactly what is happening and why. Some children need treatment now. Others simply need time.",
     whyUsZh:
       "家長離開診所時，應該清楚知道孩子目前的狀況以及原因。有些孩子需要現在開始治療；有些則只是需要再等等。",
+    mostEffective: "[Dr. Tsai to confirm the most effective option]",
+    mostEffectiveZh: "[由醫師補充最有效的選項]",
     faqs: [
       {
         q: "Does every child need braces?",
@@ -238,6 +242,8 @@ export const SERVICES: Service[] = [
       "Adult patients often have different priorities. Treatment should feel practical, comfortable, and clearly planned.",
     whyUsZh:
       "成人病患的考量與孩子不同。療程應該務實、舒適，並且每一步都規劃清楚。",
+    mostEffective: "[Dr. Tsai to confirm the most effective option]",
+    mostEffectiveZh: "[由醫師補充最有效的選項]",
     faqs: [],
     related: ["invisalign", "braces-and-fixed-appliances", "retainers"],
     metaTitle: "Adult Orthodontics — Tsai Orthodontics Vancouver",
@@ -283,6 +289,8 @@ export const SERVICES: Service[] = [
       "錯咬",
       "較複雜的齒列排列",
     ],
+    mostEffective: "Modern fixed metal braces — the most precise and reliable option for complex tooth movement and bite correction.",
+    mostEffectiveZh: "現代化的固定式金屬 Braces——處理複雜牙齒移動與咬合矯正時，最精準也最穩定的選擇。",
     faqs: [],
     related: ["children-and-teens", "adults", "retainers"],
     metaTitle: "Braces & Fixed Appliances — Tsai Orthodontics Vancouver",
@@ -324,6 +332,8 @@ export const SERVICES: Service[] = [
       "配戴舒適",
       "日常清潔更方便",
     ],
+    mostEffective: "A full-arch Invisalign clear aligner plan with carefully placed attachments and planned refinements for predictable results.",
+    mostEffectiveZh: "完整齒列的 Invisalign 隱形牙套療程，搭配精心配置的附件與後續微調，達成可預期的矯正成果。",
     faqs: [],
     related: ["adults", "children-and-teens", "retainers"],
     metaTitle: "Invisalign Clear Aligners — Tsai Orthodontics Vancouver",
@@ -365,6 +375,8 @@ export const SERVICES: Service[] = [
       "降低未來治療的複雜度",
       "改善發育中的咬合",
     ],
+    mostEffective: "Carefully timed Phase I treatment with a targeted appliance (often a palatal expander) — most effective when used only for children whose growth patterns genuinely benefit from early intervention.",
+    mostEffectiveZh: "在發育關鍵期，使用針對性的矯正裝置（常見為上顎擴張器）進行 Phase I 治療——僅針對發育模式確實能受益的孩子使用，效果最佳。",
     faqs: [],
     related: ["children-and-teens", "airway-friendly-orthodontics", "marpe"],
     metaTitle: "Phase I Treatment — Tsai Orthodontics Vancouver",
@@ -404,6 +416,8 @@ export const SERVICES: Service[] = [
       "We believe every patient deserves an evaluation that considers overall development rather than focusing only on straight teeth.",
     whyUsZh:
       "我們相信，每位病患都值得一份不只看牙齒排列、而是顧及整體發育的完整評估。",
+    mostEffective: "A complete growth and airway-aware evaluation before treatment begins, so the chosen appliance (expander, functional appliance, braces, or aligners) is matched to the patient's overall development — not just their teeth.",
+    mostEffectiveZh: "在開始治療前，先進行完整的成長與呼吸道評估，再選擇最合適的矯正裝置（擴張器、功能性矯正裝置、Braces 或隱形牙套），讓治療對應到整體發育，而不只是牙齒排列。",
     faqs: [],
     related: ["phase-i-treatment", "marpe", "children-and-teens"],
     metaTitle: "Airway Friendly Orthodontics — Tsai Orthodontics Vancouver",
@@ -412,12 +426,12 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "marpe",
-    name: "MARPE",
-    nameZh: "MARPE 上顎骨擴張",
-    short: "Miniscrew-assisted rapid palatal expansion for carefully selected cases.",
-    shortZh: "結合骨釘的上顎快速擴張，適用於經過審慎評估的個案。",
-    ctaLabel: "Explore MARPE",
-    ctaLabelZh: "了解 MARPE",
+    name: "MARPE / TADs",
+    nameZh: "MARPE / TADs 上顎骨擴張與骨釘",
+    short: "Miniscrew-assisted rapid palatal expansion, supported by TADs, for carefully selected cases.",
+    shortZh: "結合骨釘（TADs）的上顎快速擴張，適用於經過審慎評估的個案。",
+    ctaLabel: "Explore MARPE / TADs",
+    ctaLabelZh: "了解 MARPE / TADs",
     image: svcMarpe,
     heroImageDirection: "Digital orthodontic planning model.",
     heroAlt: "Digital orthodontic planning model",
@@ -425,10 +439,12 @@ export const SERVICES: Service[] = [
     heroTitleZh: "為特定個案設計的進階擴張治療",
     intro: [
       "MARPE (Miniscrew-Assisted Rapid Palatal Expansion) is an advanced technique used for carefully selected patients who require skeletal expansion.",
+      "TADs (Temporary Anchorage Devices, or 骨釘) are small titanium mini-screws used alongside MARPE in selected cases to provide precise, stable anchorage and guide difficult tooth movements that braces or aligners alone cannot achieve.",
       "Not every patient is a candidate, which is why careful evaluation is essential.",
     ],
     introZh: [
       "MARPE（Miniscrew-Assisted Rapid Palatal Expansion）是一種進階的上顎骨擴張技術，適用於經過審慎評估、確實需要骨骼層級擴張的病患。",
+      "TADs（Temporary Anchorage Devices，骨釘）是極小的鈦合金骨釘，在特定個案中會與 MARPE 搭配使用，提供精準穩定的支撐點，協助完成單靠 Braces 或隱形牙套較難達成的牙齒移動。",
       "並非每位病患都適合，因此事前的完整評估非常重要。",
     ],
     primarySectionTitle: "Benefits",
@@ -445,11 +461,13 @@ export const SERVICES: Service[] = [
       "在部分個案中可降低手術需求",
       "由專科醫師完整規劃",
     ],
+    mostEffective: "MARPE combined with TADs (Temporary Anchorage Devices) — the most effective approach for precision skeletal expansion in carefully selected adolescent and adult cases.",
+    mostEffectiveZh: "MARPE 搭配 TADs（骨釘）——在審慎評估的青少年與成人個案中，達成精準骨骼擴張最有效的方式。",
     faqs: [],
     related: ["airway-friendly-orthodontics", "phase-i-treatment", "adults"],
-    metaTitle: "MARPE Palatal Expansion — Tsai Orthodontics Vancouver",
+    metaTitle: "MARPE / TADs Palatal Expansion — Tsai Orthodontics Vancouver",
     metaDescription:
-      "MARPE in Vancouver for selected orthodontic expansion cases requiring careful specialist evaluation.",
+      "MARPE and TADs in Vancouver for selected orthodontic expansion cases requiring careful specialist evaluation.",
   },
   {
     slug: "retainers",
@@ -486,6 +504,8 @@ export const SERVICES: Service[] = [
       "維持器補製",
       "長期穩定維護",
     ],
+    mostEffective: "A combination of bonded fixed retainers behind the front teeth with clear removable retainers worn at night — the most reliable way to keep teeth stable long-term.",
+    mostEffectiveZh: "前牙背面黏著的固定式維持器，搭配夜間配戴的透明活動式維持器——長期維持牙齒穩定最可靠的做法。",
     faqs: [],
     related: ["braces-and-fixed-appliances", "invisalign", "adults"],
     metaTitle: "Orthodontic Retainers — Tsai Orthodontics Vancouver",
@@ -528,6 +548,7 @@ export function localizedService(s: Service, lang: Lang): Service {
     expectItems:
       s.expectItemsZh && s.expectItemsZh.length ? s.expectItemsZh : s.expectItems,
     whyUs: s.whyUsZh ?? s.whyUs,
+    mostEffective: s.mostEffectiveZh || s.mostEffective,
     faqs: s.faqs.map((f) => ({
       ...f,
       q: f.qZh || f.q,
