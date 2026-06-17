@@ -79,6 +79,13 @@ const CLINICAL_FOCUS: { en: string; zh: string }[] = [
   { en: "Care for children, teens, and adults", zh: "兒童、青少年與成人矯正照護" },
 ];
 
+const ASSOCIATIONS: string[] = [
+  "Canadian Association of Orthodontists (CAO)",
+  "British Columbia Society of Orthodontists (BCSO)",
+  "American Association of Orthodontists (AAO)",
+  "Pacific Coast Society of Orthodontics (PCSO)",
+];
+
 export const Route = createFileRoute("/about-the-doctors/")({
   head: () => ({
     meta: [
@@ -100,17 +107,20 @@ export const Route = createFileRoute("/about-the-doctors/")({
 function AboutTheDoctorsPage() {
   const { t, lang } = useT();
 
-  // Smooth-scroll to the requested doctor when arriving via hash anchor.
   useEffect(() => {
     if (typeof window === "undefined") return;
     const hash = window.location.hash.replace("#", "");
     if (!hash) return;
     const el = document.getElementById(hash);
     if (el) {
-      // small delay to let layout settle
       setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
     }
   }, []);
+
+  // Larger, more prominent section labels (per client) — used in place of the
+  // small uppercase eyebrow + decorative h3 sub-headlines.
+  const sectionLabelCls =
+    "font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-10 text-balance";
 
   return (
     <>
@@ -121,8 +131,8 @@ function AboutTheDoctorsPage() {
           "齒顎矯正專科照護，由完整訓練與細膩關懷一同打造。",
         )}
         intro={t(
-          "Tsai Orthodontics is led by orthodontists who have completed the highest levels of training in the profession — and who believe great care begins with a real conversation.",
-          "Tsai Orthodontics 由完成業界最高層級訓練的齒顎矯正專科醫師主持——我們相信，真正好的照護從一次真誠的對話開始。",
+          "Tsai Orthodontics is led by Dr. Andrew Tsai, who has completed the highest levels of training in the profession and believes great care begins with a real conversation. From education to guidance to execution, Dr. Andrew Tsai personally oversees your customized treatment from start to finish.",
+          "Tsai Orthodontics 由 Dr. Andrew Tsai 主持，他已完成業界最高層級的專科訓練，並相信真正好的照護始於一次真誠的對話。從衛教、引導到執行，您的個人化療程都由 Dr. Andrew Tsai 親自負責，自始至終。",
         )}
       />
 
@@ -146,20 +156,26 @@ function AboutTheDoctorsPage() {
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02] mb-2 text-balance">
               Dr. Andrew Tsai
             </h2>
-            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-8">
+            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-6">
               DMD, MSD, FRCD(C)
             </div>
+            <p className="text-sm md:text-base text-foreground/75 mb-8 max-w-xl">
+              {t(
+                "Certified Specialist in Orthodontics and Dentofacial Orthopedics",
+                "齒顎矯正暨顏面齒槽骨矯正認證專科醫師",
+              )}
+            </p>
             <p className="font-serif text-xl lg:text-2xl leading-relaxed text-foreground/85 mb-6">
               {t(
-                "Born in Taipei, Taiwan and raised in Vancouver, BC — Dr. Andrew grew up inspired by his parents' love for dentistry and the impact it had on helping others.",
-                "Dr. Andrew 出生於台灣台北，在加拿大 BC 省溫哥華長大。從小受到父母對牙醫工作的熱忱與助人初衷所啟發，逐步踏上專科醫師之路。",
+                "Graduated from the Seven-Year Bio-Dental Program at the University of Pennsylvania and the orthodontic specialty program at the University of the Pacific. Fellow of the Royal College of Dentists of Canada. Diplomate of the American Board of Orthodontics.",
+                "畢業於賓州大學七年制 Bio-Dental Program，並完成 University of the Pacific 齒顎矯正專科訓練。Royal College of Dentists of Canada 院士（Fellow）。American Board of Orthodontics 認證專科醫師（Diplomate）。",
               )}
             </p>
             <div className="space-y-5 text-lg leading-relaxed text-foreground/85">
               <p>
                 {t(
-                  "Dr. Andrew Tsai is a Certified Specialist in Orthodontics and Dentofacial Orthopedics. He has completed the highest levels of certification within the profession and has the rare distinction of being both a Fellow of the Royal College of Dentists of Canada and a Diplomate of the American Board of Orthodontics.",
-                  "Dr. Andrew Tsai 為齒顎矯正暨顏面齒槽骨矯正認證專科醫師，已完成業界最高層級的認證，並少見地同時取得 Fellow of the Royal College of Dentists of Canada 與 Diplomate of the American Board of Orthodontics 兩項殊榮。",
+                  "Born in Taipei, Taiwan and raised in Vancouver, BC — Dr. Andrew grew up inspired by his parents' love for dentistry and the impact it had on helping others.",
+                  "Dr. Andrew 出生於台灣台北，在加拿大 BC 省溫哥華長大。從小受到父母對牙醫工作的熱忱與助人初衷所啟發，逐步踏上專科醫師之路。",
                 )}
               </p>
               <p>
@@ -179,17 +195,11 @@ function AboutTheDoctorsPage() {
         </div>
       </section>
 
-      {/* Education timeline */}
+      {/* Education timeline — large prominent section label, decorative subheadline removed */}
       <section className="py-20 lg:py-28 px-6 lg:px-10 bg-secondary/30">
         <div className="max-w-6xl mx-auto">
-          <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-5">
+          <h3 className={sectionLabelCls}>
             {t("Education & Training", "學歷與訓練")}
-          </div>
-          <h3 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-14 max-w-2xl text-balance">
-            {t(
-              "A path defined by depth, not shortcuts.",
-              "一條以扎實為基礎、不走捷徑的學習之路。",
-            )}
           </h3>
           <ol className="relative border-l border-foreground/15 ml-3 space-y-12">
             {EDUCATION.map((e) => (
@@ -208,18 +218,12 @@ function AboutTheDoctorsPage() {
         </div>
       </section>
 
-      {/* Credentials + Clinical Focus */}
+      {/* Credentials + Clinical Focus — large prominent section labels, decorative subheadlines removed */}
       <section className="py-20 lg:py-28 px-6 lg:px-10">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14">
           <div>
-            <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-5">
+            <h3 className={sectionLabelCls}>
               {t("Specialist Credentials", "專科認證")}
-            </div>
-            <h3 className="font-display text-3xl md:text-4xl mb-8 leading-tight">
-              {t(
-                "The highest levels of certification in the profession.",
-                "業界最高層級的專科認證。",
-              )}
             </h3>
             <ul className="space-y-4">
               {CREDENTIALS.map((c) => (
@@ -231,11 +235,8 @@ function AboutTheDoctorsPage() {
             </ul>
           </div>
           <div>
-            <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-5">
+            <h3 className={sectionLabelCls}>
               {t("Clinical Focus", "臨床專長")}
-            </div>
-            <h3 className="font-display text-3xl md:text-4xl mb-8 leading-tight">
-              {t("Care designed around each patient's needs.", "依每位病患需求設計的治療。")}
             </h3>
             <ul className="space-y-4">
               {CLINICAL_FOCUS.map((c) => (
@@ -249,6 +250,23 @@ function AboutTheDoctorsPage() {
         </div>
       </section>
 
+      {/* Professional Associations — no subheadline, list only */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-secondary/30">
+        <div className="max-w-6xl mx-auto">
+          <h3 className={sectionLabelCls}>
+            {t("Professional Associations", "專業學會")}
+          </h3>
+          <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-4 max-w-4xl">
+            {ASSOCIATIONS.map((a) => (
+              <li key={a} className="flex gap-4 border-t border-foreground/10 pt-4 text-foreground/85">
+                <span className="text-primary font-mono text-xs mt-1">◆</span>
+                <span>{a}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Patient Philosophy */}
       <section className="py-20 lg:py-28 bg-foreground text-background px-6 lg:px-10">
         <div className="max-w-3xl mx-auto text-center">
@@ -257,8 +275,8 @@ function AboutTheDoctorsPage() {
           </div>
           <p className="font-serif text-2xl md:text-3xl lg:text-4xl leading-snug text-balance">
             {t(
-              "“Dr. Andrew helps patients understand their options clearly and feel comfortable with the treatment plan before moving forward.”",
-              "「Dr. Andrew 會協助病患清楚了解所有選項，並在開始治療之前，對整個療程計畫感到安心。」",
+              "“Dr. Andrew is committed to helping patients understand their options clearly and feel comfortable with the treatment plan before moving forward.”",
+              "「Dr. Andrew 致力於協助病患清楚了解所有選項，並在開始治療前，對整個療程計畫感到安心。」",
             )}
           </p>
         </div>
@@ -290,17 +308,29 @@ function AboutTheDoctorsPage() {
             <div className="text-xs uppercase tracking-wide text-muted-foreground mb-8">
               DDS, M.Ortho
             </div>
-            <div className="rounded-3xl border border-foreground/8 bg-secondary/30 p-8 lg:p-10">
-              <p className="font-serif text-xl lg:text-2xl text-foreground/85 leading-relaxed mb-6">
+            <p className="font-serif text-xl lg:text-2xl leading-relaxed text-foreground/85 mb-8">
+              {t(
+                "Dr. Marjorie Tsai supports the practice with coverage and continuity of care. Every patient's treatment is planned and supervised by Dr. Andrew Tsai, ensuring one consistent clinical vision from first visit to last.",
+                "Dr. Marjorie Tsai 負責診所的支援與照護的延續性。每位病患的療程皆由 Dr. Andrew Tsai 親自規劃與督導，確保從第一次到最後一次看診，都維持一致的臨床理念。",
+              )}
+            </p>
+            <div className="space-y-5 text-lg leading-relaxed text-foreground/85">
+              <p>
                 {t(
-                  "Dr. Marjorie Tsai's full biography will be added soon. Patients can expect the same thoughtful, family-centered approach that defines the Tsai Orthodontics experience — careful explanation, warm communication, and specialist-level orthodontic planning.",
-                  "Dr. Marjorie Tsai 的完整介紹將於近期上線。您可以期待與 Tsai Orthodontics 一貫相同的細膩、以家庭為中心的照護方式——仔細的說明、溫暖的溝通，以及專科層級的矯正規劃。",
+                  "Dr. Marjorie Tsai has spent her career helping people smile with confidence, and she brings that same warmth to every patient who sits in her chair. She graduated from Taipei Medical University and went on to complete three years of advanced orthodontic specialty training at the University of Hong Kong, Faculty of Dentistry. Today she's licensed to practice in three places close to her heart: Canada, Hong Kong, and Taiwan.",
+                  "Dr. Marjorie Tsai 的職涯始終在幫助人們自信地展露笑容，她也把同樣的溫暖帶給每一位坐上診療椅的病患。她畢業於臺北醫學大學，並於香港大學牙醫學院完成三年的進階齒顎矯正專科訓練。如今她在三個對她意義深遠的地方擁有執業資格：加拿大、香港與台灣。",
                 )}
               </p>
-              <p className="text-foreground/70 leading-relaxed">
+              <p>
                 {t(
-                  "In the meantime, please feel free to contact the practice directly with any questions.",
-                  "在此之前，若您有任何問題，歡迎直接與診所聯繫。",
+                  "What patients notice first about Dr. Tsai is how genuinely she listens. She takes the time to understand what each person hopes for before recommending any treatment, and her years of experience — from simple alignment to complex bite corrections — mean families can relax knowing they're in caring, capable hands.",
+                  "病患對 Dr. Tsai 的第一印象，往往是她真誠的傾聽。在建議任何療程之前，她都會花時間了解每個人真正的期待；而她從單純排列到複雜咬合矯正的多年經驗，也讓家屬能安心地把自己交到一雙細心又可靠的手中。",
+                )}
+              </p>
+              <p className="text-foreground/70">
+                {t(
+                  "When she's not in the practice, you'll likely find Dr. Tsai lacing up her running shoes. She's a passionate marathoner chasing all eight majors one finish line at a time, and she competes in triathlons with her daughters. The rest of her time is happily spent with her husband, their two daughters, and the family's beloved shiba inu, Rocky.",
+                  "不在診所的時候，多半能看到 Dr. Tsai 綁起跑鞋的身影。她是熱情的馬拉松跑者，正一場一場地朝六大馬拉松（八大賽事）邁進，也和女兒們一起參加鐵人三項。其餘的時間，她最喜歡和先生、兩個女兒，以及家中最寶貝的柴犬 Rocky 一起度過。",
                 )}
               </p>
             </div>
