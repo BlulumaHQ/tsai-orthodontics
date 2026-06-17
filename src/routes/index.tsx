@@ -558,6 +558,29 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* FIND US — MAP BAND */}
+      <section className="pb-20 lg:pb-32 px-6 lg:px-10 pt-16 lg:pt-24 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-4">
+            {t("Find Us", "診所位置")}
+          </div>
+          <address className="not-italic font-serif text-2xl md:text-3xl leading-snug mb-8 text-foreground/85">
+            {SITE.address.street}, {SITE.address.city}, {SITE.address.region} {SITE.address.postal}
+          </address>
+          <div className="rounded-3xl overflow-hidden border border-foreground/5">
+            <iframe
+              title="Tsai Orthodontics location"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(`${SITE.address.street}, ${SITE.address.city}, ${SITE.address.region} ${SITE.address.postal}`)}&output=embed`}
+              width="100%"
+              height="450"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="block w-full"
+            />
+          </div>
+        </div>
+      </section>
     </>
   );
 }
