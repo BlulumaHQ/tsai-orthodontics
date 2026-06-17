@@ -196,12 +196,25 @@ function HomePage() {
             const positionClass = isRight
               ? "[object-position:50%_30%] md:[object-position:right]"
               : "[object-position:center]";
-            return (
+            const video = (s as { video?: string }).video;
+            const baseClass = `absolute inset-0 w-full h-full object-cover ${positionClass} transition-opacity duration-[1600ms] ease-in-out ${i === slide ? "opacity-100" : "opacity-0"}`;
+            return video ? (
+              <video
+                key={s.src}
+                src={video}
+                poster={s.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className={baseClass}
+              />
+            ) : (
               <img
                 key={s.src}
                 src={s.src}
                 alt={String(s.alt)}
-                className={`absolute inset-0 w-full h-full object-cover ${positionClass} transition-opacity duration-[1600ms] ease-in-out ${i === slide ? "opacity-100" : "opacity-0"}`}
+                className={baseClass}
                 width={1920}
                 height={1080}
                 loading={i === 0 ? "eager" : "lazy"}
