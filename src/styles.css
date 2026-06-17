@@ -36,6 +36,7 @@
   --color-peach: var(--peach);
 
   --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-serif: "Lora", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
