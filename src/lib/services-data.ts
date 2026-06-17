@@ -416,6 +416,8 @@ export const SERVICES: Service[] = [
       "We believe every patient deserves an evaluation that considers overall development rather than focusing only on straight teeth.",
     whyUsZh:
       "我們相信，每位病患都值得一份不只看牙齒排列、而是顧及整體發育的完整評估。",
+    mostEffective: "A complete growth and airway-aware evaluation before treatment begins, so the chosen appliance (expander, functional appliance, braces, or aligners) is matched to the patient's overall development — not just their teeth.",
+    mostEffectiveZh: "在開始治療前，先進行完整的成長與呼吸道評估，再選擇最合適的矯正裝置（擴張器、功能性矯正裝置、Braces 或隱形牙套），讓治療對應到整體發育，而不只是牙齒排列。",
     faqs: [],
     related: ["phase-i-treatment", "marpe", "children-and-teens"],
     metaTitle: "Airway Friendly Orthodontics — Tsai Orthodontics Vancouver",
