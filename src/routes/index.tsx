@@ -185,6 +185,8 @@ function HomePage() {
     },
   ];
 
+  const activeHeroSlide = HERO_SLIDES[slide];
+
   return (
     <>
       {/* HERO */}
@@ -228,46 +230,44 @@ function HomePage() {
               </div>
             );
           })}
-          {HERO_SLIDES[slide].align === "left" ? (
+          {activeHeroSlide.align === "left" ? (
             <div className="absolute inset-0 z-10 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent" />
           ) : (
             <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
           )}
         </div>
 
-        {HERO_SLIDES.map((s, i) => (
-          <div
-            key={s.src}
-            className={`relative z-20 h-full flex flex-col pb-20 lg:pb-28 px-6 lg:px-12 transition-opacity duration-[1200ms] ${
-              i === slide ? "opacity-100" : "opacity-0 pointer-events-none absolute inset-0"
-            } ${s.align === "left" ? "items-start justify-end text-left max-w-3xl" : "items-center justify-end text-center"}`}
-          >
-            <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-6">
-              {s.eyebrow}
-            </div>
-            <h1 className={`font-display text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] text-balance ${s.align === "left" ? "" : "max-w-5xl"}`}>
-              {s.title}
-            </h1>
-            <p className={`mt-8 text-white/85 text-base lg:text-lg leading-relaxed ${s.align === "left" ? "max-w-lg" : "max-w-xl"}`}>
-              {s.tagline}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 mt-10">
-              <Link
-                to="/contact"
-                className="px-8 py-4 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300 rounded-full text-xs font-medium uppercase tracking-[0.2em]"
-              >
-                {t("Book a Consultation", "預約諮詢")}
-              </Link>
-              <Link
-                to="/about-the-doctors"
-                hash="dr-andrew-tsai"
-                className="px-8 py-4 border border-white/40 backdrop-blur-md text-white hover:bg-white/10 transition-all rounded-full text-xs font-medium uppercase tracking-[0.2em]"
-              >
-                {t("Meet Dr. Andrew Tsai", "認識 Dr. Andrew Tsai")}
-              </Link>
-            </div>
+        <div
+          key={activeHeroSlide.src}
+          className={`relative z-20 h-full flex flex-col pb-20 lg:pb-28 px-6 lg:px-12 ${
+            activeHeroSlide.align === "left" ? "items-start justify-end text-left max-w-3xl" : "items-center justify-end text-center"
+          }`}
+        >
+          <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-6">
+            {activeHeroSlide.eyebrow}
           </div>
-        ))}
+          <h1 className={`font-display text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] text-balance ${activeHeroSlide.align === "left" ? "" : "max-w-5xl"}`}>
+            {activeHeroSlide.title}
+          </h1>
+          <p className={`mt-8 text-white/85 text-base lg:text-lg leading-relaxed ${activeHeroSlide.align === "left" ? "max-w-lg" : "max-w-xl"}`}>
+            {activeHeroSlide.tagline}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 mt-10">
+            <Link
+              to="/contact"
+              className="px-8 py-4 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300 rounded-full text-xs font-medium uppercase tracking-[0.2em]"
+            >
+              {t("Book a Consultation", "預約諮詢")}
+            </Link>
+            <Link
+              to="/about-the-doctors"
+              hash="dr-andrew-tsai"
+              className="px-8 py-4 border border-white/40 backdrop-blur-md text-white hover:bg-white/10 transition-all rounded-full text-xs font-medium uppercase tracking-[0.2em]"
+            >
+              {t("Meet Dr. Andrew Tsai", "認識 Dr. Andrew Tsai")}
+            </Link>
+          </div>
+        </div>
 
         <div className="absolute bottom-6 left-6 right-6 lg:left-10 lg:right-10 z-30 flex justify-between items-end text-[10px] uppercase tracking-[0.25em] text-white/60">
           <span>3431 Main Street</span>
