@@ -242,6 +242,8 @@ export const SERVICES: Service[] = [
       "Adult patients often have different priorities. Treatment should feel practical, comfortable, and clearly planned.",
     whyUsZh:
       "成人病患的考量與孩子不同。療程應該務實、舒適，並且每一步都規劃清楚。",
+    mostEffective: "[Dr. Tsai to confirm the most effective option]",
+    mostEffectiveZh: "[由醫師補充最有效的選項]",
     faqs: [],
     related: ["invisalign", "braces-and-fixed-appliances", "retainers"],
     metaTitle: "Adult Orthodontics — Tsai Orthodontics Vancouver",
