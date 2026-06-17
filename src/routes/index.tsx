@@ -63,8 +63,8 @@ function HomePage() {
         </>,
       ),
       tagline: t(
-        "Specialist orthodontic care in Vancouver, delivered with clarity, warmth, and personal attention.",
-        "溫哥華齒顎矯正專科照護，以清晰、溫暖與細膩的個人關懷陪伴每一位病患。",
+        "Specialist orthodontic care in Vancouver, made to fit into your life, and delivered with craft, care and clarity.",
+        "溫哥華的齒顎矯正專科照護，貼合你的生活節奏，並以工藝、關懷與清晰為本。",
       ),
       align: "center" as const,
       objectPosition: "center",
@@ -285,8 +285,8 @@ function HomePage() {
           </div>
           <p className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-balance text-foreground/90">
             {t(
-              "A neighbourhood specialist practice, shaped by careful listening, specialist training, and the warmth of a Vancouver family business.",
-              "一間在地的專科診所——以細心聆聽、專科訓練，以及溫哥華家族診所的溫度，作為一切的起點。",
+              "A neighbourhood orthodontic practice, shaped by specialist training, careful listening, and the legacy and warmth of a Vancouver family business.",
+              "一間在地的齒顎矯正診所——由專科訓練、用心聆聽，以及溫哥華家族診所的傳承與溫度共同形塑。",
             )}
           </p>
           <div className="mt-10 lg:mt-16 flex flex-wrap items-baseline gap-x-8 gap-y-3">
@@ -370,14 +370,14 @@ function HomePage() {
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-xl">
               {t(
-                "A certified specialist in orthodontics with university training, published research, and a quiet practice on Main Street — Dr. Tsai built this clinic to be the kind of place his own family would choose.",
-                "Dr. Tsai 為認證的齒顎矯正專科醫師，具備完整的大學專科訓練與發表期刊論文的研究經驗。他在 Main Street 上打造這間沉靜的診所，希望它是自己家人也會願意選擇的地方。",
+                "A certified specialist in orthodontics with Ivy League training, published research, and a neighbourhood practice on Main Street. Dr. Tsai built this clinic to be the kind of place his own family would choose.",
+                "Dr. Tsai 為認證的齒顎矯正專科醫師，擁有常春藤名校的訓練背景與發表期刊論文的研究經驗。他在 Main Street 上打造這間在地診所，希望它是自己家人也會願意選擇的地方。",
               )}
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
               {[
                 t("Certified Specialist", "認證專科醫師"),
-                t("University Trained", "大學專科訓練"),
+                t("Ivy League Trained", "常春藤名校訓練"),
                 t("English & Mandarin", "英文與中文服務"),
               ].map((c) => (
                 <span
@@ -412,8 +412,8 @@ function HomePage() {
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed mt-6 max-w-xl">
                 {t(
-                  "Orthodontic care for children, teens, and adults — planned carefully, explained clearly, and tailored to each patient’s needs.",
-                  "為兒童、青少年與成人提供的齒顎矯正照護——規劃細膩、說明清楚，並依每位病患的需求量身打造。",
+                  "Orthodontic care for children, teens, and adults. Planned carefully, explained clearly, and tailored to each patient's needs.",
+                  "為兒童、青少年與成人提供的齒顎矯正照護。規劃細膩、說明清楚，並依每位病患的需求量身打造。",
                 )}
               </p>
             </div>

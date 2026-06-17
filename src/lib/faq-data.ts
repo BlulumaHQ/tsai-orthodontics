@@ -49,8 +49,8 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         q: "How often will I have appointments?",
         qZh: "多久要回診一次？",
-        a: "Most patients are seen every six to ten weeks. Aligner patients often have longer intervals between visits.",
-        aZh: "多數病患每六到十週回診一次。配戴隱形牙套的病患，回診間隔通常更長。",
+        a: "Most patients are seen every six to eight weeks. Aligner patients often have longer intervals between visits.",
+        aZh: "大多數病患約每六到八週回診一次。隱形牙套的病患回診間隔通常較長。",
       },
       {
         q: "Will treatment be uncomfortable?",
@@ -89,10 +89,10 @@ export const FAQ_GROUPS: FaqGroup[] = [
     titleZh: "家庭與雙語服務",
     items: [
       {
-        q: "Do you offer service in Mandarin?",
-        qZh: "你們有提供中文服務嗎？",
-        a: "Yes. We provide consultations and ongoing care in both English and Mandarin.",
-        aZh: "有的。我們以英文與中文提供諮詢與後續療程照護。",
+        q: "Do you offer service in Mandarin or Cantonese?",
+        qZh: "你們有提供中文（國語）或廣東話的服務嗎？",
+        a: "Yes. We provide consultations and ongoing care in both English and Mandarin. Dr. Andrew and Dr. Marjorie are fluent in both languages, and our staff speak Cantonese as well.",
+        aZh: "有的。我們以英文與中文（國語）提供諮詢與後續照護。Dr. Andrew 與 Dr. Marjorie 兩位醫師都能流利使用兩種語言，診所同仁也能以廣東話溝通。",
       },
       {
         q: "Can multiple family members be seen on the same day?",
@@ -109,8 +109,8 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         q: "What happens after my braces or aligners come off?",
         qZh: "Braces 或隱形牙套拆下後接下來呢？",
-        a: "You begin the retention phase. We custom-design your retainer, walk you through a wear schedule, and continue to see you for follow-up visits to make sure everything is holding beautifully.",
-        aZh: "接下來會進入維持器階段。我們會為您量身製作 Retainers，說明配戴時程，並安排回診追蹤，確保矯正成果長期穩定。",
+        a: "You begin the retention phase. We custom-design your retainer, walk you through a wear schedule, and continue to see you for follow-up visits for up to a year to make sure everything is holding beautifully.",
+        aZh: "接著進入維持期。我們會為您客製化保持器、說明配戴時程，並在後續長達一年的回診中持續追蹤，確保成果穩定維持。",
       },
       {
         q: "Do you support patients who were treated elsewhere?",

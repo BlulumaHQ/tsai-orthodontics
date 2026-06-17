@@ -36,23 +36,23 @@ function NewPatients() {
       n: "01",
       title: t("Consultation", "諮詢"),
       body: t(
-        "A relaxed first conversation with Dr. Tsai. We listen carefully, take a careful look, and answer every question. There is no fee, and no pressure to commit.",
-        "與 Dr. Tsai 進行第一次輕鬆的對話。我們會仔細聆聽、認真檢查並回答您的每一個問題。完全免費，也沒有任何壓力。",
+        "A relaxed first conversation with Dr. Tsai. We listen carefully, take a careful look, and answer every question. We offer a complimentary intraoral scan so you can better visualize our starting point.",
+        "與 Dr. Tsai 輕鬆的第一次對話。我們仔細聆聽、審慎檢查，並回答您的每一個問題。我們提供免費的口內掃描，讓您更清楚看見治療的起點。",
       ),
     },
     {
       n: "02",
       title: t("Digital Records", "數位資料採集"),
       body: t(
-        "If treatment seems likely, we capture digital scans, photographs, and x-rays in a single visit. No goopy impressions, no rush.",
-        "若可能需要進行矯正，我們會在同一次看診中完成口腔數位掃描、照片與 X 光檢查，不需要傳統的印模、也不會匆促。",
+        "If treatment seems likely, we capture 3-D CBCT imaging, clinical photographs, and any x-rays you or your dentist may already have. These full records are necessary for creating your customized treatment plan. No goopy impressions, no rush.",
+        "若評估後可能需要治療，我們會拍攝 3D CBCT 影像、臨床照片，以及您或您牙醫手邊既有的任何 X 光片。完整的紀錄是製作您個人化治療計畫的必要基礎。沒有黏膩的印模，也不催促。",
       ),
     },
     {
       n: "03",
       title: t("Personalized Plan", "個人化療程規劃"),
       body: t(
-        "Dr. Tsai designs your plan personally. We walk you through it together — what we'll do, why, how long, and what it will cost.",
+        "Dr. Tsai designs your plan personally. We walk you through it together: what we'll do, why, how long, and what it will cost.",
         "Dr. Tsai 會親自為您設計治療計畫，並與您一同說明：將進行哪些治療、為什麼、預計時程，以及費用。",
       ),
     },
@@ -107,23 +107,19 @@ function NewPatients() {
       "可在治療前向保險公司送出預估申請，讓費用更透明。",
     ),
     t(
-      "Clear, written breakdown of what your plan covers — and what it doesn't — before treatment begins.",
+      "Clear, written breakdown of what your plan covers, and what it doesn't, before treatment begins.",
       "在開始治療前，提供書面、清楚的給付與自費明細。",
     ),
   ];
 
   const FINANCING_POINTS = [
     t(
-      "Interest-free, in-house monthly payment plans.",
-      "診所內部零利率的月付方案。",
+      "0% interest, in-house monthly payment plans.",
+      "0% 利率、診所內部每月分期付款方案。",
     ),
     t(
       "Flexible down payment options to suit your budget.",
       "彈性的頭期金安排，配合您的預算。",
-    ),
-    t(
-      "No third-party financing or credit checks required.",
-      "不需要透過第三方融資，也不需信用調查。",
     ),
     t(
       "All fees disclosed in writing before you commit to anything.",
