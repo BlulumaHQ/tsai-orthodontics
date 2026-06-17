@@ -71,6 +71,7 @@ function HomePage() {
     },
     {
       src: hero2.url,
+      video: "/videos/hero-family-smile.mp4",
       alt: t("A Vancouver family outdoors", "在戶外的溫哥華家庭"),
       eyebrow: t("Care for every stage", "陪伴每一個人生階段"),
       title: t(
