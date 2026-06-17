@@ -180,6 +180,8 @@ export const SERVICES: Service[] = [
       "Parents should leave understanding exactly what is happening and why. Some children need treatment now. Others simply need time.",
     whyUsZh:
       "家長離開診所時，應該清楚知道孩子目前的狀況以及原因。有些孩子需要現在開始治療；有些則只是需要再等等。",
+    mostEffective: "[Dr. Tsai to confirm the most effective option]",
+    mostEffectiveZh: "[由醫師補充最有效的選項]",
     faqs: [
       {
         q: "Does every child need braces?",
