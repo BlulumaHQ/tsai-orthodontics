@@ -3,8 +3,9 @@ import { Download, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
+import clinicChairAsset from "@/assets/dental-chair-brand.jpg.asset.json";
 
-const clinicChairBackground = "/images/backgrounds/dental-chair.jpg";
+const clinicChairBackground = clinicChairAsset.url;
 
 export const Route = createFileRoute("/new-patients")({
   head: () => ({

@@ -8,6 +8,7 @@ import pillarCraftAsset from "@/assets/craft-026.webp.asset.json";
 import pillarCareAsset from "@/assets/care-004.webp.asset.json";
 import pillarClarityAsset from "@/assets/clarity-007.webp.asset.json";
 import pillarConvenienceAsset from "@/assets/convenience022.webp.asset.json";
+import clinicChairAsset from "@/assets/dental-chair-brand.jpg.asset.json";
 import { SITE } from "@/lib/site-data";
 import { SERVICES, localizedService } from "@/lib/services-data";
 import { useT } from "@/lib/i18n";
@@ -16,7 +17,7 @@ const pillarCraft = pillarCraftAsset.url;
 const pillarCare = pillarCareAsset.url;
 const pillarClarity = pillarClarityAsset.url;
 const pillarConvenience = pillarConvenienceAsset.url;
-const clinicChairBackground = "/images/backgrounds/dental-chair.jpg";
+const clinicChairBackground = clinicChairAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
