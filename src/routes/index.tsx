@@ -246,7 +246,7 @@ function HomePage() {
           <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-6">
             {activeHeroSlide.eyebrow}
           </div>
-          <h1 className={`font-serif text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] text-balance ${activeHeroSlide.align === "left" ? "" : "max-w-5xl"}`}>
+          <h1 className={`font-display text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] text-balance ${activeHeroSlide.align === "left" ? "" : "max-w-5xl"}`}>
             {activeHeroSlide.title}
           </h1>
           <p className={`mt-8 text-white/85 text-base lg:text-lg leading-relaxed ${activeHeroSlide.align === "left" ? "max-w-lg" : "max-w-xl"}`}>
