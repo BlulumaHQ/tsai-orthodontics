@@ -300,7 +300,7 @@ function HomePage() {
             <span className="text-muted-foreground text-[11px] uppercase tracking-[0.3em]">
               {t("Four beliefs guide every plan", "四項信念，貫穿每一份治療計畫")}
             </span>
-            <span className="font-serif text-foreground text-xl md:text-2xl">
+            <span className="font-display text-foreground text-xl md:text-2xl">
               Craft · Care · Clarity · Convenience
             </span>
           </div>
