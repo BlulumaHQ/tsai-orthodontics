@@ -509,7 +509,7 @@ export const SERVICES: Service[] = ([
     metaDescription:
       "Clear retainers, fixed retainers, replacement retainers, and long-term orthodontic retention care in Vancouver.",
   },
-].map((s) => {
+] as Omit<Service, "gallery">[]).map((s) => {
   const raw = SERVICE_GALLERIES[s.slug] ?? [];
   const seen = new Set<string>([s.image]);
   const gallery = raw.filter((g) => {
