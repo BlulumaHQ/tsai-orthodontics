@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { PageHero } from "@/components/site/PageHero";
-const drAndrew = "/images/doctors/dr-andrew-tsai.webp";
-const drMarjorie = "/images/doctors/dr-marjorie-tsai.webp";
+import drAndrew from "@/assets/dr-andrew-tsai.webp.asset.json";
+import drMarjorie from "@/assets/dr-marjorie-tsai.webp.asset.json";
 import { useT } from "@/lib/i18n";
 
 interface EducationItem {
@@ -142,7 +142,7 @@ function AboutTheDoctorsPage() {
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src={drAndrew}
+                src={drAndrew.url}
                 alt="Dr. Andrew Tsai"
                 className="w-full aspect-[4/5] object-cover"
                 loading="lazy"
@@ -301,7 +301,7 @@ function AboutTheDoctorsPage() {
           <div className="lg:col-span-5 relative">
             <div className="relative z-10 rounded-[1.5rem] overflow-hidden bg-secondary/40">
               <img
-                src={drMarjorie}
+                src={drMarjorie.url}
                 alt="Dr. Marjorie Tsai"
                 width={1080}
                 height={1350}

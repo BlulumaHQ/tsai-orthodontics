@@ -1,13 +1,21 @@
+import phaseOneFeature from "@/assets/phase-1-feature-001.webp.asset.json";
+import invisalignFeature from "@/assets/invisalign_feature.webp.asset.json";
+import marpeFeature from "@/assets/marpe-007.webp.asset.json";
+import retainerFeature from "@/assets/retainer-009-feature.webp.asset.json";
+import bracesFeature from "@/assets/brace-feature.webp.asset.json";
+import airwayFeature from "@/assets/air-way-004.webp.asset.json";
+import kidsFeature from "@/assets/005_1.webp.asset.json";
+import adultsFeature from "@/assets/012.webp.asset.json";
 import type { Lang } from "@/lib/i18n";
 
-const svcBraces = "/images/services/braces.webp";
-const svcInvisalign = "/images/services/invisalign.webp";
-const svcRetainers = "/images/services/retainer.webp";
-const svcMarpe = "/images/services/marpe.webp";
-const svcAirway = "/images/services/airway.webp";
-const journeyKids = "/images/services/kids.webp";
-const journeyAdults = "/images/services/adults.webp";
-const journeyParents = "/images/services/phase-1.webp";
+const svcBraces = bracesFeature.url;
+const svcInvisalign = invisalignFeature.url;
+const svcRetainers = retainerFeature.url;
+const svcMarpe = marpeFeature.url;
+const svcAirway = airwayFeature.url;
+const journeyKids = kidsFeature.url;
+const journeyAdults = adultsFeature.url;
+const journeyParents = phaseOneFeature.url;
 
 export interface ServiceFAQ {
   q: string;
