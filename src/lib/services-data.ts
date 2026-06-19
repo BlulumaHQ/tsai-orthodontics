@@ -112,7 +112,7 @@ const DEFAULT_CTA_LEAD = {
   zh: "想知道是否適合你？",
 };
 
-const SERVICES_RAW: Omit<Service, "gallery">[] = [
+export const SERVICES: Service[] = ([
   {
     slug: "children-and-teens",
     name: "Children & Teens",
