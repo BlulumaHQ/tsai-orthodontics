@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "21129309-a465-4cd8-969a-7a98072e4186",
+  "asset_id": "feb7c09f-19ba-46e6-bdfb-b344fc3f4661",
   "project_id": "a3ce2391-661c-4537-9060-a239936ca419",
-  "url": "/images/backgrounds/dental-chair.jpg",
-  "r2_key": "a/v1/a3ce2391-661c-4537-9060-a239936ca419/21129309-a465-4cd8-969a-7a98072e4186/dental-chair-brand.jpg",
-  "original_filename": "dental-chair-brand.jpg",
-  "size": 1009902,
-  "content_type": "image/png",
-  "created_at": "2026-06-12T00:18:59Z"
+  "url": "/__l5e/assets-v1/feb7c09f-19ba-46e6-bdfb-b344fc3f4661/office-001.webp",
+  "r2_key": "a/v1/a3ce2391-661c-4537-9060-a239936ca419/feb7c09f-19ba-46e6-bdfb-b344fc3f4661/office-001.webp",
+  "original_filename": "office-001.webp",
+  "size": 195014,
+  "content_type": "image/webp",
+  "created_at": "2026-06-19T20:56:52Z"
 }
