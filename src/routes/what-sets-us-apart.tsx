@@ -92,14 +92,14 @@ function Page() {
               className="bg-background border border-foreground/10 rounded-3xl p-8 lg:p-10 flex flex-col"
             >
               <div className="flex items-start justify-between gap-4 mb-6">
-                <h2 className="font-display text-5xl md:text-6xl leading-[0.95]">
+                <h2 className="font-serif text-5xl md:text-6xl leading-[0.95]">
                   {lang === "zh" ? b.labelZh : b.label}
                 </h2>
                 <span className="text-primary text-[10px] font-mono tracking-[0.25em] mt-3">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
-              <p className="font-display text-xl md:text-2xl leading-snug mb-4 text-foreground/90 text-balance">
+              <p className="font-serif text-xl md:text-2xl leading-snug mb-4 text-foreground/90 text-balance">
                 {lang === "zh" ? b.headlineZh : b.headline}
               </p>
               <p className="text-muted-foreground leading-relaxed text-pretty">
@@ -112,7 +112,7 @@ function Page() {
 
       <section className="px-6 lg:px-10 pb-32">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="font-display text-3xl md:text-4xl leading-[1.15] text-balance mb-10">
+          <p className="font-serif text-3xl md:text-4xl leading-[1.15] text-balance mb-10">
             {t(
               "If these beliefs sound like the kind of care you are looking for, we would love to meet you.",
               "如果這些信念正是您所期待的看診方式，我們很期待與您見面。",

@@ -10,7 +10,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-10 pb-10 md:pb-16 border-b border-white/10">
           {/* Column 1 — brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="font-display text-2xl md:text-3xl mb-3 md:mb-5 leading-tight">
+            <div className="font-serif text-2xl md:text-3xl mb-3 md:mb-5 leading-tight">
               {SITE.name}
             </div>
             <p className="text-white/60 text-sm leading-relaxed">

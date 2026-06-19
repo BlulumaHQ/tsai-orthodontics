@@ -19,7 +19,7 @@ export function PageHero({
             {eyebrow}
           </div>
         )}
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[0.95] text-balance animate-fade-up">
+        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[0.95] text-balance animate-fade-up">
           {title}
         </h1>
         {intro && (

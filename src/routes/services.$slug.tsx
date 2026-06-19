@@ -71,7 +71,7 @@ function NotFound() {
   const { t } = useT();
   return (
     <div className="pt-40 pb-32 text-center px-6">
-      <h1 className="font-display text-5xl mb-6">{t("Service not found", "找不到該項服務")}</h1>
+      <h1 className="font-serif text-5xl mb-6">{t("Service not found", "找不到該項服務")}</h1>
       <Link
         to="/services"
         className="text-primary uppercase tracking-[0.2em] text-xs border-b border-primary pb-1"
@@ -105,7 +105,7 @@ function ServicePage() {
               <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
                 {service.name}
               </div>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[0.98] max-w-3xl text-balance">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[0.98] max-w-3xl text-balance">
                 {service.heroTitle}
               </h1>
             </div>
@@ -146,7 +146,7 @@ function ServicePage() {
                 {t("Typically Most Effective", "通常最有效的選擇")}
               </span>
             </div>
-            <p className="font-display text-2xl md:text-3xl leading-snug text-balance text-foreground">
+            <p className="font-serif text-2xl md:text-3xl leading-snug text-balance text-foreground">
               {service.mostEffective}
             </p>
           </div>
@@ -174,7 +174,7 @@ function FAQSection({ service }: { service: Service }) {
           {service.faqs.map((f, idx) => (
             <details key={f.q} open={idx === 0} className="group py-6 lg:py-7">
               <summary className="cursor-pointer list-none flex items-start justify-between gap-6">
-                <span className="font-display text-xl md:text-2xl leading-snug text-balance">{f.q}</span>
+                <span className="font-serif text-xl md:text-2xl leading-snug text-balance">{f.q}</span>
                 <span className="text-primary text-2xl leading-none mt-1 transition-transform group-open:rotate-45">+</span>
               </summary>
               <p className="mt-4 text-foreground/75 leading-relaxed max-w-3xl">{f.a}</p>
@@ -197,7 +197,7 @@ function ServiceGallery({ service }: { service: Service }) {
             <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-4">
               {t("Inside the practice", "走進診所")}
             </div>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] max-w-2xl text-balance">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl leading-[1.05] max-w-2xl text-balance">
               {t(
                 `A closer look at ${service.name.toLowerCase()} at Tsai Orthodontics.`,
                 `走近看看 Tsai Orthodontics 的 ${service.name}。`,
@@ -240,7 +240,7 @@ function RelatedServices({ service }: { service: Service }) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {related.map((r) => (
             <Link key={r.slug} to="/services/$slug" params={{ slug: r.slug }} className="group bg-background border border-foreground/10 rounded-[1.25rem] p-7 hover:border-primary transition-all">
-              <h2 className="font-display text-2xl mb-3">{r.name}</h2>
+              <h2 className="font-serif text-2xl mb-3">{r.name}</h2>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">{r.short}</p>
               <span className="inline-flex items-center gap-1 text-primary text-[11px] uppercase tracking-[0.2em] group-hover:gap-2 transition-all">
                 {r.ctaLabel} <ArrowUpRight className="size-4" />
@@ -266,7 +266,7 @@ function ConsultationCTA({ service }: { service: Service }) {
           backgroundBlendMode: "multiply",
         }}
       >
-        <h2 className="font-display text-3xl md:text-5xl leading-[1.1] mb-8 max-w-3xl text-balance">
+        <h2 className="font-serif text-3xl md:text-5xl leading-[1.1] mb-8 max-w-3xl text-balance">
           {t(
             `Curious if ${service.name.toLowerCase()} is right for you?`,
             `想了解 ${service.name} 是否適合您嗎？`,

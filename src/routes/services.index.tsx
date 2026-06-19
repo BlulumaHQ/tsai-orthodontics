@@ -78,7 +78,7 @@ function ServicesIndex() {
                   <div className="text-primary text-[10px] font-mono tracking-[0.25em] mb-3">
                     {String(i + 1).padStart(2, "0")}
                   </div>
-                  <h2 className="font-display text-2xl lg:text-3xl mb-3 leading-tight">
+                  <h2 className="font-serif text-2xl lg:text-3xl mb-3 leading-tight">
                     {s.name}
                   </h2>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-6">
@@ -107,7 +107,7 @@ function ServicesIndex() {
           <div className="text-background/75 text-[11px] uppercase tracking-[0.3em] mb-6">
             {t("Next step", "下一步")}
           </div>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8 text-balance">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8 text-balance">
             {t("Not sure which option fits? Let’s talk.", "不確定哪一種適合？歡迎與我們聊聊。")}
           </h2>
           <p className="text-background/80 text-lg max-w-2xl mx-auto mb-10">
