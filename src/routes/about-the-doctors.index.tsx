@@ -165,29 +165,42 @@ function AboutTheDoctorsPage() {
                 "齒顎矯正暨顏面齒槽骨矯正認證專科醫師",
               )}
             </p>
-            <p className="font-serif text-xl lg:text-2xl leading-relaxed text-foreground/85 mb-6">
-              {t(
-                "Graduated from the Seven-Year Bio-Dental Program at the University of Pennsylvania and the orthodontic specialty program at the University of the Pacific. Fellow of the Royal College of Dentists of Canada. Diplomate of the American Board of Orthodontics.",
-                "畢業於賓州大學七年制 Bio-Dental Program，並完成 University of the Pacific 齒顎矯正專科訓練。Royal College of Dentists of Canada 院士（Fellow）。American Board of Orthodontics 認證專科醫師（Diplomate）。",
-              )}
-            </p>
             <div className="space-y-5 text-lg leading-relaxed text-foreground/85">
               <p>
                 {t(
-                  "Born in Taipei, Taiwan and raised in Vancouver, BC — Dr. Andrew grew up inspired by his parents' love for dentistry and the impact it had on helping others.",
-                  "Dr. Andrew 出生於台灣台北，在加拿大 BC 省溫哥華長大。從小受到父母對牙醫工作的熱忱與助人初衷所啟發，逐步踏上專科醫師之路。",
+                  "Born in Taipei, Taiwan and raised in beautiful Vancouver, BC, Dr. Andrew Tsai grew up inspired by his parents' love for dentistry and the impact it had on helping others. Deciding to pursue a career in dentistry of his own, he graduated from the prestigious Seven-Year Bio-Dental Program at the University of Pennsylvania, earning both his undergraduate and Doctor of Dental Medicine degrees. Dr. Andrew then pursued advanced specialty training in Orthodontics at the University of the Pacific, Arthur A. Dugoni School of Dentistry in San Francisco, one of the leading programs in the world for clear aligner treatment. There, he received his Certificate in Orthodontics and his Master of Science in Dentistry. His Master's thesis on the stability of clear aligner treatment for mixed dentition children was recently published in the premier journal in orthodontics ",
+                  "Dr. Andrew Tsai 出生於台灣台北，在美麗的卑詩省溫哥華長大。父母對牙醫工作的熱愛與助人的影響力，自小啟發了他。下定決心走上牙醫之路後，他畢業於賓州大學享負盛名的七年制 Bio-Dental Program，同時取得學士與牙醫博士（DMD）學位。隨後，他於舊金山 University of the Pacific, Arthur A. Dugoni School of Dentistry 接受齒顎矯正專科進階訓練——該校是全球清晰隱形牙套治療最頂尖的學程之一——並取得齒顎矯正專科證書與牙醫碩士（MSD）學位。他以「混合齒列兒童清晰隱形牙套治療之穩定度」為題的碩士論文，近期發表於齒顎矯正領域的頂尖期刊 ",
                 )}
+                <a
+                  href="https://www.ajodo.org/article/S0889-5406(26)00068-5/fulltext"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-4 decoration-primary/40 hover:decoration-primary transition"
+                >
+                  {t("(AJODO)", "AJODO")}
+                </a>
+                {t(".", "。")}
+              </p>
+              <p className="text-sm">
+                <a
+                  href="/research/tsai-ajodo-2026.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-4 decoration-primary/40 hover:decoration-primary transition"
+                >
+                  {t("Read the published study (PDF)", "閱讀已發表的研究全文（PDF）")}
+                </a>
               </p>
               <p>
                 {t(
-                  "He is passionate about helping patients of all ages achieve healthy, beautiful smiles that boost their confidence and improve their overall well-being. He offers the latest treatment options including clear aligners, traditional braces, and early interceptive orthodontic treatment.",
-                  "他熱衷於協助各年齡層的病患，建立健康又自然好看的笑容，進而提升自信與整體生活品質。療程選項涵蓋 Invisalign 隱形牙套、傳統 Braces，以及兒童早期介入矯正。",
+                  "Dr. Andrew Tsai is a Certified Specialist in Orthodontics and Dentofacial Orthopedics, and he is committed to providing excellent orthodontic care to his patients. Having completed the highest levels of certification within the profession, Dr. Andrew Tsai has the rare distinction of being both a Fellow of the Royal College of Dentists of Canada and a Diplomate of the American Board of Orthodontics. He is passionate about helping patients of all ages achieve healthy, beautiful smiles that boost their confidence and improve their overall function and well-being. He offers the latest treatment options including clear aligners, traditional braces, and early interceptive orthodontic treatment.",
+                  "Dr. Andrew Tsai 是齒顎矯正暨顏面齒槽骨矯正的認證專科醫師，致力於為病患提供卓越的矯正照護。他已完成業界最高層級的認證，同時身兼 Royal College of Dentists of Canada 院士（Fellow）與 American Board of Orthodontics 認證專科醫師（Diplomate）——這是相當難得的雙重肯定。他熱衷於協助各年齡層的病患擁有健康、美麗的笑容，不僅提升自信，也改善整體口腔功能與健康。他提供最新的治療選項，包括清晰隱形牙套、傳統矯正器，以及早期阻斷性矯正治療。",
                 )}
               </p>
               <p className="text-foreground/70">
                 {t(
-                  "Outside the office, Dr. Andrew enjoys exploring hiking trails, discovering new restaurants, and working on his golf game.",
-                  "工作之餘，Dr. Andrew 喜歡走訪不同的健行步道、嘗試新餐廳，以及精進自己的高爾夫球技。",
+                  "Outside the office, you'll find Dr. Andrew exploring hiking trails, discovering new restaurants, or working on his golf game. He looks forward to welcoming you to the practice and designing and crafting the smile you've always wanted.",
+                  "在診間之外，你常會看到 Dr. Andrew 走訪健行步道、探索新餐廳，或精進他的高爾夫球技。他期待歡迎您來到診所，為您設計並打造您一直嚮往的笑容。",
                 )}
               </p>
             </div>
