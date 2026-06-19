@@ -4,8 +4,9 @@ import { PageHero } from "@/components/site/PageHero";
 import { SERVICES, localizedService } from "@/lib/services-data";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
+import clinicChairAsset from "@/assets/dental-chair-brand.jpg.asset.json";
 
-const clinicChairBackground = "/images/backgrounds/dental-chair.jpg";
+const clinicChairBackground = clinicChairAsset.url;
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
