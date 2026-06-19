@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { PageHero } from "@/components/site/PageHero";
-import drAndrew from "@/assets/dr-andrew-tsai.webp.asset.json";
-import drMarjorie from "@/assets/dr-marjorie-tsai.webp.asset.json";
+const drAndrew = "/images/doctors/dr-andrew-tsai.webp";
+const drMarjorie = "/images/doctors/dr-marjorie-tsai.webp";
 import { useT } from "@/lib/i18n";
 
 interface EducationItem {
