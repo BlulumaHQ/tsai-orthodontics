@@ -43,7 +43,7 @@ function HomePage() {
 
   const HERO_SLIDES = [
     {
-      src: hero1.url,
+      src: hero1,
       alt: t("A Vancouver family laughing together", "溫哥華家庭一起歡笑的瞬間"),
       eyebrow: t("Specialist Orthodontics · Vancouver", "齒顎矯正專科 · 溫哥華"),
       title: t(
@@ -66,7 +66,7 @@ function HomePage() {
       objectPosition: "center",
     },
     {
-      src: hero2.url,
+      src: hero2,
       video: "/videos/hero-family-smile.mp4",
       alt: t("A Vancouver family outdoors", "在戶外的溫哥華家庭"),
       eyebrow: t("Care for every stage", "陪伴每一個人生階段"),
@@ -348,7 +348,7 @@ function HomePage() {
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src={drTsai.url}
+                src={drTsai}
                 alt="Dr. Tsai, specialist orthodontist"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover"
