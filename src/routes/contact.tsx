@@ -52,7 +52,7 @@ function ContactPage() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-7">
             <div className="bg-card border border-foreground/5 rounded-3xl p-8 lg:p-12 shadow-sm">
-              <h2 className="font-display text-3xl mb-8">
+              <h2 className="font-serif text-3xl mb-8">
                 {t("Request a consultation", "預約諮詢")}
               </h2>
               <ConsultationForm />
@@ -64,7 +64,7 @@ function ContactPage() {
               <div className="text-[11px] uppercase tracking-[0.25em] text-primary mb-3">
                 {t("Visit", "診所地址")}
               </div>
-              <address className="not-italic font-display text-2xl leading-snug">
+              <address className="not-italic font-serif text-2xl leading-snug">
                 {SITE.address.street}<br />
                 {SITE.address.city}, {SITE.address.region}<br />
                 {SITE.address.postal}
@@ -74,7 +74,7 @@ function ContactPage() {
               <div className="text-[11px] uppercase tracking-[0.25em] text-primary mb-3">
                 {t("Call", "電話聯絡")}
               </div>
-              <a href={SITE.phoneHref} className="font-display text-2xl block hover:text-primary transition">
+              <a href={SITE.phoneHref} className="font-serif text-2xl block hover:text-primary transition">
                 {SITE.phone}
               </a>
             </div>
@@ -84,7 +84,7 @@ function ContactPage() {
               </div>
               <a
                 href={`mailto:${SITE.email}`}
-                className="font-display text-2xl block hover:text-primary transition break-all"
+                className="font-serif text-2xl block hover:text-primary transition break-all"
               >
                 {SITE.email}
               </a>

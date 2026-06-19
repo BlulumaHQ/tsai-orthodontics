@@ -24,7 +24,7 @@ function NotFoundComponent() {
       <SiteHeader />
       <div className="flex min-h-screen items-center justify-center bg-background px-4">
         <div className="max-w-md text-center">
-          <div className="font-display text-8xl">404</div>
+          <div className="font-serif text-8xl">404</div>
           <h1 className="mt-4 text-xl font-semibold text-foreground">Page not found</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             The page you're looking for doesn't exist or has been moved.
@@ -53,7 +53,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-3xl tracking-tight text-foreground">
+        <h1 className="font-serif text-3xl tracking-tight text-foreground">
           This page didn't load
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">

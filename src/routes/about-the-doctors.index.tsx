@@ -120,7 +120,7 @@ function AboutTheDoctorsPage() {
   // Larger, more prominent section labels (per client) — used in place of the
   // small uppercase eyebrow + decorative h3 sub-headlines.
   const sectionLabelCls =
-    "font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-10 text-balance";
+    "font-serif text-3xl md:text-4xl lg:text-5xl leading-tight mb-10 text-balance";
 
   return (
     <>
@@ -153,7 +153,7 @@ function AboutTheDoctorsPage() {
             <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-4">
               {t("Meet the Specialist", "認識專科醫師")}
             </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02] mb-2 text-balance">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.02] mb-2 text-balance">
               Dr. Andrew Tsai
             </h2>
             <div className="text-xs uppercase tracking-wide text-muted-foreground mb-6">
@@ -208,7 +208,7 @@ function AboutTheDoctorsPage() {
                 <div className="text-[11px] uppercase tracking-[0.25em] text-primary mb-2">
                   {lang === "zh" ? e.yearZh : e.year}
                 </div>
-                <h4 className="font-display text-2xl mb-2">{lang === "zh" ? e.titleZh : e.title}</h4>
+                <h4 className="font-serif text-2xl mb-2">{lang === "zh" ? e.titleZh : e.title}</h4>
                 <p className="text-muted-foreground leading-relaxed max-w-2xl">
                   {lang === "zh" ? e.bodyZh : e.body}
                 </p>
@@ -302,7 +302,7 @@ function AboutTheDoctorsPage() {
             <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-4">
               {t("Meet the Specialist", "認識專科醫師")}
             </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02] mb-2 text-balance">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.02] mb-2 text-balance">
               Dr. Marjorie Tsai
             </h2>
             <div className="text-xs uppercase tracking-wide text-muted-foreground mb-8">

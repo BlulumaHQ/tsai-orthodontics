@@ -216,7 +216,7 @@ function DentistReferralPage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-px bg-foreground/10 border border-foreground/10 rounded-3xl overflow-hidden">
           {VALUE_CARDS.map(([title, body]) => (
             <div key={title} className="bg-background p-8 lg:p-10">
-              <h3 className="font-display text-2xl mb-3">{title}</h3>
+              <h3 className="font-serif text-2xl mb-3">{title}</h3>
               <p className="text-muted-foreground leading-relaxed text-sm">{body}</p>
             </div>
           ))}
@@ -228,7 +228,7 @@ function DentistReferralPage() {
           <div className="text-primary text-[11px] uppercase tracking-[0.25em] mb-4">
             {t("Submit a Referral", "提交轉診")}
           </div>
-          <h2 className="font-display text-4xl md:text-5xl mb-6 leading-tight text-balance">
+          <h2 className="font-serif text-4xl md:text-5xl mb-6 leading-tight text-balance">
             {t("Refer a patient to our practice.", "轉診一位病患至本診所。")}
           </h2>
           <p className="text-foreground/80 leading-relaxed max-w-2xl mb-10">
@@ -250,7 +250,7 @@ function DentistReferralPage() {
             className="bg-background border border-foreground/10 rounded-3xl p-8 lg:p-12 space-y-12"
           >
             <div>
-              <div className="font-display text-2xl mb-6">
+              <div className="font-serif text-2xl mb-6">
                 {t("Referring Dentist Information", "轉診牙醫師資料")}
               </div>
               <div className="grid md:grid-cols-2 gap-5">
@@ -278,7 +278,7 @@ function DentistReferralPage() {
             </div>
 
             <div>
-              <div className="font-display text-2xl mb-6">{t("Patient Information", "病患資料")}</div>
+              <div className="font-serif text-2xl mb-6">{t("Patient Information", "病患資料")}</div>
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
                   <label className={labelCls}>{t("Patient First Name *", "病患名字 *")}</label>
@@ -311,7 +311,7 @@ function DentistReferralPage() {
             </div>
 
             <div>
-              <div className="font-display text-2xl mb-6">{t("Referral Details", "轉診內容")}</div>
+              <div className="font-serif text-2xl mb-6">{t("Referral Details", "轉診內容")}</div>
               <div className="grid gap-5">
                 <div>
                   <label className={labelCls}>{t("Reason for Referral *", "轉診原因 *")}</label>
@@ -339,7 +339,7 @@ function DentistReferralPage() {
             </div>
 
             <div>
-              <div className="font-display text-2xl mb-6">{t("Attachments", "附件")}</div>
+              <div className="font-serif text-2xl mb-6">{t("Attachments", "附件")}</div>
               <label className="flex flex-col items-center justify-center gap-3 border border-dashed border-foreground/20 rounded-2xl px-6 py-10 text-center cursor-pointer hover:border-primary hover:bg-secondary/30 transition-colors">
                 <Upload className="size-6 text-primary" />
                 <span className="text-sm text-foreground/80">
@@ -403,7 +403,7 @@ function DentistReferralPage() {
       <section className="px-6 lg:px-10 pb-32">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl mb-3">
+            <h2 className="font-serif text-3xl md:text-4xl mb-3">
               {t("Questions about a referral?", "對轉診有任何問題嗎？")}
             </h2>
             <p className="text-muted-foreground">
@@ -415,13 +415,13 @@ function DentistReferralPage() {
               <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">
                 {t("Phone", "電話")}
               </div>
-              <a href={SITE.phoneHref} className="font-display text-xl hover:text-primary">{SITE.phone}</a>
+              <a href={SITE.phoneHref} className="font-serif text-xl hover:text-primary">{SITE.phone}</a>
             </div>
             <div className="bg-background p-8">
               <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">
                 {t("Email", "電子郵件")}
               </div>
-              <a href={`mailto:${SITE.email}`} className="font-display text-xl hover:text-primary break-all">{SITE.email}</a>
+              <a href={`mailto:${SITE.email}`} className="font-serif text-xl hover:text-primary break-all">{SITE.email}</a>
             </div>
             <div className="bg-background p-8">
               <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">

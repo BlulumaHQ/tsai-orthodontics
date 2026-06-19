@@ -145,8 +145,8 @@ function NewPatients() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/10 border border-foreground/10 rounded-3xl overflow-hidden">
           {STEPS.map((s) => (
             <div key={s.n} className="bg-background p-8 lg:p-10">
-              <div className="font-display text-5xl text-primary mb-6">{s.n}</div>
-              <h3 className="font-display text-2xl mb-3">{s.title}</h3>
+              <div className="font-serif text-5xl text-primary mb-6">{s.n}</div>
+              <h3 className="font-serif text-2xl mb-3">{s.title}</h3>
               <p className="text-muted-foreground leading-relaxed">{s.body}</p>
             </div>
           ))}
@@ -158,7 +158,7 @@ function NewPatients() {
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-5">
             {t("Patient Forms", "病患表單")}
           </div>
-          <h2 className="font-display text-4xl md:text-5xl mb-12 max-w-2xl text-balance leading-tight">
+          <h2 className="font-serif text-4xl md:text-5xl mb-12 max-w-2xl text-balance leading-tight">
             {t("Download what you need ahead of your visit.", "在看診前先下載您需要的表單。")}
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -168,7 +168,7 @@ function NewPatients() {
                 className="bg-background border border-foreground/10 rounded-3xl p-8 hover:border-primary transition-colors flex flex-col"
               >
                 <Download className="size-6 text-primary mb-6" />
-                <h3 className="font-display text-xl mb-3 leading-snug">{f.title}</h3>
+                <h3 className="font-serif text-xl mb-3 leading-snug">{f.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-8">{f.body}</p>
                 <a
                   href={f.href}
@@ -196,7 +196,7 @@ function NewPatients() {
             <div className="text-primary text-[11px] uppercase tracking-[0.25em] mb-4">
               {t("Insurance & Billing", "保險與理賠")}
             </div>
-            <h3 className="font-display text-3xl mb-6 leading-tight">
+            <h3 className="font-serif text-3xl mb-6 leading-tight">
               {t("We handle the paperwork.", "繁瑣的文件，由我們協助處理。")}
             </h3>
             <ul className="space-y-3">
@@ -212,7 +212,7 @@ function NewPatients() {
             <div className="text-primary text-[11px] uppercase tracking-[0.25em] mb-4">
               {t("Flexible Financing", "彈性付款")}
             </div>
-            <h3 className="font-display text-3xl mb-6 leading-tight">
+            <h3 className="font-serif text-3xl mb-6 leading-tight">
               {t("Payment plans that fit your life.", "符合您生活步調的付款方案。")}
             </h3>
             <ul className="space-y-3">
@@ -241,7 +241,7 @@ function NewPatients() {
             <div className="text-[10px] uppercase tracking-[0.22em] text-background/75 mb-3">
               {t("Length", "時間長度")}
             </div>
-            <p className="font-display text-2xl leading-snug">
+            <p className="font-serif text-2xl leading-snug">
               {t("About 45 minutes for your first visit.", "第一次看診約需 45 分鐘。")}
             </p>
           </div>
@@ -249,7 +249,7 @@ function NewPatients() {
             <div className="text-[10px] uppercase tracking-[0.22em] text-background/75 mb-3">
               {t("Bring", "請攜帶")}
             </div>
-            <p className="font-display text-2xl leading-snug">
+            <p className="font-serif text-2xl leading-snug">
               {t("Any prior records or x-rays you have.", "若有先前的病歷或 X 光資料，請一併帶來。")}
             </p>
           </div>
@@ -257,7 +257,7 @@ function NewPatients() {
             <div className="text-[10px] uppercase tracking-[0.22em] text-background/75 mb-3">
               {t("Leave with", "離開時")}
             </div>
-            <p className="font-display text-2xl leading-snug">
+            <p className="font-serif text-2xl leading-snug">
               {t(
                 "A clear sense of next steps — and a coffee.",
                 "對下一步有清楚的方向，順手帶杯咖啡離開。",
@@ -269,7 +269,7 @@ function NewPatients() {
 
       <section className="px-6 lg:px-10 pb-32">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-display text-4xl md:text-5xl mb-10 text-balance">
+          <h2 className="font-serif text-4xl md:text-5xl mb-10 text-balance">
             {t("Ready when you are.", "當您準備好，我們就在這裡。")}
           </h2>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

@@ -246,7 +246,7 @@ function HomePage() {
           <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-6">
             {activeHeroSlide.eyebrow}
           </div>
-          <h1 className={`font-display text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] text-balance ${activeHeroSlide.align === "left" ? "" : "max-w-5xl"}`}>
+          <h1 className={`font-serif text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] text-balance ${activeHeroSlide.align === "left" ? "" : "max-w-5xl"}`}>
             {activeHeroSlide.title}
           </h1>
           <p className={`mt-8 text-white/85 text-base lg:text-lg leading-relaxed ${activeHeroSlide.align === "left" ? "max-w-lg" : "max-w-xl"}`}>
@@ -300,7 +300,7 @@ function HomePage() {
             <span className="text-muted-foreground text-[11px] uppercase tracking-[0.3em]">
               {t("Four beliefs guide every plan", "四項信念，貫穿每一份治療計畫")}
             </span>
-            <span className="font-display text-foreground text-xl md:text-2xl">
+            <span className="font-serif text-foreground text-xl md:text-2xl">
               Craft · Care · Clarity · Convenience
             </span>
           </div>
@@ -327,14 +327,14 @@ function HomePage() {
               </div>
               <div className="p-8 lg:p-10 flex flex-col flex-1">
                 <div className="flex items-start justify-between gap-4 mb-6">
-                  <h3 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
+                  <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
                     {p.label}
                   </h3>
                   <span className="text-primary text-[10px] font-mono tracking-[0.25em] mt-3">
                     {p.n}
                   </span>
                 </div>
-                <p className="font-display text-xl md:text-2xl leading-snug mb-4 text-balance text-foreground/90">
+                <p className="font-serif text-xl md:text-2xl leading-snug mb-4 text-balance text-foreground/90">
                   {p.headline}
                 </p>
                 <p className="text-muted-foreground leading-relaxed text-pretty">
@@ -363,7 +363,7 @@ function HomePage() {
             <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
               {t("Meet the Specialist", "認識專科醫師")}
             </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-2 text-balance">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-2 text-balance">
               Dr. Andrew Tsai
             </h2>
             <div className="text-xs uppercase tracking-wide text-muted-foreground mb-8">
@@ -414,7 +414,7 @@ function HomePage() {
               <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-4">
                 {t("Our Services", "矯正服務")}
               </div>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-balance">
+              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-balance">
                 {t("Specialist care for every stage.", "陪伴每個人生階段的專科照護。")}
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed mt-6 max-w-xl">
@@ -456,7 +456,7 @@ function HomePage() {
                     <div className="text-primary text-[10px] font-mono tracking-[0.25em] mb-3">
                       {String(i + 1).padStart(2, "0")}
                     </div>
-                    <h3 className="font-display text-xl lg:text-2xl mb-3 leading-tight">
+                    <h3 className="font-serif text-xl lg:text-2xl mb-3 leading-tight">
                       {s.name}
                     </h3>
                     <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
@@ -495,7 +495,7 @@ function HomePage() {
               <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-3">
                 {t("Google Reviews", "Google 評論")}
               </div>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-balance">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-balance">
                 {t("What our families say.", "病患與家屬的真實回饋。")}
               </h2>
             </div>
@@ -537,7 +537,7 @@ function HomePage() {
           <div className="text-background/75 text-[11px] uppercase tracking-[0.3em] mb-6">
             {t("Start the conversation", "從一次對話開始")}
           </div>
-          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.0] mb-10 text-balance">
+          <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.0] mb-10 text-balance">
             {t(
               "Come and see if we're the right fit for your family.",
               "歡迎來認識我們，看看是否適合您的家庭。",

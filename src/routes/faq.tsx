@@ -58,7 +58,7 @@ function FaqPage() {
         <div className="max-w-3xl mx-auto space-y-20">
           {FAQ_GROUPS.map((group) => (
             <div key={group.title}>
-              <h2 className="font-display text-3xl md:text-4xl mb-8">
+              <h2 className="font-serif text-3xl md:text-4xl mb-8">
                 {lang === "zh" ? group.titleZh : group.title}
               </h2>
               <div>
@@ -68,7 +68,7 @@ function FaqPage() {
                     open={idx === 0}
                     className="group border-t border-foreground/10 last:border-b py-6"
                   >
-                    <summary className="flex justify-between gap-6 cursor-pointer font-display text-lg md:text-xl leading-snug list-none">
+                    <summary className="flex justify-between gap-6 cursor-pointer font-serif text-lg md:text-xl leading-snug list-none">
                       <span>{lang === "zh" ? item.qZh : item.q}</span>
                       <span className="text-primary transition-transform group-open:rotate-45 text-2xl leading-none flex-none">
                         +
