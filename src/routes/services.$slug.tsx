@@ -1,15 +1,14 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import {
   SERVICE_BY_SLUG,
   localizedService,
   type Service,
+  type ServiceBlock,
 } from "@/lib/services-data";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
 import { Zoomable } from "@/components/site/Zoomable";
-
-const clinicChairBackground = "/images/backgrounds/dental-chair.jpg";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -28,7 +27,10 @@ export const Route = createFileRoute("/services/$slug")({
           "@context": "https://schema.org",
           "@type": "MedicalProcedure",
           name: s.name,
-          description: s.intro.join(" "),
+          description: s.body
+            .filter((b) => b.kind === "p")
+            .map((b) => (b as { en: string }).en)
+            .join(" "),
           procedureType: "Orthodontic",
         }),
       },
@@ -86,6 +88,7 @@ function ServicePage() {
   const { service: raw } = Route.useLoaderData() as { service: Service };
   const { t, lang } = useT();
   const service = localizedService(raw, lang);
+  const pick = (en: string, zh: string) => (lang === "zh" ? zh : en);
 
   return (
     <>
@@ -122,43 +125,103 @@ function ServicePage() {
         </div>
       </section>
 
-      {/* STANDARDIZED INTRO (2-3 paragraphs of prose) */}
+      {/* BODY */}
       <section className="px-6 lg:px-10 py-12 lg:py-20">
-        <div className="max-w-3xl mx-auto">
-          {service.intro.map((p) => (
-            <p
-              key={p}
-              className="font-serif text-xl md:text-2xl leading-relaxed text-foreground/85 mb-6 last:mb-0 text-pretty"
-            >
-              {p}
-            </p>
+        <div className="max-w-2xl mx-auto space-y-8">
+          {service.body.map((block, i) => (
+            <BodyBlock key={i} block={block} pick={pick} />
           ))}
         </div>
       </section>
 
-      {/* SINGLE "TYPICALLY MOST EFFECTIVE" CALLOUT */}
+      {/* CTA BAND */}
       <section className="px-6 lg:px-10 pb-20 lg:pb-28">
-        <div className="max-w-4xl mx-auto">
-          <div className="rounded-[1.5rem] border border-primary/25 bg-secondary/30 p-8 md:p-10 lg:p-12">
-            <div className="flex items-center gap-3 mb-5">
-              <Sparkles className="size-4 text-primary" />
-              <span className="text-primary text-[11px] uppercase tracking-[0.3em] font-medium">
-                {t("Typically Most Effective", "通常最有效的選擇")}
-              </span>
-            </div>
-            <p className="font-serif text-2xl md:text-3xl leading-snug text-balance text-foreground">
-              {service.mostEffective}
-            </p>
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="font-serif text-2xl md:text-3xl leading-snug text-balance mb-8">
+            {pick(service.ctaLead.en, service.ctaLead.zh)}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              to="/contact"
+              className="px-8 py-4 rounded-full bg-foreground text-background text-xs uppercase tracking-[0.2em] hover:bg-primary transition-colors inline-flex items-center justify-center gap-2"
+            >
+              {t("Book a Consultation", "預約諮詢")} <ArrowRight className="size-4" />
+            </Link>
+            <a
+              href="tel:+16047088138"
+              className="px-8 py-4 rounded-full border border-foreground/30 text-foreground text-xs uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-colors text-center"
+            >
+              {t("Call 604-708-8138", "電話 604-708-8138")}
+            </a>
           </div>
         </div>
       </section>
 
-      <FAQSection service={service} />
       <ServiceGallery service={service} />
+      <FAQSection service={service} />
       <RelatedServices service={service} />
-      <ConsultationCTA service={service} />
     </>
   );
+}
+
+function BodyBlock({
+  block,
+  pick,
+}: {
+  block: ServiceBlock;
+  pick: (en: string, zh: string) => string;
+}) {
+  if (block.kind === "p") {
+    return (
+      <p className="text-lg md:text-xl leading-relaxed text-foreground/85 text-pretty">
+        {pick(block.en, block.zh)}
+      </p>
+    );
+  }
+  if (block.kind === "subhead") {
+    return (
+      <h2 className="font-serif text-2xl md:text-3xl leading-snug text-balance pt-4">
+        {pick(block.en, block.zh)}
+      </h2>
+    );
+  }
+  if (block.kind === "bullets") {
+    return (
+      <div>
+        <p className="text-lg md:text-xl leading-relaxed text-foreground/85 mb-4">
+          {pick(block.en, block.zh)}
+        </p>
+        <ul className="space-y-2.5">
+          {block.items.map((item, i) => (
+            <li key={i} className="flex items-start gap-3 text-foreground/85">
+              <Check className="size-4 text-primary mt-1.5 shrink-0" />
+              <span className="leading-relaxed">{pick(item.en, item.zh)}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+  if (block.kind === "steps") {
+    return (
+      <div>
+        <p className="text-lg md:text-xl leading-relaxed text-foreground/85 mb-4">
+          {pick(block.en, block.zh)}
+        </p>
+        <ol className="space-y-3">
+          {block.items.map((item, i) => (
+            <li key={i} className="flex items-start gap-4 text-foreground/85">
+              <span className="font-mono text-primary text-sm mt-1 shrink-0 w-6">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="leading-relaxed">{pick(item.en, item.zh)}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    );
+  }
+  return null;
 }
 
 function FAQSection({ service }: { service: Service }) {
@@ -253,34 +316,5 @@ function RelatedServices({ service }: { service: Service }) {
   );
 }
 
-function ConsultationCTA({ service }: { service: Service }) {
-  const { t } = useT();
-  return (
-    <section className="px-6 lg:px-10 py-20 lg:py-28">
-      <div
-        className="relative max-w-5xl mx-auto rounded-[1.5rem] overflow-hidden p-8 md:p-12 lg:p-16 text-background"
-        style={{
-          backgroundImage: `linear-gradient(120deg, color-mix(in oklab, var(--foreground) 48%, var(--primary) 52%), color-mix(in oklab, var(--primary) 78%, var(--secondary) 22%)), url(${clinicChairBackground})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundBlendMode: "multiply",
-        }}
-      >
-        <h2 className="font-serif text-3xl md:text-5xl leading-[1.1] mb-8 max-w-3xl text-balance">
-          {t(
-            `Curious if ${service.name.toLowerCase()} is right for you?`,
-            `想了解 ${service.name} 是否適合您嗎？`,
-          )}
-        </h2>
-        <div className="flex flex-col sm:flex-row gap-3">
-          <Link to="/contact" className="px-8 py-4 rounded-full bg-background text-foreground text-xs uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-colors inline-flex items-center justify-center gap-2">
-            {t("Book a Consultation", "預約諮詢")} <ArrowRight className="size-4" />
-          </Link>
-          <a href={SITE.phoneHref} className="px-8 py-4 rounded-full border border-background/40 text-background text-xs uppercase tracking-[0.2em] hover:bg-background/15 transition-colors text-center">
-            {t("Call", "電話聯絡")} {SITE.phone}
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
+// Note: SITE import preserved for any future use; not referenced here.
+void SITE;
