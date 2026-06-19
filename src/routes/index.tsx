@@ -1,23 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import drTsai from "@/assets/dr-andrew-tsai.webp.asset.json";
-import hero1 from "@/assets/hero-001_1.webp.asset.json";
-import hero2 from "@/assets/hero-002_1.webp.asset.json";
-import pillarCraftAsset from "@/assets/craft-026.webp.asset.json";
-import pillarCareAsset from "@/assets/care-004.webp.asset.json";
-import pillarClarityAsset from "@/assets/clarity-007.webp.asset.json";
-import pillarConvenienceAsset from "@/assets/convenience022.webp.asset.json";
-import clinicChairAsset from "@/assets/dental-chair-brand.jpg.asset.json";
 import { SITE } from "@/lib/site-data";
 import { SERVICES, localizedService } from "@/lib/services-data";
 import { useT } from "@/lib/i18n";
 
-const pillarCraft = pillarCraftAsset.url;
-const pillarCare = pillarCareAsset.url;
-const pillarClarity = pillarClarityAsset.url;
-const pillarConvenience = pillarConvenienceAsset.url;
-const clinicChairBackground = clinicChairAsset.url;
+const drTsai = "/images/doctors/dr-andrew-tsai.webp";
+const hero1 = "/images/home/hero-001.webp";
+const hero2 = "/images/home/hero-002.webp";
+const pillarCraft = "/images/pillars/craft.webp";
+const pillarCare = "/images/pillars/care.webp";
+const pillarClarity = "/images/pillars/clarity.webp";
+const pillarConvenience = "/images/pillars/convenience.webp";
+const clinicChairBackground = "/images/backgrounds/dental-chair.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,7 +43,7 @@ function HomePage() {
 
   const HERO_SLIDES = [
     {
-      src: hero1.url,
+      src: hero1,
       alt: t("A Vancouver family laughing together", "溫哥華家庭一起歡笑的瞬間"),
       eyebrow: t("Specialist Orthodontics · Vancouver", "齒顎矯正專科 · 溫哥華"),
       title: t(
@@ -71,7 +66,7 @@ function HomePage() {
       objectPosition: "center",
     },
     {
-      src: hero2.url,
+      src: hero2,
       video: "/videos/hero-family-smile.mp4",
       alt: t("A Vancouver family outdoors", "在戶外的溫哥華家庭"),
       eyebrow: t("Care for every stage", "陪伴每一個人生階段"),
@@ -353,7 +348,7 @@ function HomePage() {
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src={drTsai.url}
+                src={drTsai}
                 alt="Dr. Tsai, specialist orthodontist"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover"
