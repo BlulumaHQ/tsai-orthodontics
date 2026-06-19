@@ -1,23 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import drTsai from "@/assets/dr-andrew-tsai.webp.asset.json";
-import hero1 from "@/assets/hero-001_1.webp.asset.json";
-import hero2 from "@/assets/hero-002_1.webp.asset.json";
-import pillarCraftAsset from "@/assets/craft-026.webp.asset.json";
-import pillarCareAsset from "@/assets/care-004.webp.asset.json";
-import pillarClarityAsset from "@/assets/clarity-007.webp.asset.json";
-import pillarConvenienceAsset from "@/assets/convenience022.webp.asset.json";
-import clinicChairAsset from "@/assets/dental-chair-brand.jpg.asset.json";
 import { SITE } from "@/lib/site-data";
 import { SERVICES, localizedService } from "@/lib/services-data";
 import { useT } from "@/lib/i18n";
 
-const pillarCraft = pillarCraftAsset.url;
-const pillarCare = pillarCareAsset.url;
-const pillarClarity = pillarClarityAsset.url;
-const pillarConvenience = pillarConvenienceAsset.url;
-const clinicChairBackground = clinicChairAsset.url;
+const drTsai = "/images/doctors/dr-andrew-tsai.webp";
+const hero1 = "/images/home/hero-001.webp";
+const hero2 = "/images/home/hero-002.webp";
+const pillarCraft = "/images/pillars/craft.webp";
+const pillarCare = "/images/pillars/care.webp";
+const pillarClarity = "/images/pillars/clarity.webp";
+const pillarConvenience = "/images/pillars/convenience.webp";
+const clinicChairBackground = "/images/backgrounds/dental-chair.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
