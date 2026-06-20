@@ -240,17 +240,17 @@ function HomePage() {
 
         <div
           key={activeHeroSlide.src}
-          className={`relative z-20 h-full flex flex-col pb-20 lg:pb-28 px-6 lg:px-12 ${
+          className={`relative z-20 h-full flex flex-col pt-28 lg:pt-32 pb-20 lg:pb-20 xl:pb-28 px-6 lg:px-12 ${
             activeHeroSlide.align === "left" ? "items-start justify-end text-left max-w-3xl" : "items-center justify-end text-center"
           }`}
         >
-          <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-6">
+          <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-4 lg:mb-6">
             {activeHeroSlide.eyebrow}
           </div>
-          <h1 className={`font-display text-[44px] sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] text-balance ${activeHeroSlide.align === "left" ? "" : "max-w-5xl"}`}>
+          <h1 className={`font-display text-[44px] sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-8xl text-white leading-[0.95] text-balance ${activeHeroSlide.align === "left" ? "" : "max-w-5xl"}`}>
             {activeHeroSlide.title}
           </h1>
-          <p className={`mt-8 text-white/85 text-base lg:text-lg leading-relaxed ${activeHeroSlide.align === "left" ? "max-w-lg" : "max-w-xl"}`}>
+          <p className={`mt-6 lg:mt-8 text-white/85 text-base lg:text-lg leading-relaxed ${activeHeroSlide.align === "left" ? "max-w-lg" : "max-w-xl"}`}>
             {activeHeroSlide.tagline}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mt-10">
