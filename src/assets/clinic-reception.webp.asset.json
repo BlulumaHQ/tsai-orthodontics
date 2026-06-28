@@ -1,11 +1,1 @@
-{
-  "version": 1,
-  "asset_id": "8020ef52-6720-4e3f-91a7-bb223bb8ce04",
-  "project_id": "a3ce2391-661c-4537-9060-a239936ca419",
-  "url": "/__l5e/assets-v1/8020ef52-6720-4e3f-91a7-bb223bb8ce04/clinic-reception.webp",
-  "r2_key": "a/v1/a3ce2391-661c-4537-9060-a239936ca419/8020ef52-6720-4e3f-91a7-bb223bb8ce04/clinic-reception.webp",
-  "original_filename": "clinic-reception.webp",
-  "size": 272894,
-  "content_type": "image/webp",
-  "created_at": "2026-06-28T10:44:13Z"
-}
+{ "url": "/images/clinic/reception.webp" }
