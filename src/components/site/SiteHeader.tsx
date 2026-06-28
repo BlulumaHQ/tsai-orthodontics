@@ -88,7 +88,7 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
       {open && (
         <div className="fixed inset-0 z-50 bg-background overflow-y-auto">
           <div className="flex items-center justify-between h-16 px-6 border-b border-foreground/5 sticky top-0 bg-background">
-            <span className="font-serif text-xl">{SITE.name}</span>
+            <img src={logoHeader.url} alt={SITE.name} className="h-7 w-auto" />
             <div className="flex items-center gap-3">
               <LanguageSwitcher tone="dark" />
               <button
