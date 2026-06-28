@@ -4,10 +4,10 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import drTsai from "@/assets/dr-andrew-tsai.webp.asset.json";
 import hero1 from "@/assets/hero-001_1.webp.asset.json";
 import hero2 from "@/assets/hero-002_1.webp.asset.json";
-import pillarCraftAsset from "@/assets/craft-026.webp.asset.json";
-import pillarCareAsset from "@/assets/care-004.webp.asset.json";
-import pillarClarityAsset from "@/assets/clarity-007.webp.asset.json";
-import pillarConvenienceAsset from "@/assets/convenience022.webp.asset.json";
+import pillarCraftAsset from "@/assets/clinic-operatory.webp.asset.json";
+import pillarCareAsset from "@/assets/clinic-patient-consult.webp.asset.json";
+import pillarClarityAsset from "@/assets/clinic-reception.webp.asset.json";
+import pillarConvenienceAsset from "@/assets/clinic-hallway.webp.asset.json";
 import clinicChairAsset from "@/assets/dental-chair-brand.jpg.asset.json";
 import { SITE } from "@/lib/site-data";
 import { SERVICES, localizedService } from "@/lib/services-data";
@@ -111,7 +111,7 @@ function HomePage() {
         "我們相信，細膩的規劃與專科訓練，能帶來更好的治療體驗。",
       ),
       image: pillarCraft,
-      alt: "Close-up of a digital orthodontic treatment plan on a clinical monitor",
+      alt: "Inside a Tsai Orthodontics operatory — chair, iTero scanner and clinical setup",
     },
     {
       n: "02",
@@ -122,7 +122,7 @@ function HomePage() {
         "我們相信，病患在整個療程中都應該感受到被傾聽、被支持，並且安心自在。",
       ),
       image: pillarCare,
-      alt: "An orthodontist gently talking with a young patient in a consult room",
+      alt: "Dr. Andrew Tsai talking with a patient in the chair, reviewing a scan",
     },
     {
       n: "03",
@@ -133,7 +133,7 @@ function HomePage() {
         "我們相信，家屬值得獲得清楚、直接的回答，並充分理解所有可行的選擇。",
       ),
       image: pillarClarity,
-      alt: "Clinician reviewing a 3D dental scan on screen with a patient",
+      alt: "The reception desk and waiting area at Tsai Orthodontics",
     },
     {
       n: "04",
@@ -144,7 +144,7 @@ function HomePage() {
         "我們相信，齒顎矯正照護應該自然融入每天的生活節奏。",
       ),
       image: pillarConvenience,
-      alt: "A warm, sunlit modern orthodontic consultation space",
+      alt: "A quiet hallway connecting the operatories at the practice",
     },
   ];
 
