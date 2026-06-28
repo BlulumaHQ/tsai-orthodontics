@@ -14,7 +14,7 @@ export function SiteFooter() {
             <img
               src={logoFooter.url}
               alt={SITE.name}
-              className="h-20 md:h-24 w-auto mb-4 md:mb-6"
+              className="h-32 md:h-40 w-auto mb-4 md:mb-6"
             />
             <p className="text-white/60 text-sm leading-relaxed">
               {t(
