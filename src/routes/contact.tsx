@@ -3,6 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { ConsultationForm } from "@/components/site/ConsultationForm";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
+import brandLogo from "@/assets/tsai-logo-main.svg.asset.json";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
