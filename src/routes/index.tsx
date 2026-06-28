@@ -308,42 +308,52 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PILLARS */}
+      {/* PILLARS — editorial zigzag */}
       <section className="px-6 lg:px-10 pb-16 lg:pb-32">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6 lg:gap-8">
-          {PILLARS.map((p) => (
-            <article
-              key={p.n}
-              className="group bg-background border border-foreground/10 rounded-3xl overflow-hidden hover:shadow-xl hover:border-primary/40 transition-all flex flex-col"
-            >
-              <div className="overflow-hidden">
-                <img
-                  src={p.image}
-                  alt={p.alt}
-                  loading="lazy"
-                  width={1280}
-                  height={720}
-                  className="w-full aspect-[16/9] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-              </div>
-              <div className="p-8 lg:p-10 flex flex-col flex-1">
-                <div className="flex items-start justify-between gap-4 mb-6">
-                  <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
+        <div className="max-w-6xl mx-auto space-y-24 lg:space-y-40">
+          {PILLARS.map((p, i) => {
+            const reversed = i % 2 === 1;
+            return (
+              <article
+                key={p.n}
+                className="grid lg:grid-cols-12 gap-10 lg:gap-20 items-center"
+              >
+                <div
+                  className={`lg:col-span-7 ${reversed ? "lg:order-2" : ""}`}
+                >
+                  <div className="overflow-hidden rounded-[2px]">
+                    <img
+                      src={p.image}
+                      alt={p.alt}
+                      loading="lazy"
+                      width={1600}
+                      height={1200}
+                      className="w-full aspect-[4/3] object-cover"
+                    />
+                  </div>
+                </div>
+                <div
+                  className={`lg:col-span-5 ${reversed ? "lg:order-1 lg:pr-4" : "lg:pl-4"}`}
+                >
+                  <div className="flex items-baseline gap-6 mb-8">
+                    <span className="text-primary text-[10px] font-mono tracking-[0.3em]">
+                      {p.n}
+                    </span>
+                    <span className="h-px flex-1 bg-foreground/15" />
+                  </div>
+                  <h3 className="font-serif text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight mb-8">
                     {p.label}
                   </h3>
-                  <span className="text-primary text-[10px] font-mono tracking-[0.25em] mt-3">
-                    {p.n}
-                  </span>
+                  <p className="font-serif text-2xl md:text-3xl leading-snug mb-6 text-balance text-foreground/90">
+                    {p.headline}
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed text-pretty max-w-md">
+                    {p.body}
+                  </p>
                 </div>
-                <p className="font-serif text-xl md:text-2xl leading-snug mb-4 text-balance text-foreground/90">
-                  {p.headline}
-                </p>
-                <p className="text-muted-foreground leading-relaxed text-pretty">
-                  {p.body}
-                </p>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </section>
 
