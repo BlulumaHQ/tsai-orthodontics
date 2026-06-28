@@ -17,9 +17,12 @@ export function SiteFooter() {
               className="h-32 md:h-40 w-auto mb-4 md:mb-6"
             />
             <p className="text-white/60 text-sm leading-relaxed">
+              <span className="block font-serif text-white/90 text-base italic mb-2">
+                {t("Your smile, by design.", "屬於你的笑容，細心設計。")}
+              </span>
               {t(
-                "Specialist orthodontic care in Vancouver — delivered with clarity, warmth, and personal attention.",
-                "溫哥華專科齒顎矯正診所——以清晰、溫暖與個人化的關懷，陪伴每一位病患。",
+                "Specialist orthodontic care in Vancouver, made to fit into your life, and delivered with craft, care and clarity.",
+                "溫哥華的齒顎矯正專科照護，貼合你的生活節奏，並以工藝、關懷與清晰為本。",
               )}
             </p>
           </div>

@@ -6,6 +6,7 @@ import { Upload } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
+import textureReferral from "@/assets/clinic-operatory.webp.asset.json";
 
 const REFERRAL_REASONS: { en: string; zh: string }[] = [
   { en: "Children / Teens Orthodontic Evaluation", zh: "兒童／青少年矯正評估" },
@@ -204,6 +205,7 @@ function DentistReferralPage() {
   return (
     <>
       <PageHero
+        textureSrc={textureReferral.url}
         eyebrow={t("For Referring Dentists", "提供給轉診牙醫")}
         title={t("Dentist Referral", "牙醫轉診")}
         intro={t(

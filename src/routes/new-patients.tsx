@@ -4,6 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
 import clinicChairAsset from "@/assets/dental-chair-brand.jpg.asset.json";
+import textureNewPatients from "@/assets/clinic-hallway.webp.asset.json";
 
 const clinicChairBackground = clinicChairAsset.url;
 
@@ -131,6 +132,7 @@ function NewPatients() {
   return (
     <>
       <PageHero
+        textureSrc={textureNewPatients.url}
         eyebrow={t("New Patients", "初診須知")}
         title={t(
           "A first visit that actually feels like a conversation.",
