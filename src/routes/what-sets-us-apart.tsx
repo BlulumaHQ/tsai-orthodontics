@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { useT } from "@/lib/i18n";
+import textureBelieve from "@/assets/clinic-reception.webp.asset.json";
 
 interface Belief {
   label: string;
@@ -73,6 +74,7 @@ function Page() {
   return (
     <>
       <PageHero
+        textureSrc={textureBelieve.url}
         eyebrow={t("What We Believe In", "我們所相信的")}
         title={t(
           "Four beliefs that shape every plan.",

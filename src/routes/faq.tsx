@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { FAQ_GROUPS, ALL_FAQS } from "@/lib/faq-data";
 import { useT } from "@/lib/i18n";
+import textureFaq from "@/assets/clinic-reception.webp.asset.json";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -43,6 +44,7 @@ function FaqPage() {
   return (
     <>
       <PageHero
+        textureSrc={textureFaq.url}
         eyebrow={t("Frequently Asked", "常見問題")}
         title={t(
           "The questions most families ask.",
@@ -53,6 +55,7 @@ function FaqPage() {
           "若這裡沒有您的問題，歡迎直接聯絡我們，我們很樂意進一步說明。",
         )}
       />
+
 
       <section className="px-6 lg:px-10 pb-32">
         <div className="max-w-3xl mx-auto space-y-20">
