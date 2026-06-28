@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1083.03">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: .1em;
+      }
+
+      .cls-2 {
+        font-family: NearoRounded-Light, 'Nearo Rounded';
+        font-size: 165.52px;
+        font-weight: 300;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #cd6a35;
+      }
+
+      .cls-4 {
+        letter-spacing: .09em;
+      }
+
+      .cls-3 {
+        font-family: NearoRounded-Bold, 'Nearo Rounded';
+        font-size: 384.66px;
+        font-weight: 700;
+      }
+
+      .cls-5 {
+        letter-spacing: .1em;
+      }
+
+      .cls-6 {
+        letter-spacing: .1em;
+      }
+    </style>
+  </defs>
+  <text class="cls-3" transform="translate(298.12 551.5)"><tspan class="cls-1" x="0" y="0">T</tspan><tspan class="cls-6" x="259.64" y="0">SAI</tspan></text>
+  <text class="cls-2" transform="translate(20.87 826.28)"><tspan class="cls-5" x="0" y="0">O</tspan><tspan class="cls-4" x="147.31" y="0">R</tspan><tspan class="cls-5" x="260.53" y="0">THODONTICS</tspan></text>
+</svg>
