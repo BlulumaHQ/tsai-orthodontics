@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { PageHero } from "@/components/site/PageHero";
 import drAndrew from "@/assets/dr-andrew-tsai.webp.asset.json";
 import drMarjorie from "@/assets/dr-marjorie-tsai.webp.asset.json";
+import brandLogo from "@/assets/tsai-logo-main.svg.asset.json";
+import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
 
 interface EducationItem {
