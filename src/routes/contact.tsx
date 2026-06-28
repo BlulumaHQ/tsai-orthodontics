@@ -34,6 +34,8 @@ function ContactPage() {
   return (
     <>
       <PageHero
+        logoSrc={brandLogo.url}
+        logoAlt={SITE.name}
         eyebrow={t("Contact", "聯絡我們")}
         title={t(
           <>
