@@ -127,6 +127,8 @@ function AboutTheDoctorsPage() {
   return (
     <>
       <PageHero
+        logoSrc={brandLogo.url}
+        logoAlt={SITE.name}
         eyebrow={t("About the Doctors", "認識醫師")}
         title={t(
           "Specialist orthodontic care, shaped by training and personal attention.",
