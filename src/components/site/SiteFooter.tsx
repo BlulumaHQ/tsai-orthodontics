@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { FOOTER_NAV, FOOTER_SERVICES, SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
+import logoFooter from "@/assets/tsai-logo-dark.svg.asset.json";
 
 export function SiteFooter() {
   const { t, lang } = useT();
@@ -10,9 +11,11 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-10 pb-10 md:pb-16 border-b border-white/10">
           {/* Column 1 — brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="font-serif text-2xl md:text-3xl mb-3 md:mb-5 leading-tight">
-              {SITE.name}
-            </div>
+            <img
+              src={logoFooter.url}
+              alt={SITE.name}
+              className="h-20 md:h-24 w-auto mb-4 md:mb-6"
+            />
             <p className="text-white/60 text-sm leading-relaxed">
               {t(
                 "Specialist orthodontic care in Vancouver — delivered with clarity, warmth, and personal attention.",

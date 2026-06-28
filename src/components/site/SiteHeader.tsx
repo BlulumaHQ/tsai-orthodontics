@@ -5,6 +5,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { TopBar } from "./TopBar";
+import logoHeader from "@/assets/tsai-logo-light-bg.svg.asset.json";
 
 export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
@@ -38,11 +39,14 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 lg:h-20 flex items-center justify-between gap-6">
           <Link
             to="/"
-            className={`font-serif text-xl lg:text-2xl tracking-tight shrink-0 ${
-              solid ? "text-foreground" : "text-white"
-            }`}
+            className="shrink-0 flex items-center"
+            aria-label={SITE.name}
           >
-            {SITE.name}
+            <img
+              src={logoHeader.url}
+              alt={SITE.name}
+              className="h-7 lg:h-9 w-auto"
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -84,7 +88,7 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
       {open && (
         <div className="fixed inset-0 z-50 bg-background overflow-y-auto">
           <div className="flex items-center justify-between h-16 px-6 border-b border-foreground/5 sticky top-0 bg-background">
-            <span className="font-serif text-xl">{SITE.name}</span>
+            <img src={logoHeader.url} alt={SITE.name} className="h-7 w-auto" />
             <div className="flex items-center gap-3">
               <LanguageSwitcher tone="dark" />
               <button
