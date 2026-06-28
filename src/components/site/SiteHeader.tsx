@@ -39,11 +39,14 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 lg:h-20 flex items-center justify-between gap-6">
           <Link
             to="/"
-            className={`font-serif text-xl lg:text-2xl tracking-tight shrink-0 ${
-              solid ? "text-foreground" : "text-white"
-            }`}
+            className="shrink-0 flex items-center"
+            aria-label={SITE.name}
           >
-            {SITE.name}
+            <img
+              src={logoHeader.url}
+              alt={SITE.name}
+              className="h-7 lg:h-9 w-auto"
+            />
           </Link>
 
           {/* Desktop nav */}
