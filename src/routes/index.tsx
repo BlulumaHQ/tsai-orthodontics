@@ -303,19 +303,17 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PILLARS — editorial zigzag */}
+      {/* PILLARS — mobile: stacked; desktop: compact 2×2 grid */}
       <section className="px-6 lg:px-10 pb-16 lg:pb-32">
-        <div className="max-w-6xl mx-auto space-y-24 lg:space-y-40">
+        <div className="max-w-6xl mx-auto space-y-24 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-20">
           {PILLARS.map((p, i) => {
             const reversed = i % 2 === 1;
             return (
               <article
                 key={p.n}
-                className="grid lg:grid-cols-12 gap-10 lg:gap-20 items-center"
+                className="lg:grid-cols-none grid gap-10 items-center lg:block"
               >
-                <div
-                  className={`lg:col-span-7 ${reversed ? "lg:order-2" : ""}`}
-                >
+                <div className={`lg:mb-8 ${reversed ? "lg:order-2" : ""} lg:order-none`}>
                   <div className="overflow-hidden rounded-[2px]">
                     <img
                       src={p.image}
@@ -327,19 +325,17 @@ function HomePage() {
                     />
                   </div>
                 </div>
-                <div
-                  className={`lg:col-span-5 ${reversed ? "lg:order-1 lg:pr-4" : "lg:pl-4"}`}
-                >
-                  <div className="flex items-baseline gap-6 mb-8">
+                <div>
+                  <div className="flex items-baseline gap-6 mb-6">
                     <span className="text-primary text-[10px] font-mono tracking-[0.3em]">
                       {p.n}
                     </span>
                     <span className="h-px flex-1 bg-foreground/15" />
                   </div>
-                  <h3 className="font-serif text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight mb-8">
+                  <h3 className="font-serif text-6xl md:text-7xl lg:text-4xl xl:text-5xl leading-[0.95] tracking-tight mb-6 whitespace-nowrap">
                     {p.label}
                   </h3>
-                  <p className="font-serif text-2xl md:text-3xl leading-snug mb-6 text-balance text-foreground/90">
+                  <p className="font-serif text-2xl md:text-3xl lg:text-2xl leading-snug mb-4 text-balance text-foreground/90">
                     {p.headline}
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-pretty max-w-md">
@@ -351,6 +347,7 @@ function HomePage() {
           })}
         </div>
       </section>
+
 
       {/* DOCTOR TEASER */}
       <section className="py-16 lg:py-32 px-6 lg:px-10">
