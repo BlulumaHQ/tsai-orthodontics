@@ -54,8 +54,8 @@ function NewPatients() {
       n: "03",
       title: t("Personalized Plan", "個人化療程規劃"),
       body: t(
-        "Dr. Tsai designs your plan personally. We walk you through it together: what we'll do, why, how long, and what it will cost.",
-        "Dr. Tsai 會親自為您設計治療計畫，並與您一同說明：將進行哪些治療、為什麼、預計時程，以及費用。",
+        "Dr. Tsai designs your plan personally. We walk you through it together: what we'll do, why, how long, and what it will cost. We also offer second consultations if necessary, in person or over Zoom, whether that's to review the Clincheck or to answer any additional questions you may have.",
+        "Dr. Tsai 會親自為您設計治療計畫，並與您一同說明：將進行哪些治療、為什麼、預計時程，以及費用。若有需要，我們也提供第二次諮詢，可親自到診或透過 Zoom 進行，無論是想再次檢視 Clincheck 療程模擬，或詢問其他任何問題，都很歡迎。",
       ),
     },
     {

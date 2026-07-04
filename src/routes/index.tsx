@@ -58,7 +58,7 @@ function HomePage() {
           <span className="italic font-normal">by design.</span>
         </>,
         <>
-          屬於你的笑容，
+          你的笑容，
           <br />
           <span className="italic font-normal">細心設計。</span>
         </>,
@@ -91,8 +91,8 @@ function HomePage() {
         "From a child's first visit to adult treatment — orthodontic care planned around your family, not a template.",
         "從孩子的第一次看診到成人矯正，為您的家庭量身規劃，不套用範本。",
       ),
-      align: "left" as const,
-      objectPosition: "right",
+      align: "center" as const,
+      objectPosition: "center",
     },
   ];
 
@@ -121,8 +121,8 @@ function HomePage() {
         "We believe patients should feel heard, supported, and comfortable throughout treatment.",
         "我們相信，病患在整個療程中都應該感受到被傾聽、被支持，並且安心自在。",
       ),
-      image: pillarCare,
-      alt: "Dr. Andrew Tsai talking with a patient in the chair, reviewing a scan",
+      image: "/images/clinic/doctors.webp",
+      alt: "Dr. Andrew Tsai and Dr. Marjorie Tsai at Tsai Orthodontics",
     },
     {
       n: "03",
@@ -132,8 +132,8 @@ function HomePage() {
         "We believe families deserve straightforward answers and a clear understanding of their options.",
         "我們相信，家屬值得獲得清楚、直接的回答，並充分理解所有可行的選擇。",
       ),
-      image: pillarClarity,
-      alt: "The reception desk and waiting area at Tsai Orthodontics",
+      image: "/images/clinic/patient-consult.webp",
+      alt: "Dr. Andrew Tsai talking with a patient in the chair, reviewing a scan",
     },
     {
       n: "04",
@@ -231,26 +231,21 @@ function HomePage() {
               </div>
             );
           })}
-          {activeHeroSlide.align === "left" ? (
-            <div className="absolute inset-0 z-10 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent" />
-          ) : (
-            <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
-          )}
+          <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+
         </div>
 
         <div
           key={activeHeroSlide.src}
-          className={`relative z-20 h-full flex flex-col pt-28 lg:pt-32 pb-20 lg:pb-20 xl:pb-28 px-6 lg:px-12 ${
-            activeHeroSlide.align === "left" ? "items-start justify-end text-left max-w-3xl" : "items-center justify-end text-center"
-          }`}
+          className="relative z-20 h-full flex flex-col pt-28 lg:pt-32 pb-20 lg:pb-20 xl:pb-28 px-6 lg:px-12 items-center justify-end text-center"
         >
           <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-4 lg:mb-6">
             {activeHeroSlide.eyebrow}
           </div>
-          <h1 className={`font-display text-[44px] sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-8xl text-white leading-[0.95] text-balance ${activeHeroSlide.align === "left" ? "" : "max-w-5xl"}`}>
+          <h1 className="font-display text-[44px] sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-8xl text-white leading-[0.95] text-balance max-w-5xl">
             {activeHeroSlide.title}
           </h1>
-          <p className={`mt-6 lg:mt-8 text-white/85 text-base lg:text-lg leading-relaxed ${activeHeroSlide.align === "left" ? "max-w-lg" : "max-w-xl"}`}>
+          <p className="mt-6 lg:mt-8 text-white/85 text-base lg:text-lg leading-relaxed max-w-xl">
             {activeHeroSlide.tagline}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mt-10">
@@ -291,10 +286,15 @@ function HomePage() {
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-8">
             {t("What We Believe In", "我們所相信的")}
           </div>
+          {lang === "zh" && (
+            <div className="font-serif text-lg md:text-xl text-foreground/70 mb-6">
+              慕忠霖醫師・齒顎矯正專科
+            </div>
+          )}
           <p className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-balance text-foreground/90">
             {t(
               "A neighbourhood orthodontic practice, shaped by specialist training, careful listening, and the legacy and warmth of a Vancouver family business.",
-              "一間在地的齒顎矯正診所——由專科訓練、用心聆聽，以及溫哥華家族診所的傳承與溫度共同形塑。",
+              "一間在地的齒顎矯正診所，由專科訓練、用心聆聽，以及溫哥華家族診所的傳承與溫度共同形塑。",
             )}
           </p>
           <div className="mt-10 lg:mt-16 flex flex-wrap items-baseline gap-x-8 gap-y-3">
@@ -308,19 +308,16 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PILLARS — editorial zigzag */}
+      {/* PILLARS — mobile: stacked; desktop: compact 2×2 grid */}
       <section className="px-6 lg:px-10 pb-16 lg:pb-32">
-        <div className="max-w-6xl mx-auto space-y-24 lg:space-y-40">
-          {PILLARS.map((p, i) => {
-            const reversed = i % 2 === 1;
+        <div className="max-w-6xl mx-auto space-y-24 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-20">
+          {PILLARS.map((p) => {
             return (
               <article
                 key={p.n}
-                className="grid lg:grid-cols-12 gap-10 lg:gap-20 items-center"
+                className="grid gap-10 items-center lg:block"
               >
-                <div
-                  className={`lg:col-span-7 ${reversed ? "lg:order-2" : ""}`}
-                >
+                <div className="lg:mb-8">
                   <div className="overflow-hidden rounded-[2px]">
                     <img
                       src={p.image}
@@ -332,19 +329,17 @@ function HomePage() {
                     />
                   </div>
                 </div>
-                <div
-                  className={`lg:col-span-5 ${reversed ? "lg:order-1 lg:pr-4" : "lg:pl-4"}`}
-                >
-                  <div className="flex items-baseline gap-6 mb-8">
+                <div>
+                  <div className="flex items-baseline gap-6 mb-6">
                     <span className="text-primary text-[10px] font-mono tracking-[0.3em]">
                       {p.n}
                     </span>
                     <span className="h-px flex-1 bg-foreground/15" />
                   </div>
-                  <h3 className="font-serif text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight mb-8">
+                  <h3 className="font-serif text-6xl md:text-7xl lg:text-4xl xl:text-5xl leading-[0.95] tracking-tight mb-6 whitespace-nowrap">
                     {p.label}
                   </h3>
-                  <p className="font-serif text-2xl md:text-3xl leading-snug mb-6 text-balance text-foreground/90">
+                  <p className="font-serif text-2xl md:text-3xl lg:text-2xl leading-snug mb-4 text-balance text-foreground/90">
                     {p.headline}
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-pretty max-w-md">
@@ -356,6 +351,7 @@ function HomePage() {
           })}
         </div>
       </section>
+
 
       {/* DOCTOR TEASER */}
       <section className="py-16 lg:py-32 px-6 lg:px-10">
@@ -377,6 +373,9 @@ function HomePage() {
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-2 text-balance">
               Dr. Andrew Tsai
             </h2>
+            {lang === "zh" && (
+              <div className="font-serif text-lg text-foreground/70 mb-2">慕忠霖醫師</div>
+            )}
             <div className="text-xs uppercase tracking-wide text-muted-foreground mb-8">
               DMD, MSD, FRCD(C)
             </div>
