@@ -321,6 +321,9 @@ function AboutTheDoctorsPage() {
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.02] mb-2 text-balance">
               Dr. Marjorie Tsai
             </h2>
+            {lang === "zh" && (
+              <div className="font-serif text-lg text-foreground/70 mb-2">蔡明汝醫師</div>
+            )}
             <div className="text-xs uppercase tracking-wide text-muted-foreground mb-8">
               DDS, M.Ortho
             </div>
