@@ -132,8 +132,8 @@ function HomePage() {
         "We believe families deserve straightforward answers and a clear understanding of their options.",
         "我們相信，家屬值得獲得清楚、直接的回答，並充分理解所有可行的選擇。",
       ),
-      image: pillarClarity,
-      alt: "The reception desk and waiting area at Tsai Orthodontics",
+      image: "/images/clinic/patient-consult.webp",
+      alt: "Dr. Andrew Tsai talking with a patient in the chair, reviewing a scan",
     },
     {
       n: "04",
