@@ -57,7 +57,7 @@ export function ConsultationForm() {
     toast.success(
       t(
         "Thank you — we will be in touch within one business day.",
-        "感謝您的來訊——我們會在一個工作天內與您聯繫。",
+        "感謝您的來訊，我們會在一個工作天內與您聯繫。",
       ),
     );
     setValues({ name: "", email: "", phone: "", interest: "", message: "" });

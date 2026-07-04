@@ -45,7 +45,7 @@ function ContactPage() {
         )}
         intro={t(
           "Your first consultation is complimentary. Send us a note below, or call — we are happy either way.",
-          "第一次諮詢完全免費。您可以使用下方表單留訊息，或直接來電——任何方式我們都很歡迎。",
+          "第一次諮詢完全免費。您可以使用下方表單留訊息，或直接來電，任何方式我們都很歡迎。",
         )}
       />
 

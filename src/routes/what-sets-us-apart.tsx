@@ -27,7 +27,7 @@ const BELIEFS: Belief[] = [
     headline: "Heard, supported, comfortable.",
     headlineZh: "被傾聽、被支持、感到安心。",
     body: "We believe patients should feel heard, supported, and comfortable throughout treatment. We take the time to listen — to children, teens, adults, and the parents who bring them in.",
-    bodyZh: "我們相信，病患在整個療程中都應該感受到被傾聽、被支持，並且安心自在。我們願意花時間傾聽——無論是孩子、青少年、成人，以及陪同前來的家屬。",
+    bodyZh: "我們相信，病患在整個療程中都應該感受到被傾聽、被支持，並且安心自在。我們願意花時間傾聽，無論是孩子、青少年、成人，以及陪同前來的家屬。",
   },
   {
     label: "Clarity",

@@ -137,7 +137,7 @@ export const SERVICES: Service[] = ([
       {
         kind: "p",
         en: "Orthodontic care for children tends to start at one of two points. The first is early intervention, or Phase I treatment — a focused, limited treatment while a child still has baby teeth, used only when a specific problem is better addressed sooner than later. The second, and far more common, is comprehensive treatment once all the baby teeth have fallen out and the adult teeth are in. Most children only ever need this second stage; the value of starting evaluations early is knowing which path is yours and not missing the window if early treatment is genuinely warranted.",
-        zh: "兒童矯正通常會在兩個時間點之一開始。第一個是早期介入，也就是 Phase I 治療——在孩子仍有乳牙時進行、聚焦且範圍有限的治療，只有在某個特定問題「早處理比晚處理好」時才會採用。第二個、也是更常見的，是等乳牙全部換完、恆牙長齊後的全口矯正。大多數孩子其實只需要第二階段；提早開始評估的價值，在於弄清楚你的孩子屬於哪一條路，並在真正需要早期治療時，不錯過那個時機窗口。",
+        zh: "兒童矯正通常會在兩個時間點之一開始。第一個是早期介入，也就是 Phase I 治療，在孩子仍有乳牙時進行、聚焦且範圍有限的治療，只有在某個特定問題「早處理比晚處理好」時才會採用。第二個、也是更常見的，是等乳牙全部換完、恆牙長齊後的全口矯正。大多數孩子其實只需要第二階段；提早開始評估的價值，在於弄清楚你的孩子屬於哪一條路，並在真正需要早期治療時，不錯過那個時機窗口。",
       },
       { kind: "subhead", en: "Why the teen years are the sweet spot", zh: "為什麼青少年時期是黃金期" },
       {
@@ -160,12 +160,12 @@ export const SERVICES: Service[] = ([
       {
         kind: "p",
         en: "You'll get a careful exam and a clear explanation, in plain language. Reading a growing patient correctly is what orthodontic specialty training is for, which is why so many general dentists refer their young patients to us. The goal isn't only straight teeth; it's healthy function and balanced development that lasts.",
-        zh: "你會得到仔細的檢查，以及用白話、清楚的說明。正確判讀一個還在發育的孩子，正是齒顎矯正專科訓練存在的意義——這也是為什麼許多家庭牙醫會把他們的小病患轉介給我們。我們的目標不只是把牙齒排整齊，而是健康的口腔功能與能長久維持的均衡發育。",
+        zh: "你會得到仔細的檢查，以及用白話、清楚的說明。正確判讀一個還在發育的孩子，正是齒顎矯正專科訓練存在的意義，這也是為什麼許多家庭牙醫會把他們的小病患轉介給我們。我們的目標不只是把牙齒排整齊，而是健康的口腔功能與能長久維持的均衡發育。",
       },
     ],
     ctaLead: {
       en: "Bring your child in — we'll tell you when the time is right.",
-      zh: "帶孩子來吧——對的時機，我們會告訴你。",
+      zh: "帶孩子來吧，對的時機，我們會告訴你。",
     },
     faqs: [
       {
@@ -208,7 +208,7 @@ export const SERVICES: Service[] = ([
       {
         kind: "p",
         en: "Adult treatment today is faster, more comfortable, and far more discreet than the braces you remember. Clear aligners are nearly invisible; modern braces are smaller and gentler. The right choice depends on your bite, your goals, and how the appliance fits into your work and social life — not on a one-size-fits-all default.",
-        zh: "今天的成人矯正，比你印象中的矯正器更快、更舒適，也更不顯眼。清晰隱形牙套幾乎看不出來；現代的矯正器也更小、更溫和。怎麼選，取決於你的咬合、你的目標，以及這個矯正裝置如何融入你的工作與社交生活——而不是套用一個「一體適用」的預設答案。",
+        zh: "今天的成人矯正，比你印象中的矯正器更快、更舒適，也更不顯眼。清晰隱形牙套幾乎看不出來；現代的矯正器也更小、更溫和。怎麼選，取決於你的咬合、你的目標，以及這個矯正裝置如何融入你的工作與社交生活，而不是套用一個「一體適用」的預設答案。",
       },
       {
         kind: "bullets",
@@ -225,13 +225,13 @@ export const SERVICES: Service[] = ([
       {
         kind: "p",
         en: "We begin with a consultation built around your priorities. Adults arrive with sharper questions than teenagers: how long, how visible, how much it interferes with daily life — and you'll get direct answers, including a realistic timeline and a clear sense of cost. Treatment is planned digitally so you can see where we're headed before we begin, and appointments respect a working calendar.",
-        zh: "我們會從一次以你的需求為核心的諮詢開始。成人提出的問題往往比青少年更具體：要多久、明不明顯、對日常生活干擾多大——你會得到直接的答案，包括實際的時程與清楚的費用概念。治療採數位化規劃，讓你在開始前就能看見方向，回診時間也會配合你的工作行程。",
+        zh: "我們會從一次以你的需求為核心的諮詢開始。成人提出的問題往往比青少年更具體：要多久、明不明顯、對日常生活干擾多大，你會得到直接的答案，包括實際的時程與清楚的費用概念。治療採數位化規劃，讓你在開始前就能看見方向，回診時間也會配合你的工作行程。",
       },
       { kind: "subhead", en: "Why this is specialist work for adults", zh: "為什麼成人矯正是專科的工作" },
       {
         kind: "p",
         en: "Adult cases carry considerations children's cases don't: gum health, existing dental work, prior wear. We plan around all of it and coordinate with your dentist when restorative work is involved. Many adults worry about looking like they're \"back in braces\", but most end up surprised how little anyone notices a clear aligner across a meeting table. We'll walk you through every option so the choice is genuinely yours.",
-        zh: "成人病例有著兒童病例沒有的考量：牙周健康、既有的牙科治療、過往的磨耗。我們會把這些全部納入規劃，並在涉及補綴治療時與你的牙醫協調。許多成人擔心自己看起來像「又戴回牙套」，但大多數人最後都驚訝地發現——在會議桌對面，幾乎沒人會注意到那副清晰隱形牙套。我們會帶你了解每一個選項，讓這個決定真正屬於你。",
+        zh: "成人病例有著兒童病例沒有的考量：牙周健康、既有的牙科治療、過往的磨耗。我們會把這些全部納入規劃，並在涉及補綴治療時與你的牙醫協調。許多成人擔心自己看起來像「又戴回牙套」，但大多數人最後都驚訝地發現，在會議桌對面，幾乎沒人會注意到那副清晰隱形牙套。我們會帶你了解每一個選項，讓這個決定真正屬於你。",
       },
     ],
     ctaLead: {
@@ -266,7 +266,7 @@ export const SERVICES: Service[] = ([
       {
         kind: "p",
         en: "Because braces are bonded to your teeth throughout treatment, they deliver steady, predictable force exactly where it's needed. For certain cases involving a skeletal discrepancy — where the issue is the jaws themselves, not just the teeth — we may add functional appliances or expanders to influence skeletal growth, particularly in patients who are still developing. That's a level of correction simple alignment can't achieve on its own.",
-        zh: "由於矯正器在整個治療期間都黏著在牙齒上，它能在需要的位置施加穩定、可預期的力量。對於某些涉及骨骼差異的病例——問題出在顎骨本身、而不只是牙齒——我們可能會加上功能性裝置或擴張器來影響骨骼生長，尤其是在仍處於發育期的病患身上。那是單純排列牙齒無法單獨達成的矯正層級。",
+        zh: "由於矯正器在整個治療期間都黏著在牙齒上，它能在需要的位置施加穩定、可預期的力量。對於某些涉及骨骼差異的病例，問題出在顎骨本身、而不只是牙齒，我們可能會加上功能性裝置或擴張器來影響骨骼生長，尤其是在仍處於發育期的病患身上。那是單純排列牙齒無法單獨達成的矯正層級。",
       },
       {
         kind: "bullets",
@@ -285,11 +285,11 @@ export const SERVICES: Service[] = ([
         en: "The braces are bonded in a single comfortable visit — no needles, no drilling — followed by short periodic adjustments as your teeth move into place. There's a few days of adjustment after placement; over-the-counter relief and soft foods handle it easily. For our braces patients, we provide guidelines on which foods to watch out for. Dislodged brackets do happen, and excessive breakage could increase your treatment time. Keeping everything clean is one of the biggest factors in protecting your oral health throughout treatment and finishing on time with a healthy, beautiful result.",
         zh: "矯正器會在單次、舒適的看診中黏著完成，不用打針、也不需鑽牙，之後再依牙齒移動的進度做幾次簡短的定期調整。黏著後會有幾天的適應期，用市售止痛藥與軟質食物就能輕鬆度過。對於我們的矯正器病患，我們會提供需要留意的飲食指引。托槽（bracket）脫落是會發生的，而過度損壞可能拉長你的療程。把一切清潔乾淨，是在整個療程中守護口腔健康、並如期以健康又美麗的成果完成治療的最關鍵因素之一。",
       },
-      { kind: "subhead", en: "Braces or aligners — how we decide", zh: "矯正器還是隱形牙套——我們怎麼決定" },
+      { kind: "subhead", en: "Braces or aligners — how we decide", zh: "矯正器還是隱形牙套，我們怎麼決定" },
       {
         kind: "p",
         en: "It depends on your case, not on what's trendy. Some bites are handled beautifully either way, and then it comes down to preference. Others genuinely call for one approach, and we'll tell you which and why rather than letting you choose blind. Bonding brackets is the easy part; knowing where to place each one and how to sequence the movements is the craft — and that planning is what orthodontic specialty training exists to do.",
-        zh: "這取決於你的病例，而不是哪個比較流行。有些咬合用兩種方式都能處理得很漂亮，那就看你的偏好；有些則確實只適合其中一種，我們會告訴你是哪一種、以及為什麼，而不是讓你盲選。黏上托槽是容易的部分；知道每一顆該黏在哪裡、移動該以什麼順序進行，才是真正的工藝——而那份規劃，正是齒顎矯正專科訓練存在的目的。",
+        zh: "這取決於你的病例，而不是哪個比較流行。有些咬合用兩種方式都能處理得很漂亮，那就看你的偏好；有些則確實只適合其中一種，我們會告訴你是哪一種、以及為什麼，而不是讓你盲選。黏上托槽是容易的部分；知道每一顆該黏在哪裡、移動該以什麼順序進行，才是真正的工藝，而那份規劃，正是齒顎矯正專科訓練存在的目的。",
       },
     ],
     ctaLead: {
@@ -319,7 +319,7 @@ export const SERVICES: Service[] = ([
       {
         kind: "p",
         en: "For a lot of people, the appeal of Invisalign is simple: straight teeth without a mouth full of metal. The aligners are clear, removable, and discreet enough that most people won't know you're wearing them. But the part that matters most happens before any aligner goes in: the planning. Clear aligners are only as good as the diagnosis and treatment design behind them — which is exactly where seeing an orthodontist makes the difference.",
-        zh: "對許多人來說，Invisalign 的吸引力很簡單：把牙齒變整齊，又不必滿口金屬。隱形牙套透明、可拆卸，低調到大多數人不會發現你正戴著它。但真正最關鍵的部分，發生在任何一副牙套戴進嘴裡之前——也就是規劃。清晰隱形牙套的成效，完全取決於背後的診斷與治療設計，而這正是「找齒顎矯正專科醫師」會帶來差別的地方。",
+        zh: "對許多人來說，Invisalign 的吸引力很簡單：把牙齒變整齊，又不必滿口金屬。隱形牙套透明、可拆卸，低調到大多數人不會發現你正戴著它。但真正最關鍵的部分，發生在任何一副牙套戴進嘴裡之前，也就是規劃。清晰隱形牙套的成效，完全取決於背後的診斷與治療設計，而這正是「找齒顎矯正專科醫師」會帶來差別的地方。",
       },
       {
         kind: "p",
@@ -346,7 +346,7 @@ export const SERVICES: Service[] = ([
       {
         kind: "p",
         en: "No — and that's worth saying plainly, because a lot of marketing implies otherwise. Clear aligners handle many cases beautifully, and some complex ones less reliably than braces. We'll tell you honestly which camp your case falls into. And unlike a mail-order kit, your treatment here is planned and supervised start to finish by a board-certified orthodontist who has examined your bite, roots, and gums — the oversight that protects your teeth from real, lasting harm.",
-        zh: "不——這點值得直說，因為很多行銷暗示的剛好相反。清晰隱形牙套能把許多病例處理得很漂亮，但有些複雜病例，它的可靠度不如矯正器。你的病例屬於哪一類，我們會誠實告訴你。而且，跟郵購牙套組不同，你在這裡的療程，是由一位檢查過你咬合、牙根與牙齦的認證齒顎矯正專科醫師，從頭到尾規劃並監督——正是這份把關，保護你的牙齒免於真正、長久的傷害。",
+        zh: "不，這點值得直說，因為很多行銷暗示的剛好相反。清晰隱形牙套能把許多病例處理得很漂亮，但有些複雜病例，它的可靠度不如矯正器。你的病例屬於哪一類，我們會誠實告訴你。而且，跟郵購牙套組不同，你在這裡的療程，是由一位檢查過你咬合、牙根與牙齦的認證齒顎矯正專科醫師，從頭到尾規劃並監督，正是這份把關，保護你的牙齒免於真正、長久的傷害。",
       },
     ],
     ctaLead: {
