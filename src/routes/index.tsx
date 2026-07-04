@@ -121,8 +121,8 @@ function HomePage() {
         "We believe patients should feel heard, supported, and comfortable throughout treatment.",
         "我們相信，病患在整個療程中都應該感受到被傾聽、被支持，並且安心自在。",
       ),
-      image: pillarCare,
-      alt: "Dr. Andrew Tsai talking with a patient in the chair, reviewing a scan",
+      image: "/images/clinic/doctors.webp",
+      alt: "Dr. Andrew Tsai and Dr. Marjorie Tsai at Tsai Orthodontics",
     },
     {
       n: "03",
