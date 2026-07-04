@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import drTsai from "@/assets/dr-andrew-tsai.webp.asset.json";
-import hero1 from "@/assets/hero-001_1.webp.asset.json";
 import hero2 from "@/assets/hero-002_1.webp.asset.json";
 import pillarCraftAsset from "@/assets/clinic-operatory.webp.asset.json";
 import pillarCareAsset from "@/assets/clinic-patient-consult.webp.asset.json";
@@ -48,7 +47,7 @@ function HomePage() {
 
   const HERO_SLIDES = [
     {
-      src: hero1.url,
+      src: "/images/home/hero-001.webp",
       alt: t("A Vancouver family laughing together", "溫哥華家庭一起歡笑的瞬間"),
       eyebrow: t("Specialist Orthodontics · Vancouver", "齒顎矯正專科 · 溫哥華"),
       title: t(
