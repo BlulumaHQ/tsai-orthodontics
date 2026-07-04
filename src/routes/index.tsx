@@ -47,7 +47,7 @@ function HomePage() {
 
   const HERO_SLIDES = [
     {
-      src: hero1.url,
+      src: "/images/home/hero-001.webp",
       alt: t("A Vancouver family laughing together", "溫哥華家庭一起歡笑的瞬間"),
       eyebrow: t("Specialist Orthodontics · Vancouver", "齒顎矯正專科 · 溫哥華"),
       title: t(
