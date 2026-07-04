@@ -96,6 +96,7 @@ export const SERVICE_GALLERIES: Record<string, { src: string; alt: string }[]> =
   ],
   "airway-friendly-orthodontics": [
     { src: "/images/services/airway.webp", alt: "Airway-friendly orthodontic analysis" },
+    { src: "/images/services/airway-2.webp", alt: "Airway analysis shown on the operatory monitor" },
   ],
   marpe: [
     { src: "/images/services/marpe.webp", alt: "MARPE treatment planning" },
