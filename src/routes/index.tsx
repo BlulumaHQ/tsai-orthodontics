@@ -373,6 +373,9 @@ function HomePage() {
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-2 text-balance">
               Dr. Andrew Tsai
             </h2>
+            {lang === "zh" && (
+              <div className="font-serif text-lg text-foreground/70 mb-2">慕忠霖醫師</div>
+            )}
             <div className="text-xs uppercase tracking-wide text-muted-foreground mb-8">
               DMD, MSD, FRCD(C)
             </div>
