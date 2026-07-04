@@ -286,10 +286,15 @@ function HomePage() {
           <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-8">
             {t("What We Believe In", "我們所相信的")}
           </div>
+          {lang === "zh" && (
+            <div className="font-serif text-lg md:text-xl text-foreground/70 mb-6">
+              慕忠霖醫師・齒顎矯正專科
+            </div>
+          )}
           <p className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-balance text-foreground/90">
             {t(
               "A neighbourhood orthodontic practice, shaped by specialist training, careful listening, and the legacy and warmth of a Vancouver family business.",
-              "一間在地的齒顎矯正診所——由專科訓練、用心聆聽，以及溫哥華家族診所的傳承與溫度共同形塑。",
+              "一間在地的齒顎矯正診所，由專科訓練、用心聆聽，以及溫哥華家族診所的傳承與溫度共同形塑。",
             )}
           </p>
           <div className="mt-10 lg:mt-16 flex flex-wrap items-baseline gap-x-8 gap-y-3">
