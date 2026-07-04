@@ -91,8 +91,8 @@ function HomePage() {
         "From a child's first visit to adult treatment — orthodontic care planned around your family, not a template.",
         "從孩子的第一次看診到成人矯正，為您的家庭量身規劃，不套用範本。",
       ),
-      align: "left" as const,
-      objectPosition: "right",
+      align: "center" as const,
+      objectPosition: "center",
     },
   ];
 
