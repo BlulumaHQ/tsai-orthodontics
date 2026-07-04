@@ -163,7 +163,8 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
   const pathname = router.state.location.pathname;
-  const transparent = pathname === "/";
+  void pathname;
+  const transparent = false;
 
   return (
     <QueryClientProvider client={queryClient}>
