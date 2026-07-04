@@ -306,14 +306,13 @@ function HomePage() {
       {/* PILLARS — mobile: stacked; desktop: compact 2×2 grid */}
       <section className="px-6 lg:px-10 pb-16 lg:pb-32">
         <div className="max-w-6xl mx-auto space-y-24 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-20">
-          {PILLARS.map((p, i) => {
-            const reversed = i % 2 === 1;
+          {PILLARS.map((p) => {
             return (
               <article
                 key={p.n}
-                className="lg:grid-cols-none grid gap-10 items-center lg:block"
+                className="grid gap-10 items-center lg:block"
               >
-                <div className={`lg:mb-8 ${reversed ? "lg:order-2" : ""} lg:order-none`}>
+                <div className="lg:mb-8">
                   <div className="overflow-hidden rounded-[2px]">
                     <img
                       src={p.image}
