@@ -58,7 +58,7 @@ function HomePage() {
           <span className="italic font-normal">by design.</span>
         </>,
         <>
-          屬於你的笑容，
+          你的笑容，
           <br />
           <span className="italic font-normal">細心設計。</span>
         </>,
