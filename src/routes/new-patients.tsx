@@ -72,26 +72,18 @@ function NewPatients() {
     {
       title: t("New Patient Intake Form", "新病患資料表"),
       body: t(
-        "Medical and dental history, contact details, and consent. Please complete before your first visit.",
-        "包含病史、牙科病歷、聯絡資訊與同意書。請於初診前填寫完成。",
+        "Download, complete, and bring this form to your first appointment.",
+        "請下載並填妥此表單，並於初診時帶來。",
       ),
-      href: "#",
+      href: "/forms/new-patient-intake-form.pdf",
     },
     {
-      title: t("Child Patient Form", "兒童病患資料表"),
+      title: t("New Patient Intake Form (Chinese)", "新病患資料表（中文版）"),
       body: t(
-        "For patients under 18. Includes guardian information and school schedule preferences.",
-        "適用於 18 歲以下病患。包含監護人資料與學校作息偏好。",
+        "Download, complete, and bring this form to your first appointment.",
+        "請下載並填妥此表單，並於初診時帶來。",
       ),
-      href: "#",
-    },
-    {
-      title: t("Insurance Information Form", "保險資料表"),
-      body: t(
-        "Your plan details and policyholder information, so we can submit claims on your behalf.",
-        "請提供保單內容與投保人資訊，以利我們協助代為申報理賠。",
-      ),
-      href: "#",
+      href: "/forms/new-patient-intake-form-zh.pdf",
     },
   ];
 
