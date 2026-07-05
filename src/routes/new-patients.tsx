@@ -156,22 +156,23 @@ function NewPatients() {
           <h2 className="font-serif text-4xl md:text-5xl mb-12 max-w-2xl text-balance leading-tight">
             {t("Download what you need ahead of your visit.", "在看診前先下載您需要的表單。")}
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
             {FORMS.map((f) => (
               <div
                 key={f.title}
-                className="bg-background border border-foreground/10 rounded-3xl p-8 hover:border-primary transition-colors flex flex-col"
+                className="bg-background border border-foreground/10 rounded-3xl p-8 hover:border-primary hover:shadow-lg transition-all flex flex-col"
               >
-                <Download className="size-6 text-primary mb-6" />
+                <Download className="size-6 text-primary mb-6" aria-hidden />
                 <h3 className="font-serif text-xl mb-3 leading-snug">{f.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-8">{f.body}</p>
                 <a
                   href={f.href}
-                  download
-                  className="mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground text-[11px] uppercase tracking-[0.2em] font-medium hover:bg-foreground transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground text-[11px] uppercase tracking-[0.2em] font-medium hover:bg-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors"
                 >
-                  <Download className="size-4" />
-                  {t("Download PDF", "下載 PDF")}
+                  <Download className="size-4" aria-hidden />
+                  {t("Download Fillable PDF", "下載可填寫 PDF")}
                 </a>
               </div>
             ))}
