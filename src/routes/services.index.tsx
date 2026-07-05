@@ -72,6 +72,7 @@ function ServicesIndex() {
                     loading="lazy"
                     width={1280}
                     height={1600}
+                    style={{ objectPosition: s.imagePosition ?? "center" }}
                     className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
