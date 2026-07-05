@@ -106,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Tsai Orthodontics | Specialist Orthodontic Care in Vancouver" },
+      { title: "Tsai Orthodontics — Specialist Orthodontic Care, Vancouver" },
       {
         name: "description",
         content:
@@ -117,10 +117,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#FAF8F6" },
-      { property: "og:title", content: "Tsai Orthodontics | Specialist Orthodontic Care in Vancouver" },
-      { name: "twitter:title", content: "Tsai Orthodontics | Specialist Orthodontic Care in Vancouver" },
-      { property: "og:description", content: "Specialist orthodontic care in Vancouver — clarity, warmth, and personal attention for every family." },
-      { name: "twitter:description", content: "Specialist orthodontic care in Vancouver — clarity, warmth, and personal attention for every family." },
+      { property: "og:title", content: "Tsai Orthodontics — Specialist Orthodontic Care, Vancouver" },
+      { name: "twitter:title", content: "Tsai Orthodontics — Specialist Orthodontic Care, Vancouver" },
+      { property: "og:description", content: "Specialist orthodontic care on Main Street in Vancouver. Braces, Invisalign, and unhurried family care from Dr. Tsai." },
+      { name: "twitter:description", content: "Specialist orthodontic care on Main Street in Vancouver. Braces, Invisalign, and unhurried family care from Dr. Tsai." },
+      { name: "description", content: "Specialist orthodontic care on Main Street in Vancouver. Braces, Invisalign, and unhurried family care from Dr. Tsai." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ab1f1a73-6a0e-46cd-b87e-cb5076c88a5e/id-preview-fed8e244--a3ce2391-661c-4537-9060-a239936ca419.lovable.app-1783245457128.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ab1f1a73-6a0e-46cd-b87e-cb5076c88a5e/id-preview-fed8e244--a3ce2391-661c-4537-9060-a239936ca419.lovable.app-1783245457128.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
