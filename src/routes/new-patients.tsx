@@ -72,26 +72,18 @@ function NewPatients() {
     {
       title: t("New Patient Intake Form", "新病患資料表"),
       body: t(
-        "Medical and dental history, contact details, and consent. Please complete before your first visit.",
-        "包含病史、牙科病歷、聯絡資訊與同意書。請於初診前填寫完成。",
+        "Download, complete, and bring this form to your first appointment.",
+        "請下載並填妥此表單，並於初診時帶來。",
       ),
-      href: "#",
+      href: "/forms/new-patient-intake-form.pdf",
     },
     {
-      title: t("Child Patient Form", "兒童病患資料表"),
+      title: t("New Patient Intake Form (Chinese)", "新病患資料表（中文版）"),
       body: t(
-        "For patients under 18. Includes guardian information and school schedule preferences.",
-        "適用於 18 歲以下病患。包含監護人資料與學校作息偏好。",
+        "Download, complete, and bring this form to your first appointment.",
+        "請下載並填妥此表單，並於初診時帶來。",
       ),
-      href: "#",
-    },
-    {
-      title: t("Insurance Information Form", "保險資料表"),
-      body: t(
-        "Your plan details and policyholder information, so we can submit claims on your behalf.",
-        "請提供保單內容與投保人資訊，以利我們協助代為申報理賠。",
-      ),
-      href: "#",
+      href: "/forms/new-patient-intake-form-zh.pdf",
     },
   ];
 
@@ -164,22 +156,23 @@ function NewPatients() {
           <h2 className="font-serif text-4xl md:text-5xl mb-12 max-w-2xl text-balance leading-tight">
             {t("Download what you need ahead of your visit.", "在看診前先下載您需要的表單。")}
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
             {FORMS.map((f) => (
               <div
                 key={f.title}
-                className="bg-background border border-foreground/10 rounded-3xl p-8 hover:border-primary transition-colors flex flex-col"
+                className="bg-background border border-foreground/10 rounded-3xl p-8 hover:border-primary hover:shadow-lg transition-all flex flex-col"
               >
-                <Download className="size-6 text-primary mb-6" />
+                <Download className="size-6 text-primary mb-6" aria-hidden />
                 <h3 className="font-serif text-xl mb-3 leading-snug">{f.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-8">{f.body}</p>
                 <a
                   href={f.href}
-                  download
-                  className="mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground text-[11px] uppercase tracking-[0.2em] font-medium hover:bg-foreground transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground text-[11px] uppercase tracking-[0.2em] font-medium hover:bg-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors"
                 >
-                  <Download className="size-4" />
-                  {t("Download PDF", "下載 PDF")}
+                  <Download className="size-4" aria-hidden />
+                  {t("Download Fillable PDF", "下載可填寫 PDF")}
                 </a>
               </div>
             ))}

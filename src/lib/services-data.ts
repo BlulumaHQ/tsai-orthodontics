@@ -49,6 +49,8 @@ export interface Service {
   ctaLabel: string;
   ctaLabelZh: string;
   image: string;
+  /** Optional CSS object-position for feature-image crops (portrait sources). */
+  imagePosition?: string;
   heroImageDirection: string;
   heroAlt: string;
   heroTitle: string;
@@ -122,7 +124,8 @@ export const SERVICES: Service[] = ([
     shortZh: "依照孩子的自然成長階段，量身規劃的齒顎矯正照護。",
     ctaLabel: "Explore Children's Orthodontics",
     ctaLabelZh: "了解兒童矯正",
-    image: journeyKids,
+    image: "/images/services/children-teens-feature.webp",
+    imagePosition: "50% 22%",
     heroImageDirection: "A child or teenager talking comfortably with Dr. Tsai and a parent.",
     heroAlt: "A child or teenager talking comfortably with Dr. Tsai and a parent",
     heroTitle: "Orthodontic Care That Grows With Your Child",
@@ -310,7 +313,7 @@ export const SERVICES: Service[] = ([
     shortZh: "以數位化方式規劃、由專科醫師細心追蹤的隱形牙套療程。",
     ctaLabel: "Explore Invisalign",
     ctaLabelZh: "了解 Invisalign",
-    image: svcInvisalign,
+    image: "/images/services/invisalign-feature.webp",
     heroImageDirection: "Adult patient with subtle clear aligners.",
     heroAlt: "Adult patient with subtle clear aligners",
     heroTitle: "Straighten Your Teeth Without Anyone Noticing",
@@ -405,7 +408,7 @@ export const SERVICES: Service[] = ([
     shortZh: "將孩子的成長、臉型結構與呼吸道發育一併納入考量的矯正規劃。",
     ctaLabel: "Explore Airway Friendly Care",
     ctaLabelZh: "了解呼吸道友善矯正",
-    image: svcAirway,
+    image: "/images/services/airway-feature.webp",
     heroImageDirection: "Digital growth analysis and child profile.",
     heroAlt: "Digital growth analysis and child profile",
     heroTitle: "Looking Beyond The Teeth",

@@ -118,6 +118,7 @@ function ServicePage() {
                 alt={service.heroAlt}
                 width={1280}
                 height={960}
+                style={{ objectPosition: service.imagePosition ?? "center" }}
                 className="w-full h-auto max-h-[520px] object-cover"
               />
             </div>
