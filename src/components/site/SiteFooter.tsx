@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { FOOTER_NAV, FOOTER_SERVICES, SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
-import logoFooter from "@/assets/tsai-logo-footer-new.svg.asset.json";
+import logoFooter from "@/assets/tsai-logo-footer-v2.svg.asset.json";
 
 export function SiteFooter() {
   const { t, lang } = useT();
