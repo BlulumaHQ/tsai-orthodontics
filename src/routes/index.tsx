@@ -91,7 +91,7 @@ function HomePage() {
         "從孩子的第一次看診到成人矯正，為您的家庭量身規劃，不套用範本。",
       ),
       align: "center" as const,
-      objectPosition: "center",
+      objectPosition: "top",
     },
   ];
 
