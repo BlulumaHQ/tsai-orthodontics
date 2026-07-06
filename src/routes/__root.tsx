@@ -17,7 +17,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { SITE } from "@/lib/site-data";
 import { LanguageProvider } from "@/lib/i18n";
-import faviconAsset from "@/assets/favicon.ico.asset.json";
+import faviconAsset from "@/assets/favicon.png.asset.json";
 
 function NotFoundComponent() {
   return (
