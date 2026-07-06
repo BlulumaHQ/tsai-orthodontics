@@ -119,7 +119,7 @@ function ServicePage() {
                 width={1280}
                 height={960}
                 style={{ objectPosition: service.imagePosition ?? "center" }}
-                className="w-full h-[340px] lg:h-[480px] object-cover"
+                className="w-full aspect-[3/2] object-cover"
               />
             </div>
           </div>
