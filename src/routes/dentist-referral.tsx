@@ -447,39 +447,29 @@ function DentistReferralPage() {
         </div>
       </section>
 
-      <section id="download-forms" className="px-6 lg:px-10 pb-24 lg:pb-32 scroll-mt-24">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-5">
-            {t("Download Referral Forms", "下載轉診表單")}
-          </div>
-          <h2 className="font-serif text-4xl md:text-5xl mb-10 max-w-2xl text-balance leading-tight">
-            {t("Prefer a printable form?", "偏好紙本表單？")}
-          </h2>
-          <div className="max-w-md">
-            <div className="bg-background border border-foreground/10 rounded-3xl p-8 hover:border-primary hover:shadow-lg transition-all flex flex-col">
-              <Download className="size-6 text-primary mb-6" aria-hidden />
-              <h3 className="font-serif text-xl mb-3 leading-snug">
-                {t("Referral Form", "轉診表單")}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-8">
-                {t(
-                  "Download the fillable referral form to complete electronically or print before sending.",
-                  "下載可填寫的轉診表單，可以在電腦上填寫或列印後寄出。",
-                )}
-              </p>
-              <a
-                href="/forms/referral-form.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground text-[11px] uppercase tracking-[0.2em] font-medium hover:bg-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors"
-              >
-                <Download className="size-4" aria-hidden />
-                {t("Download Fillable PDF", "下載可填寫 PDF")}
-              </a>
+      {/* SPECIALIST COORDINATION — moved to bottom */}
+      <section className="px-6 lg:px-10 pb-20 lg:pb-24">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10 lg:mb-14">
+            <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-4">
+              {t("How we work with you", "我們與您的合作方式")}
             </div>
+            <h2 className="font-serif text-3xl md:text-4xl leading-tight text-balance">
+              {t("Coordinated, transparent, collaborative.", "協同照護、透明溝通、跨科合作。")}
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-px bg-foreground/10 border border-foreground/10 rounded-3xl overflow-hidden">
+            {VALUE_CARDS.map(([title, body]) => (
+              <div key={title} className="bg-background p-8 lg:p-10">
+                <h3 className="font-serif text-2xl mb-3">{title}</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm">{body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+
 
 
       <section className="px-6 lg:px-10 pb-32">
