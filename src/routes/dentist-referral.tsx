@@ -214,14 +214,59 @@ function DentistReferralPage() {
         )}
       />
 
-      <section className="px-6 lg:px-10 pb-20 lg:pb-24">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-px bg-foreground/10 border border-foreground/10 rounded-3xl overflow-hidden">
-          {VALUE_CARDS.map(([title, body]) => (
-            <div key={title} className="bg-background p-8 lg:p-10">
-              <h3 className="font-serif text-2xl mb-3">{title}</h3>
-              <p className="text-muted-foreground leading-relaxed text-sm">{body}</p>
+      {/* PRINTABLE PDF — redesigned, prominent split layout */}
+      <section id="download-forms" className="px-6 lg:px-10 pb-20 lg:pb-28 scroll-mt-24">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch bg-secondary/40 border border-foreground/10 rounded-[2rem] overflow-hidden">
+            <div className="lg:col-span-7 p-8 md:p-12 lg:p-14 flex flex-col justify-center">
+              <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-5">
+                {t("Printable Referral Form", "紙本轉診表單")}
+              </div>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl leading-[1.05] mb-5 text-balance">
+                {t("Prefer a printable form?", "偏好紙本表單？")}
+              </h2>
+              <p className="text-foreground/75 leading-relaxed max-w-xl mb-8">
+                {t(
+                  "Download our referral form and complete it by hand, then fax, email, or send it with the patient.",
+                  "下載我們的轉診表單，親手填寫後可傳真、電郵，或交由病患攜帶帶來。",
+                )}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/forms/referral-form.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-foreground text-background text-[11px] uppercase tracking-[0.2em] font-medium hover:bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors"
+                >
+                  <Download className="size-4" aria-hidden />
+                  {t("Download Printable PDF", "下載紙本 PDF")}
+                </a>
+                <a
+                  href="#form"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-foreground/25 text-foreground text-[11px] uppercase tracking-[0.2em] font-medium hover:border-primary hover:text-primary transition-colors"
+                >
+                  {t("Or refer online", "或線上轉診")}
+                </a>
+              </div>
             </div>
-          ))}
+            <div className="lg:col-span-5 bg-background border-t lg:border-t-0 lg:border-l border-foreground/10 p-8 md:p-12 lg:p-14 flex flex-col justify-center">
+              <div className="flex items-center justify-center size-14 rounded-2xl bg-primary/10 text-primary mb-6">
+                <Download className="size-6" aria-hidden />
+              </div>
+              <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">
+                {t("PDF · 1 page", "PDF · 一頁")}
+              </div>
+              <h3 className="font-serif text-xl md:text-2xl mb-3 leading-snug">
+                {t("Tsai Orthodontics Referral Form", "Tsai Orthodontics 轉診表單")}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {t(
+                  "Standard letter-sized form. Print, fill out, and send.",
+                  "標準 Letter 尺寸表單。列印、填寫後寄出即可。",
+                )}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
