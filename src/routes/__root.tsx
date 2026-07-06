@@ -17,7 +17,6 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { SITE } from "@/lib/site-data";
 import { LanguageProvider } from "@/lib/i18n";
-import faviconAsset from "@/assets/favicon.png.asset.json";
 
 function NotFoundComponent() {
   return (
@@ -128,9 +127,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: faviconAsset.url },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "shortcut icon", type: "image/png", href: "/favicon.png" },
-      { rel: "apple-touch-icon", href: faviconAsset.url },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
