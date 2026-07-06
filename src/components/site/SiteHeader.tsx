@@ -45,7 +45,7 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
             <img
               src={logoHeader.url}
               alt={SITE.name}
-              className="h-10 lg:h-14 w-auto"
+              className="h-9 lg:h-11 w-auto"
             />
           </Link>
 
