@@ -5,7 +5,6 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { TopBar } from "./TopBar";
-import logoHeader from "@/assets/tsai-logo-header-new.png.asset.json";
 
 export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
@@ -43,9 +42,9 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
             aria-label={SITE.name}
           >
             <img
-              src={logoHeader.url}
+              src="/images/logos/tsai-logo-header-new.svg"
               alt={SITE.name}
-              className="h-9 lg:h-11 w-auto"
+              className="h-7 lg:h-9 w-auto"
             />
           </Link>
 
@@ -88,7 +87,7 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
       {open && (
         <div className="fixed inset-0 z-50 bg-background overflow-y-auto">
           <div className="flex items-center justify-between h-16 px-6 border-b border-foreground/5 sticky top-0 bg-background">
-            <img src={logoHeader.url} alt={SITE.name} className="h-10 w-auto" />
+            <img src="/images/logos/tsai-logo-header-new.svg" alt={SITE.name} className="h-8 w-auto" />
             <div className="flex items-center gap-3">
               <LanguageSwitcher tone="dark" />
               <button
