@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { FOOTER_NAV, FOOTER_SERVICES, SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
-import logoFooter from "@/assets/tsai-logo-footer-v2.png.asset.json";
 
 export function SiteFooter() {
   const { t, lang } = useT();
@@ -12,7 +11,7 @@ export function SiteFooter() {
           {/* Column 1 — brand */}
           <div className="col-span-2 md:col-span-1">
             <img
-              src={logoFooter.url}
+              src="/images/logos/tsai-logo-footer-v2.svg"
               alt={SITE.name}
               className="h-32 md:h-40 w-auto mb-4 md:mb-6"
             />
