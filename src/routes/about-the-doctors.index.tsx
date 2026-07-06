@@ -316,7 +316,7 @@ function AboutTheDoctorsPage() {
 
           <div className="lg:col-span-7">
             <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-4">
-              {t("Meet the Specialist", "認識專科醫師")}
+              {t("Meet the Doctor", "認識醫師")}
             </div>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.02] mb-2 text-balance">
               Dr. Marjorie Tsai

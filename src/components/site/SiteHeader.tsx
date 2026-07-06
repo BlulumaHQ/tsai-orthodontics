@@ -5,7 +5,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { TopBar } from "./TopBar";
-import logoHeader from "@/assets/tsai-logo-light-bg.svg.asset.json";
+import logoHeader from "@/assets/tsai-logo-header-new.svg.asset.json";
 
 export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
@@ -175,7 +175,8 @@ function DesktopNavItem({
   label: string;
 }) {
   const { lang } = useT();
-  const base = `text-[11px] uppercase tracking-[0.18em] font-medium transition-colors whitespace-nowrap ${
+  const sizeCls = lang === "zh" ? "text-[13px] tracking-[0.14em]" : "text-[11px] tracking-[0.18em]";
+  const base = `${sizeCls} uppercase font-medium transition-colors whitespace-nowrap ${
     solid ? "text-foreground/75 hover:text-primary" : "text-white/85 hover:text-white"
   }`;
 

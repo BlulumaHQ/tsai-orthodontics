@@ -158,7 +158,7 @@ function ServicePage() {
         </div>
       </section>
 
-      <ServiceGallery service={service} />
+      
       <FAQSection service={service} />
       <RelatedServices service={service} />
     </>
