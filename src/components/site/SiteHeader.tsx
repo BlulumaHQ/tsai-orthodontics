@@ -5,7 +5,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { TopBar } from "./TopBar";
-import logoHeader from "@/assets/tsai-logo-light-bg.svg.asset.json";
+import logoHeader from "@/assets/tsai-logo-header-new.svg.asset.json";
 
 export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
