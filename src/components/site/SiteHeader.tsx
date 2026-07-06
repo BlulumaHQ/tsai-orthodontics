@@ -44,7 +44,7 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
             <img
               src="/images/logos/tsai-logo-header-new.svg"
               alt={SITE.name}
-              className="h-5 lg:h-7 w-auto"
+              className="h-5 lg:h-6 w-auto"
             />
           </Link>
 
@@ -61,7 +61,7 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
           </nav>
 
           {/* Desktop right cluster: CTA only (phone + lang live in top bar) */}
-          <div className="hidden lg:flex items-center gap-4 shrink-0">
+          <div className="hidden lg:flex items-center gap-4 shrink-0 ml-6">
             <Link
               to="/contact"
               className="text-[11px] uppercase tracking-[0.18em] font-medium px-5 py-2.5 rounded-full bg-primary text-primary-foreground hover:bg-foreground transition-colors"
