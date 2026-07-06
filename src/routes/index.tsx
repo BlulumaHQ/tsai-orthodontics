@@ -196,9 +196,12 @@ function HomePage() {
             // On mobile, slide 2 ("right" focal) crops the person off-screen.
             // Center it on mobile, then return to the designed focal point at md+.
             const isRight = s.objectPosition === "right";
+            const isTop = s.objectPosition === "top";
             const positionClass = isRight
               ? "[object-position:50%_30%] md:[object-position:right]"
-              : "[object-position:center]";
+              : isTop
+                ? "[object-position:50%_15%]"
+                : "[object-position:center]";
             const video = (s as { video?: string }).video;
             const mediaClass = `absolute inset-0 h-full w-full object-cover ${positionClass}`;
             return (
