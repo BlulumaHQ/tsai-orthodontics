@@ -231,15 +231,8 @@ function HomePage() {
               </div>
             );
           })}
-          {activeHeroSlide.align === "left" ? (
-            <>
-              {/* Stronger scrim on the left/bottom to protect text over the photo */}
-              <div className="absolute inset-0 z-10 bg-gradient-to-r from-foreground/70 via-foreground/40 to-foreground/10" />
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
-            </>
-          ) : (
-            <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
-          )}
+          <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+
 
         </div>
 
