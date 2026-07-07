@@ -2,8 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import drTsai from "@/assets/dr-andrew-tsai.webp.asset.json";
-import hero1 from "@/assets/tsai-hero-001.webp.asset.json";
-import hero2 from "@/assets/tsai-hero-002.webp.asset.json";
 import pillarCraftAsset from "@/assets/clinic-operatory.webp.asset.json";
 import pillarCareAsset from "@/assets/clinic-patient-consult.webp.asset.json";
 import pillarClarityAsset from "@/assets/clinic-reception.webp.asset.json";
@@ -48,7 +46,7 @@ function HomePage() {
 
   const HERO_SLIDES = [
     {
-      src: hero1.url,
+      src: "/images/home/hero-001.webp",
       alt: t("Dr. Andrew Tsai at Tsai Orthodontics reception", "Dr. Andrew Tsai 於 Tsai Orthodontics 診所前台"),
       eyebrow: t("Specialist Orthodontics · Vancouver", "齒顎矯正專科 · 溫哥華"),
       title: t(
@@ -71,7 +69,7 @@ function HomePage() {
       objectPosition: "right",
     },
     {
-      src: hero2.url,
+      src: "/images/home/hero-002.webp",
       alt: t("Dr. Andrew Tsai reviewing a clear aligner with a teen patient", "Dr. Andrew Tsai 與青少年患者一起檢視隱形牙套"),
       eyebrow: t("Care for every stage", "陪伴每一個人生階段"),
       title: t(
