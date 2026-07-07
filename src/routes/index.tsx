@@ -48,8 +48,8 @@ function HomePage() {
 
   const HERO_SLIDES = [
     {
-      src: "/images/home/hero-001.webp",
-      alt: t("A Vancouver family laughing together", "溫哥華家庭一起歡笑的瞬間"),
+      src: hero1.url,
+      alt: t("Dr. Andrew Tsai at Tsai Orthodontics reception", "Dr. Andrew Tsai 於 Tsai Orthodontics 診所前台"),
       eyebrow: t("Specialist Orthodontics · Vancouver", "齒顎矯正專科 · 溫哥華"),
       title: t(
         <>
@@ -68,7 +68,7 @@ function HomePage() {
         "溫哥華的齒顎矯正專科照護，貼合你的生活節奏，並以工藝、關懷與清晰為本。",
       ),
       align: "center" as const,
-      objectPosition: "center",
+      objectPosition: "right",
     },
     {
       src: hero2.url,
