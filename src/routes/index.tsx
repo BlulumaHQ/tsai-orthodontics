@@ -194,9 +194,9 @@ function HomePage() {
             const isRight = s.objectPosition === "right";
             const isTop = s.objectPosition === "top";
             const positionClass = isRight
-              ? "[object-position:80%_center] md:[object-position:right]"
+              ? "max-md:scale-[1.3] max-md:[object-position:50%_70%] md:[object-position:right]"
               : isTop
-                ? "[object-position:65%_center] md:[object-position:50%_40%]"
+                ? "max-md:[object-position:78%_center] md:[object-position:50%_40%]"
                 : "[object-position:center]";
             const video = (s as { video?: string }).video;
             const mediaClass = `absolute inset-0 h-full w-full object-cover ${positionClass}`;
