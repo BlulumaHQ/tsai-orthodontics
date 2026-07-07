@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import drTsai from "@/assets/dr-andrew-tsai.webp.asset.json";
-import hero2 from "@/assets/hero-slide-02.webp.asset.json";
+import hero1 from "@/assets/tsai-hero-001.webp.asset.json";
+import hero2 from "@/assets/tsai-hero-002.webp.asset.json";
 import pillarCraftAsset from "@/assets/clinic-operatory.webp.asset.json";
 import pillarCareAsset from "@/assets/clinic-patient-consult.webp.asset.json";
 import pillarClarityAsset from "@/assets/clinic-reception.webp.asset.json";
@@ -47,8 +48,8 @@ function HomePage() {
 
   const HERO_SLIDES = [
     {
-      src: "/images/home/hero-001.webp",
-      alt: t("A Vancouver family laughing together", "溫哥華家庭一起歡笑的瞬間"),
+      src: hero1.url,
+      alt: t("Dr. Andrew Tsai at Tsai Orthodontics reception", "Dr. Andrew Tsai 於 Tsai Orthodontics 診所前台"),
       eyebrow: t("Specialist Orthodontics · Vancouver", "齒顎矯正專科 · 溫哥華"),
       title: t(
         <>
@@ -67,7 +68,7 @@ function HomePage() {
         "溫哥華的齒顎矯正專科照護，貼合你的生活節奏，並以工藝、關懷與清晰為本。",
       ),
       align: "center" as const,
-      objectPosition: "center",
+      objectPosition: "right",
     },
     {
       src: hero2.url,
@@ -89,7 +90,7 @@ function HomePage() {
         "From a child's first visit to adult treatment — orthodontic care planned around your family, not a template.",
         "從孩子的第一次看診到成人矯正，為您的家庭量身規劃，不套用範本。",
       ),
-      align: "left" as const,
+      align: "center" as const,
       objectPosition: "top",
     },
   ];
@@ -230,25 +231,14 @@ function HomePage() {
               </div>
             );
           })}
-          {activeHeroSlide.align === "left" ? (
-            <>
-              {/* Stronger scrim on the left/bottom to protect text over the photo */}
-              <div className="absolute inset-0 z-10 bg-gradient-to-r from-foreground/70 via-foreground/40 to-foreground/10" />
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
-            </>
-          ) : (
-            <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
-          )}
+          <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+
 
         </div>
 
         <div
           key={activeHeroSlide.src}
-          className={`relative z-20 h-full flex flex-col pt-28 lg:pt-32 pb-20 lg:pb-20 xl:pb-28 px-6 lg:px-12 justify-end ${
-            activeHeroSlide.align === "left"
-              ? "items-center text-center lg:items-start lg:text-left"
-              : "items-center text-center"
-          }`}
+          className="relative z-20 h-full flex flex-col pt-28 lg:pt-32 pb-20 lg:pb-20 xl:pb-28 px-6 lg:px-12 justify-end items-center text-center"
         >
           <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-4 lg:mb-6">
             {activeHeroSlide.eyebrow}
@@ -259,7 +249,7 @@ function HomePage() {
           <p className="mt-6 lg:mt-8 text-white/85 text-base lg:text-lg leading-relaxed max-w-xl">
             {activeHeroSlide.tagline}
           </p>
-          <div className={`flex flex-col sm:flex-row gap-3 mt-10 ${activeHeroSlide.align === "left" ? "lg:justify-start" : ""}`}>
+          <div className="flex flex-col sm:flex-row gap-3 mt-10">
             <Link
               to="/contact"
               className="px-8 py-4 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300 rounded-full text-xs font-medium uppercase tracking-[0.2em]"
