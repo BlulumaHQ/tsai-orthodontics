@@ -238,11 +238,7 @@ function HomePage() {
 
         <div
           key={activeHeroSlide.src}
-          className={`relative z-20 h-full flex flex-col pt-28 lg:pt-32 pb-20 lg:pb-20 xl:pb-28 px-6 lg:px-12 justify-end ${
-            activeHeroSlide.align === "left"
-              ? "items-center text-center lg:items-start lg:text-left"
-              : "items-center text-center"
-          }`}
+          className="relative z-20 h-full flex flex-col pt-28 lg:pt-32 pb-20 lg:pb-20 xl:pb-28 px-6 lg:px-12 justify-end items-center text-center"
         >
           <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-4 lg:mb-6">
             {activeHeroSlide.eyebrow}
