@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import drTsai from "@/assets/dr-andrew-tsai.webp.asset.json";
-import hero2 from "@/assets/hero-002_1.webp.asset.json";
+import hero2 from "@/assets/hero-slide-02.webp.asset.json";
 import pillarCraftAsset from "@/assets/clinic-operatory.webp.asset.json";
 import pillarCareAsset from "@/assets/clinic-patient-consult.webp.asset.json";
 import pillarClarityAsset from "@/assets/clinic-reception.webp.asset.json";
