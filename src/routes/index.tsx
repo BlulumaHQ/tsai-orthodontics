@@ -71,8 +71,7 @@ function HomePage() {
     },
     {
       src: hero2.url,
-      video: "/videos/hero-family-smile.mp4",
-      alt: t("A Vancouver family outdoors", "在戶外的溫哥華家庭"),
+      alt: t("Dr. Andrew Tsai reviewing a clear aligner with a teen patient", "Dr. Andrew Tsai 與青少年患者一起檢視隱形牙套"),
       eyebrow: t("Care for every stage", "陪伴每一個人生階段"),
       title: t(
         <>
@@ -90,7 +89,7 @@ function HomePage() {
         "From a child's first visit to adult treatment — orthodontic care planned around your family, not a template.",
         "從孩子的第一次看診到成人矯正，為您的家庭量身規劃，不套用範本。",
       ),
-      align: "center" as const,
+      align: "left" as const,
       objectPosition: "top",
     },
   ];
