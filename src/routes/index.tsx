@@ -192,14 +192,12 @@ function HomePage() {
       <section className="relative isolate h-[100svh] min-h-[640px] w-full overflow-hidden bg-foreground">
         <div className="absolute inset-0 z-0">
           {HERO_SLIDES.map((s, i) => {
-            // On mobile, slide 2 ("right" focal) crops the person off-screen.
-            // Center it on mobile, then return to the designed focal point at md+.
             const isRight = s.objectPosition === "right";
             const isTop = s.objectPosition === "top";
             const positionClass = isRight
               ? "[object-position:50%_30%] md:[object-position:right]"
               : isTop
-                ? "[object-position:50%_15%]"
+                ? "[object-position:50%_35%] md:[object-position:50%_40%]"
                 : "[object-position:center]";
             const video = (s as { video?: string }).video;
             const mediaClass = `absolute inset-0 h-full w-full object-cover ${positionClass}`;
@@ -232,13 +230,25 @@ function HomePage() {
               </div>
             );
           })}
-          <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+          {activeHeroSlide.align === "left" ? (
+            <>
+              {/* Stronger scrim on the left/bottom to protect text over the photo */}
+              <div className="absolute inset-0 z-10 bg-gradient-to-r from-foreground/70 via-foreground/40 to-foreground/10" />
+              <div className="absolute inset-0 z-10 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
+            </>
+          ) : (
+            <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+          )}
 
         </div>
 
         <div
           key={activeHeroSlide.src}
-          className="relative z-20 h-full flex flex-col pt-28 lg:pt-32 pb-20 lg:pb-20 xl:pb-28 px-6 lg:px-12 items-center justify-end text-center"
+          className={`relative z-20 h-full flex flex-col pt-28 lg:pt-32 pb-20 lg:pb-20 xl:pb-28 px-6 lg:px-12 justify-end ${
+            activeHeroSlide.align === "left"
+              ? "items-center text-center lg:items-start lg:text-left"
+              : "items-center text-center"
+          }`}
         >
           <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-4 lg:mb-6">
             {activeHeroSlide.eyebrow}
@@ -249,7 +259,7 @@ function HomePage() {
           <p className="mt-6 lg:mt-8 text-white/85 text-base lg:text-lg leading-relaxed max-w-xl">
             {activeHeroSlide.tagline}
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 mt-10">
+          <div className={`flex flex-col sm:flex-row gap-3 mt-10 ${activeHeroSlide.align === "left" ? "lg:justify-start" : ""}`}>
             <Link
               to="/contact"
               className="px-8 py-4 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300 rounded-full text-xs font-medium uppercase tracking-[0.2em]"
