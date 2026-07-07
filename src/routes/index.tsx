@@ -249,7 +249,7 @@ function HomePage() {
           <p className="mt-6 lg:mt-8 text-white/85 text-base lg:text-lg leading-relaxed max-w-xl">
             {activeHeroSlide.tagline}
           </p>
-          <div className={`flex flex-col sm:flex-row gap-3 mt-10 ${activeHeroSlide.align === "left" ? "lg:justify-start" : ""}`}>
+          <div className="flex flex-col sm:flex-row gap-3 mt-10">
             <Link
               to="/contact"
               className="px-8 py-4 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300 rounded-full text-xs font-medium uppercase tracking-[0.2em]"
