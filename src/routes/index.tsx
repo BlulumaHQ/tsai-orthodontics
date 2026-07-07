@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import drTsai from "@/assets/dr-andrew-tsai.webp.asset.json";
-import hero2 from "@/assets/hero-002_1.webp.asset.json";
+import hero2 from "@/assets/hero-slide-02.webp.asset.json";
 import pillarCraftAsset from "@/assets/clinic-operatory.webp.asset.json";
 import pillarCareAsset from "@/assets/clinic-patient-consult.webp.asset.json";
 import pillarClarityAsset from "@/assets/clinic-reception.webp.asset.json";
@@ -71,8 +71,7 @@ function HomePage() {
     },
     {
       src: hero2.url,
-      video: "/videos/hero-family-smile.mp4",
-      alt: t("A Vancouver family outdoors", "在戶外的溫哥華家庭"),
+      alt: t("Dr. Andrew Tsai reviewing a clear aligner with a teen patient", "Dr. Andrew Tsai 與青少年患者一起檢視隱形牙套"),
       eyebrow: t("Care for every stage", "陪伴每一個人生階段"),
       title: t(
         <>
@@ -90,7 +89,7 @@ function HomePage() {
         "From a child's first visit to adult treatment — orthodontic care planned around your family, not a template.",
         "從孩子的第一次看診到成人矯正，為您的家庭量身規劃，不套用範本。",
       ),
-      align: "center" as const,
+      align: "left" as const,
       objectPosition: "top",
     },
   ];
@@ -193,14 +192,12 @@ function HomePage() {
       <section className="relative isolate h-[100svh] min-h-[640px] w-full overflow-hidden bg-foreground">
         <div className="absolute inset-0 z-0">
           {HERO_SLIDES.map((s, i) => {
-            // On mobile, slide 2 ("right" focal) crops the person off-screen.
-            // Center it on mobile, then return to the designed focal point at md+.
             const isRight = s.objectPosition === "right";
             const isTop = s.objectPosition === "top";
             const positionClass = isRight
               ? "[object-position:50%_30%] md:[object-position:right]"
               : isTop
-                ? "[object-position:50%_15%]"
+                ? "[object-position:50%_35%] md:[object-position:50%_40%]"
                 : "[object-position:center]";
             const video = (s as { video?: string }).video;
             const mediaClass = `absolute inset-0 h-full w-full object-cover ${positionClass}`;
@@ -233,13 +230,25 @@ function HomePage() {
               </div>
             );
           })}
-          <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+          {activeHeroSlide.align === "left" ? (
+            <>
+              {/* Stronger scrim on the left/bottom to protect text over the photo */}
+              <div className="absolute inset-0 z-10 bg-gradient-to-r from-foreground/70 via-foreground/40 to-foreground/10" />
+              <div className="absolute inset-0 z-10 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
+            </>
+          ) : (
+            <div className="absolute inset-0 z-10 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/60" />
+          )}
 
         </div>
 
         <div
           key={activeHeroSlide.src}
-          className="relative z-20 h-full flex flex-col pt-28 lg:pt-32 pb-20 lg:pb-20 xl:pb-28 px-6 lg:px-12 items-center justify-end text-center"
+          className={`relative z-20 h-full flex flex-col pt-28 lg:pt-32 pb-20 lg:pb-20 xl:pb-28 px-6 lg:px-12 justify-end ${
+            activeHeroSlide.align === "left"
+              ? "items-center text-center lg:items-start lg:text-left"
+              : "items-center text-center"
+          }`}
         >
           <div className="text-primary/90 text-[11px] uppercase tracking-[0.3em] mb-4 lg:mb-6">
             {activeHeroSlide.eyebrow}
@@ -250,7 +259,7 @@ function HomePage() {
           <p className="mt-6 lg:mt-8 text-white/85 text-base lg:text-lg leading-relaxed max-w-xl">
             {activeHeroSlide.tagline}
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 mt-10">
+          <div className={`flex flex-col sm:flex-row gap-3 mt-10 ${activeHeroSlide.align === "left" ? "lg:justify-start" : ""}`}>
             <Link
               to="/contact"
               className="px-8 py-4 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300 rounded-full text-xs font-medium uppercase tracking-[0.2em]"
