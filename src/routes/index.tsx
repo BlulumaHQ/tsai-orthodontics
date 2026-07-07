@@ -194,7 +194,7 @@ function HomePage() {
             const isRight = s.objectPosition === "right";
             const isTop = s.objectPosition === "top";
             const positionClass = isRight
-              ? "max-md:scale-[1.4] max-md:[object-position:72%_78%] md:[object-position:right]"
+              ? "max-md:scale-[1.5] max-md:[object-position:65%_78%] md:[object-position:right]"
               : isTop
                 ? "max-md:[object-position:78%_center] md:[object-position:50%_40%]"
                 : "[object-position:center]";
