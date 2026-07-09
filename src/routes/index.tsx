@@ -287,7 +287,7 @@ function HomePage() {
           </div>
           {lang === "zh" && (
             <div className="font-serif text-lg md:text-xl text-foreground/70 mb-6">
-              慕忠霖醫師・齒顎矯正專科
+              蔡忠霖醫師・齒顎矯正專科
             </div>
           )}
           <p className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-balance text-foreground/90">
@@ -373,7 +373,7 @@ function HomePage() {
               Dr. Andrew Tsai
             </h2>
             {lang === "zh" && (
-              <div className="font-serif text-lg text-foreground/70 mb-2">慕忠霖醫師</div>
+              <div className="font-serif text-lg text-foreground/70 mb-2">蔡忠霖醫師</div>
             )}
             <div className="text-xs uppercase tracking-wide text-muted-foreground mb-8">
               DMD, MSD, FRCD(C)
