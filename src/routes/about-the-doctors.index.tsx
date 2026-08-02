@@ -97,9 +97,9 @@ export const Route = createFileRoute("/about-the-doctors/")({
       },
       { property: "og:title", content: "About the Doctors | Tsai Orthodontics" },
       { property: "og:description", content: "Meet Dr. Andrew Tsai, DMD, MSD, FRCD(C) and Dr. Marjorie Tsai, DDS, M.Ortho." },
-      { property: "og:url", content: "/about-the-doctors" },
+      { property: "og:url", content: "https://tsaiorthodontics.ca/about-the-doctors" },
     ],
-    links: [{ rel: "canonical", href: "/about-the-doctors" }],
+    links: [{ rel: "canonical", href: "https://tsaiorthodontics.ca/about-the-doctors" }],
   }),
   component: AboutTheDoctorsPage,
 });
