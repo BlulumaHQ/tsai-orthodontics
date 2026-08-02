@@ -19,9 +19,9 @@ export const Route = createFileRoute("/contact")({
         property: "og:description",
         content: "Book your complimentary specialist consultation in Vancouver.",
       },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: "https://tsaiorthodontics.ca/contact" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://tsaiorthodontics.ca/contact" }],
   }),
   component: ContactPage,
 });

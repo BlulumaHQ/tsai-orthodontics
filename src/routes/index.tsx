@@ -32,10 +32,10 @@ export const Route = createFileRoute("/")({
         content:
           "Specialist orthodontic care for Vancouver families. Considered, unhurried, built on long-term relationships.",
       },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://tsaiorthodontics.ca/" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://tsaiorthodontics.ca/" }],
   }),
   component: HomePage,
 });

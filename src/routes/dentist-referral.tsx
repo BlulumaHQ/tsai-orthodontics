@@ -93,9 +93,9 @@ export const Route = createFileRoute("/dentist-referral")({
         content:
           "A clear, professional referral process for general dentists and healthcare colleagues.",
       },
-      { property: "og:url", content: "/dentist-referral" },
+      { property: "og:url", content: "https://tsaiorthodontics.ca/dentist-referral" },
     ],
-    links: [{ rel: "canonical", href: "/dentist-referral" }],
+    links: [{ rel: "canonical", href: "https://tsaiorthodontics.ca/dentist-referral" }],
   }),
   component: DentistReferralPage,
 });
