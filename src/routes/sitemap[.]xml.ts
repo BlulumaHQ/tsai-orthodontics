@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { SERVICES } from "@/lib/services-data";
 
-const BASE_URL = "https://tsai-orthodontics.lovable.app";
+const BASE_URL = "https://tsaiorthodontics.ca";
+const LASTMOD = "2026-08-02";
 
 interface SitemapEntry {
   path: string;
@@ -36,6 +37,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
+            `    <lastmod>${LASTMOD}</lastmod>`,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,
