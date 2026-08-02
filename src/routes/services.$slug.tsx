@@ -57,11 +57,11 @@ export const Route = createFileRoute("/services/$slug")({
         { name: "description", content: s.metaDescription },
         { property: "og:title", content: s.metaTitle },
         { property: "og:description", content: s.metaDescription },
-        { property: "og:url", content: `/services/${s.slug}` },
+        { property: "og:url", content: `https://tsaiorthodontics.ca/services/${s.slug}` },
         { property: "og:type", content: "article" },
         { property: "og:image", content: s.image },
       ],
-      links: [{ rel: "canonical", href: `/services/${s.slug}` }],
+      links: [{ rel: "canonical", href: `https://tsaiorthodontics.ca/services/${s.slug}` }],
       scripts,
     };
   },
