@@ -3,8 +3,8 @@ export const SITE = {
   shortName: "Tsai Ortho",
   domain: "tsaiorthodontics.ca",
   email: "smile@tsaiorthodontics.ca",
-  phone: "604-708-8138",
-  phoneHref: "tel:+16047088138",
+  phone: "604-636-2686",
+  phoneHref: "tel:+16046362686",
   address: {
     street: "3431 Main Street",
     city: "Vancouver",
