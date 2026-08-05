@@ -12,7 +12,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Visit Tsai Orthodontics at 3431 Main Street, Vancouver. Book your complimentary consultation, or call 604-708-8138.",
+          "Visit Tsai Orthodontics at 3431 Main Street, Vancouver. Book your complimentary consultation, or call 604-636-2686.",
       },
       { property: "og:title", content: "Contact Tsai Orthodontics" },
       {

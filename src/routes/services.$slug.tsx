@@ -149,10 +149,10 @@ function ServicePage() {
               {t("Book a Consultation", "預約諮詢")} <ArrowRight className="size-4" />
             </Link>
             <a
-              href="tel:+16047088138"
+              href="tel:+16046362686"
               className="px-8 py-4 rounded-full border border-foreground/30 text-foreground text-xs uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-colors text-center"
             >
-              {t("Call 604-708-8138", "電話 604-708-8138")}
+              {t("Call 604-636-2686", "電話 604-636-2686")}
             </a>
           </div>
         </div>
