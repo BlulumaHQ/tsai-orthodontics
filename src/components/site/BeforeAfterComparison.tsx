@@ -2,8 +2,12 @@ import { useCallback, useRef, useState } from "react";
 
 /**
  * A quiet, dependency-free before/after image comparison.
- * Drag interaction is desktop-only (>=1024px); below that the two images
- * simply stack vertically via CSS — the same <img> elements are reused.
+ *
+ * Mobile-first: below 1024px the two images are plain, static, full-width
+ * block images stacked vertically — no clipping, no overlay, no drag layer.
+ * The drag/keyboard slider and the clip-path only exist from `lg` upwards,
+ * expressed purely through CSS breakpoints (the slider position travels as
+ * the `--comparison-position` custom property on the pair container).
  */
 export function BeforeAfterComparison({
   initialSrc,
@@ -32,17 +36,43 @@ export function BeforeAfterComparison({
   }, []);
 
   return (
-    <div className="lg:contents">
-      {/* Stacked (mobile / tablet) + overlay (desktop) share these images */}
-      <div
-        ref={frameRef}
+    <div
+      ref={frameRef}
+      style={{ ["--comparison-position" as string]: `${pos}%` }}
+      className="
+        flex flex-col gap-3
+        lg:block lg:relative lg:gap-0 lg:aspect-[5/3] lg:overflow-hidden
+        lg:rounded-2xl lg:select-none
+      "
+    >
+      <img
+        src={initialSrc}
+        alt={initialAlt}
+        width={900}
+        height={540}
+        loading="lazy"
+        decoding="async"
+        className="block static w-full h-auto aspect-[5/3] object-cover rounded-2xl lg:rounded-none lg:absolute lg:inset-0 lg:h-full"
+      />
+      <img
+        src={resultSrc}
+        alt={resultAlt}
+        width={900}
+        height={540}
+        loading="lazy"
+        decoding="async"
         className="
-          flex flex-col gap-3
-          lg:block lg:relative lg:gap-0 lg:aspect-[5/3] lg:overflow-hidden
-          lg:rounded-2xl lg:cursor-ew-resize lg:select-none lg:touch-none
+          block static w-full h-auto aspect-[5/3] object-cover rounded-2xl
+          [clip-path:none]
+          lg:rounded-none lg:absolute lg:inset-0 lg:h-full
+          lg:[clip-path:inset(0_0_0_var(--comparison-position))]
         "
+      />
+
+      {/* Interactive layer: desktop only */}
+      <div
+        className="hidden lg:block absolute inset-0 cursor-ew-resize touch-none"
         onPointerDown={(e) => {
-          if (typeof window !== "undefined" && window.innerWidth < 1024) return;
           draggingRef.current = true;
           e.currentTarget.setPointerCapture(e.pointerId);
           updateFromEvent(e.clientX);
@@ -60,31 +90,10 @@ export function BeforeAfterComparison({
           draggingRef.current = false;
         }}
       >
-        <img
-          src={initialSrc}
-          alt={initialAlt}
-          width={900}
-          height={540}
-          loading="lazy"
-          decoding="async"
-          className="w-full aspect-[5/3] object-cover rounded-2xl lg:rounded-none lg:absolute lg:inset-0 lg:h-full lg:aspect-auto"
-        />
-        <img
-          src={resultSrc}
-          alt={resultAlt}
-          width={900}
-          height={540}
-          loading="lazy"
-          decoding="async"
-          className="w-full aspect-[5/3] object-cover rounded-2xl lg:rounded-none lg:absolute lg:inset-0 lg:h-full lg:aspect-auto"
-          style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
-        />
-
-        {/* Divider + handle: desktop only */}
         <div
           aria-hidden="true"
-          className="hidden lg:block absolute inset-y-0 w-px bg-background/80"
-          style={{ left: `${pos}%` }}
+          className="absolute inset-y-0 w-px bg-background/80"
+          style={{ left: "var(--comparison-position)" }}
         />
         <div
           role="slider"
@@ -110,14 +119,14 @@ export function BeforeAfterComparison({
             }
           }}
           className="
-            hidden lg:flex absolute top-1/2 -translate-y-1/2 -translate-x-1/2
+            flex absolute top-1/2 -translate-y-1/2 -translate-x-1/2
             h-9 w-9 items-center justify-center rounded-full
             bg-background/90 text-foreground/70 ring-1 ring-foreground/15
             transition-transform duration-150 motion-reduce:transition-none
             hover:scale-110 focus:scale-110 focus:outline-none
             focus-visible:ring-2 focus-visible:ring-primary
           "
-          style={{ left: `${pos}%` }}
+          style={{ left: "var(--comparison-position)" }}
         >
           <svg
             width="18"
