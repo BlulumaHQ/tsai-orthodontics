@@ -112,6 +112,8 @@ function Page() {
         </div>
       </section>
 
+      <SmileTransformations />
+
       <section className="px-6 lg:px-10 pb-32">
         <div className="max-w-3xl mx-auto text-center">
           <p className="font-serif text-3xl md:text-4xl leading-[1.15] text-balance mb-10">
