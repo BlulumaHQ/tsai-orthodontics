@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
+import { SmileTransformations } from "@/components/site/SmileTransformations";
 import { useT } from "@/lib/i18n";
 import textureBelieve from "@/assets/clinic-reception.webp.asset.json";
 
@@ -111,6 +112,8 @@ function Page() {
           ))}
         </div>
       </section>
+
+      <SmileTransformations />
 
       <section className="px-6 lg:px-10 pb-32">
         <div className="max-w-3xl mx-auto text-center">
