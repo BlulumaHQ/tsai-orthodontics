@@ -10,6 +10,7 @@ import clinicChairAsset from "@/assets/dental-chair-brand.jpg.asset.json";
 import { SITE } from "@/lib/site-data";
 import { SERVICES, localizedService } from "@/lib/services-data";
 import { useT } from "@/lib/i18n";
+import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
 
 const pillarCraft = pillarCraftAsset.url;
 const pillarCare = pillarCareAsset.url;
@@ -142,44 +143,6 @@ function HomePage() {
       ),
       image: pillarConvenience,
       alt: "A quiet hallway connecting the operatories at the practice",
-    },
-  ];
-
-  const REVIEWS = [
-    {
-      name: "Sarah L.",
-      text: t(
-        "Dr. Tsai took the time to explain every step of the process. My daughter actually looks forward to her visits.",
-        "Dr. Tsai 花了很多時間，把每一個療程步驟解釋得很清楚。我女兒甚至很期待回診。",
-      ),
-    },
-    {
-      name: "Michael W.",
-      text: t(
-        "The office feels welcoming and organized. I appreciated the clear communication and thoughtful approach.",
-        "診所的氛圍親切、流程也很有條理。我特別欣賞他們清楚的溝通與細膩的看診方式。",
-      ),
-    },
-    {
-      name: "Emily C.",
-      text: t(
-        "We never felt rushed. Every question was answered, and the entire experience has been positive for our family.",
-        "整個過程我們從來沒有被催促的感覺。每個問題都得到回應，對全家來說都是非常正面的體驗。",
-      ),
-    },
-    {
-      name: "Jason H.",
-      text: t(
-        "Highly recommend Tsai Orthodontics. The team is professional, patient, and made my Invisalign journey smooth from start to finish.",
-        "非常推薦 Tsai Orthodontics。整個團隊專業又有耐心，讓我整個隱適美療程從頭到尾都很順利。",
-      ),
-    },
-    {
-      name: "Linda K.",
-      text: t(
-        "Being able to communicate in Mandarin made a huge difference for our family. Dr. Tsai is genuinely caring and detail-oriented.",
-        "能夠用中文溝通，對我們全家來說真的差很多。Dr. Tsai 真的很細心，也非常用心。",
-      ),
     },
   ];
 
@@ -494,8 +457,7 @@ function HomePage() {
 
 
       {/*
-        Google Reviews — Placeholder Google Reviews.
-        Replace with real Google Business reviews before public launch.
+        Google Reviews carousel
       */}
       <section className="py-16 lg:py-24 px-6 lg:px-10 bg-secondary/30">
         <div className="max-w-6xl mx-auto">
@@ -509,26 +471,7 @@ function HomePage() {
               </h2>
             </div>
           </div>
-          <div className="-mx-6 lg:mx-0">
-            <div className="flex md:grid md:grid-cols-5 gap-4 lg:gap-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none px-6 lg:px-0 pb-4 md:pb-0 scrollbar-none">
-              {REVIEWS.map((r) => (
-                <article
-                  key={r.name}
-                  className="bg-background rounded-3xl border border-foreground/10 p-6 lg:p-6 flex flex-col shrink-0 w-[85%] sm:w-[60%] md:w-auto snap-center"
-                >
-                  <div className="text-primary tracking-widest text-base mb-4" aria-label="5 out of 5 stars">
-                    ★★★★★
-                  </div>
-                  <p className="text-foreground/85 leading-relaxed text-[14px] lg:text-[14px] flex-1">
-                    &ldquo;{r.text}&rdquo;
-                  </p>
-                  <div className="mt-6 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                    {r.name}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
+          <ReviewsCarousel />
         </div>
       </section>
 
