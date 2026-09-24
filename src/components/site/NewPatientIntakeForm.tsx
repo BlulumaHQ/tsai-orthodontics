@@ -2,7 +2,6 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { SITE } from "@/lib/site-data";
 import {
-  CheckboxGroup as _unused,
   FormSection,
   Grid,
   Honeypot,
@@ -12,8 +11,6 @@ import {
   fmt,
   type Values,
 } from "@/components/site/forms/FormKit";
-
-void _unused;
 
 const YN = ["Yes", "No"];
 const YND = ["Yes", "No", "Don't Know"];
