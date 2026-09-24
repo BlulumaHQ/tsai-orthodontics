@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Download, ArrowRight } from "lucide-react";
+import { NewPatientIntakeForm } from "@/components/site/NewPatientIntakeForm";
 import { PageHero } from "@/components/site/PageHero";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
@@ -183,6 +184,24 @@ function NewPatients() {
               "想在診所現場填寫表單也沒問題，請提前 15 分鐘抵達。",
             )}
           </p>
+        </div>
+      </section>
+
+      <section id="intake-form" className="px-6 lg:px-10 pb-24 lg:pb-32 scroll-mt-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-5">
+            {t("New Patient Intake Form", "新病患資料表")}
+          </div>
+          <h2 className="font-serif text-4xl md:text-5xl mb-6 max-w-2xl text-balance leading-tight">
+            {t("Complete your intake form online.", "線上填寫新病患資料表。")}
+          </h2>
+          <p className="text-foreground/75 leading-relaxed max-w-2xl mb-10">
+            {t(
+              "Fill in the form below before your first visit, or download the PDF above if you prefer paper.",
+              "請於初診前填寫下方表單；若偏好紙本，也可下載上方的 PDF。",
+            )}
+          </p>
+          <NewPatientIntakeForm />
         </div>
       </section>
 
