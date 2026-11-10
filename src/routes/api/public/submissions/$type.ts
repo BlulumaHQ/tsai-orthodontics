@@ -28,8 +28,12 @@ function isSameOrigin(request: Request): boolean {
   }
 }
 
-function rateLimitKey(request: Request, type: SubmissionType): string | null {
-  const secret = process.env.LOVABLE_API_KEY;
+function rateLimitKey(
+  request: Request,
+  type: SubmissionType,
+  workerSecret?: string,
+): string | null {
+  const secret = workerSecret ?? process.env.LOVABLE_API_KEY;
   if (!secret) return null;
   const address = request.headers.get("CF-Connecting-IP") ?? "local";
   return createHmac("sha256", secret).update(`${type}:${address}`).digest("hex");
@@ -38,30 +42,91 @@ function rateLimitKey(request: Request, type: SubmissionType): string | null {
 async function insertSubmission(
   type: SubmissionType,
   payload: Record<string, string | string[]>,
+  requestKey: string | null,
 ): Promise<{ id?: string; error?: { code?: string } }> {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-  if (type === "consultation") {
+  const table = submissionTable(type);
+  if (requestKey) {
     const { data, error } = await supabaseAdmin
-      .from("consultation_requests")
-      .insert({ payload })
+      .from(table)
       .select("id")
-      .single();
-    return { id: data?.id, error: error ?? undefined };
-  }
-  if (type === "patient-intake") {
-    const { data, error } = await supabaseAdmin
-      .from("patient_intake_submissions")
-      .insert({ payload })
-      .select("id")
-      .single();
-    return { id: data?.id, error: error ?? undefined };
+      .eq("request_key", requestKey)
+      .maybeSingle();
+    if (error) return { error };
+    if (data) return { id: data.id };
   }
   const { data, error } = await supabaseAdmin
-    .from("dentist_referral_submissions")
-    .insert({ payload })
+    .from(table)
+    .insert({ payload, request_key: requestKey, notification_status: "pending" })
     .select("id")
     .single();
+  if (error?.code === "23505" && requestKey) {
+    const existing = await supabaseAdmin
+      .from(table)
+      .select("id")
+      .eq("request_key", requestKey)
+      .single();
+    return { id: existing.data?.id, error: existing.error ?? undefined };
+  }
   return { id: data?.id, error: error ?? undefined };
+}
+
+function submissionTable(type: SubmissionType) {
+  if (type === "consultation") return "consultation_requests" as const;
+  if (type === "patient-intake") return "patient_intake_submissions" as const;
+  return "dentist_referral_submissions" as const;
+}
+
+async function notifySubmission(request: Request, type: SubmissionType, id: string) {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  const { getWorkerSecret } = await import("@/lib/forms/worker-env.server");
+  const { sendFormNotification } = await import("@/lib/forms/notification.server");
+  const table = submissionTable(type);
+  // Atomic claim prevents concurrent retries from sending the same notification.
+  const claim = await supabaseAdmin
+    .from(table)
+    .update({
+      notification_status: "sending",
+      notification_attempted_at: new Date().toISOString(),
+    })
+    .eq("id", id)
+    .in("notification_status", ["pending", "failed"])
+    .select("id")
+    .maybeSingle();
+  if (claim.error) {
+    console.error("Form notification claim failed", { type, code: claim.error.code });
+    return "status_unavailable";
+  }
+  if (!claim.data) {
+    const current = await supabaseAdmin
+      .from(table)
+      .select("notification_status")
+      .eq("id", id)
+      .single();
+    return current.data?.notification_status ?? "status_unavailable";
+  }
+  const result = await sendFormNotification(type, id, getWorkerSecret(request, "RESEND_API_KEY"));
+  const update = await supabaseAdmin
+    .from(table)
+    .update({
+      notification_status: result.status,
+      notification_provider_id: result.status === "sent" ? result.providerId : null,
+      notification_error_code: result.status === "failed" ? result.code : null,
+      notification_http_status: result.status === "failed" ? (result.httpStatus ?? null) : null,
+    })
+    .eq("id", id);
+  if (result.status === "failed") {
+    console.error("Form notification failed", {
+      type,
+      code: result.code,
+      httpStatus: result.httpStatus,
+    });
+  }
+  if (update.error) {
+    console.error("Form notification status update failed", { type, code: update.error.code });
+    return "status_unavailable";
+  }
+  return result.status;
 }
 
 export const Route = createFileRoute("/api/public/submissions/$type")({
@@ -91,7 +156,15 @@ export const Route = createFileRoute("/api/public/submissions/$type")({
         if (!values) return json({ ok: false }, 400);
         if (typeof values._hp === "string" && values._hp.trim()) return json({ ok: true });
 
-        const key = rateLimitKey(request, params.type);
+        const requestKey = request.headers.get("Idempotency-Key");
+        if (
+          requestKey &&
+          !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(requestKey)
+        ) {
+          return json({ ok: false }, 400);
+        }
+        const { getWorkerSecret } = await import("@/lib/forms/worker-env.server");
+        const key = rateLimitKey(request, params.type, getWorkerSecret(request, "LOVABLE_API_KEY"));
         if (!key) {
           console.error("Form submission configuration is unavailable");
           return json({ ok: false }, 503);
@@ -108,7 +181,7 @@ export const Route = createFileRoute("/api/public/submissions/$type")({
         }
         if (!allowed) return json({ ok: false }, 429);
 
-        const result = await insertSubmission(params.type, values);
+        const result = await insertSubmission(params.type, values, requestKey);
         if (result.error || !result.id) {
           console.error("Form submission storage failed", {
             type: params.type,
@@ -117,7 +190,14 @@ export const Route = createFileRoute("/api/public/submissions/$type")({
           return json({ ok: false }, 500);
         }
 
-        return json({ ok: true, reference: result.id }, 201);
+        let notification = "status_unavailable";
+        try {
+          notification = await notifySubmission(request, params.type, result.id);
+        } catch {
+          console.error("Form notification processing failed", { type: params.type });
+        }
+        // The existing received UX means saved, never proof of inbox delivery.
+        return json({ ok: true, saved: true, reference: result.id, notification }, 201);
       },
     },
   },

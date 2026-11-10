@@ -18,17 +18,35 @@ export type Database = {
         Row: {
           created_at: string
           id: string
+          notification_attempted_at: string | null
+          notification_error_code: string | null
+          notification_http_status: number | null
+          notification_provider_id: string | null
+          notification_status: string
           payload: Json
+          request_key: string | null
         }
         Insert: {
           created_at?: string
           id?: string
+          notification_attempted_at?: string | null
+          notification_error_code?: string | null
+          notification_http_status?: number | null
+          notification_provider_id?: string | null
+          notification_status?: string
           payload: Json
+          request_key?: string | null
         }
         Update: {
           created_at?: string
           id?: string
+          notification_attempted_at?: string | null
+          notification_error_code?: string | null
+          notification_http_status?: number | null
+          notification_provider_id?: string | null
+          notification_status?: string
           payload?: Json
+          request_key?: string | null
         }
         Relationships: []
       }
@@ -36,17 +54,35 @@ export type Database = {
         Row: {
           created_at: string
           id: string
+          notification_attempted_at: string | null
+          notification_error_code: string | null
+          notification_http_status: number | null
+          notification_provider_id: string | null
+          notification_status: string
           payload: Json
+          request_key: string | null
         }
         Insert: {
           created_at?: string
           id?: string
+          notification_attempted_at?: string | null
+          notification_error_code?: string | null
+          notification_http_status?: number | null
+          notification_provider_id?: string | null
+          notification_status?: string
           payload: Json
+          request_key?: string | null
         }
         Update: {
           created_at?: string
           id?: string
+          notification_attempted_at?: string | null
+          notification_error_code?: string | null
+          notification_http_status?: number | null
+          notification_provider_id?: string | null
+          notification_status?: string
           payload?: Json
+          request_key?: string | null
         }
         Relationships: []
       }
@@ -75,17 +111,35 @@ export type Database = {
         Row: {
           created_at: string
           id: string
+          notification_attempted_at: string | null
+          notification_error_code: string | null
+          notification_http_status: number | null
+          notification_provider_id: string | null
+          notification_status: string
           payload: Json
+          request_key: string | null
         }
         Insert: {
           created_at?: string
           id?: string
+          notification_attempted_at?: string | null
+          notification_error_code?: string | null
+          notification_http_status?: number | null
+          notification_provider_id?: string | null
+          notification_status?: string
           payload: Json
+          request_key?: string | null
         }
         Update: {
           created_at?: string
           id?: string
+          notification_attempted_at?: string | null
+          notification_error_code?: string | null
+          notification_http_status?: number | null
+          notification_provider_id?: string | null
+          notification_status?: string
           payload?: Json
+          request_key?: string | null
         }
         Relationships: []
       }

@@ -3,6 +3,7 @@ import "./lib/error-capture";
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 import { applyPlatformNoindex } from "./lib/platform-noindex";
+import { withWorkerBindings } from "./lib/forms/worker-env.server";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -44,7 +45,7 @@ export default {
 
     try {
       const handler = await getServerEntry();
-      response = await handler.fetch(request, env, ctx);
+      response = await withWorkerBindings(request, env, () => handler.fetch(request, env, ctx));
       response = await normalizeCatastrophicSsrResponse(response);
     } catch (error) {
       console.error(error);
