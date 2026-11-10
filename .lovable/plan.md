@@ -1,67 +1,37 @@
-## Build Plan — Tsai Orthodontics
+# Production forms on the external Cloudflare Worker
 
-Premium boutique orthodontic site built on the chosen **Warm Gallery** direction. Locked palette (cream #FAF8F6, near-black #1A1A1A, terracotta #C7773A as accent only, peach #E8C4A0, warm gray #6B6560), Playfair Display serif + Inter body, full-bleed photography, zigzag pillar rows, horizontal-scroll patient journeys.
+## Answers
 
-### Pages (TanStack Start file routes)
-1. `/` — Home (hero, four pillars, four patient journeys, doctor teaser, differentiators, contact CTA)
-2. `/about` — Practice story
-3. `/doctors` — Meet Dr. Tsai + Extended Learning & Expertise timeline
-4. `/what-sets-us-apart` — Quality comparison (never price)
-5. `/services` — Index of all services
-6. `/services/$slug` — Dynamic detail page for: Children & Teens, Adults, Braces, Invisalign, Phase I, Airway Friendly, MARPE, Retainers
-7. `/new-patients` — 4-step journey, insurance, financing, forms, what to expect
-8. `/faq` — Accordion FAQ (shadcn accordion) with FAQ JSON-LD
-9. `/referral` — Dentist referral page (placeholder where the form will be embedded later)
-10. `/contact` — Map, address, phone, large consultation form
+**1. Service role key:** No. Lovable Cloud does not expose `SUPABASE_SERVICE_ROLE_KEY` (or the DB password) anywhere in the UI, and it cannot be retrieved for use outside Lovable. The external Worker has to work without it.
 
-### Design system
-- Replace `src/styles.css` tokens verbatim with the chosen direction's palette + add semantic tokens for `primary`, `accent`, `muted`, `foreground`, `background`, `border`.
-- Load Playfair Display + Inter via `<link>` in `__root.tsx` (never `@import` URL).
-- Add `fade-up` and `scale-in` keyframes in styles.css.
-- Soft rounded corners (rounded-2xl / rounded-3xl), generous whitespace.
+**2. Smallest secure alternative:** Use gated `SECURITY DEFINER` database functions, called with the publishable key over PostgREST. Each one checks a shared secret before doing any work.
+- Store a hash of a new secret `FORM_GATEWAY_SECRET` in a private config table. Only `service_role` can read it. A SQL check compares `extensions.digest(p_secret,'sha256')` against the stored hash.
+- New RPCs. Each one is `SECURITY DEFINER`, uses `search_path = public`, and has `EXECUTE` granted to `anon` only. Each one returns NULL or raises an error if the secret does not match:
+  - `form_gateway_rate_limit(p_secret, p_key, p_limit) -> boolean` wraps the existing `consume_form_submission_rate_limit`.
+  - `form_gateway_insert(p_secret, p_type, p_payload jsonb, p_request_key) -> uuid` keeps idempotency. It inserts with `ON CONFLICT (request_key) DO NOTHING`, then returns the existing id.
+  - `form_gateway_claim(p_secret, p_type, p_id) -> jsonb` does an atomic `pending|failed -> sending` update. It returns `{claimed, payload, status}`. The payload goes back only on a successful claim, so the server can render the email.
+  - `form_gateway_finish(p_secret, p_type, p_id, p_status, p_provider_id, p_error_code, p_http_status)` writes the final status. It only accepts the values `sent` or `failed`.
+- `p_type` maps to a fixed list of tables inside the function, never to dynamic SQL. Tables stay RLS-locked to `service_role`, and anon has no direct table access.
+- Route changes: add `src/lib/forms/submission-store.server.ts` with the same four operations. It uses the admin client when `SUPABASE_SERVICE_ROLE_KEY` is set (Lovable hosting). Otherwise it uses a publishable-key client plus `FORM_GATEWAY_SECRET` (external Worker). `$type.ts` calls this module instead of `supabaseAdmin` directly. All other behaviour stays the same: validation, honeypot, 429/503 responses, saved vs. notification status, Resend idempotency.
+- The publishable client is built per request from Worker bindings (`SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`) via `getWorkerSecret`, with `persistSession:false`.
+- Setting the secret hash: I generate the secret in Lovable with `generate_secret`. A one-time migration step can't read the plaintext. So instead, you create the value yourself (for example `openssl rand -hex 32`). You save it as the Worker secret, and also give it to me in Project Settings → Secrets as `FORM_GATEWAY_SECRET`. I then store only its SHA-256 hash in the DB through the SQL tool. The same value has to exist in both places.
 
-### Shared components (`src/components/`)
-- `SiteHeader` — sticky nav with mix-blend trick on hero, regular dark nav elsewhere; mobile sheet menu; language toggle (EN/繁中 scaffold, EN active).
-- `SiteFooter` — Vancouver address, phone, email `info@tsaiorthodontics.ca`, ©2026 Tsai Orthodontics. All rights reserved. | Web Design by Bluluma
-- `MobileStickyCTA` — fixed bottom "Book a Consultation" button (mobile only).
-- `SectionHeader`, `PillarRow` (zigzag), `JourneyCard` (horizontal-scroll), `Accordion`, `ConsultationForm` (zod-validated).
-- `LanguageContext` — minimal i18n scaffold (`en` / `zh-Hant` keys), all copy keyed but only EN populated.
+**3. Rate-limit key:** `rateLimitKey` uses `getWorkerSecret(request,"FORM_RATE_LIMIT_SECRET") ?? getWorkerSecret(request,"LOVABLE_API_KEY") ?? process.env.LOVABLE_API_KEY`. If none are set, it returns 503 as it does now. Tests cover preferred, fallback, and missing.
 
-### Imagery
-- Generate all hero/portrait/journey images via `imagegen--generate_image` (warm natural light, candid editorial style, no clinical tropes). Save under `src/assets/`. ~10–14 images total.
-- Doctor portrait, hero family shot, 4 journey portraits (parent, kid, teen, adult), 4 pillar atmosphere shots, 2 service hero shots.
+**4. Final Cloudflare Worker settings for "tsai-orthodontics":**
+| Name | Type | Value |
+|---|---|---|
+| `RESEND_API_KEY` | Secret | already set |
+| `FORM_GATEWAY_SECRET` | Secret | the random value created in step 2 |
+| `FORM_RATE_LIMIT_SECRET` | Secret | a separate random value (32+ bytes) |
+| `SUPABASE_URL` | Var | the project's backend URL (public) |
+| `SUPABASE_PUBLISHABLE_KEY` | Var | the publishable key (public, already in the code) |
 
-### SEO
-- Per-route `head()` with unique title, description, og:title, og:description, og:url (relative).
-- Canonical only on leaves.
-- Root `__root.tsx`: site-wide JSON-LD `Dentist`/`MedicalBusiness` Organization schema with address, phone, geo.
-- `/faq` carries `FAQPage` JSON-LD.
-- Service pages carry `MedicalProcedure` JSON-LD.
-- `public/robots.txt` (allow all) and `src/routes/sitemap[.]xml.ts` server route listing all routes.
+`LOVABLE_API_KEY` and `SUPABASE_SERVICE_ROLE_KEY` are not needed on the Worker.
 
-### Contact form
-- Client-side zod validation (name, email, phone, message). Submit handler logs + shows success toast. (No backend wired — user can add Lovable Cloud later.)
-
-### Mobile + a11y
-- Mobile-first responsive (test at 375 + 768 + 1440).
-- Sticky CTA, hamburger menu, single-column layouts.
-- Semantic HTML, alt text on every image, focus states preserved.
-
-### Out of scope (per user)
-- Jotform embed (user will plug in their own form later — referral page ships with a clean placeholder).
-- Traditional Chinese copy (architecture only — language toggle present, copy table ready, 繁中 strings empty).
-- Backend / Lovable Cloud (no DB or auth needed now).
-
-### Files to create/modify
-- `src/styles.css` — palette + fonts + keyframes
-- `src/routes/__root.tsx` — fonts link, JSON-LD, header/footer/sticky CTA wiring
-- `src/routes/index.tsx` — new home (replaces placeholder)
-- `src/routes/about.tsx`, `doctors.tsx`, `what-sets-us-apart.tsx`, `services.tsx`, `services.$slug.tsx`, `new-patients.tsx`, `faq.tsx`, `referral.tsx`, `contact.tsx`
-- `src/routes/sitemap[.]xml.ts`
-- `public/robots.txt`
-- `src/components/site/*` and `src/components/sections/*`
-- `src/lib/i18n.ts` (lightweight context)
-- `src/lib/services-data.ts`, `src/lib/faq-data.ts`
-- `src/assets/*.jpg` (generated)
-
-Ready to build on approval.
+## Steps
+1. Migration: config table, the four gateway RPCs, and grants (revoke from public/authenticated; grant execute to anon).
+2. Add `submission-store.server.ts` (admin or gateway backend) and refactor `$type.ts` to use it. Update `rateLimitKey`.
+3. Tests: gateway client with mocked fetch (correct RPC names and args, secret sent), missing-secret 503, rate-limit secret fallback, existing notification tests.
+4. Seed the secret hash after you add `FORM_GATEWAY_SECRET`. Typecheck, run tests, and update `FORM_EMAIL_INTEGRATION.md` and `AGENTS.md`.
+5. You then set the Worker secrets/vars and redeploy through Cloudflare Builds, then run one controlled synthetic submission. I won't claim production works until that test passes.
