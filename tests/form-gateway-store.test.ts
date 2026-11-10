@@ -60,9 +60,12 @@ describe("gateway store", () => {
 describe("configuration", () => {
   test("external Worker without gateway secret has no store", async () => {
     const saved = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const gw = process.env.FORM_GATEWAY_SECRET;
     delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+    delete process.env.FORM_GATEWAY_SECRET;
     expect(await getSubmissionStore(req({ SUPABASE_URL: "https://db", SUPABASE_PUBLISHABLE_KEY: "p" }))).toBeNull();
     if (saved) process.env.SUPABASE_SERVICE_ROLE_KEY = saved;
+    if (gw) process.env.FORM_GATEWAY_SECRET = gw;
   });
 
   test("gateway store used when Worker bindings are complete", async () => {
