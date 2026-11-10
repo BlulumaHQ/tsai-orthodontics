@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
+import { submitFormValues } from "@/lib/forms/submit-form";
 import {
   CheckboxGroup,
   FormSection,
@@ -8,11 +9,10 @@ import {
   RadioGroup,
   TextArea,
   TextField,
-  fmt,
   type Values,
 } from "@/components/site/forms/FormKit";
 
-export const REFERRAL_EMAIL = "smile@tsaiorthodontics.ca";
+export const REFERRAL_EMAIL = "admin@tsaiorthodontics.ca";
 
 const REASONS = [
   "Crowding / spacing",
@@ -32,15 +32,14 @@ const REASONS = [
 export function ReferralForm() {
   const [values, setValues] = useState<Values>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitting, setSubmitting] = useState(false);
   const set = (k: string, v: string | string[]) => {
     setValues((s) => ({ ...s, [k]: v }));
     if (errors[k]) setErrors((e) => ({ ...e, [k]: "" }));
   };
-  const v = (k: string) => fmt(values[k]);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (values._hp) return;
     const next: Record<string, string> = {};
     if (!String(values.patientName ?? "").trim()) next.patientName = "Required";
     if (!String(values.referringDoctor ?? "").trim()) next.referringDoctor = "Required";
@@ -53,39 +52,21 @@ export function ReferralForm() {
       toast.error("Please correct the highlighted fields.");
       return;
     }
-    const body = [
-      "ORTHODONTIC REFERRAL",
-      `Referral Urgency: ${v("urgency")}`,
-      "",
-      "PATIENT",
-      `Patient Name: ${v("patientName")}`,
-      `Date of Birth: ${v("patientDob")}`,
-      `Phone: ${v("patientPhone")}`,
-      `Email: ${v("patientEmail")}`,
-      `Gender: ${v("gender")}`,
-      `Parent / Guardian Name: ${v("guardian")}`,
-      `Language Preference: ${v("language")}`,
-      "",
-      "REFERRING DOCTOR / PRACTICE",
-      `Referring Doctor / Practice: ${v("referringDoctor")}`,
-      `Office Phone: ${v("officePhone")}`,
-      `Date of Referral: ${v("referralDate")}`,
-      `Office Email: ${v("officeEmail")}`,
-      "",
-      `REASON FOR REFERRAL: ${v("reasons")}`,
-      "",
-      "CLINICAL NOTES",
-      v("notes"),
-      "",
-      "ENCLOSURES & DENTAL HISTORY",
-      `Panoramic X-Ray: ${v("pano")}`,
-      `Pending Dental Treatment Before Ortho? ${v("pending")}`,
-      `Date of Last Dental Cleaning: ${v("lastCleaning")}`,
-      `If Yes, Details: ${v("pendingDetails")}`,
-    ].join("\n");
-    const subject = `Orthodontic Referral: ${values.patientName} — from ${values.referringDoctor}`;
-    window.location.href = `mailto:${REFERRAL_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    toast.success("Opening your email client to send the referral.");
+
+    setSubmitting(true);
+    try {
+      await submitFormValues("dentist-referral", values);
+      setValues({});
+      toast.success("Thank you — the referral has been received.");
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "We could not submit the referral. Please try again or call the office.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -106,7 +87,10 @@ export function ReferralForm() {
           <br />
           3431 Main Street, Vancouver, BC V5V 3M9
           <br />
-          Phone: <a href="tel:+16046362686" className="hover:text-primary">(604) 636-2686</a>
+          Phone:{" "}
+          <a href="tel:+16046362686" className="hover:text-primary">
+            (604) 636-2686
+          </a>
         </p>
       </div>
 
@@ -123,10 +107,29 @@ export function ReferralForm() {
       <FormSection title="Patient">
         <div className="space-y-5">
           <Grid>
-            <TextField name="patientName" label="Patient Name *" values={values} set={set} error={errors.patientName} />
-            <TextField name="patientDob" label="Date of Birth" type="date" values={values} set={set} />
+            <TextField
+              name="patientName"
+              label="Patient Name *"
+              values={values}
+              set={set}
+              error={errors.patientName}
+            />
+            <TextField
+              name="patientDob"
+              label="Date of Birth"
+              type="date"
+              values={values}
+              set={set}
+            />
             <TextField name="patientPhone" label="Phone" type="tel" values={values} set={set} />
-            <TextField name="patientEmail" label="Email" type="email" values={values} set={set} error={errors.patientEmail} />
+            <TextField
+              name="patientEmail"
+              label="Email"
+              type="email"
+              values={values}
+              set={set}
+              error={errors.patientEmail}
+            />
             <TextField name="gender" label="Gender" values={values} set={set} />
             <TextField name="guardian" label="Parent / Guardian Name" values={values} set={set} />
           </Grid>
@@ -142,10 +145,29 @@ export function ReferralForm() {
 
       <FormSection title="Referring Doctor / Practice">
         <Grid>
-          <TextField name="referringDoctor" label="Referring Doctor / Practice *" values={values} set={set} error={errors.referringDoctor} />
+          <TextField
+            name="referringDoctor"
+            label="Referring Doctor / Practice *"
+            values={values}
+            set={set}
+            error={errors.referringDoctor}
+          />
           <TextField name="officePhone" label="Office Phone" type="tel" values={values} set={set} />
-          <TextField name="referralDate" label="Date of Referral" type="date" values={values} set={set} />
-          <TextField name="officeEmail" label="Office Email" type="email" values={values} set={set} error={errors.officeEmail} />
+          <TextField
+            name="referralDate"
+            label="Date of Referral"
+            type="date"
+            values={values}
+            set={set}
+          />
+          <TextField
+            name="officeEmail"
+            label="Office Email"
+            type="email"
+            values={values}
+            set={set}
+            error={errors.officeEmail}
+          />
         </Grid>
       </FormSection>
 
@@ -159,29 +181,55 @@ export function ReferralForm() {
 
       <FormSection title="Enclosures & Dental History">
         <div className="space-y-6">
-          <RadioGroup name="pano" label="Panoramic X-Ray" options={["None", "Emailed", "Copy given to patient"]} values={values} set={set} />
-          <RadioGroup name="pending" label="Pending Dental Treatment Before Ortho?" options={["No", "Yes"]} values={values} set={set} />
+          <RadioGroup
+            name="pano"
+            label="Panoramic X-Ray"
+            options={["None", "Emailed", "Copy given to patient"]}
+            values={values}
+            set={set}
+          />
+          <RadioGroup
+            name="pending"
+            label="Pending Dental Treatment Before Ortho?"
+            options={["No", "Yes"]}
+            values={values}
+            set={set}
+          />
           <Grid>
-            <TextField name="lastCleaning" label="Date of Last Dental Cleaning" type="date" values={values} set={set} />
+            <TextField
+              name="lastCleaning"
+              label="Date of Last Dental Cleaning"
+              type="date"
+              values={values}
+              set={set}
+            />
           </Grid>
-          <TextArea name="pendingDetails" label="If Yes, Details:" values={values} set={set} rows={3} />
+          <TextArea
+            name="pendingDetails"
+            label="If Yes, Details:"
+            values={values}
+            set={set}
+            rows={3}
+          />
         </div>
       </FormSection>
 
       <div className="pt-6 border-t border-foreground/10 space-y-6">
         <p className="text-sm text-foreground/80 leading-relaxed">
-          Complimentary consultations available. We welcome your patients and value your trust in our care.
+          Complimentary consultations available. We welcome your patients and value your trust in
+          our care.
           <br />
-          Completed referrals should be submitted to:{" "}
+          For referral questions, email us at:{" "}
           <a href={`mailto:${REFERRAL_EMAIL}`} className="text-primary underline">
             {REFERRAL_EMAIL}
           </a>
         </p>
         <button
           type="submit"
-          className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-foreground transition-colors"
+          disabled={submitting}
+          className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-foreground transition-colors disabled:opacity-50"
         >
-          Submit Referral
+          {submitting ? "Submitting…" : "Submit Referral"}
         </button>
       </div>
     </form>

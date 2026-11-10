@@ -23,6 +23,7 @@ import { Route as AboutTheDoctorsIndexRouteImport } from './routes/about-the-doc
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as AboutTheDoctorsDrMarjorieTsaiRouteImport } from './routes/about-the-doctors.dr-marjorie-tsai'
 import { Route as AboutTheDoctorsDrAndrewTsaiRouteImport } from './routes/about-the-doctors.dr-andrew-tsai'
+import { Route as ApiPublicSubmissionsTypeRouteImport } from './routes/api/public/submissions/$type'
 
 const WhatSetsUsApartRoute = WhatSetsUsApartRouteImport.update({
   id: '/what-sets-us-apart',
@@ -96,6 +97,12 @@ const AboutTheDoctorsDrAndrewTsaiRoute =
     path: '/dr-andrew-tsai',
     getParentRoute: () => AboutTheDoctorsRoute,
   } as any)
+const ApiPublicSubmissionsTypeRoute =
+  ApiPublicSubmissionsTypeRouteImport.update({
+    id: '/api/public/submissions/$type',
+    path: '/api/public/submissions/$type',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -112,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/services/$slug': typeof ServicesSlugRoute
   '/about-the-doctors/': typeof AboutTheDoctorsIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/public/submissions/$type': typeof ApiPublicSubmissionsTypeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -126,6 +134,7 @@ export interface FileRoutesByTo {
   '/services/$slug': typeof ServicesSlugRoute
   '/about-the-doctors': typeof AboutTheDoctorsIndexRoute
   '/services': typeof ServicesIndexRoute
+  '/api/public/submissions/$type': typeof ApiPublicSubmissionsTypeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -143,6 +152,7 @@ export interface FileRoutesById {
   '/services/$slug': typeof ServicesSlugRoute
   '/about-the-doctors/': typeof AboutTheDoctorsIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/public/submissions/$type': typeof ApiPublicSubmissionsTypeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/about-the-doctors/'
     | '/services/'
+    | '/api/public/submissions/$type'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/about-the-doctors'
     | '/services'
+    | '/api/public/submissions/$type'
   id:
     | '__root__'
     | '/'
@@ -191,6 +203,7 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/about-the-doctors/'
     | '/services/'
+    | '/api/public/submissions/$type'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -203,6 +216,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WhatSetsUsApartRoute: typeof WhatSetsUsApartRoute
+  ApiPublicSubmissionsTypeRoute: typeof ApiPublicSubmissionsTypeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -305,6 +319,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutTheDoctorsDrAndrewTsaiRouteImport
       parentRoute: typeof AboutTheDoctorsRoute
     }
+    '/api/public/submissions/$type': {
+      id: '/api/public/submissions/$type'
+      path: '/api/public/submissions/$type'
+      fullPath: '/api/public/submissions/$type'
+      preLoaderRoute: typeof ApiPublicSubmissionsTypeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -348,6 +369,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   WhatSetsUsApartRoute: WhatSetsUsApartRoute,
+  ApiPublicSubmissionsTypeRoute: ApiPublicSubmissionsTypeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Download } from "lucide-react";
-import { ReferralForm, REFERRAL_EMAIL } from "@/components/site/ReferralForm";
+import { ReferralForm } from "@/components/site/ReferralForm";
 import { PageHero } from "@/components/site/PageHero";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
@@ -61,7 +61,7 @@ function DentistReferralPage() {
         eyebrow={t("For Referring Dentists", "提供給轉診牙醫")}
         title={t("Dentist Referral", "牙醫轉診")}
         intro={t(
-          "We welcome referrals from general dentists and other healthcare professionals. Tsai Orthodontics is committed to clear communication, thoughtful follow through, and respectful coordination with the referring office.",
+          "We welcome referrals from general dentists and other healthcare professionals. Tsai Orthodontics is committed to clear communication, thoughtful follow-through, and respectful coordination with the referring office.",
           "我們歡迎一般牙醫師與其他醫療專業人員的轉診。Tsai Orthodontics 重視清楚的溝通、細膩的後續追蹤，以及與轉診診所之間互相尊重的協作。",
         )}
       />
@@ -132,15 +132,8 @@ function DentistReferralPage() {
           </h2>
           <p className="text-foreground/80 leading-relaxed max-w-2xl mb-10">
             {t(
-              "Complete the form below. Submitting opens your email client with a pre-filled, professional referral to ",
-              "請完成下方表單。送出後會自動開啟您的電子郵件，並預先填好一封專業的轉診信件，寄送至 ",
-            )}
-            <a href={`mailto:${REFERRAL_EMAIL}`} className="text-primary underline">
-              {REFERRAL_EMAIL}
-            </a>
-            {t(
-              ". We will confirm receipt and follow up with your office once the consultation is scheduled.",
-              "。我們會在收到後與您確認，並在病患預約諮詢後與貴診所聯繫。",
+              "Complete the form below to send a professional referral directly to our team. We will confirm receipt and follow up with your office once the consultation is scheduled.",
+              "請完成下方表單，將專業的轉診資料直接送交我們的團隊。我們會在收到後與您確認，並在病患預約諮詢後與貴診所聯繫。",
             )}
           </p>
 
@@ -170,9 +163,6 @@ function DentistReferralPage() {
         </div>
       </section>
 
-
-
-
       <section className="px-6 lg:px-10 pb-32">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
@@ -188,20 +178,28 @@ function DentistReferralPage() {
               <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">
                 {t("Phone", "電話")}
               </div>
-              <a href={SITE.phoneHref} className="font-serif text-xl hover:text-primary">{SITE.phone}</a>
+              <a href={SITE.phoneHref} className="font-serif text-xl hover:text-primary">
+                {SITE.phone}
+              </a>
             </div>
             <div className="bg-background p-8">
               <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">
                 {t("Email", "電子郵件")}
               </div>
-              <a href={`mailto:${SITE.email}`} className="font-serif text-xl hover:text-primary break-all">{SITE.email}</a>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="font-serif text-xl hover:text-primary break-all"
+              >
+                {SITE.email}
+              </a>
             </div>
             <div className="bg-background p-8">
               <div className="text-[10px] uppercase tracking-[0.22em] text-primary mb-3">
                 {t("Address", "地址")}
               </div>
               <address className="not-italic text-foreground/85 leading-relaxed text-sm">
-                {SITE.address.street}<br />
+                {SITE.address.street}
+                <br />
                 {SITE.address.city}, {SITE.address.region} {SITE.address.postal}
               </address>
             </div>

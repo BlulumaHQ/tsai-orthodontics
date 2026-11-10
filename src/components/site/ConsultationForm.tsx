@@ -2,6 +2,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { useT } from "@/lib/i18n";
+import { submitFormValues } from "@/lib/forms/submit-form";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
@@ -34,6 +35,7 @@ export function ConsultationForm() {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [submitting, setSubmitting] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
 
   function onChange<K extends keyof FormState>(key: K, value: string) {
     setValues((v) => ({ ...v, [key]: value }));
@@ -53,19 +55,43 @@ export function ConsultationForm() {
       return;
     }
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 600));
-    toast.success(
-      t(
-        "Thank you — we will be in touch within one business day.",
-        "感謝您的來訊，我們會在一個工作天內與您聯繫。",
-      ),
-    );
-    setValues({ name: "", email: "", phone: "", interest: "", message: "" });
-    setSubmitting(false);
+    try {
+      await submitFormValues("consultation", { ...parsed.data, _hp: honeypot });
+      toast.success(
+        t(
+          "Thank you — we will be in touch within one business day.",
+          "感謝您的來訊，我們會在一個工作天內與您聯繫。",
+        ),
+      );
+      setValues({ name: "", email: "", phone: "", interest: "", message: "" });
+      setHoneypot("");
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : t(
+              "We could not submit your form. Please try again or call the office.",
+              "表單未能送出，請再試一次或致電診所。",
+            ),
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-6" noValidate>
+    <form onSubmit={onSubmit} className="relative space-y-6" noValidate>
+      <div aria-hidden className="absolute -left-[9999px] w-px h-px overflow-hidden">
+        <label>
+          Leave this field empty
+          <input
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(event) => setHoneypot(event.target.value)}
+          />
+        </label>
+      </div>
       <Field label={t("Your name", "您的姓名")} error={errors.name}>
         <input
           type="text"
@@ -126,9 +152,7 @@ export function ConsultationForm() {
         disabled={submitting}
         className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-primary text-primary-foreground text-sm uppercase tracking-[0.18em] font-medium hover:bg-foreground transition-colors disabled:opacity-50"
       >
-        {submitting
-          ? t("Sending…", "送出中…")
-          : t("Request Consultation", "預約諮詢")}
+        {submitting ? t("Sending…", "送出中…") : t("Request Consultation", "預約諮詢")}
       </button>
     </form>
   );
