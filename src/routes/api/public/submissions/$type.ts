@@ -91,7 +91,7 @@ async function notifySubmission(request: Request, type: SubmissionType, id: stri
     })
     .eq("id", id)
     .in("notification_status", ["pending", "failed"])
-    .select("id")
+    .select("id, payload")
     .maybeSingle();
   if (claim.error) {
     console.error("Form notification claim failed", { type, code: claim.error.code });
@@ -105,7 +105,26 @@ async function notifySubmission(request: Request, type: SubmissionType, id: stri
       .single();
     return current.data?.notification_status ?? "status_unavailable";
   }
-  const result = await sendFormNotification(type, id, getWorkerSecret(request, "RESEND_API_KEY"));
+  // Render the stored, validated submission, not a potentially changed retry body.
+  const storedValues = submissionValues(
+    type,
+    type === "consultation" ? claim.data.payload : { values: claim.data.payload },
+  );
+  if (!storedValues) {
+    await supabaseAdmin
+      .from(table)
+      .update({ notification_status: "failed", notification_error_code: "stored_payload_invalid" })
+      .eq("id", id);
+    console.error("Form notification payload validation failed", { type });
+    return "failed";
+  }
+  const result = await sendFormNotification(
+    type,
+    id,
+    getWorkerSecret(request, "RESEND_API_KEY"),
+    fetch,
+    storedValues,
+  );
   const update = await supabaseAdmin
     .from(table)
     .update({

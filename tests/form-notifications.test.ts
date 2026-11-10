@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { sendFormNotification } from "../src/lib/forms/notification.server";
+import { renderFormNotification, sendFormNotification } from "../src/lib/forms/notification.server";
 import { getWorkerSecret, withWorkerBindings } from "../src/lib/forms/worker-env.server";
 import { SUBMISSION_TYPES } from "../src/lib/forms/submission-schemas";
 
@@ -8,7 +8,7 @@ const mockFetch = (callback: (url: string, init?: RequestInit) => Promise<Respon
 
 describe("private owner notifications", () => {
   for (const type of SUBMISSION_TYPES) {
-    it(`sends ${type} to the approved clinic address without patient payloads`, async () => {
+    it(`sends ${type} only to the approved clinic address`, async () => {
       let calls = 0;
       const result = await sendFormNotification(
         type,
@@ -96,6 +96,107 @@ describe("private owner notifications", () => {
       "website-form/consultation/same-reference",
       "website-form/consultation/same-reference",
     ]);
+  });
+});
+
+describe("submitted clinic email details", () => {
+  it("includes consultation contact details and message as plain text", () => {
+    const rendered = renderFormNotification("consultation", "synthetic-reference", {
+      name: "Synthetic Patient",
+      email: "synthetic@example.invalid",
+      phone: "6045550100",
+      interest: "Braces",
+      message: "<script>alert('test')</script> & questions",
+    });
+    expect(rendered.text).toContain("Name: Synthetic Patient");
+    expect(rendered.text).toContain("Phone: 6045550100");
+    expect(rendered.text).toContain("Interest: Braces");
+    expect(rendered.text).toContain("<script>alert('test')</script> & questions");
+    expect(rendered.reply_to).toBe("synthetic@example.invalid");
+    expect("html" in rendered).toBe(false);
+  });
+
+  it("includes intake name, cell phone, and submitted intake answers only", () => {
+    const rendered = renderFormNotification("patient-intake", "test", {
+      firstName: "Synthetic",
+      lastName: "Patient",
+      email: "synthetic@example.invalid",
+      cell: "6045550100",
+      parentCell: "6045550101",
+      reason: "Consultation question",
+      medicationList: "Synthetic answer",
+      "sleep_Always snore?": "No",
+      city: "",
+    });
+    for (const value of [
+      "Synthetic",
+      "Patient",
+      "6045550100",
+      "6045550101",
+      "Consultation question",
+      "Synthetic answer",
+      "Always snore?: No",
+    ]) {
+      expect(rendered.text).toContain(value);
+    }
+    expect(rendered.text).not.toContain("City:");
+    expect(rendered.text).not.toContain("Please sign in");
+  });
+
+  it("includes referral contacts and text, replying to the referring office", () => {
+    const rendered = renderFormNotification("dentist-referral", "test", {
+      referringDoctor: "Synthetic Doctor",
+      officeEmail: "office@example.invalid",
+      officePhone: "6045550102",
+      patientName: "Synthetic Patient",
+      patientEmail: "patient@example.invalid",
+      patientPhone: "6045550103",
+      reasons: ["Crowding", "Other"],
+      notes: "Synthetic referral notes",
+      pendingDetails: "Synthetic treatment text",
+    });
+    for (const value of [
+      "Synthetic Doctor",
+      "office@example.invalid",
+      "6045550102",
+      "Synthetic Patient",
+      "patient@example.invalid",
+      "6045550103",
+      "Crowding, Other",
+      "Synthetic referral notes",
+      "Synthetic treatment text",
+    ]) {
+      expect(rendered.text).toContain(value);
+    }
+    expect(rendered.reply_to).toBe("office@example.invalid");
+  });
+
+  it.each([
+    "bad-address",
+    "patient@example.invalid\r\nBcc: intruder@example.invalid",
+    "Patient <patient@example.invalid>",
+  ])("omits invalid Reply-To %s", (email) => {
+    expect(renderFormNotification("consultation", "test", { email }).reply_to).toBeUndefined();
+  });
+
+  it("excludes honeypot, secrets, attachments, and upload links", () => {
+    const rendered = renderFormNotification("patient-intake", "test", {
+      firstName: "Synthetic",
+      _hp: "hidden",
+      RESEND_API_KEY: "not-a-real-secret",
+      attachment: "fake-file",
+      uploadUrl: "https://example.invalid/file",
+      token: "fake-token",
+    });
+    for (const value of [
+      "hidden",
+      "not-a-real-secret",
+      "fake-file",
+      "https://example.invalid/file",
+      "fake-token",
+    ]) {
+      expect(rendered.text).not.toContain(value);
+    }
   });
 });
 
