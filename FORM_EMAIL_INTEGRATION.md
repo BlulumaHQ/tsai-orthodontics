@@ -43,3 +43,15 @@
 There is no new background retry scheduler or delivery webhook. Failed notifications stay visible in private status fields; saved submissions remain retrievable. A Worker interruption during the atomic `sending` state requires authorized review before retrying. Resend acceptance does not establish delivered, bounced, or read status.
 
 Appearance, public content, SEO, target domain, and all three form components were left unchanged. The lead-capture-forms workflow shaped storage and synthetic verification.
+## External Cloudflare Worker (no service role key)
+
+Lovable Cloud never exposes the service role key, so the external Worker saves and tracks submissions through gated database functions (`form_gateway_*`), called with the publishable key. Each function checks `FORM_GATEWAY_SECRET` against a SHA-256 hash stored in the private `form_gateway_config` table. Lovable hosting still uses the admin client.
+
+Required Worker settings for "tsai-orthodontics":
+- Secret `RESEND_API_KEY` (already set)
+- Secret `FORM_GATEWAY_SECRET`: the same value saved in Lovable Project Secrets; its hash lives in the database
+- Secret `FORM_RATE_LIMIT_SECRET`: any separate random value, 32+ bytes
+- Var `SUPABASE_URL`: the backend URL (same as `VITE_SUPABASE_URL`)
+- Var `SUPABASE_PUBLISHABLE_KEY`: the publishable key (same as `VITE_SUPABASE_PUBLISHABLE_KEY`)
+
+To rotate the gateway secret, update both copies and re-seed the hash.

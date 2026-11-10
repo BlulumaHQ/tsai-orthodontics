@@ -9,55 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WhatSetsUsApartRouteImport } from './routes/what-sets-us-apart'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ServicesRouteImport } from './routes/services'
-import { Route as NewPatientsRouteImport } from './routes/new-patients'
-import { Route as FaqRouteImport } from './routes/faq'
-import { Route as DentistReferralRouteImport } from './routes/dentist-referral'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutTheDoctorsRouteImport } from './routes/about-the-doctors'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as AboutTheDoctorsRouteImport } from './routes/about-the-doctors'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DentistReferralRouteImport } from './routes/dentist-referral'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as NewPatientsRouteImport } from './routes/new-patients'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as WhatSetsUsApartRouteImport } from './routes/what-sets-us-apart'
 import { Route as AboutTheDoctorsIndexRouteImport } from './routes/about-the-doctors.index'
-import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
-import { Route as AboutTheDoctorsDrMarjorieTsaiRouteImport } from './routes/about-the-doctors.dr-marjorie-tsai'
 import { Route as AboutTheDoctorsDrAndrewTsaiRouteImport } from './routes/about-the-doctors.dr-andrew-tsai'
+import { Route as AboutTheDoctorsDrMarjorieTsaiRouteImport } from './routes/about-the-doctors.dr-marjorie-tsai'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as ApiPublicSubmissionsTypeRouteImport } from './routes/api/public/submissions/$type'
 
-const WhatSetsUsApartRoute = WhatSetsUsApartRouteImport.update({
-  id: '/what-sets-us-apart',
-  path: '/what-sets-us-apart',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NewPatientsRoute = NewPatientsRouteImport.update({
-  id: '/new-patients',
-  path: '/new-patients',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FaqRoute = FaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DentistReferralRoute = DentistReferralRouteImport.update({
-  id: '/dentist-referral',
-  path: '/dentist-referral',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutTheDoctorsRoute = AboutTheDoctorsRouteImport.update({
@@ -65,38 +35,68 @@ const AboutTheDoctorsRoute = AboutTheDoctorsRouteImport.update({
   path: '/about-the-doctors',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesIndexRoute = ServicesIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ServicesRoute,
+const DentistReferralRoute = DentistReferralRouteImport.update({
+  id: '/dentist-referral',
+  path: '/dentist-referral',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewPatientsRoute = NewPatientsRouteImport.update({
+  id: '/new-patients',
+  path: '/new-patients',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatSetsUsApartRoute = WhatSetsUsApartRouteImport.update({
+  id: '/what-sets-us-apart',
+  path: '/what-sets-us-apart',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AboutTheDoctorsIndexRoute = AboutTheDoctorsIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AboutTheDoctorsRoute,
 } as any)
-const ServicesSlugRoute = ServicesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const AboutTheDoctorsDrMarjorieTsaiRoute =
-  AboutTheDoctorsDrMarjorieTsaiRouteImport.update({
-    id: '/dr-marjorie-tsai',
-    path: '/dr-marjorie-tsai',
-    getParentRoute: () => AboutTheDoctorsRoute,
-  } as any)
 const AboutTheDoctorsDrAndrewTsaiRoute =
   AboutTheDoctorsDrAndrewTsaiRouteImport.update({
     id: '/dr-andrew-tsai',
     path: '/dr-andrew-tsai',
     getParentRoute: () => AboutTheDoctorsRoute,
   } as any)
+const AboutTheDoctorsDrMarjorieTsaiRoute =
+  AboutTheDoctorsDrMarjorieTsaiRouteImport.update({
+    id: '/dr-marjorie-tsai',
+    path: '/dr-marjorie-tsai',
+    getParentRoute: () => AboutTheDoctorsRoute,
+  } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ApiPublicSubmissionsTypeRoute =
   ApiPublicSubmissionsTypeRouteImport.update({
     id: '/api/public/submissions/$type',
@@ -221,53 +221,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/what-sets-us-apart': {
-      id: '/what-sets-us-apart'
-      path: '/what-sets-us-apart'
-      fullPath: '/what-sets-us-apart'
-      preLoaderRoute: typeof WhatSetsUsApartRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/new-patients': {
-      id: '/new-patients'
-      path: '/new-patients'
-      fullPath: '/new-patients'
-      preLoaderRoute: typeof NewPatientsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/faq': {
-      id: '/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dentist-referral': {
-      id: '/dentist-referral'
-      path: '/dentist-referral'
-      fullPath: '/dentist-referral'
-      preLoaderRoute: typeof DentistReferralRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about-the-doctors': {
@@ -277,19 +235,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutTheDoctorsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/': {
-      id: '/services/'
-      path: '/'
-      fullPath: '/services/'
-      preLoaderRoute: typeof ServicesIndexRouteImport
-      parentRoute: typeof ServicesRoute
+    '/dentist-referral': {
+      id: '/dentist-referral'
+      path: '/dentist-referral'
+      fullPath: '/dentist-referral'
+      preLoaderRoute: typeof DentistReferralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new-patients': {
+      id: '/new-patients'
+      path: '/new-patients'
+      fullPath: '/new-patients'
+      preLoaderRoute: typeof NewPatientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-sets-us-apart': {
+      id: '/what-sets-us-apart'
+      path: '/what-sets-us-apart'
+      fullPath: '/what-sets-us-apart'
+      preLoaderRoute: typeof WhatSetsUsApartRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/about-the-doctors/': {
       id: '/about-the-doctors/'
@@ -298,12 +291,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutTheDoctorsIndexRouteImport
       parentRoute: typeof AboutTheDoctorsRoute
     }
-    '/services/$slug': {
-      id: '/services/$slug'
-      path: '/$slug'
-      fullPath: '/services/$slug'
-      preLoaderRoute: typeof ServicesSlugRouteImport
-      parentRoute: typeof ServicesRoute
+    '/about-the-doctors/dr-andrew-tsai': {
+      id: '/about-the-doctors/dr-andrew-tsai'
+      path: '/dr-andrew-tsai'
+      fullPath: '/about-the-doctors/dr-andrew-tsai'
+      preLoaderRoute: typeof AboutTheDoctorsDrAndrewTsaiRouteImport
+      parentRoute: typeof AboutTheDoctorsRoute
     }
     '/about-the-doctors/dr-marjorie-tsai': {
       id: '/about-the-doctors/dr-marjorie-tsai'
@@ -312,12 +305,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutTheDoctorsDrMarjorieTsaiRouteImport
       parentRoute: typeof AboutTheDoctorsRoute
     }
-    '/about-the-doctors/dr-andrew-tsai': {
-      id: '/about-the-doctors/dr-andrew-tsai'
-      path: '/dr-andrew-tsai'
-      fullPath: '/about-the-doctors/dr-andrew-tsai'
-      preLoaderRoute: typeof AboutTheDoctorsDrAndrewTsaiRouteImport
-      parentRoute: typeof AboutTheDoctorsRoute
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof ServicesRoute
     }
     '/api/public/submissions/$type': {
       id: '/api/public/submissions/$type'

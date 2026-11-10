@@ -86,6 +86,24 @@ export type Database = {
         }
         Relationships: []
       }
+      form_gateway_config: {
+        Row: {
+          id: boolean
+          secret_sha256: string
+          updated_at: string
+        }
+        Insert: {
+          id?: boolean
+          secret_sha256: string
+          updated_at?: string
+        }
+        Update: {
+          id?: boolean
+          secret_sha256?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       form_submission_rate_limits: {
         Row: {
           key: string
@@ -152,6 +170,37 @@ export type Database = {
         Args: { p_key: string; p_limit: number }
         Returns: boolean
       }
+      form_gateway_check: { Args: { p_secret: string }; Returns: undefined }
+      form_gateway_claim: {
+        Args: { p_id: string; p_secret: string; p_type: string }
+        Returns: Json
+      }
+      form_gateway_finish: {
+        Args: {
+          p_error_code: string
+          p_http_status: number
+          p_id: string
+          p_provider_id: string
+          p_secret: string
+          p_status: string
+          p_type: string
+        }
+        Returns: undefined
+      }
+      form_gateway_insert: {
+        Args: {
+          p_payload: Json
+          p_request_key: string
+          p_secret: string
+          p_type: string
+        }
+        Returns: string
+      }
+      form_gateway_rate_limit: {
+        Args: { p_key: string; p_limit: number; p_secret: string }
+        Returns: boolean
+      }
+      form_gateway_table: { Args: { p_type: string }; Returns: string }
     }
     Enums: {
       [_ in never]: never
