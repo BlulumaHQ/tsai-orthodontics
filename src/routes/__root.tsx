@@ -143,12 +143,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
+        // One JSON-LD block: TanStack dedupes head scripts that share a type.
         type: "application/ld+json",
-        children: JSON.stringify(orgJsonLd),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify(websiteJsonLd),
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [websiteJsonLd, orgJsonLd].map(({ "@context": _ctx, ...node }) => node),
+        }),
       },
       { children: gaBootstrapScript },
     ],
