@@ -1,3 +1,4 @@
+import { trackEvent } from "@/lib/analytics";
 import type { SubmissionType } from "./submission-schemas";
 
 const pendingKeys = new Map<SubmissionType, { body: string; key: string }>();
@@ -27,5 +28,6 @@ export async function submitFormValues(
   if (!result.ok)
     throw new Error("We could not submit your form. Please try again or call the office.");
   pendingKeys.delete(type);
+  trackEvent("generate_lead", { form_type: type });
   return { saved: true, notification: result.notification ?? "not_requested" };
 }

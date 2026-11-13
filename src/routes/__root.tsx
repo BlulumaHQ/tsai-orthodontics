@@ -18,6 +18,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { SITE } from "@/lib/site-data";
 import { LanguageProvider } from "@/lib/i18n";
+import { gaBootstrapScript } from "@/lib/analytics";
 
 function NotFoundComponent() {
   return (
@@ -149,6 +150,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify(websiteJsonLd),
       },
+      { children: gaBootstrapScript },
     ],
   }),
   shellComponent: RootShell,
