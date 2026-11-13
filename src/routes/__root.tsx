@@ -82,6 +82,13 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   );
 }
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  url: `https://${SITE.domain}/`,
+};
+
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Dentist",
@@ -108,11 +115,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Tsai Orthodontics — Specialist Orthodontic Care, Vancouver" },
-      {
-        name: "description",
-        content:
-          "Tsai Orthodontics provides specialist orthodontic care in Vancouver for children, teens, and adults, with clear treatment planning, personal attention, and a warm family experience.",
-      },
       { name: "author", content: SITE.name },
       { property: "og:site_name", content: SITE.name },
       { property: "og:type", content: "website" },
@@ -120,9 +122,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "theme-color", content: "#FAF8F6" },
       { property: "og:title", content: "Tsai Orthodontics — Specialist Orthodontic Care, Vancouver" },
       { name: "twitter:title", content: "Tsai Orthodontics — Specialist Orthodontic Care, Vancouver" },
-      { property: "og:description", content: "Specialist orthodontic care on Main Street in Vancouver. Braces, Invisalign, and unhurried family care from Dr. Tsai." },
-      { name: "twitter:description", content: "Specialist orthodontic care on Main Street in Vancouver. Braces, Invisalign, and unhurried family care from Dr. Tsai." },
-      { name: "description", content: "Specialist orthodontic care on Main Street in Vancouver. Braces, Invisalign, and unhurried family care from Dr. Tsai." },
+      { property: "og:description", content: "Book a free initial consultation with Dr. Andrew Tsai, a specialist orthodontist on Main Street in Vancouver offering braces and Invisalign for kids and adults." },
+      { name: "twitter:description", content: "Book a free initial consultation with Dr. Andrew Tsai, a specialist orthodontist on Main Street in Vancouver offering braces and Invisalign for kids and adults." },
+      { name: "description", content: "Book a free initial consultation with Dr. Andrew Tsai, a specialist orthodontist on Main Street in Vancouver offering braces and Invisalign for kids and adults." },
       { property: "og:image", content: "https://tsaiorthodontics.ca/images/home/hero-001.webp" },
       { name: "twitter:image", content: "https://tsaiorthodontics.ca/images/home/hero-001.webp" },
     ],
@@ -142,6 +144,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         type: "application/ld+json",
         children: JSON.stringify(orgJsonLd),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(websiteJsonLd),
       },
     ],
   }),
