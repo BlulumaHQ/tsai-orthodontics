@@ -4,6 +4,8 @@ import {
   Outlet,
   Link,
   createRootRouteWithContext,
+  retainSearchParams,
+  useRouterState,
   useRouter,
   HeadContent,
   Scripts,
@@ -19,6 +21,7 @@ import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { SITE } from "@/lib/site-data";
 import { LanguageProvider } from "@/lib/i18n";
 import { gaBootstrapScript } from "@/lib/analytics";
+import { absoluteUrl, type Lang } from "@/lib/locale";
 
 function NotFoundComponent() {
   return (
@@ -111,7 +114,23 @@ const orgJsonLd = {
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
+  validateSearch: (search: Record<string, unknown>): { lang?: "zh" } =>
+    search.lang === "zh" ? { lang: "zh" } : {},
+  search: { middlewares: [retainSearchParams(["lang"])] },
+  head: ({ matches }) => {
+    const leaf = matches[matches.length - 1];
+    const path = leaf?.pathname ?? "/";
+    const lang: Lang = (leaf?.search as { lang?: string } | undefined)?.lang === "zh" ? "zh" : "en";
+    const isNotFound = matches.some((m) => m.status === "notFound");
+    const langLinks = isNotFound
+      ? []
+      : [
+          { rel: "canonical", href: absoluteUrl(path, lang) },
+          { rel: "alternate", hrefLang: "en", href: absoluteUrl(path, "en") },
+          { rel: "alternate", hrefLang: "zh-Hant", href: absoluteUrl(path, "zh") },
+          { rel: "alternate", hrefLang: "x-default", href: absoluteUrl(path, "en") },
+        ];
+    return {
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -119,6 +138,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: SITE.name },
       { property: "og:site_name", content: SITE.name },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: absoluteUrl(path, lang) },
+      { property: "og:locale", content: lang === "zh" ? "zh_TW" : "en_CA" },
+      { property: "og:locale:alternate", content: lang === "zh" ? "en_CA" : "zh_TW" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#FAF8F6" },
       { property: "og:title", content: "Tsai Orthodontics — Specialist Orthodontic Care, Vancouver" },
@@ -130,6 +152,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://tsaiorthodontics.ca/images/home/hero-001.webp" },
     ],
     links: [
+      ...langLinks,
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "shortcut icon", type: "image/png", href: "/favicon.png" },
@@ -152,7 +175,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { children: gaBootstrapScript },
     ],
-  }),
+  };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -160,8 +184,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const isZh = useRouterState({
+    select: (st) => (st.location.search as { lang?: string }).lang === "zh",
+  });
   return (
-    <html lang="en">
+    <html lang={isZh ? "zh-Hant" : "en"}>
       <head>
         <HeadContent />
       </head>

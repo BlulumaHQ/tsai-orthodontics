@@ -24,9 +24,7 @@ export const Route = createFileRoute("/new-patients")({
         content:
           "An unhurried, transparent first visit — with downloadable forms, insurance support, and clear financing.",
       },
-      { property: "og:url", content: "https://tsaiorthodontics.ca/new-patients" },
     ],
-    links: [{ rel: "canonical", href: "https://tsaiorthodontics.ca/new-patients" }],
   }),
   component: NewPatients,
 });

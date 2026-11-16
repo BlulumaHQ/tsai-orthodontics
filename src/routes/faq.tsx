@@ -18,9 +18,7 @@ export const Route = createFileRoute("/faq")({
         property: "og:description",
         content: "Clear answers to common orthodontic questions, from Tsai Orthodontics.",
       },
-      { property: "og:url", content: "https://tsaiorthodontics.ca/faq" },
     ],
-    links: [{ rel: "canonical", href: "https://tsaiorthodontics.ca/faq" }],
     scripts: [
       {
         type: "application/ld+json",

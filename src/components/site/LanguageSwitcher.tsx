@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useLang } from "@/lib/i18n";
 
 export function LanguageSwitcher({
@@ -26,24 +27,34 @@ export function LanguageSwitcher({
       role="group"
       aria-label="Language selector"
     >
-      <button
-        type="button"
-        onClick={() => setLang("en")}
-        aria-pressed={lang === "en"}
+      <Link
+        to="."
+        search={((prev: Record<string, unknown>) => ({ ...prev, lang: undefined })) as never}
+        hrefLang="en"
+        onClick={(e) => {
+          e.preventDefault();
+          setLang("en");
+        }}
+        aria-current={lang === "en" ? "true" : undefined}
         className={`${base} ${lang === "en" ? activeCls : inactiveCls}`}
       >
         EN
-      </button>
+      </Link>
       <span className={`text-[10px] ${dividerCls}`}>/</span>
-      <button
-        type="button"
-        onClick={() => setLang("zh")}
-        aria-pressed={lang === "zh"}
+      <Link
+        to="."
+        search={((prev: Record<string, unknown>) => ({ ...prev, lang: "zh" })) as never}
+        hrefLang="zh-Hant"
         lang="zh-Hant"
+        onClick={(e) => {
+          e.preventDefault();
+          setLang("zh");
+        }}
+        aria-current={lang === "zh" ? "true" : undefined}
         className={`${base} ${lang === "zh" ? activeCls : inactiveCls}`}
       >
         中文
-      </button>
+      </Link>
     </div>
   );
 }

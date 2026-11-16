@@ -22,9 +22,7 @@ export const Route = createFileRoute("/services/")({
         property: "og:description",
         content: "Specialist orthodontic care for children, teens, and adults in Vancouver.",
       },
-      { property: "og:url", content: "https://tsaiorthodontics.ca/services" },
     ],
-    links: [{ rel: "canonical", href: "https://tsaiorthodontics.ca/services" }],
   }),
   component: ServicesIndex,
 });

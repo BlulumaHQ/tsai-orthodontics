@@ -63,9 +63,7 @@ export const Route = createFileRoute("/what-sets-us-apart")({
         content:
           "Craft, Care, Clarity, Convenience — the four values behind our specialist-led, family-centred orthodontic care.",
       },
-      { property: "og:url", content: "https://tsaiorthodontics.ca/what-sets-us-apart" },
     ],
-    links: [{ rel: "canonical", href: "https://tsaiorthodontics.ca/what-sets-us-apart" }],
   }),
   component: Page,
 });
