@@ -9,6 +9,7 @@ import {
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
 import { Zoomable } from "@/components/site/Zoomable";
+import { localizeMeta, matchLang, ZH_SERVICE_META } from "@/lib/locale";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -16,7 +17,7 @@ export const Route = createFileRoute("/services/$slug")({
     if (!service) throw notFound();
     return { service };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, match }) => {
     const s = loaderData?.service;
     if (!s) return { meta: [{ title: "Service — Tsai Orthodontics" }] };
 
@@ -42,24 +43,31 @@ export const Route = createFileRoute("/services/$slug")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: s.faqs.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
+          mainEntity: s.faqs.map((f) => {
+            const zh = matchLang(match) === "zh";
+            return {
+              "@type": "Question",
+              name: zh ? (f.qZh ?? f.q) : f.q,
+              acceptedAnswer: { "@type": "Answer", text: zh ? (f.aZh ?? f.a) : f.a },
+            };
+          }),
         }),
       });
     }
 
     return {
-      meta: [
-        { title: s.metaTitle },
-        { name: "description", content: s.metaDescription },
-        { property: "og:title", content: s.metaTitle },
-        { property: "og:description", content: s.metaDescription },
-        { property: "og:type", content: "article" },
-        { property: "og:image", content: s.image },
-      ],
+      meta: localizeMeta(
+        [
+          { title: s.metaTitle },
+          { name: "description", content: s.metaDescription },
+          { property: "og:title", content: s.metaTitle },
+          { property: "og:description", content: s.metaDescription },
+          { property: "og:type", content: "article" },
+          { property: "og:image", content: s.image },
+        ],
+        matchLang(match),
+        ZH_SERVICE_META[s.slug],
+      ),
       scripts,
     };
   },
@@ -236,10 +244,10 @@ function FAQSection({ service }: { service: Service }) {
           {service.faqs.map((f, idx) => (
             <details key={f.q} open={idx === 0} className="group py-6 lg:py-7">
               <summary className="cursor-pointer list-none flex items-start justify-between gap-6">
-                <span className="font-serif text-xl md:text-2xl leading-snug text-balance">{f.q}</span>
+                <span className="font-serif text-xl md:text-2xl leading-snug text-balance">{t(f.q, f.qZh ?? f.q)}</span>
                 <span className="text-primary text-2xl leading-none mt-1 transition-transform group-open:rotate-45">+</span>
               </summary>
-              <p className="mt-4 text-foreground/75 leading-relaxed max-w-3xl">{f.a}</p>
+              <p className="mt-4 text-foreground/75 leading-relaxed max-w-3xl">{t(f.a, f.aZh ?? f.a)}</p>
             </details>
           ))}
         </div>

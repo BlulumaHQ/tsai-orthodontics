@@ -5,12 +5,13 @@ import { SERVICES, localizedService } from "@/lib/services-data";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
 import clinicChairAsset from "@/assets/dental-chair-brand.jpg.asset.json";
+import { localizeMeta, matchLang, ZH_META } from "@/lib/locale";
 
 const clinicChairBackground = clinicChairAsset.url;
 
 export const Route = createFileRoute("/services/")({
-  head: () => ({
-    meta: [
+  head: ({ match }) => ({
+    meta: localizeMeta([
       { title: "Our Services — Tsai Orthodontics Vancouver" },
       {
         name: "description",
@@ -22,7 +23,7 @@ export const Route = createFileRoute("/services/")({
         property: "og:description",
         content: "Specialist orthodontic care for children, teens, and adults in Vancouver.",
       },
-    ],
+    ], matchLang(match), ZH_META["/services"]),
   }),
   component: ServicesIndex,
 });

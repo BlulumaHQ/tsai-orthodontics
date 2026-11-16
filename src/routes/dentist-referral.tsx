@@ -5,10 +5,11 @@ import { PageHero } from "@/components/site/PageHero";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
 import textureReferral from "@/assets/clinic-operatory.webp.asset.json";
+import { localizeMeta, matchLang, ZH_META } from "@/lib/locale";
 
 export const Route = createFileRoute("/dentist-referral")({
-  head: () => ({
-    meta: [
+  head: ({ match }) => ({
+    meta: localizeMeta([
       { title: "Dentist Referral — Tsai Orthodontics Vancouver" },
       {
         name: "description",
@@ -21,7 +22,7 @@ export const Route = createFileRoute("/dentist-referral")({
         content:
           "A clear, professional referral process for general dentists and healthcare colleagues.",
       },
-    ],
+    ], matchLang(match), ZH_META["/dentist-referral"]),
   }),
   component: DentistReferralPage,
 });

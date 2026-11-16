@@ -111,6 +111,14 @@ const orgJsonLd = {
   areaServed: "Vancouver, BC",
   medicalSpecialty: "Orthodontics",
   priceRange: "$$$",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "10:00",
+      closes: "18:00",
+    },
+  ],
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({

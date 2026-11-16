@@ -3,11 +3,12 @@ import { PageHero } from "@/components/site/PageHero";
 import { ConsultationForm } from "@/components/site/ConsultationForm";
 import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
+import { localizeMeta, matchLang, ZH_META } from "@/lib/locale";
 
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
+  head: ({ match }) => ({
+    meta: localizeMeta([
       { title: "Contact — Tsai Orthodontics, Vancouver" },
       {
         name: "description",
@@ -19,7 +20,7 @@ export const Route = createFileRoute("/contact")({
         property: "og:description",
         content: "Book your complimentary specialist consultation in Vancouver.",
       },
-    ],
+    ], matchLang(match), ZH_META["/contact"]),
   }),
   component: ContactPage,
 });

@@ -11,6 +11,7 @@ import { SITE } from "@/lib/site-data";
 import { SERVICES, localizedService } from "@/lib/services-data";
 import { useT } from "@/lib/i18n";
 import { ReviewsCarousel } from "@/components/site/ReviewsCarousel";
+import { localizeMeta, matchLang, ZH_META } from "@/lib/locale";
 
 const pillarCraft = pillarCraftAsset.url;
 const pillarCare = pillarCareAsset.url;
@@ -19,8 +20,8 @@ const pillarConvenience = pillarConvenienceAsset.url;
 const clinicChairBackground = clinicChairAsset.url;
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
+  head: ({ match }) => ({
+    meta: localizeMeta([
       { title: "Tsai Orthodontics — Specialist Orthodontic Care, Vancouver" },
       {
         name: "description",
@@ -34,7 +35,7 @@ export const Route = createFileRoute("/")({
           "Book a free initial consultation with Dr. Andrew Tsai, a specialist orthodontist on Main Street in Vancouver offering braces and Invisalign for kids and adults.",
       },
       { property: "og:type", content: "website" },
-    ],
+    ], matchLang(match), ZH_META["/"]),
   }),
   component: HomePage,
 });

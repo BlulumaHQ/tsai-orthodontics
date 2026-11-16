@@ -13,8 +13,8 @@ export const SITE = {
     country: "CA",
   },
   hours: [
-    { day: "Monday – Saturday", dayZh: "週一至週六", time: "By appointment", timeZh: "預約制" },
-    { day: "Sunday", dayZh: "週日", time: "Closed", timeZh: "休診" },
+    { day: "Tuesday – Saturday", dayZh: "週二至週六", time: "10:00 am – 6:00 pm", timeZh: "上午 10:00 – 下午 6:00" },
+    { day: "Sunday – Monday", dayZh: "週日、週一", time: "Closed", timeZh: "休診" },
   ],
 };
 

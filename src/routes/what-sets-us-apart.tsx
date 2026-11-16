@@ -3,6 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { SmileTransformations } from "@/components/site/SmileTransformations";
 import { useT } from "@/lib/i18n";
 import textureBelieve from "@/assets/clinic-reception.webp.asset.json";
+import { localizeMeta, matchLang, ZH_META } from "@/lib/locale";
 
 interface Belief {
   label: string;
@@ -49,8 +50,8 @@ const BELIEFS: Belief[] = [
 ];
 
 export const Route = createFileRoute("/what-sets-us-apart")({
-  head: () => ({
-    meta: [
+  head: ({ match }) => ({
+    meta: localizeMeta([
       { title: "What We Believe In — Tsai Orthodontics" },
       {
         name: "description",
@@ -63,7 +64,7 @@ export const Route = createFileRoute("/what-sets-us-apart")({
         content:
           "Craft, Care, Clarity, Convenience — the four values behind our specialist-led, family-centred orthodontic care.",
       },
-    ],
+    ], matchLang(match), ZH_META["/what-sets-us-apart"]),
   }),
   component: Page,
 });

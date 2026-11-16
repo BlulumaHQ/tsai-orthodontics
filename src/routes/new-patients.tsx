@@ -6,12 +6,13 @@ import { SITE } from "@/lib/site-data";
 import { useT } from "@/lib/i18n";
 import clinicChairAsset from "@/assets/dental-chair-brand.jpg.asset.json";
 import textureNewPatients from "@/assets/clinic-hallway.webp.asset.json";
+import { localizeMeta, matchLang, ZH_META } from "@/lib/locale";
 
 const clinicChairBackground = clinicChairAsset.url;
 
 export const Route = createFileRoute("/new-patients")({
-  head: () => ({
-    meta: [
+  head: ({ match }) => ({
+    meta: localizeMeta([
       { title: "New Patients — Tsai Orthodontics" },
       {
         name: "description",
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/new-patients")({
         content:
           "An unhurried, transparent first visit — with downloadable forms, insurance support, and clear financing.",
       },
-    ],
+    ], matchLang(match), ZH_META["/new-patients"]),
   }),
   component: NewPatients,
 });

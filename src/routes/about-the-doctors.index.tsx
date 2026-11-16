@@ -4,6 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import drAndrew from "@/assets/dr-andrew-tsai.webp.asset.json";
 import drMarjorie from "@/assets/dr-marjorie-tsai.webp.asset.json";
 import { useT } from "@/lib/i18n";
+import { localizeMeta, matchLang, ZH_META } from "@/lib/locale";
 
 interface EducationItem {
   year: string;
@@ -87,8 +88,8 @@ const ASSOCIATIONS: string[] = [
 ];
 
 export const Route = createFileRoute("/about-the-doctors/")({
-  head: () => ({
-    meta: [
+  head: ({ match }) => ({
+    meta: localizeMeta([
       { title: "About the Doctors | Tsai Orthodontics" },
       {
         name: "description",
@@ -97,7 +98,7 @@ export const Route = createFileRoute("/about-the-doctors/")({
       },
       { property: "og:title", content: "About the Doctors | Tsai Orthodontics" },
       { property: "og:description", content: "Meet Dr. Andrew Tsai, DMD, MSD, FRCD(C) and Dr. Marjorie Tsai, DDS, M.Ortho." },
-    ],
+    ], matchLang(match), ZH_META["/about-the-doctors"]),
   }),
   component: AboutTheDoctorsPage,
 });

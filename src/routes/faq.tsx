@@ -3,10 +3,11 @@ import { PageHero } from "@/components/site/PageHero";
 import { FAQ_GROUPS, ALL_FAQS } from "@/lib/faq-data";
 import { useT } from "@/lib/i18n";
 import textureFaq from "@/assets/clinic-reception.webp.asset.json";
+import { localizeMeta, matchLang, ZH_META } from "@/lib/locale";
 
 export const Route = createFileRoute("/faq")({
-  head: () => ({
-    meta: [
+  head: ({ match }) => ({
+    meta: localizeMeta([
       { title: "FAQ — Tsai Orthodontics" },
       {
         name: "description",
@@ -18,18 +19,21 @@ export const Route = createFileRoute("/faq")({
         property: "og:description",
         content: "Clear answers to common orthodontic questions, from Tsai Orthodontics.",
       },
-    ],
+    ], matchLang(match), ZH_META["/faq"]),
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: ALL_FAQS.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
+          mainEntity: ALL_FAQS.map((f) => {
+            const zh = matchLang(match) === "zh";
+            return {
+              "@type": "Question",
+              name: zh ? (f.qZh ?? f.q) : f.q,
+              acceptedAnswer: { "@type": "Answer", text: zh ? (f.aZh ?? f.a) : f.a },
+            };
+          }),
         }),
       },
     ],

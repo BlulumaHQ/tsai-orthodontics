@@ -359,11 +359,18 @@ export const SERVICES: Service[] = (
         en: "Want to know if braces are right for your case?",
         zh: "想知道矯正器適不適合你的病例？",
       },
-      faqs: [],
+      faqs: [
+        {
+          q: "How much do braces cost? What affects the price?",
+          qZh: "矯正器的費用是多少？費用取決於什麼？",
+          a: "Every case is different, so we don't quote a set price without seeing your teeth. The fee depends on how complex your bite is, how long treatment is expected to take, and whether additional appliances are needed. To give you an accurate fee, we take full orthodontic records and do a proper evaluation at your free initial consultation.",
+          aZh: "每個病例都不同，所以在看過你的牙齒之前，我們不提供固定報價。費用會依你的咬合複雜程度、預計的療程長短，以及是否需要搭配其他矯正裝置而定。為了給你準確的費用，我們會在免費初診諮詢時取得完整的矯正檢查紀錄，並做出完整評估。",
+        },
+      ],
       related: ["children-and-teens", "adults", "retainers"],
       metaTitle: "Braces & Fixed Appliances — Tsai Orthodontics Vancouver",
       metaDescription:
-        "Modern braces and fixed orthodontic appliances in Vancouver for precise, specialist-planned tooth movement.",
+        "Braces and fixed orthodontic appliances in Vancouver for kids, teens and adults, planned by specialist orthodontist Dr. Andrew Tsai. Book a free consultation.",
     },
     {
       slug: "invisalign",
@@ -432,11 +439,24 @@ export const SERVICES: Service[] = (
         en: "Curious whether you're a candidate?",
         zh: "想知道自己是不是適合的人選？",
       },
-      faqs: [],
+      faqs: [
+        {
+          q: "Are Invisalign and clear aligners the same thing?",
+          qZh: "Invisalign 和隱形牙套是一樣的嗎？",
+          a: "Clear aligners are removable, transparent trays that straighten teeth gradually. Invisalign is the most established clear aligner system, and it's the one we use. At Tsai Orthodontics, every clear aligner case for adults and teens is planned and monitored by a specialist orthodontist.",
+          aZh: "隱形牙套是透明、可拆卸的牙套，能逐步把牙齒排整齊。Invisalign（隱適美）是最具代表性的隱形牙套系統，也是我們使用的系統。在 Tsai Orthodontics，每一個成人與青少年的隱形牙套療程，都由齒顎矯正專科醫生規劃並追蹤。",
+        },
+        {
+          q: "How much does Invisalign cost? What affects the price?",
+          qZh: "Invisalign 隱形牙套的費用是多少？費用取決於什麼？",
+          a: "Every case is different, so we don't quote a set price without seeing your teeth. The fee depends on how complex your bite is, how many aligners and how much time your treatment needs, and whether additional appliances are needed. To give you an accurate fee, we take full orthodontic records and do a proper evaluation at your free initial consultation.",
+          aZh: "每個病例都不同，所以在看過你的牙齒之前，我們不提供固定報價。費用會依你的咬合複雜程度、所需的牙套數量與療程長短，以及是否需要搭配其他矯正裝置而定。為了給你準確的費用，我們會在免費初診諮詢時取得完整的矯正檢查紀錄，並做出完整評估。",
+        },
+      ],
       related: ["adults", "children-and-teens", "retainers"],
-      metaTitle: "Invisalign Clear Aligners — Tsai Orthodontics Vancouver",
+      metaTitle: "Invisalign & Clear Aligners in Vancouver — Tsai Orthodontics",
       metaDescription:
-        "Invisalign clear aligner treatment in Vancouver, digitally planned and carefully monitored by Tsai Orthodontics.",
+        "Invisalign clear aligners for adults and teens in Vancouver, planned and monitored by specialist orthodontist Dr. Andrew Tsai. Book a free consultation.",
     },
     {
       slug: "phase-i-treatment",
