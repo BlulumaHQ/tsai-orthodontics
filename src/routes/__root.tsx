@@ -160,6 +160,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://tsaiorthodontics.ca/images/home/hero-001.webp" },
     ],
     links: [
+      { rel: "alternate", type: "text/markdown", title: "LLM-friendly site summary", href: "/llms.txt" },
       ...langLinks,
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
