@@ -156,8 +156,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Book a free initial consultation with Dr. Andrew Tsai, a specialist orthodontist on Main Street in Vancouver offering braces and Invisalign for kids and adults." },
       { name: "twitter:description", content: "Book a free initial consultation with Dr. Andrew Tsai, a specialist orthodontist on Main Street in Vancouver offering braces and Invisalign for kids and adults." },
       { name: "description", content: "Book a free initial consultation with Dr. Andrew Tsai, a specialist orthodontist on Main Street in Vancouver offering braces and Invisalign for kids and adults." },
-      { property: "og:image", content: "https://tsaiorthodontics.ca/images/home/hero-001.webp" },
-      { name: "twitter:image", content: "https://tsaiorthodontics.ca/images/home/hero-001.webp" },
+      { property: "og:image", content: "https://tsaiorthodontics.ca/images/home/orthodontist-vancouver-tsai-orthodontics.webp" },
+      { name: "twitter:image", content: "https://tsaiorthodontics.ca/images/home/orthodontist-vancouver-tsai-orthodontics.webp" },
     ],
     links: [
       { rel: "alternate", type: "text/markdown", title: "LLM-friendly site summary", href: "/llms.txt" },

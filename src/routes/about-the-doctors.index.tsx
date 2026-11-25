@@ -142,7 +142,7 @@ function AboutTheDoctorsPage() {
             <div className="overflow-hidden rounded-3xl">
               <img
                 src={drAndrew.url}
-                alt="Dr. Andrew Tsai"
+                alt="Dr. Andrew Tsai, orthodontist in Vancouver"
                 className="w-full aspect-[4/5] object-cover"
                 loading="lazy"
               />
@@ -304,7 +304,7 @@ function AboutTheDoctorsPage() {
             <div className="relative z-10 rounded-[1.5rem] overflow-hidden bg-secondary/40">
               <img
                 src={drMarjorie.url}
-                alt="Dr. Marjorie Tsai"
+                alt="Dr. Marjorie Tsai, orthodontist in Vancouver"
                 width={1080}
                 height={1350}
                 className="w-full aspect-[4/5] object-cover"

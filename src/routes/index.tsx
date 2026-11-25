@@ -46,7 +46,7 @@ function HomePage() {
 
   const HERO_SLIDES = [
     {
-      src: "/images/home/hero-001.webp",
+      src: "/images/home/orthodontist-vancouver-tsai-orthodontics.webp",
       alt: t("Dr. Andrew Tsai at Tsai Orthodontics reception", "Dr. Andrew Tsai 於 Tsai Orthodontics 診所前台"),
       eyebrow: t("Specialist Orthodontics · Vancouver", "齒顎矯正專科 · 溫哥華"),
       title: t(
@@ -69,7 +69,7 @@ function HomePage() {
       objectPosition: "right",
     },
     {
-      src: "/images/home/hero-002.webp",
+      src: "/images/home/orthodontic-check-up-main-street-vancouver.webp",
       alt: t("Dr. Andrew Tsai reviewing a clear aligner with a teen patient", "Dr. Andrew Tsai 與青少年患者一起檢視隱形牙套"),
       eyebrow: t("Care for every stage", "陪伴每一個人生階段"),
       title: t(
@@ -118,8 +118,8 @@ function HomePage() {
         "We believe patients should feel heard, supported, and comfortable throughout treatment.",
         "我們相信，病患在整個療程中都應該感受到被傾聽、被支持，並且安心自在。",
       ),
-      image: "/images/clinic/doctors.webp",
-      alt: "Dr. Andrew Tsai and Dr. Marjorie Tsai at Tsai Orthodontics",
+      image: "/images/clinic/dr-andrew-and-dr-marjorie-tsai-orthodontists.webp",
+      alt: "Dr. Andrew Tsai and Dr. Marjorie Tsai, orthodontists at Tsai Orthodontics on Main Street, Vancouver",
     },
     {
       n: "03",
@@ -129,7 +129,7 @@ function HomePage() {
         "We believe families deserve straightforward answers and a clear understanding of their options.",
         "我們相信，家屬值得獲得清楚、直接的回答，並充分理解所有可行的選擇。",
       ),
-      image: "/images/clinic/patient-consult.webp",
+      image: "/images/clinic/orthodontist-patient-consultation-3d-scan.webp",
       alt: "Dr. Andrew Tsai talking with a patient in the chair, reviewing a scan",
     },
     {
@@ -321,7 +321,7 @@ function HomePage() {
             <div className="overflow-hidden rounded-3xl">
               <img
                 src={drTsai.url}
-                alt="Dr. Tsai, specialist orthodontist"
+                alt="Dr. Tsai, specialist orthodontist in Vancouver"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover"
               />
