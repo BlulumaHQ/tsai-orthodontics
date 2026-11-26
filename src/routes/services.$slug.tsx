@@ -112,7 +112,7 @@ function ServicePage() {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             <div className="lg:col-span-7">
               <div className="text-primary text-[11px] uppercase tracking-[0.3em] mb-6">
-                {service.name}
+                {service.eyebrow || service.name}
               </div>
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[0.98] max-w-3xl text-balance">
                 {service.heroTitle}

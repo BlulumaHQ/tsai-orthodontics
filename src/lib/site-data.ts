@@ -48,7 +48,7 @@ export const NAV: NavItem[] = [
       { label: "Invisalign", labelZh: "Invisalign 隱形牙套", to: "/services/invisalign" },
       { label: "Phase I Treatment", labelZh: "Phase I 兒童早期矯正", to: "/services/phase-i-treatment" },
       { label: "Airway Friendly Orthodontics", labelZh: "呼吸道友善矯正", to: "/services/airway-friendly-orthodontics" },
-      { label: "MARPE / TADs", labelZh: "MARPE / TADs 上顎骨擴張與骨釘", to: "/services/marpe" },
+      { label: "MARPE", labelZh: "MARPE 上顎骨擴張", to: "/services/marpe" },
       { label: "Retainers", labelZh: "Retainers 維持器", to: "/services/retainers" },
     ],
   },
@@ -75,6 +75,6 @@ export const FOOTER_SERVICES = [
   { label: "Invisalign", labelZh: "Invisalign 隱形牙套", to: "/services/invisalign" },
   { label: "Phase I Treatment", labelZh: "Phase I 兒童早期矯正", to: "/services/phase-i-treatment" },
   { label: "Airway Friendly Orthodontics", labelZh: "呼吸道友善矯正", to: "/services/airway-friendly-orthodontics" },
-  { label: "MARPE / TADs", labelZh: "MARPE / TADs 上顎骨擴張與骨釘", to: "/services/marpe" },
+  { label: "MARPE", labelZh: "MARPE 上顎骨擴張", to: "/services/marpe" },
   { label: "Retainers", labelZh: "Retainers 維持器", to: "/services/retainers" },
 ];

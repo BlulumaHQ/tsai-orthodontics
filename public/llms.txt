@@ -22,7 +22,7 @@ The site is also available in Traditional Chinese under /zh-tw/, e.g. https://ts
 - [Invisalign](https://tsaiorthodontics.ca/services/invisalign)
 - [Phase I Treatment](https://tsaiorthodontics.ca/services/phase-i-treatment)
 - [Airway Friendly Orthodontics](https://tsaiorthodontics.ca/services/airway-friendly-orthodontics)
-- [MARPE / TADs](https://tsaiorthodontics.ca/services/marpe)
+- [MARPE](https://tsaiorthodontics.ca/services/marpe)
 - [Retainers](https://tsaiorthodontics.ca/services/retainers)
 
 ## Common questions

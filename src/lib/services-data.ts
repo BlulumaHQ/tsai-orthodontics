@@ -55,6 +55,9 @@ export interface Service {
   heroAlt: string;
   heroTitle: string;
   heroTitleZh: string;
+  /** Optional hero eyebrow; falls back to name. */
+  eyebrow?: string;
+  eyebrowZh?: string;
   body: ServiceBlock[];
   ctaLead: { en: string; zh: string };
   // Kept for back-compat with legacy structured fields used by services not yet
@@ -602,23 +605,25 @@ export const SERVICES: Service[] = (
     },
     {
       slug: "marpe",
-      name: "MARPE / TADs",
-      nameZh: "MARPE / TADs 上顎骨擴張與骨釘",
+      name: "MARPE",
+      nameZh: "MARPE 上顎骨擴張",
       short:
         "Miniscrew-assisted rapid palatal expansion, supported by TADs, for carefully selected cases.",
       shortZh: "結合骨釘（TADs）的上顎快速擴張，適用於經過審慎評估的個案。",
-      ctaLabel: "Explore MARPE / TADs",
-      ctaLabelZh: "了解 MARPE / TADs",
+      ctaLabel: "Explore MARPE",
+      ctaLabelZh: "了解 MARPE",
       image: svcMarpe,
       heroImageDirection: "Digital orthodontic planning model.",
       heroAlt: "Digital orthodontic planning model",
-      heroTitle: "Skeletal Anchorage to Accomplish Difficult Movements",
-      heroTitleZh: "以骨性錨定，完成困難的牙齒移動",
+      heroTitle: "Non-Surgical Palatal Expansion for Teens and Adults",
+      heroTitleZh: "免手術的上顎擴張，適用於青少年與成人",
+      eyebrow: "MARPE – Miniscrew Assisted Rapid Palatal Expansion",
+      eyebrowZh: "MARPE – 微型骨釘輔助上顎快速擴張",
       body: [
         {
           kind: "p",
-          en: "For years, adults and older teens with a narrow upper jaw were told their only option for true widening was surgery. MARPE has changed that for many of them. It's a skeletally anchored expander that can expand the upper jaw by using a small expander anchored directly into the palate. It isn't right for everyone, and that's the point of a proper evaluation. TADs, or temporary anchorage devices, are used in cases that have difficult movements that conventional braces and aligners struggle with. Dr. Tsai will mention at the start of treatment if TADs may be a likely possibility in your case. Done well, on the right patient, it can correct problems that braces and aligners alone simply can't reach.",
-          zh: "多年以來，上顎狹窄的成人與青少年後期病患，都被告知想要真正的擴張只能靠手術。MARPE 為許多人改變了這件事。它是一種骨性錨定的擴張器，透過直接錨定在上顎的一個小型擴張裝置，來擴張上顎。它不是每個人都適合，這正是完整評估的意義。TADs（暫時性錨定裝置）則用於那些傳統矯正器與隱形牙套較難處理的困難移動個案。Tsai 醫師會在療程一開始就告訴你，你的個案是否可能需要用到 TADs。做得好、用在對的病患身上，MARPE 能矯正單靠矯正器與隱形牙套碰不到的問題。",
+          en: "For years, adults and older teens with a narrow upper jaw were told their only option for true widening was surgery. MARPE has changed that for many of them. It's a skeletally anchored expander that can expand the upper jaw by using a small expander anchored directly into the palate. It isn't right for everyone, and that's the point of a proper evaluation. Done well, on the right patient, it can correct problems that braces and aligners alone simply can't reach.",
+          zh: "多年以來，上顎狹窄的成人與青少年後期病患，都被告知想要真正的擴張只能靠手術。MARPE 為許多人改變了這件事。它是一種骨性錨定的擴張器，透過直接錨定在上顎的一個小型擴張裝置，來擴張上顎。它不是每個人都適合，這正是完整評估的意義。做得好、用在對的病患身上，MARPE 能矯正單靠矯正器與隱形牙套碰不到的問題。",
         },
         { kind: "subhead", en: "What MARPE actually is", zh: "MARPE 究竟是什麼" },
         {
@@ -664,8 +669,8 @@ export const SERVICES: Service[] = (
           zh: "療程會經歷什麼",
           items: [
             {
-              en: "Evaluation — a consultation with records and 3D imaging to assess your palate, airway, and whether your case suits skeletal expansion.",
-              zh: "評估 — 一次搭配影像紀錄與 3D 影像的諮詢，評估你的上顎、呼吸道，以及你的個案是否適合骨性擴張。",
+              en: "Evaluation — a consultation with records and 3D imaging to assess your upper and lower jaw structure, your palate and your airway, and whether your case suits skeletal expansion.",
+              zh: "評估 — 一次搭配影像紀錄與 3D 影像的諮詢，評估你的上下顎骨結構、上顎與呼吸道，以及你的個案是否適合骨性擴張。",
             },
             {
               en: "Placing the appliance — the expander and TADs are fitted in a single visit. This step involves local anesthesia.",
@@ -690,6 +695,12 @@ export const SERVICES: Service[] = (
           kind: "p",
           en: "No, MARPE is not jaw surgery; that's the most common worry we hear, and it's worth saying plainly. Placing the TADs is a brief, in-office procedure done under local anesthetic. Most patients describe pressure and a few days of adjustment rather than pain, and manage comfortably with over-the-counter relief. The screws are removed easily once treatment is complete.",
           zh: "不是，MARPE 不是顎骨手術，這是我們最常聽到的擔心，值得直說。裝設 TADs 是在診間進行、時間短暫的處置，會使用局部麻醉。大多數病患形容的是壓迫感與幾天的適應期，而不是疼痛，用市售止痛藥就能舒適度過。療程結束後，這些骨釘可以輕鬆取下。",
+        },
+        { kind: "subhead", en: "TADs for difficult tooth movements", zh: "以 TADs 處理困難的牙齒移動" },
+        {
+          kind: "p",
+          en: "The same small screws that anchor a MARPE expander are also used on their own in other cases. TADs, or temporary anchorage devices, are used in cases that have difficult movements that conventional braces and aligners struggle with. Dr. Tsai will mention at the start of treatment if TADs may be a likely possibility in your case.",
+          zh: "固定 MARPE 擴張器的同一種小型骨釘，在其他個案中也會單獨使用。TADs（暫時性錨定裝置）用於傳統矯正器與隱形牙套較難處理的困難移動個案。Tsai 醫師會在療程一開始就告訴你，你的個案是否可能需要用到 TADs。",
         },
         { kind: "subhead", en: "Why this is specialist work", zh: "為什麼這是專科的工作" },
         {
@@ -800,6 +811,7 @@ export function localizedService(s: Service, lang: Lang): Service {
     short: s.shortZh || s.short,
     ctaLabel: s.ctaLabelZh || s.ctaLabel,
     heroTitle: s.heroTitleZh || s.heroTitle,
+    eyebrow: s.eyebrowZh || s.eyebrow,
     faqs: s.faqs.map((f) => ({
       ...f,
       q: f.qZh || f.q,
